@@ -1,3 +1,10 @@
+# DPSDA
+
+models/*.pt
+amlt
+docker/build.sh
+docker/run.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

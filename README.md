@@ -1,14 +1,50 @@
-# Project
+# Differentially Private Synthetic Data via Foundation Model APIs
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework which only utilizes the blackbox inference APIs of  foundation models (e.g., Stable Diffusion).
 
-As the maintainer of this project, please make a few updates:
+* Differentially Private Synthetic Data via Foundation Model APIs 1: Images  
+	[[paper (arxiv)](#)]  
+    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+
+#### Supported Data Types
+This repo currently supports the following data types and foundation models.
+
+| Data Type | Foundation Model APIs |
+|--------|--------|
+|    Images    |    [Stable Diffusion](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview)    |
+|    Images    |    [improved diffusion](https://github.com/openai/improved-diffusion)    |
+|    Images    |    [DALLE2](https://platform.openai.com/docs/api-reference/images)    |
+
+
+## Quick Examples
+
+See the [docker file](docker/Dockerfile) for the environment.
+
+#### CIFAR10 Images
+```sh
+pushd data; python get_cifar10.py; popd  # Download CIFAR10 dataset
+pushd models; ./get_models.sh; popd  # Download the pre-trained improved diffusion model
+./scripts/main_improved_diffusion_cifar10_conditional.sh  # Run DP generation
+```
+
+#### Camelyon17 Images
+```sh
+pushd data; python get_camelyon17.py; popd  # Download Camelyon17 dataset
+pushd models; ./get_models.sh; popd  # Download the pre-trained improved diffusion model
+./scripts/main_improved_diffusion_camelyon17_conditional.sh  # Run DP generation
+```
+
+See [scripts folder](scripts) for more examples.
+
+
+## Detailed Usage
+
+`main.py` is the main script for generation. Please refer to `python main.py --help` for detailed descriptions of the arguments. For each foundation model API (e.g., Stable Diffusion, improved diffusion), there could be more arguments. Please use `--api_help` argument, e.g., `python main.py --api stable_diffusion --data_folder data --api_help`, to see detailed descrptions of the API-specific arguments.
+
+## Generate DP Synthetic Data for Your Own Dataset
+Please put all images in a folder (which can contain any nested folder structure), and the naming of the image files should be `<class label without '_' character>_<the remaining part of the filename>.<jpg/jpeg/png/gif>`. Pass the path of this folder to `--data_folder` argument.
+
 
 ## Contributing
 

@@ -1,0 +1,1 @@
+wget https://openaipublic.blob.core.windows.net/diffusion/march-2021/imagenet64_cond_270M_250K.pt
