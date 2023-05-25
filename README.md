@@ -67,3 +67,9 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+## Responsible Uses
+
+This project uses foundation model APIs to create [synthetic image data](https://en.wikipedia.org/wiki/Synthetic_data) with [differential privacy](https://en.wikipedia.org/wiki/Differential_privacy) guarantees. Differential privacy (DP) is a formal framework that ensures the output of an algorithm does not reveal too much information about its inputs. Without a formal privacy guarantee, a synthetic data generation algorithm may inadvertently reveal sensitive information about its input datapoints.
+
+Using synthetic data in downstream applications can carry risk. Synthetic data may not always reflect the true data distribution, and can cause harms in downstream applications. Both the dataset and algorithms behind the foundation model APIs may contain various types of bias, leading to potential allocation, representation, and quality-of-service harms. Additionally, privacy violations can still occur if the ε and δ privacy parameters are set inappropriately, or if multiple copies of a sample exist in the seed dataset. It is important to consider these factors carefully before any potential deployments.  
