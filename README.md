@@ -43,6 +43,19 @@ pushd models; ./get_models.sh; popd  # Download the pre-trained improved diffusi
 ./scripts/main_improved_diffusion_camelyon17_conditional.sh  # Run DP generation
 ```
 
+
+#### Cat Images
+
+* Download the dataset from [https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou](https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou), and put them under `data/cookie` and `data/doudou`.
+* For Cat Cookie:
+```
+./scripts/main_stable_diffusion_cookie.sh  # Run DP generation
+```
+* For Cat Doudou:
+```sh
+./scripts/main_stable_diffusion_doudou.sh  # Run DP generation
+``` 
+
 See [scripts folder](scripts) for more examples.
 
 
