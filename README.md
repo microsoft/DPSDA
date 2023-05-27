@@ -1,20 +1,28 @@
 # Differentially Private Synthetic Data via Foundation Model APIs
 
-This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework which only utilizes the blackbox inference APIs of  foundation models (e.g., Stable Diffusion).
+This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework that only utilizes the blackbox inference APIs of foundation models (e.g., Stable Diffusion).
 
 * Differentially Private Synthetic Data via Foundation Model APIs 1: Images  
-	[[paper (arxiv)](#)]  
+	[[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
     **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
+
+
+#### Potential Use Cases
+Given a private dataset, this tool can generate a new DP synthetic dataset that is statistically similar to the private dataset, while ensuring a rigorous privacy guarantee called Differential Privacy. The DP synthetic dataset can replace real data in various use cases where privacy is a concern, for example:
+* Sharing them with other parties for collaboration and research.
+* Using them in downstream algorithms (e.g., training ML models) in the normal non-private pipeline.
+* Inspecting the data directly for easier product debugging or development.
 
 
 #### Supported Data Types
 This repo currently supports the following data types and foundation models.
 
-| Data Type | Foundation Model APIs |
-|--------|--------|
-|    Images    |    [Stable Diffusion](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview)    |
-|    Images    |    [improved diffusion](https://github.com/openai/improved-diffusion)    |
-|    Images    |    [DALLE2](https://platform.openai.com/docs/api-reference/images)    |
+| Foundation Model APIs | Data Type | Size of Generated Images (`--image_size`) |
+|--------|--------|--------|
+|    [Stable Diffusion](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/overview) |   Images  | Preferably 512x512 |
+|    [improved diffusion](https://github.com/openai/improved-diffusion)    |   Images | 64x64 |
+|    [DALLE2](https://platform.openai.com/docs/api-reference/images)    |    Images     | 256x256, 512x512, or 1024x1024 |
+
 
 
 ## Quick Examples
@@ -40,7 +48,11 @@ See [scripts folder](scripts) for more examples.
 
 ## Detailed Usage
 
-`main.py` is the main script for generation. Please refer to `python main.py --help` for detailed descriptions of the arguments. For each foundation model API (e.g., Stable Diffusion, improved diffusion), there could be more arguments. Please use `--api_help` argument, e.g., `python main.py --api stable_diffusion --data_folder data --api_help`, to see detailed descrptions of the API-specific arguments.
+`main.py` is the main script for generation. Please refer to `python main.py --help` for detailed descriptions of the arguments. 
+
+For each foundation model API (e.g., Stable Diffusion, improved diffusion), there could be more arguments. Please use `--api_help` argument, e.g., `python main.py --api stable_diffusion --data_folder data --api_help`, to see detailed descrptions of the API-specific arguments.
+
+See Appendices H, I, J of the [paper](https://arxiv.org/abs/2305.15560) for examples/guidelines of parameter selection.
 
 ## Generate DP Synthetic Data for Your Own Dataset
 Please put all images in a folder (which can contain any nested folder structure), and the naming of the image files should be `<class label without '_' character>_<the remaining part of the filename>.<jpg/jpeg/png/gif>`. Pass the path of this folder to `--data_folder` argument.

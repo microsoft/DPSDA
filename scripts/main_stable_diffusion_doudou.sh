@@ -1,21 +1,21 @@
 python main.py \
 --feature_extractor inception_v3 \
 --fid_model_name inception_v3 \
---fid_dataset_name ruby \
+--fid_dataset_name doudou \
 --count_threshold 2.0 \
 --noise_multiplier 2.0 \
 --lookahead_degree 8 \
 --image_size 512x512 \
 --private_image_size 512 \
---data_folder data/ruby \
+--data_folder data/doudou \
 --num_samples_schedule 100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100 \
 --variation_degree_schedule 1.0,0.98,0.96,0.94,0.92,0.88,0.84,0.8,0.76,0.72,0.68,0.64,0.6,0.56,0.52,0.48,0.44,0.4 \
 --num_fid_samples 100 \
 --num_private_samples 100 \
 --initial_prompt "A photo of ragdoll cat" \
 --make_fid_stats True \
---result_folder result_ruby \
---tmp_folder /tmp/result_ruby \
+--result_folder result_doudou \
+--tmp_folder /tmp/result_doudou \
 --api stable_diffusion \
 --random_sampling_checkpoint 'CompVis/stable-diffusion-v1-4' \
 --random_sampling_guidance_scale 7.5 \
