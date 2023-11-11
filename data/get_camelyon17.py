@@ -18,5 +18,5 @@ if __name__ == '__main__':
     test_data = dataset.get_subset("test")
 
     save(train_data, 'camelyon17_train')
-    save(val_data, 'camelyon17_test')
-    save(test_data, 'camelyon17_val')
+    save(val_data, 'camelyon17_val')
+    save(test_data, 'camelyon17_test')
