@@ -3,7 +3,7 @@
 This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework that only utilizes the blackbox inference APIs of foundation models (e.g., Stable Diffusion).
 
 * Differentially Private Synthetic Data via Foundation Model APIs 1: Images  
-	[[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
+	[[paper (ICLR 2024)]](https://openreview.net/forum?id=YEhQs8POIo) [[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
     **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
 
 
