@@ -56,6 +56,8 @@ pushd models; ./get_models.sh; popd  # Download the pre-trained improved diffusi
 ./scripts/main_stable_diffusion_doudou.sh  # Run DP generation
 ``` 
 
+> After running the above scripts, the synthetic data will be at `<result_folder>/<Private Evolution iteration>/samples.npz`. The `samples` key in the npz file contains `N` generated images in UINT8 format of shape `N x height x width x 3`. For conditional generation with `K` classes, the samples with index in `[i*N/K, (i+1)*N/K-1]` correspond to the samples of the `i+1`-th class. 
+
 See [scripts folder](scripts) for more examples.
 
 
