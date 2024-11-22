@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data" href="data.html" />
+    <link rel="prev" title="Details of the Library" href="details.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Private Evolution
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">What is Private Evolution?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="details.html">Details of the Library</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-private-evolution-algorithm">The Private Evolution Algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-design-principles-of-this-library">Core Design Principles of This Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-components-of-this-library">Core Components of This Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="data.html">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="population.html">Population</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="histogram.html">Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dp.html">DP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="embedding.html">Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="callback_and_logger.html">Callbacks and Loggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runner.html">Runner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../getting_started.html">Getting Started</a></li>
+          <li class="breadcrumb-item"><a href="details.html">Details of the Library</a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/getting_started/details/overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
+<figure class="align-center" id="id1" style="width: 90%">
+<span id="workflow"></span><img alt="../../_images/workflow.jpg" src="../../_images/workflow.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">The workflow of <strong>Private Evolution</strong>.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="the-private-evolution-algorithm">
+<h2>The Private Evolution Algorithm<a class="headerlink" href="#the-private-evolution-algorithm" title="Permalink to this heading"></a></h2>
+<p>The workflow of <a class="reference external" href="https://arxiv.org/abs/2305.15560">Private Evolution</a> is shown in the above <a class="reference internal" href="#workflow"><span class="std std-numref">Fig. 1</span></a>.
+The workflow consists of the following steps:</p>
+<ul>
+<li><p>Using the foundation model API to randomly generate the initial synthetic samples.</p></li>
+<li><p>Iteratively refining the synthetic samples by:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Building a histogram over the synthetic samples using the private samples. The histogram value for each synthetic sample represents how similar it is to the private samples.</p></li>
+<li><p>Adding noise to the histogram to ensure differential privacy.</p></li>
+<li><p>Selecting a subset of the synthetic samples based on the noisy histogram. Those selected samples are expected to be more similar to the private samples.</p></li>
+<li><p>Using the foundation model API to generate variations of the selected synthetic samples.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Outputting the final synthetic samples.</p></li>
+</ul>
+</section>
+<section id="core-design-principles-of-this-library">
+<h2>Core Design Principles of This Library<a class="headerlink" href="#core-design-principles-of-this-library" title="Permalink to this heading"></a></h2>
+<p>The design principles of this library are:</p>
+<ul class="simple">
+<li><p>Easy to use.</p></li>
+<li><p>Supporting different data modalities (e.g., images, text), different foundation model APIs (e.g., Stable Diffusion, GPT models), different <strong>Private Evolution</strong> algorithms (e.g., PE, Aug-PE), and different evaluation metrics (e.g., FID), all in one framework.</p></li>
+<li><p>Easy to add new data modalities, foundation model APIs, <strong>Private Evolution</strong> algorithms, evaluation metrics, etc.</p></li>
+</ul>
+<p>Towards these goals, the library is designed to be highly modular and extensible, as discussed next.</p>
+</section>
+<section id="core-components-of-this-library">
+<h2>Core Components of This Library<a class="headerlink" href="#core-components-of-this-library" title="Permalink to this heading"></a></h2>
+<p>This library provides a set of core components that can be easily customized or replaced. The core components shown in the <a class="reference internal" href="#workflow"><span class="std std-numref">Fig. 1</span></a> include:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="runner.html"><span class="doc">Runner</span></a>: Running the whole <strong>Private Evolution</strong> algorithm.</p></li>
+<li><p><a class="reference internal" href="population.html"><span class="doc">Population</span></a>: Generating the initial synthetic samples and the variations of the synthetic samples.</p></li>
+<li><p><a class="reference internal" href="histogram.html"><span class="doc">Histograms</span></a>: Building the histogram over the synthetic samples.</p></li>
+<li><p><a class="reference internal" href="dp.html"><span class="doc">DP</span></a>: Adding noise to the histogram to ensure differential privacy.</p></li>
+</ul>
+<p>In additional to these components shown in the <a class="reference internal" href="#workflow"><span class="std std-numref">Fig. 1</span></a>, the library also has the following core components:</p>
+<ul>
+<li><p><a class="reference internal" href="data.html"><span class="doc">Data</span></a>: This class holds the synthetic samples or the private samples. Different components are mostly communicated through objects of this class.</p></li>
+<li><p><a class="reference internal" href="api.html"><span class="doc">APIs</span></a>: This class implements the foundation model APIs. This class is utilized by <a class="reference internal" href="population.html"><span class="doc">Population</span></a> to generate the synthetic samples and the variations of the synthetic samples. It might also be used in some <a class="reference internal" href="histogram.html"><span class="doc">Histograms</span></a> algorithms when building the histogram (e.g., when <code class="docutils literal notranslate"><span class="pre">lookahead</span></code> in <a class="reference external" href="https://arxiv.org/abs/2305.15560">PE</a> is used).</p></li>
+<li><p><a class="reference internal" href="embedding.html"><span class="doc">Embeddings</span></a>: This class is used to embed the synthetic/private samples into an embedding space. It might be used in some <a class="reference internal" href="histogram.html"><span class="doc">Histograms</span></a> algorithms when building the histogram. It might also be used in some <a class="reference internal" href="callback_and_logger.html"><span class="doc">metric evaluation callback modules</span></a> (e.g., for computing FID).</p></li>
+<li><p><a class="reference internal" href="callback_and_logger.html"><span class="doc">Callbacks and Loggers</span></a>: The <a class="reference internal" href="runner.html"><span class="doc">Runner</span></a> can be configured to call a given list of callback modules at the end of each Private Evolution iteration. This is very useful for saving the intermediate results, evaluating the synthetic samples, etc. Since we might want to evaluate multiple metrics (e.g., FID, precision, recall), and for each metric, we might want to log it in different ways (e.g., saving it to a file, printing it to the console, uploading it to WandB), the library abstracts this part into two modules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="callback_and_logger.html"><span class="doc">Callbacks</span></a>: This module computes the metrics and (optionally) return the results. (The callback can also return nothing if it does not need the loggers to help with logging the results, e.g., if this callback is for saving the immediate synthetic samples.)</p></li>
+<li><p><a class="reference internal" href="callback_and_logger.html"><span class="doc">Loggers</span></a>: All results returned by the callback modules will be passed through each of the logger modules, which will then log the results in the desired way.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="details.html" class="btn btn-neutral float-left" title="Details of the Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data.html" class="btn btn-neutral float-right" title="Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
