@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "private-evolution"
+version = "0.0.1"
+maintainers = [{ name = "Zinan Lin", email = "zinanlin@microsoft.com" }]
+requires-python = ">=3.8"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+]
+readme = "README.md"
+description = "Differentially private synthetic data via foundation model inference APIs."
+dependencies = [
+  "matplotlib",
+  "clean-fid",
+  "omegaconf",
+  "pandas",
+  "scikit-learn",
+]
+
+[project.optional-dependencies]
+dev = ["pre-commit", "black", "sphinx", "sphinx-rtd-theme"]
+image = [
+  "blobfile",
+  "torch",
+  "imageio",
+  "clip@git+https://github.com/openai/CLIP.git@dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1",
+  "diffusers[pytorch]",
+  "improved-diffusion@git+https://github.com/fjxmlzn/improved-diffusion.git@8f6677c3c47d1c1ad2e22ad2603eaec4cc639805",
+  "wilds",
+]
+
+[project.urls]
+Homepage = "https://github.com/microsoft/DPSDA"
+Documentation = "https://github.com/microsoft/DPSDA"
+Repository = "https://github.com/microsoft/DPSDA"
+"Bug Tracker" = "https://github.com/microsoft/DPSDA/issues"
+
+[tool.setuptools.packages.find]
+exclude = ["doc", "data", "example", "docker*", "amlt", "dist*", "_*"]
