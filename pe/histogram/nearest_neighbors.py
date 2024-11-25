@@ -25,7 +25,7 @@ class NearestNeighbors(Histogram):
         voting_details_log_folder=None,
         api=None,
         num_nearest_neighbors=1,
-        backend="sklearn",
+        backend="auto",
     ):
         """Constructor.
 
@@ -53,9 +53,10 @@ class NearestNeighbors(Histogram):
             1
         :type num_nearest_neighbors: int, optional
         :param backend: The backend to use for finding the nearest neighbors. It should be one of the following:
-            "faiss" (FAISS), "sklearn" (scikit-learn). Defaults to "sklearn". FAISS supports GPU and is much faster
-            when the number of synthetic samples and/or private samples is large. It requires the installation of
-            `faiss-gpu` or `faiss-cpu` package. See https://faiss.ai/
+            "faiss" (FAISS), "sklearn" (scikit-learn), "auto" (using FAISS if available, otherwise scikit-learn).
+            Defaults to "auto". FAISS supports GPU and is much faster when the number of synthetic samples and/or
+            private samples is large. It requires the installation of `faiss-gpu` or `faiss-cpu` package. See
+            https://faiss.ai/
         :type backend: str, optional
         :raises ValueError: If the `api` is not provided when `lookahead_degree` is greater than 0
         :raises ValueError: If the `backend` is unknown
@@ -76,6 +77,10 @@ class NearestNeighbors(Histogram):
             self._search = search
         elif backend.lower() == "sklearn":
             from pe.histogram.nearest_neighbor_backend.sklearn import search
+
+            self._search = search
+        elif backend.lower() == "auto":
+            from pe.histogram.nearest_neighbor_backend.auto import search
 
             self._search = search
         else:

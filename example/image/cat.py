@@ -38,7 +38,6 @@ if __name__ == "__main__":
         lookahead_log_folder=os.path.join(exp_folder, "lookahead"),
         voting_details_log_folder=os.path.join(exp_folder, "voting_details"),
         api=api,
-        backend="faiss",
     )
     population = PEPopulation(api=api, histogram_threshold=2)
 
