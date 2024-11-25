@@ -34,8 +34,8 @@ image = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/microsoft/DPSDA"
-Documentation = "https://github.com/microsoft/DPSDA"
+Homepage = "https://microsoft.github.io/DPSDA/"
+Documentation = "https://microsoft.github.io/DPSDA/"
 Repository = "https://github.com/microsoft/DPSDA"
 "Bug Tracker" = "https://github.com/microsoft/DPSDA/issues"
 
