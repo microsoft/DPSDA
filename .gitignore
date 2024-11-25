@@ -1,8 +1,10 @@
 # PE
-results
+results*
 amlt
 _test
 _data
+docker*
+example/image/test_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
