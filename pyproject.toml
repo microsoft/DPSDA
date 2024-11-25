@@ -40,4 +40,4 @@ Repository = "https://github.com/microsoft/DPSDA"
 "Bug Tracker" = "https://github.com/microsoft/DPSDA/issues"
 
 [tool.setuptools.packages.find]
-exclude = ["doc", "data", "example", "docker*", "amlt", "dist*", "_*"]
+exclude = ["doc", "data", "example", "docker*", "amlt", "dist*", "_*", "result*", "*.egg-info", "__pycache__", ".git*"]
