@@ -98,10 +98,10 @@
   <section id="apis">
 <h1>APIs<a class="headerlink" href="#apis" title="Permalink to this heading"></a></h1>
 <p>API reference: <a class="reference internal" href="../../api/pe.api.html"><span class="doc">pe.api package</span></a></p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code> is responsible for implementing the foundation model APIs. It has the following key methods:</p>
+<p><a class="reference internal" href="../../api/pe.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code></a> is responsible for implementing the foundation model APIs. It has the following key methods:</p>
 <ul class="simple">
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.random_api()</span></code>: Randomly generates the synthetic samples for the initial samples of the <strong>Private Evolution</strong> algorithm.</p></li>
-<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.variation_api()</span></code>: Generates the variations of the given synthetic samples for the initial or the next <strong>Private Evolution</strong> iteration.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.api.API.random_api" title="pe.api.api.API.random_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.random_api()</span></code></a>: Randomly generates the synthetic samples for the initial samples of the <strong>Private Evolution</strong> algorithm.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.api.API.variation_api" title="pe.api.api.API.variation_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.variation_api()</span></code></a>: Generates the variations of the given synthetic samples for the initial or the next <strong>Private Evolution</strong> iteration.</p></li>
 </ul>
 <section id="available-apis">
 <h2>Available APIs<a class="headerlink" href="#available-apis" title="Permalink to this heading"></a></h2>
@@ -110,8 +110,8 @@
 <li><p>Images</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.image.stable_diffusion_api.StableDiffusion</span></code>: The APIs of <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.image.improved_diffusion_api.ImprovedDiffusion</span></code>: The APIs of the <a class="reference external" href="https://github.com/openai/improved-diffusion">improved diffusion model</a>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion" title="pe.api.image.stable_diffusion_api.StableDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.image.stable_diffusion_api.StableDiffusion</span></code></a>: The APIs of <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion" title="pe.api.image.improved_diffusion_api.ImprovedDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.image.improved_diffusion_api.ImprovedDiffusion</span></code></a>: The APIs of the <a class="reference external" href="https://github.com/openai/improved-diffusion">improved diffusion model</a>.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -126,7 +126,7 @@
 </section>
 <section id="adding-your-own-apis">
 <h2>Adding Your Own APIs<a class="headerlink" href="#adding-your-own-apis" title="Permalink to this heading"></a></h2>
-<p>To add your own APIs, you need to create a class that inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code> and implements the <code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.random_api()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.variation_api()</span></code> methods.</p>
+<p>To add your own APIs, you need to create a class that inherits from <a class="reference internal" href="../../api/pe.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code></a> and implements the <a class="reference internal" href="../../api/pe.api.html#pe.api.api.API.random_api" title="pe.api.api.API.random_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.random_api()</span></code></a> and <a class="reference internal" href="../../api/pe.api.html#pe.api.api.API.variation_api" title="pe.api.api.API.variation_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.api.API.variation_api()</span></code></a> methods.</p>
 </section>
 </section>
 

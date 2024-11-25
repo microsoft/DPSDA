@@ -57,7 +57,11 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.embedding.html">pe.embedding package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.histogram.html">pe.histogram package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.logger.html">pe.logger package</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">pe.logging package</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">pe.logging package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pe.logging.execution_logger"><code class="docutils literal notranslate"><span class="pre">execution_logger</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.logging.setup_logging"><code class="docutils literal notranslate"><span class="pre">setup_logging()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l5"><a class="reference internal" href="pe.metric_item.html">pe.metric_item package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.population.html">pe.population package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.runner.html">pe.runner package</a></li>
@@ -99,8 +103,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-logging-package">
-<h1>pe.logging package<a class="headerlink" href="#pe-logging-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.logging">
+<span id="pe-logging-package"></span><h1>pe.logging package<a class="headerlink" href="#module-pe.logging" title="Permalink to this heading"></a></h1>
+<dl class="py data">
+<dt class="sig sig-object py" id="pe.logging.execution_logger">
+<span class="sig-prename descclassname"><span class="pre">pe.logging.</span></span><span class="sig-name descname"><span class="pre">execution_logger</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;RootLogger</span> <span class="pre">root</span> <span class="pre">(WARNING)&gt;</span></em><a class="headerlink" href="#pe.logging.execution_logger" title="Permalink to this definition"></a></dt>
+<dd><p>The logger that will be used to log the execution information</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.logging.setup_logging">
+<span class="sig-prename descclassname"><span class="pre">pe.logging.</span></span><span class="sig-name descname"><span class="pre">setup_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datefmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%m/%d/%Y</span> <span class="pre">%H:%M:%S</span> <span class="pre">%p'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'%(asctime)s</span> <span class="pre">[%(name)s]</span> <span class="pre">[%(levelname)-5.5s]</span>&#160; <span class="pre">%(message)s'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'logger'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logging.html#setup_logging"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logging.setup_logging" title="Permalink to this definition"></a></dt>
+<dd><p>Setup the logging configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_file</strong> (<em>str</em><em>, </em><em>optional</em>) – The log file path, defaults to None</p></li>
+<li><p><strong>datefmt</strong> (<em>str</em><em>, </em><em>optional</em>) – The date format, defaults to “%m/%d/%Y %H:%M:%S %p”</p></li>
+<li><p><strong>fmt</strong> (<em>str</em><em>, </em><em>optional</em>) – The log format, defaults to “%(asctime)s [%(name)s] [%(levelname)-5.5s]  %(message)s”</p></li>
+<li><p><strong>level</strong> (<em>int</em><em>, </em><em>optional</em>) – The log level, defaults to logging.INFO</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – The logger name, defaults to “logger”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

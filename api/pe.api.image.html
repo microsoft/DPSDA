@@ -52,8 +52,8 @@
 <li class="toctree-l5 current"><a class="reference internal" href="pe.api.html">pe.api package</a><ul class="current">
 <li class="toctree-l6 current"><a class="reference internal" href="pe.api.html#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="pe.api.html#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pe.api.html#pe-api-api-module">pe.api.api module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pe.api.html#pe-api-util-module">pe.api.util module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.api.html#module-pe.api.api">pe.api.api module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.api.html#module-pe.api.util">pe.api.util module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.callback.html">pe.callback package</a></li>
@@ -106,16 +106,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-api-image-package">
-<h1>pe.api.image package<a class="headerlink" href="#pe-api-image-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.api.image">
+<span id="pe-api-image-package"></span><h1>pe.api.image package<a class="headerlink" href="#module-pe.api.image" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html">pe.api.image.improved_diffusion_lib package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe-api-image-improved-diffusion-lib-gaussian-diffusion-module">pe.api.image.improved_diffusion_lib.gaussian_diffusion module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe-api-image-improved-diffusion-lib-unet-module">pe.api.image.improved_diffusion_lib.unet module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.gaussian_diffusion">pe.api.image.improved_diffusion_lib.gaussian_diffusion module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion"><code class="docutils literal notranslate"><span class="pre">SkippedSpacedDiffusion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.create_gaussian_diffusion"><code class="docutils literal notranslate"><span class="pre">create_gaussian_diffusion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.unet">pe.api.image.improved_diffusion_lib.unet module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel"><code class="docutils literal notranslate"><span class="pre">FP32UNetModel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.create_model"><code class="docutils literal notranslate"><span class="pre">create_model()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -124,11 +132,218 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-api-image-improved-diffusion-api-module">
-<h2>pe.api.image.improved_diffusion_api module<a class="headerlink" href="#pe-api-image-improved-diffusion-api-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.api.image.improved_diffusion_api">
+<span id="pe-api-image-improved-diffusion-api-module"></span><h2>pe.api.image.improved_diffusion_api module<a class="headerlink" href="#module-pe.api.image.improved_diffusion_api" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.image.improved_diffusion_api.</span></span><span class="sig-name descname"><span class="pre">ImprovedDiffusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_image_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">192</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_res_blocks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learn_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_resolutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'16,8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads_upsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_scale_shift_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffusion_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_small</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_schedule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_timesteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_learned_sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep_respacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ddim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_denoised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_data_parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">API</span></code></a></p>
+<p>The image API that utilizes improved diffusion models from <a class="reference external" href="https://arxiv.org/abs/2102.09672">https://arxiv.org/abs/2102.09672</a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_image_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">192</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_res_blocks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learn_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_resolutions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'16,8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads_upsample</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_scale_shift_norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffusion_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_small</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_schedule</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cosine'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_kl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predict_xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_timesteps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rescale_learned_sigmas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep_respacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ddim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_denoised</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_data_parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.
+See <a class="reference external" href="https://github.com/openai/improved-diffusion">https://github.com/openai/improved-diffusion</a> for the explanation of the parameters not listed here.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variation_degrees</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em>) – The variation degrees utilized at each PE iteration. If a single int is provided, the
+same variation degree will be used for all iterations.</p></li>
+<li><p><strong>model_path</strong> (<em>str</em>) – The path of the model checkpoint</p></li>
+<li><p><strong>diffusion_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – The total number of diffusion steps, defaults to 4000</p></li>
+<li><p><strong>timestep_respacing</strong> (<em>str</em><em> or </em><em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The step configurations for image generation utilized at each PE iteration. If a
+single str is provided, the same step configuration will be used for all iterations. Defaults to “100”</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size for image generation, defaults to 2000</p></li>
+<li><p><strong>use_data_parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use data parallel during image generation, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api">
+<span class="sig-name descname"><span class="pre">random_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion.random_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api" title="Permalink to this definition"></a></dt>
+<dd><p>Generating random synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_name</strong> (<em>str</em>) – The name of the label, not utilized in this API</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of random samples to generate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data object of the generated synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion.variation_api">
+<span class="sig-name descname"><span class="pre">variation_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion.variation_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion.variation_api" title="Permalink to this definition"></a></dt>
+<dd><p>Generating variations of the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The data object of the synthetic data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data object of the variation of the input synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion270M">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.image.improved_diffusion_api.</span></span><span class="sig-name descname"><span class="pre">ImprovedDiffusion270M</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep_respacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_data_parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion270M"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion" title="pe.api.image.improved_diffusion_api.ImprovedDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImprovedDiffusion</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.CHECKPOINT_URL">
+<span class="sig-name descname"><span class="pre">CHECKPOINT_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://openaipublic.blob.core.windows.net/diffusion/march-2021/imagenet64_cond_270M_250K.pt'</span></em><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.CHECKPOINT_URL" title="Permalink to this definition"></a></dt>
+<dd><p>The URL of the checkpoint path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestep_respacing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'100'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_data_parallel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#ImprovedDiffusion270M.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>The “Class-conditional ImageNet-64 model (270M parameters, trained for 250K iterations)” model from the
+Improved Diffusion paper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variation_degrees</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The variation degrees utilized at each PE iteration</p></li>
+<li><p><strong>model_path</strong> (<em>str</em>) – The path of the model checkpoint. If not provided, the checkpoint will be downloaded from
+the <cite>CHECKPOINT_URL</cite></p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size for image generation, defaults to 2000</p></li>
+<li><p><strong>timestep_respacing</strong> (<em>str</em><em>, </em><em>optional</em>) – The step configuration for image generation, defaults to “100”</p></li>
+<li><p><strong>use_data_parallel</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use data parallel during image generation, defaults to True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.Sampler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.image.improved_diffusion_api.</span></span><span class="sig-name descname"><span class="pre">Sampler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">diffusion</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#Sampler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.Sampler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>A wrapper around the model and diffusion modules that handles the entire
+sampling process, so as to reduce the communiation rounds between GPUs when
+using DataParallel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.Sampler.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clip_denoised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_kwargs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ddim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#Sampler.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.Sampler.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Define the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.Sampler.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#pe.api.image.improved_diffusion_api.Sampler.training" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.api.image.improved_diffusion_api.sample">
+<span class="sig-prename descclassname"><span class="pre">pe.api.image.improved_diffusion_api.</span></span><span class="sig-name descname"><span class="pre">sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_ddim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_denoised</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_cond</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/improved_diffusion_api.html#sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.improved_diffusion_api.sample" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="pe-api-image-stable-diffusion-api-module">
-<h2>pe.api.image.stable_diffusion_api module<a class="headerlink" href="#pe-api-image-stable-diffusion-api-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.api.image.stable_diffusion_api">
+<span id="pe-api-image-stable-diffusion-api-module"></span><h2>pe.api.image.stable_diffusion_api module<a class="headerlink" href="#module-pe.api.image.stable_diffusion_api" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.image.stable_diffusion_api.StableDiffusion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.image.stable_diffusion_api.</span></span><span class="sig-name descname"><span class="pre">StableDiffusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CompVis/stable-diffusion-v1-4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_guidance_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_num_inference_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CompVis/stable-diffusion-v1-4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_guidance_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_num_inference_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/stable_diffusion_api.html#StableDiffusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.stable_diffusion_api.StableDiffusion" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">API</span></code></a></p>
+<p>The API that uses the Stable Diffusion model to generate synthetic data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.stable_diffusion_api.StableDiffusion.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_degrees</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CompVis/stable-diffusion-v1-4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_guidance_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_num_inference_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_api_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CompVis/stable-diffusion-v1-4'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_guidance_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_num_inference_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variation_api_batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/stable_diffusion_api.html#StableDiffusion.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.stable_diffusion_api.StableDiffusion.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prompt</strong> (<em>str</em><em> or </em><em>dict</em>) – The prompt used for each label name. It can be either a string or a dictionary. If it is a
+string, it should be the path to a JSON file that contains the prompt for each label name. If it is a
+dictionary, it should be a dictionary that maps each label name to its prompt</p></li>
+<li><p><strong>variation_degrees</strong> (<em>float</em><em> or </em><em>list</em><em>[</em><em>float</em><em>]</em>) – The variation degrees utilized at each PE iteration. If a single float is provided,
+the same variation degree will be used for all iterations.</p></li>
+<li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – The width of the generated images, defaults to 512</p></li>
+<li><p><strong>height</strong> (<em>int</em><em>, </em><em>optional</em>) – The height of the generated images, defaults to 512</p></li>
+<li><p><strong>random_api_checkpoint</strong> (<em>str</em><em>, </em><em>optional</em>) – The checkpoint of the random API, defaults to “CompVis/stable-diffusion-v1-4”</p></li>
+<li><p><strong>random_api_guidance_scale</strong> (<em>float</em><em>, </em><em>optional</em>) – The guidance scale of the random API, defaults to 7.5</p></li>
+<li><p><strong>random_api_num_inference_steps</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of inference steps of the random API, defaults to 50</p></li>
+<li><p><strong>random_api_batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size of the random API, defaults to 10</p></li>
+<li><p><strong>variation_api_checkpoint</strong> (<em>str</em><em>, </em><em>optional</em>) – The checkpoint of the variation API, defaults to
+“CompVis/stable-diffusion-v1-4”</p></li>
+<li><p><strong>variation_api_guidance_scale</strong> (<em>float</em><em> or </em><em>list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – The guidance scale of the variation API utilized at each PE iteration. If
+a single float is provided, the same guidance scale will be used for all iterations. Defaults to 7.5</p></li>
+<li><p><strong>variation_api_num_inference_steps</strong> (<em>int</em><em> or </em><em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – The number of inference steps of the variation API utilized at each
+PE iteration. If a single int is provided, the same number of inference steps will be used for all
+iterations. Defaults to 50</p></li>
+<li><p><strong>variation_api_batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size of the variation API, defaults to 10</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the prompt is neither a string nor a dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.stable_diffusion_api.StableDiffusion.random_api">
+<span class="sig-name descname"><span class="pre">random_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/stable_diffusion_api.html#StableDiffusion.random_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.stable_diffusion_api.StableDiffusion.random_api" title="Permalink to this definition"></a></dt>
+<dd><p>Generating random synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_name</strong> (<em>str</em>) – The name of the label, not utilized in this API</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of random samples to generate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data object of the generated synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.image.stable_diffusion_api.StableDiffusion.variation_api">
+<span class="sig-name descname"><span class="pre">variation_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/image/stable_diffusion_api.html#StableDiffusion.variation_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.image.stable_diffusion_api.StableDiffusion.variation_api" title="Permalink to this definition"></a></dt>
+<dd><p>Generating variations of the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The data object of the synthetic data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data object of the variation of the input synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

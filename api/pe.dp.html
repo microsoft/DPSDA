@@ -55,8 +55,8 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.data.html">pe.data package</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.dp package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-dp-dp-module">pe.dp.dp module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-dp-gaussian-module">pe.dp.gaussian module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.dp.dp">pe.dp.dp module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.dp.gaussian">pe.dp.gaussian module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.embedding.html">pe.embedding package</a></li>
@@ -104,16 +104,173 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-dp-package">
-<h1>pe.dp package<a class="headerlink" href="#pe-dp-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.dp">
+<span id="pe-dp-package"></span><h1>pe.dp package<a class="headerlink" href="#module-pe.dp" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-dp-dp-module">
-<h2>pe.dp.dp module<a class="headerlink" href="#pe-dp-dp-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.dp.dp">
+<span id="pe-dp-dp-module"></span><h2>pe.dp.dp module<a class="headerlink" href="#module-pe.dp.dp" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.dp.dp.DP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.dp.dp.</span></span><span class="sig-name descname"><span class="pre">DP</span></span><a class="reference internal" href="../_modules/pe/dp/dp.html#DP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.dp.DP" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The abstract class for Differential Privacy (DP) histogram mechanism.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.dp.dp.DP.add_noise">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/dp.html#DP.add_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.dp.DP.add_noise" title="Permalink to this definition"></a></dt>
+<dd><p>Add noise to the histogram of synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data to add noise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.dp.dp.DP.set_epsilon_and_delta">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_epsilon_and_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_multiplier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/dp.html#DP.set_epsilon_and_delta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.dp.DP.set_epsilon_and_delta" title="Permalink to this definition"></a></dt>
+<dd><p>Set the epsilon and delta for the DP mechanism. Either epsilon or noise_multiplier should be None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_iterations</strong> (<em>int</em>) – The number of PE iterations</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em><em> or </em><em>None</em>) – The epsilon value of DP</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value of DP</p></li>
+<li><p><strong>noise_multiplier</strong> (<em>float</em><em> or </em><em>None</em>) – The noise multiplier of the DP mechanism</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-dp-gaussian-module">
-<h2>pe.dp.gaussian module<a class="headerlink" href="#pe-dp-gaussian-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.dp.gaussian">
+<span id="pe-dp-gaussian-module"></span><h2>pe.dp.gaussian module<a class="headerlink" href="#module-pe.dp.gaussian" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.dp.gaussian.Gaussian">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.dp.gaussian.</span></span><span class="sig-name descname"><span class="pre">Gaussian</span></span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#Gaussian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.Gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.dp.dp.DP" title="pe.dp.dp.DP"><code class="xref py py-class docutils literal notranslate"><span class="pre">DP</span></code></a></p>
+<p>The Gaussian mechanism for Differential Privacy (DP) histogram.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.dp.gaussian.Gaussian.add_noise">
+<span class="sig-name descname"><span class="pre">add_noise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#Gaussian.add_noise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.Gaussian.add_noise" title="Permalink to this definition"></a></dt>
+<dd><p>Add noise to the histogram of synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data to add noise. The synthetic data should have the
+<a class="reference internal" href="pe.constant.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME" title="pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME"><code class="xref py py-const docutils literal notranslate"><span class="pre">pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME</span></code></a> column</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The synthetic data with noise added to the histogram. The noisy histogram is stored in the
+<a class="reference internal" href="pe.constant.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME" title="pe.constant.data.DP_HISTOGRAM_COLUMN_NAME"><code class="xref py py-const docutils literal notranslate"><span class="pre">pe.constant.data.DP_HISTOGRAM_COLUMN_NAME</span></code></a> column</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.dp.gaussian.Gaussian.set_epsilon_and_delta">
+<span class="sig-name descname"><span class="pre">set_epsilon_and_delta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_multiplier</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#Gaussian.set_epsilon_and_delta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.Gaussian.set_epsilon_and_delta" title="Permalink to this definition"></a></dt>
+<dd><p>Set the epsilon and delta for the Gaussian mechanism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_iterations</strong> (<em>int</em>) – The number of PE iterations</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – The epsilon value of DP</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value of DP</p></li>
+<li><p><strong>noise_multiplier</strong> (<em>float</em>) – The noise multiplier of the DP mechanism</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If delta is None</p></li>
+<li><p><strong>ValueError</strong> – If both epsilon and noise_multiplier are None or not None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.dp.gaussian.compute_epsilon">
+<span class="sig-prename descclassname"><span class="pre">pe.dp.gaussian.</span></span><span class="sig-name descname"><span class="pre">compute_epsilon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_multiplier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#compute_epsilon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.compute_epsilon" title="Permalink to this definition"></a></dt>
+<dd><p>Compute epsilon of Gaussian mechanism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noise_multiplier</strong> (<em>float</em>) – The noise multiplier</p></li>
+<li><p><strong>num_steps</strong> (<em>int</em>) – The number of steps</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value</p></li>
+<li><p><strong>max_epsilon</strong> (<em>float</em><em>, </em><em>optional</em>) – The maximum epsilon value to search for, defaults to 1e7</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The epsilon value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.dp.gaussian.delta_Gaussian">
+<span class="sig-prename descclassname"><span class="pre">pe.dp.gaussian.</span></span><span class="sig-name descname"><span class="pre">delta_Gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#delta_Gaussian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.delta_Gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Compute delta of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eps</strong> (<em>float</em>) – The epsilon value</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – The mu value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The delta value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.dp.gaussian.eps_Gaussian">
+<span class="sig-prename descclassname"><span class="pre">pe.dp.gaussian.</span></span><span class="sig-name descname"><span class="pre">eps_Gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_epsilon</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#eps_Gaussian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.eps_Gaussian" title="Permalink to this definition"></a></dt>
+<dd><p>Compute eps of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value</p></li>
+<li><p><strong>mu</strong> (<em>float</em>) – The mu value</p></li>
+<li><p><strong>max_epsilon</strong> (<em>float</em>) – The maximum epsilon value to search for</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.dp.gaussian.get_noise_multiplier">
+<span class="sig-prename descclassname"><span class="pre">pe.dp.gaussian.</span></span><span class="sig-name descname"><span class="pre">get_noise_multiplier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_noise_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_noise_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/dp/gaussian.html#get_noise_multiplier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.dp.gaussian.get_noise_multiplier" title="Permalink to this definition"></a></dt>
+<dd><p>Get noise multiplier of Gaussian mechanism.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epsilon</strong> (<em>float</em>) – The epsilon value</p></li>
+<li><p><strong>num_steps</strong> (<em>int</em>) – The number of steps</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value</p></li>
+<li><p><strong>min_noise_multiplier</strong> (<em>float</em><em>, </em><em>optional</em>) – The minimum noise multiplier to search for, defaults to 1e-1</p></li>
+<li><p><strong>max_noise_multiplier</strong> (<em>float</em><em>, </em><em>optional</em>) – The maximum noise multiplier to search for, defaults to 500</p></li>
+<li><p><strong>max_epsilon</strong> (<em>float</em><em>, </em><em>optional</em>) – The maximum epsilon value to search for, defaults to 1e7</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

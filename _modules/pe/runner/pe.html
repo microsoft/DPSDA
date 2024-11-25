@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pe.runner.pe &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Private Evolution
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pe.runner.pe</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pe.runner.pe</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pe.dp</span> <span class="kn">import</span> <span class="n">Gaussian</span>
+<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+
+
+<div class="viewcode-block" id="PE"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE">[docs]</a><span class="k">class</span> <span class="nc">PE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The class that runs the PE algorithm.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PE.__init__"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">histogram</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loggers</span><span class="o">=</span><span class="p">[],</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        :param priv_data: The private data</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param population: The population algorithm</span>
+<span class="sd">        :type population: :py:class:`pe.population.population.Population`</span>
+<span class="sd">        :param histogram: The histogram algorithm</span>
+<span class="sd">        :type histogram: :py:class:`pe.histogram.histogram.Histogram`</span>
+<span class="sd">        :param dp: The DP algorithm, defaults to None, in which case the Gaussian mechanism</span>
+<span class="sd">            :py:class:`pe.dp.gaussian.Gaussian` is used</span>
+<span class="sd">        :type dp: :py:class:`pe.dp.dp.DP`, optional</span>
+<span class="sd">        :param loggers: The list of loggers, defaults to []</span>
+<span class="sd">        :type loggers: list[:py:class:`pe.logger.logger.Logger`], optional</span>
+<span class="sd">        :param callbacks: The list of callbacks, defaults to []</span>
+<span class="sd">        :type callbacks: list[Callable or :py:class:`pe.callback.callback.Callback`], optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="n">priv_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_population</span> <span class="o">=</span> <span class="n">population</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span> <span class="o">=</span> <span class="n">histogram</span>
+        <span class="k">if</span> <span class="n">dp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dp</span> <span class="o">=</span> <span class="n">Gaussian</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dp</span> <span class="o">=</span> <span class="n">dp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loggers</span> <span class="o">=</span> <span class="n">loggers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="n">callbacks</span></div>
+
+<div class="viewcode-block" id="PE.load_checkpoint"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.load_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a checkpoint.</span>
+
+<span class="sd">        :param checkpoint_path: The path to the checkpoint</span>
+<span class="sd">        :type checkpoint_path: str</span>
+<span class="sd">        :return: The synthetic data</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data` or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">syn_data</span></div>
+
+<div class="viewcode-block" id="PE._log_metrics"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._log_metrics">[docs]</a>    <span class="k">def</span> <span class="nf">_log_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log metrics.</span>
+
+<span class="sd">        :param syn_data: The synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">metric_items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">callback</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>
+            <span class="n">metric_items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">callback</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[])</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loggers</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">iteration</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="o">=</span><span class="n">metric_items</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">metric_item</span> <span class="ow">in</span> <span class="n">metric_items</span><span class="p">:</span>
+            <span class="n">metric_item</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="PE._get_num_samples_per_label_id"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._get_num_samples_per_label_id">[docs]</a>    <span class="k">def</span> <span class="nf">_get_num_samples_per_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">fraction_per_label_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the number of samples per label id given the total number of samples</span>
+
+<span class="sd">        :param num_samples: The total number of samples</span>
+<span class="sd">        :type num_samples: int</span>
+<span class="sd">        :param fraction_per_label_id: The fraction of samples for each label id. The fraction does not have to be</span>
+<span class="sd">            normalized. When it is None, the fraction is assumed to be the same as the fraction of label ids in the</span>
+<span class="sd">            private data. Defaults to None</span>
+<span class="sd">        :type fraction_per_label_id: list[float], optional</span>
+<span class="sd">        :raises ValueError: If the length of fraction_per_label_id is not the same as the number of labels</span>
+<span class="sd">        :raises ValueError: If the number of samples is so small that the number of samples for some label ids is zero</span>
+<span class="sd">        :return: The number of samples per label id</span>
+<span class="sd">        :rtype: np.ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fraction_per_label_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;fraction_per_label_id is not provided. Assuming the fraction of label ids in private data is public &quot;</span>
+                <span class="s2">&quot;information.&quot;</span>
+            <span class="p">)</span>
+            <span class="n">fraction_per_label_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+            <span class="n">fraction_per_label_id</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="mi">0</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fraction_per_label_id</span> <span class="k">else</span> <span class="n">fraction_per_label_id</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span><span class="p">))</span>
+            <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fraction_per_label_id</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;fraction_per_label_id should have the same length as the number of labels.&quot;</span><span class="p">)</span>
+        <span class="n">fraction_per_label_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fraction_per_label_id</span><span class="p">)</span>
+        <span class="n">fraction_per_label_id</span> <span class="o">=</span> <span class="n">fraction_per_label_id</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fraction_per_label_id</span><span class="p">)</span>
+
+        <span class="n">target_num_samples_per_label_id</span> <span class="o">=</span> <span class="n">fraction_per_label_id</span> <span class="o">*</span> <span class="n">num_samples</span>
+        <span class="n">num_samples_per_label_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">target_num_samples_per_label_id</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">num_samples_left</span> <span class="o">=</span> <span class="n">num_samples</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">num_samples_per_label_id</span><span class="p">)</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">target_num_samples_per_label_id</span> <span class="o">-</span> <span class="n">num_samples_per_label_id</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">num_samples_per_label_id</span><span class="p">[</span><span class="n">ids</span><span class="p">[:</span><span class="n">num_samples_left</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">num_samples_per_label_id</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_samples</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">num_samples_per_label_id</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;num_samples is so small that the number of samples for some label ids is zero.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">num_samples_per_label_id</span></div>
+
+<div class="viewcode-block" id="PE._clean_up_loggers"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._clean_up_loggers">[docs]</a>    <span class="k">def</span> <span class="nf">_clean_up_loggers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up loggers.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loggers</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="PE.run"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">num_samples_schedule</span><span class="p">,</span>
+        <span class="n">delta</span><span class="p">,</span>
+        <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">noise_multiplier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">checkpoint_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">save_checkpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">fraction_per_label_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the PE algorithm.</span>
+
+<span class="sd">        :param num_samples_schedule: The schedule of the number of samples for each PE iteration. The first element is</span>
+<span class="sd">            the number of samples for the initial data, and the rest are the number of samples for each PE iteration.</span>
+<span class="sd">            So the length of the list is the number of PE iterations plus one</span>
+<span class="sd">        :type num_samples_schedule: list[int]</span>
+<span class="sd">        :param delta: The delta value of DP</span>
+<span class="sd">        :type delta: float</span>
+<span class="sd">        :param epsilon: The epsilon value of DP, defaults to None</span>
+<span class="sd">        :type epsilon: float, optional</span>
+<span class="sd">        :param noise_multiplier: The noise multiplier of the DP mechanism, defaults to None</span>
+<span class="sd">        :type noise_multiplier: float, optional</span>
+<span class="sd">        :param checkpoint_path: The path to load and save the checkpoint, defaults to None</span>
+<span class="sd">        :type checkpoint_path: str, optional</span>
+<span class="sd">        :param save_checkpoint: Whether to save the checkpoint, defaults to True</span>
+<span class="sd">        :type save_checkpoint: bool, optional</span>
+<span class="sd">        :param fraction_per_label_id: The fraction of samples for each label id. The fraction does not have to be</span>
+<span class="sd">            normalized. When it is None, the fraction is assumed to be the same as the fraction of label ids in the</span>
+<span class="sd">            private data. Defaults to None</span>
+<span class="sd">        :type fraction_per_label_id: list[float], optional</span>
+<span class="sd">        :return: The synthetic data</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Set privacy budget.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dp</span><span class="o">.</span><span class="n">set_epsilon_and_delta</span><span class="p">(</span>
+                <span class="n">num_iterations</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">num_samples_schedule</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span>
+                <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+                <span class="n">noise_multiplier</span><span class="o">=</span><span class="n">noise_multiplier</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Generate or load initial data.</span>
+            <span class="k">if</span> <span class="n">checkpoint_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">syn_data</span> <span class="o">:=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">)):</span>
+                <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Loaded checkpoint from </span><span class="si">{</span><span class="n">checkpoint_path</span><span class="si">}</span><span class="s2">, iteration=</span><span class="si">{</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">num_samples_per_label_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_num_samples_per_label_id</span><span class="p">(</span>
+                    <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples_schedule</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">fraction_per_label_id</span><span class="o">=</span><span class="n">fraction_per_label_id</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">syn_data_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">label_id</span><span class="p">,</span> <span class="n">label_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span><span class="p">):</span>
+                    <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_population</span><span class="o">.</span><span class="n">initial</span><span class="p">(</span>
+                        <span class="n">label_name</span><span class="o">=</span><span class="n">label_name</span><span class="p">,</span>
+                        <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples_per_label_id</span><span class="p">[</span><span class="n">label_id</span><span class="p">],</span>
+                    <span class="p">)</span>
+                    <span class="n">syn_data</span><span class="o">.</span><span class="n">set_label_id</span><span class="p">(</span><span class="n">label_id</span><span class="p">)</span>
+                    <span class="n">syn_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+                <span class="n">syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">syn_data_list</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
+                <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_log_metrics</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+
+            <span class="c1"># Run PE iterations.</span>
+            <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">num_samples_schedule</span><span class="p">)):</span>
+                <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PE iteration </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">num_samples_per_label_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_num_samples_per_label_id</span><span class="p">(</span>
+                    <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples_schedule</span><span class="p">[</span><span class="n">iteration</span><span class="p">],</span>
+                    <span class="n">fraction_per_label_id</span><span class="o">=</span><span class="n">fraction_per_label_id</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">syn_data_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="n">priv_data_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+                <span class="c1"># Generate synthetic data for each label.</span>
+                <span class="k">for</span> <span class="n">label_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span><span class="p">)):</span>
+                    <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label </span><span class="si">{</span><span class="n">label_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">sub_priv_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">filter_label_id</span><span class="p">(</span><span class="n">label_id</span><span class="o">=</span><span class="n">label_id</span><span class="p">)</span>
+                    <span class="n">sub_syn_data</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">filter_label_id</span><span class="p">(</span><span class="n">label_id</span><span class="o">=</span><span class="n">label_id</span><span class="p">)</span>
+
+                    <span class="c1"># DP NN histogram.</span>
+                    <span class="n">sub_priv_data</span><span class="p">,</span> <span class="n">sub_syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="o">.</span><span class="n">compute_histogram</span><span class="p">(</span>
+                        <span class="n">priv_data</span><span class="o">=</span><span class="n">sub_priv_data</span><span class="p">,</span> <span class="n">syn_data</span><span class="o">=</span><span class="n">sub_syn_data</span>
+                    <span class="p">)</span>
+                    <span class="n">priv_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_priv_data</span><span class="p">)</span>
+                    <span class="n">sub_syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dp</span><span class="o">.</span><span class="n">add_noise</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">sub_syn_data</span><span class="p">)</span>
+
+                    <span class="c1"># Generate next population.</span>
+                    <span class="n">sub_syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_population</span><span class="o">.</span><span class="n">next</span><span class="p">(</span>
+                        <span class="n">syn_data</span><span class="o">=</span><span class="n">sub_syn_data</span><span class="p">,</span>
+                        <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples_per_label_id</span><span class="p">[</span><span class="n">label_id</span><span class="p">],</span>
+                    <span class="p">)</span>
+                    <span class="n">sub_syn_data</span><span class="o">.</span><span class="n">set_label_id</span><span class="p">(</span><span class="n">label_id</span><span class="p">)</span>
+                    <span class="n">syn_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_syn_data</span><span class="p">)</span>
+
+                <span class="n">syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">syn_data_list</span><span class="p">)</span>
+                <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span> <span class="o">=</span> <span class="n">iteration</span>
+
+                <span class="n">new_priv_data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">priv_data_list</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">new_priv_data</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">save_checkpoint</span><span class="p">:</span>
+                    <span class="n">syn_data</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_log_metrics</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_clean_up_loggers</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">syn_data</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

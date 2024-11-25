@@ -57,7 +57,7 @@
 <li class="toctree-l5 current"><a class="reference internal" href="pe.embedding.html">pe.embedding package</a><ul class="current">
 <li class="toctree-l6 current"><a class="reference internal" href="pe.embedding.html#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe-embedding-embedding-module">pe.embedding.embedding module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#module-pe.embedding.embedding">pe.embedding.embedding module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.histogram.html">pe.histogram package</a></li>
@@ -105,13 +105,58 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-embedding-image-package">
-<h1>pe.embedding.image package<a class="headerlink" href="#pe-embedding-image-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.embedding.image">
+<span id="pe-embedding-image-package"></span><h1>pe.embedding.image package<a class="headerlink" href="#module-pe.embedding.image" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-embedding-image-inception-module">
-<h2>pe.embedding.image.inception module<a class="headerlink" href="#pe-embedding-image-inception-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.embedding.image.inception">
+<span id="pe-embedding-image-inception-module"></span><h2>pe.embedding.image.inception module<a class="headerlink" href="#module-pe.embedding.image.inception" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.embedding.image.inception.Inception">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.embedding.image.inception.</span></span><span class="sig-name descname"><span class="pre">Inception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/embedding/image/inception.html#Inception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.embedding.image.inception.Inception" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.embedding.html#pe.embedding.embedding.Embedding" title="pe.embedding.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">Embedding</span></code></a></p>
+<p>Compute the Inception embedding of images.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.embedding.image.inception.Inception.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cuda'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/embedding/image/inception.html#Inception.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.embedding.image.inception.Inception.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>res</strong> (<em>int</em>) – The resolution of the images. The images will be resized to (res, res) before computing the
+embedding</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – The device to use for computing the embedding, defaults to “cuda”</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size to use for computing the embedding, defaults to 2000</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.embedding.image.inception.Inception.compute_embedding">
+<span class="sig-name descname"><span class="pre">compute_embedding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/embedding/image/inception.html#Inception.compute_embedding"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.embedding.image.inception.Inception.compute_embedding" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the Inception embedding of images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The data object containing the images</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The data object with the computed embedding</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.embedding.image.inception.to_uint8">
+<span class="sig-prename descclassname"><span class="pre">pe.embedding.image.inception.</span></span><span class="sig-name descname"><span class="pre">to_uint8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/embedding/image/inception.html#to_uint8"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.embedding.image.inception.to_uint8" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 </section>
 

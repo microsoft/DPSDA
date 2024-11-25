@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pe.histogram.nearest_neighbors &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Private Evolution
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pe.histogram.nearest_neighbors</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pe.histogram.nearest_neighbors</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="kn">from</span> <span class="nn">pe.histogram</span> <span class="kn">import</span> <span class="n">Histogram</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+
+
+<div class="viewcode-block" id="NearestNeighbors"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors">[docs]</a><span class="k">class</span> <span class="nc">NearestNeighbors</span><span class="p">(</span><span class="n">Histogram</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors histogram. Each private sample will vote for their closest `num_nearest_neighbors`</span>
+<span class="sd">    synthetic samples to construct the histogram. The l2 norm of the votes from each private sample is normalized to 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="NearestNeighbors.__init__"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">embedding</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">,</span>
+        <span class="n">lookahead_degree</span><span class="p">,</span>
+        <span class="n">lookahead_log_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">voting_details_log_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">api</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_nearest_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        :param embedding: The :py:class:`pe.embedding.embedding.Embedding` object to compute the embedding of samples</span>
+<span class="sd">        :type embedding: :py:class:`pe.embedding.embedding.Embedding`</span>
+<span class="sd">        :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:</span>
+<span class="sd">            &quot;l2&quot; (l2 distance), &quot;cos_sim&quot; (cosine similarity), &quot;ip&quot; (inner product). Not all backends support all</span>
+<span class="sd">            modes</span>
+<span class="sd">        :type mode: str</span>
+<span class="sd">        :param lookahead_degree: The degree of lookahead to compute the embedding of synthetic samples. If it is 0, the</span>
+<span class="sd">            original embedding is used. If it is greater than 0, the embedding of the synthetic samples is computed by</span>
+<span class="sd">            averaging the embeddings of the synthetic samples generated by the variation API for `lookahead_degree`</span>
+<span class="sd">            times</span>
+<span class="sd">        :type lookahead_degree: int</span>
+<span class="sd">        :param lookahead_log_folder: The folder to save the logs of the lookahead. If it is None, the logs are not</span>
+<span class="sd">            saved. Defaults to None</span>
+<span class="sd">        :type lookahead_log_folder: str, optional</span>
+<span class="sd">        :param voting_details_log_folder: The folder to save the logs of the voting details. If it is None, the logs</span>
+<span class="sd">            are not saved. Defaults to None</span>
+<span class="sd">        :type voting_details_log_folder: str, optional</span>
+<span class="sd">        :param api: The API to generate synthetic samples. It should be provided when `lookahead_degree` is greater</span>
+<span class="sd">            than 0. Defaults to None</span>
+<span class="sd">        :type api: :py:class:`pe.api.api.API`, optional</span>
+<span class="sd">        :param num_nearest_neighbors: The number of nearest neighbors to consider for each private sample, defaults to</span>
+<span class="sd">            1</span>
+<span class="sd">        :type num_nearest_neighbors: int, optional</span>
+<span class="sd">        :param backend: The backend to use for finding the nearest neighbors. It should be one of the following:</span>
+<span class="sd">            &quot;faiss&quot; (FAISS), &quot;sklearn&quot; (scikit-learn), &quot;auto&quot; (using FAISS if available, otherwise scikit-learn).</span>
+<span class="sd">            Defaults to &quot;auto&quot;. FAISS supports GPU and is much faster when the number of synthetic samples and/or</span>
+<span class="sd">            private samples is large. It requires the installation of `faiss-gpu` or `faiss-cpu` package. See</span>
+<span class="sd">            https://faiss.ai/</span>
+<span class="sd">        :type backend: str, optional</span>
+<span class="sd">        :raises ValueError: If the `api` is not provided when `lookahead_degree` is greater than 0</span>
+<span class="sd">        :raises ValueError: If the `backend` is unknown</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span> <span class="o">=</span> <span class="n">embedding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_degree</span> <span class="o">=</span> <span class="n">lookahead_degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_log_folder</span> <span class="o">=</span> <span class="n">lookahead_log_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_voting_details_log_folder</span> <span class="o">=</span> <span class="n">voting_details_log_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api</span> <span class="o">=</span> <span class="n">api</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_nearest_neighbors</span> <span class="o">=</span> <span class="n">num_nearest_neighbors</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_degree</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;API should be provided when lookahead_degree is greater than 0&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;faiss&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pe.histogram.nearest_neighbor_backend.faiss</span> <span class="kn">import</span> <span class="n">search</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="k">elif</span> <span class="n">backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;sklearn&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pe.histogram.nearest_neighbor_backend.sklearn</span> <span class="kn">import</span> <span class="n">search</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="k">elif</span> <span class="n">backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pe.histogram.nearest_neighbor_backend.auto</span> <span class="kn">import</span> <span class="n">search</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown backend: </span><span class="si">{</span><span class="n">backend</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NearestNeighbors._log_lookahead"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_lookahead">[docs]</a>    <span class="k">def</span> <span class="nf">_log_lookahead</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">lookahead_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the lookahead data.</span>
+
+<span class="sd">        :param syn_data: The lookahead data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param lookahead_id: The ID of the lookahead</span>
+<span class="sd">        :type lookahead_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_log_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">]</span>
+        <span class="n">log_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_log_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;label-id</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">_lookahead</span><span class="si">{</span><span class="n">lookahead_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="n">syn_data</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">log_folder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NearestNeighbors._log_voting_details"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_voting_details">[docs]</a>    <span class="k">def</span> <span class="nf">_log_voting_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the voting details.</span>
+
+<span class="sd">        :param priv_data: The private data</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param syn_data: The synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param ids: The IDs of the nearest neighbors for each private sample</span>
+<span class="sd">        :type ids: np.ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_voting_details_log_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">]</span>
+        <span class="n">log_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_voting_details_log_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;label-id</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">priv_data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">priv_data</span><span class="p">)</span>
+        <span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+        <span class="n">priv_data</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">log_folder</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NearestNeighbors._compute_lookahead_embedding"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._compute_lookahead_embedding">[docs]</a>    <span class="k">def</span> <span class="nf">_compute_lookahead_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the embedding of synthetic samples with lookahead.</span>
+
+<span class="sd">        :param syn_data: The synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: The synthetic data with the computed embedding in the column</span>
+<span class="sd">            :py:const:`pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_degree</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+            <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">embedding_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">lookahead_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_degree</span><span class="p">):</span>
+                <span class="n">variation_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">variation_api</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">syn_data</span><span class="p">)</span>
+                <span class="n">variation_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="n">variation_data</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_log_lookahead</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">variation_data</span><span class="p">,</span> <span class="n">lookahead_id</span><span class="o">=</span><span class="n">lookahead_id</span><span class="p">)</span>
+                <span class="n">embedding_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+                        <span class="n">variation_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="n">embedding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">embedding_list</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">embedding</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_lookahead</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">syn_data</span><span class="p">,</span> <span class="n">lookahead_id</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">syn_data</span></div>
+
+<div class="viewcode-block" id="NearestNeighbors.compute_histogram"><a class="viewcode-back" href="../../../api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors.compute_histogram">[docs]</a>    <span class="k">def</span> <span class="nf">compute_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors histogram.</span>
+
+<span class="sd">        :param priv_data: The private data</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param syn_data: The synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: The private data, possibly with the additional embedding column, and the synthetic data, with the</span>
+<span class="sd">            computed histogram in the column :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` and possibly with</span>
+<span class="sd">            the additional embedding column</span>
+<span class="sd">        :rtype: tuple[:py:class:`pe.data.data.Data`, :py:class:`pe.data.data.Data`]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Histogram: computing nearest neighbors histogram for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> private &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;samples and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> synthetic samples&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">priv_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="n">priv_data</span><span class="p">)</span>
+        <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_lookahead_embedding</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+
+        <span class="n">priv_embedding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">syn_embedding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+        <span class="p">)</span>
+
+        <span class="n">_</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search</span><span class="p">(</span>
+            <span class="n">syn_embedding</span><span class="o">=</span><span class="n">syn_embedding</span><span class="p">,</span>
+            <span class="n">priv_embedding</span><span class="o">=</span><span class="n">priv_embedding</span><span class="p">,</span>
+            <span class="n">num_nearest_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nearest_neighbors</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mode</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_voting_details</span><span class="p">(</span><span class="n">priv_data</span><span class="o">=</span><span class="n">priv_data</span><span class="p">,</span> <span class="n">syn_data</span><span class="o">=</span><span class="n">syn_data</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="n">ids</span><span class="p">)</span>
+
+        <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ids</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">syn_embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+        <span class="n">count</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">count</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_nearest_neighbors</span><span class="p">)</span>
+
+        <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Histogram: finished computing nearest neighbors histogram for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> private &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;samples and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> synthetic samples&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">syn_data</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

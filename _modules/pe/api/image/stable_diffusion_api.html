@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pe.api.image.stable_diffusion_api &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Private Evolution
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pe.api.image.stable_diffusion_api</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pe.api.image.stable_diffusion_api</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">diffusers</span> <span class="kn">import</span> <span class="n">StableDiffusionPipeline</span>
+<span class="kn">from</span> <span class="nn">diffusers</span> <span class="kn">import</span> <span class="n">StableDiffusionImg2ImgPipeline</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">pe.api</span> <span class="kn">import</span> <span class="n">API</span>
+<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_PROMPT_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.api.util</span> <span class="kn">import</span> <span class="n">ConstantList</span>
+
+
+<span class="k">def</span> <span class="nf">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">ConstantList</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span> <span class="nf">_round_to_uint8</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="mi">255</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="StableDiffusion"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion">[docs]</a><span class="k">class</span> <span class="nc">StableDiffusion</span><span class="p">(</span><span class="n">API</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The API that uses the Stable Diffusion model to generate synthetic data.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StableDiffusion.__init__"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">prompt</span><span class="p">,</span>
+        <span class="n">variation_degrees</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+        <span class="n">random_api_checkpoint</span><span class="o">=</span><span class="s2">&quot;CompVis/stable-diffusion-v1-4&quot;</span><span class="p">,</span>
+        <span class="n">random_api_guidance_scale</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span>
+        <span class="n">random_api_num_inference_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">random_api_batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">variation_api_checkpoint</span><span class="o">=</span><span class="s2">&quot;CompVis/stable-diffusion-v1-4&quot;</span><span class="p">,</span>
+        <span class="n">variation_api_guidance_scale</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span>
+        <span class="n">variation_api_num_inference_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">variation_api_batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        :param prompt: The prompt used for each label name. It can be either a string or a dictionary. If it is a</span>
+<span class="sd">            string, it should be the path to a JSON file that contains the prompt for each label name. If it is a</span>
+<span class="sd">            dictionary, it should be a dictionary that maps each label name to its prompt</span>
+<span class="sd">        :type prompt: str or dict</span>
+<span class="sd">        :param variation_degrees: The variation degrees utilized at each PE iteration. If a single float is provided,</span>
+<span class="sd">            the same variation degree will be used for all iterations.</span>
+<span class="sd">        :type variation_degrees: float or list[float]</span>
+<span class="sd">        :param width: The width of the generated images, defaults to 512</span>
+<span class="sd">        :type width: int, optional</span>
+<span class="sd">        :param height: The height of the generated images, defaults to 512</span>
+<span class="sd">        :type height: int, optional</span>
+<span class="sd">        :param random_api_checkpoint: The checkpoint of the random API, defaults to &quot;CompVis/stable-diffusion-v1-4&quot;</span>
+<span class="sd">        :type random_api_checkpoint: str, optional</span>
+<span class="sd">        :param random_api_guidance_scale: The guidance scale of the random API, defaults to 7.5</span>
+<span class="sd">        :type random_api_guidance_scale: float, optional</span>
+<span class="sd">        :param random_api_num_inference_steps: The number of inference steps of the random API, defaults to 50</span>
+<span class="sd">        :type random_api_num_inference_steps: int, optional</span>
+<span class="sd">        :param random_api_batch_size: The batch size of the random API, defaults to 10</span>
+<span class="sd">        :type random_api_batch_size: int, optional</span>
+<span class="sd">        :param variation_api_checkpoint: The checkpoint of the variation API, defaults to</span>
+<span class="sd">            &quot;CompVis/stable-diffusion-v1-4&quot;</span>
+<span class="sd">        :type variation_api_checkpoint: str, optional</span>
+<span class="sd">        :param variation_api_guidance_scale: The guidance scale of the variation API utilized at each PE iteration. If</span>
+<span class="sd">            a single float is provided, the same guidance scale will be used for all iterations. Defaults to 7.5</span>
+<span class="sd">        :type variation_api_guidance_scale: float or list[float], optional</span>
+<span class="sd">        :param variation_api_num_inference_steps: The number of inference steps of the variation API utilized at each</span>
+<span class="sd">            PE iteration. If a single int is provided, the same number of inference steps will be used for all</span>
+<span class="sd">            iterations. Defaults to 50</span>
+<span class="sd">        :type variation_api_num_inference_steps: int or list[int], optional</span>
+<span class="sd">        :param variation_api_batch_size: The batch size of the variation API, defaults to 10</span>
+<span class="sd">        :type variation_api_batch_size: int, optional</span>
+<span class="sd">        :raises ValueError: If the prompt is neither a string nor a dictionary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_prompt</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_prompt</span> <span class="o">=</span> <span class="n">prompt</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Prompt must be either a string or a dictionary&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_checkpoint</span> <span class="o">=</span> <span class="n">random_api_checkpoint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_guidance_scale</span> <span class="o">=</span> <span class="n">random_api_guidance_scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_num_inference_steps</span> <span class="o">=</span> <span class="n">random_api_num_inference_steps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_batch_size</span> <span class="o">=</span> <span class="n">random_api_batch_size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_checkpoint</span> <span class="o">=</span> <span class="n">variation_api_checkpoint</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_guidance_scale</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">variation_api_guidance_scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_num_inference_steps</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">variation_api_num_inference_steps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_batch_size</span> <span class="o">=</span> <span class="n">variation_api_batch_size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">variation_degrees</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_pipe</span> <span class="o">=</span> <span class="n">StableDiffusionPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_checkpoint</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_pipe</span><span class="o">.</span><span class="n">safety_checker</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_pipe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_pipe</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_pipe</span> <span class="o">=</span> <span class="n">StableDiffusionImg2ImgPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_checkpoint</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_pipe</span><span class="o">.</span><span class="n">safety_checker</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_pipe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_pipe</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StableDiffusion.random_api"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.random_api">[docs]</a>    <span class="k">def</span> <span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data.</span>
+
+<span class="sd">        :param label_name: The name of the label, not utilized in this API</span>
+<span class="sd">        :type label_name: str</span>
+<span class="sd">        :param num_samples: The number of random samples to generate</span>
+<span class="sd">        :type num_samples: int</span>
+<span class="sd">        :return: The data object of the generated synthetic data</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">prompt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prompt</span><span class="p">[</span><span class="n">label_name</span><span class="p">]</span>
+        <span class="n">max_batch_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_batch_size</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">num_iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span> <span class="o">/</span> <span class="n">max_batch_size</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">)):</span>
+            <span class="n">batch_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_batch_size</span><span class="p">,</span> <span class="n">num_samples</span> <span class="o">-</span> <span class="n">iteration</span> <span class="o">*</span> <span class="n">max_batch_size</span><span class="p">)</span>
+            <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_random_api_pipe</span><span class="p">(</span>
+                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+                    <span class="n">width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span>
+                    <span class="n">height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">,</span>
+                    <span class="n">num_inference_steps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_api_num_inference_steps</span><span class="p">,</span>
+                    <span class="n">guidance_scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_random_api_guidance_scale</span><span class="p">,</span>
+                    <span class="n">num_images_per_prompt</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                    <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;np&quot;</span><span class="p">,</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">images</span>
+            <span class="p">)</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">_round_to_uint8</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">images</span><span class="p">),</span>
+                <span class="n">IMAGE_PROMPT_COLUMN_NAME</span><span class="p">:</span> <span class="n">prompt</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="StableDiffusion.variation_api"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.variation_api">[docs]</a>    <span class="k">def</span> <span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating variations of the synthetic data.</span>
+
+<span class="sd">        :param syn_data: The data object of the synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: The data object of the variation of the input synthetic data</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">prompts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_PROMPT_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">guidance_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_guidance_scale</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">num_inference_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_num_inference_steps</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">images</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
+        <span class="n">max_batch_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_batch_size</span>
+
+        <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">num_iterations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">max_batch_size</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">)):</span>
+            <span class="n">variations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_variation_api_pipe</span><span class="p">(</span>
+                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompts</span><span class="p">[</span><span class="n">iteration</span> <span class="o">*</span> <span class="n">max_batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_batch_size</span><span class="p">],</span>
+                    <span class="n">image</span><span class="o">=</span><span class="n">images</span><span class="p">[</span><span class="n">iteration</span> <span class="o">*</span> <span class="n">max_batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">max_batch_size</span><span class="p">],</span>
+                    <span class="n">num_inference_steps</span><span class="o">=</span><span class="n">num_inference_steps</span><span class="p">,</span>
+                    <span class="n">strength</span><span class="o">=</span><span class="n">variation_degree</span><span class="p">,</span>
+                    <span class="n">guidance_scale</span><span class="o">=</span><span class="n">guidance_scale</span><span class="p">,</span>
+                    <span class="n">num_images_per_prompt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">output_type</span><span class="o">=</span><span class="s2">&quot;np&quot;</span><span class="p">,</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">images</span>
+            <span class="p">)</span>
+        <span class="n">variations</span> <span class="o">=</span> <span class="n">_round_to_uint8</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">variations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">variations</span><span class="p">),</span>
+                <span class="n">IMAGE_PROMPT_COLUMN_NAME</span><span class="p">:</span> <span class="n">prompts</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">LABEL_ID_COLUMN_NAME</span> <span class="ow">in</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

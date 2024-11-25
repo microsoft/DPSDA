@@ -55,7 +55,7 @@
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.data package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-data-data-module">pe.data.data module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.data.data">pe.data.data module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.dp.html">pe.dp package</a></li>
@@ -104,18 +104,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-data-package">
-<h1>pe.data package<a class="headerlink" href="#pe-data-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.data">
+<span id="pe-data-package"></span><h1>pe.data package<a class="headerlink" href="#module-pe.data" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pe.data.image.html">pe.data.image package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#pe-data-image-camelyon17-module">pe.data.image.camelyon17 module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#pe-data-image-cat-module">pe.data.image.cat module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#pe-data-image-cifar10-module">pe.data.image.cifar10 module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#pe-data-image-image-module">pe.data.image.image module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#module-pe.data.image.camelyon17">pe.data.image.camelyon17 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.camelyon17.Camelyon17"><code class="docutils literal notranslate"><span class="pre">Camelyon17</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#module-pe.data.image.cat">pe.data.image.cat module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.cat.Cat"><code class="docutils literal notranslate"><span class="pre">Cat</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#module-pe.data.image.cifar10">pe.data.image.cifar10 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.cifar10.Cifar10"><code class="docutils literal notranslate"><span class="pre">Cifar10</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.data.image.html#module-pe.data.image.image">pe.data.image.image module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.image.ImageDataset"><code class="docutils literal notranslate"><span class="pre">ImageDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.image._list_image_files_recursively"><code class="docutils literal notranslate"><span class="pre">_list_image_files_recursively()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.image.html#pe.data.image.image.load_image_folder"><code class="docutils literal notranslate"><span class="pre">load_image_folder()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -124,8 +138,169 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-data-data-module">
-<h2>pe.data.data module<a class="headerlink" href="#pe-data-data-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.data.data">
+<span id="pe-data-data-module"></span><h2>pe.data.data module<a class="headerlink" href="#module-pe.data.data" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.data.data.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.data.data.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class that holds the private data or synthetic data from PE.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_frame</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>, optional) – A pandas dataframe that holds the data, defaults to None</p></li>
+<li><p><strong>metadata</strong> (<em>dict</em><em>, </em><em>optional</em>) – the metadata of the data, defaults to {}</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.concat">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.concat" title="Permalink to this definition"></a></dt>
+<dd><p>Concatenate the data frames of a list of data objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_list</strong> (list[<a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>]) – The list of data objects to concatenate</p></li>
+<li><p><strong>metadata</strong> (<em>dict</em><em>, </em><em>optional</em>) – The metadata of the concatenated data. When None, the metadata of the list of data objects
+must be the same and will be used. Defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the metadata of the data objects are not the same</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The concatenated data object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.filter_label_id">
+<span class="sig-name descname"><span class="pre">filter_label_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.filter_label_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.filter_label_id" title="Permalink to this definition"></a></dt>
+<dd><p>Filter the data frame according to a label id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label_id</strong> (<em>int</em>) – The label id that is used to filter the data frame</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> object with the filtered data frame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.load_checkpoint">
+<span class="sig-name descname"><span class="pre">load_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.load_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.load_checkpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Load data from a checkpoint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The folder that contains the checkpoint</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the checkpoint is loaded successfully</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.merge">
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.merge" title="Permalink to this definition"></a></dt>
+<dd><p>Merge the data object with another data object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The data object to merge</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the metadata of <cite>data</cite> is not the same as the metadata of the current object</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The merged data object</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.random_truncate">
+<span class="sig-name descname"><span class="pre">random_truncate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.random_truncate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.random_truncate" title="Permalink to this definition"></a></dt>
+<dd><p>Randomly truncate the data frame to a certain number of samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to randomly truncate</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new <a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> object with the randomly truncated data frame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.save_checkpoint">
+<span class="sig-name descname"><span class="pre">save_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.save_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.save_checkpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Save the data to a checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The folder to save the checkpoint</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the path is None</p></li>
+<li><p><strong>ValueError</strong> – If the data frame is empty</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.set_label_id">
+<span class="sig-name descname"><span class="pre">set_label_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.set_label_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.set_label_id" title="Permalink to this definition"></a></dt>
+<dd><p>Set the label id for the data frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label_id</strong> (<em>int</em>) – The label id to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.data.Data.truncate">
+<span class="sig-name descname"><span class="pre">truncate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.truncate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.data.Data.truncate" title="Permalink to this definition"></a></dt>
+<dd><p>Truncate the data frame to a certain number of samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to truncate</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A new <a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> object with the truncated data frame</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

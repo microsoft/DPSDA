@@ -61,8 +61,8 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.metric_item.html">pe.metric_item package</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.population package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-population-pe-population-module">pe.population.pe_population module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-population-population-module">pe.population.population module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.population.pe_population">pe.population.pe_population module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.population.population">pe.population.population module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.runner.html">pe.runner package</a></li>
@@ -104,16 +104,162 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-population-package">
-<h1>pe.population package<a class="headerlink" href="#pe-population-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.population">
+<span id="pe-population-package"></span><h1>pe.population package<a class="headerlink" href="#module-pe.population" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-population-pe-population-module">
-<h2>pe.population.pe_population module<a class="headerlink" href="#pe-population-pe-population-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.population.pe_population">
+<span id="pe-population-pe-population-module"></span><h2>pe.population.pe_population module<a class="headerlink" href="#module-pe.population.pe_population" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.population.pe_population.</span></span><span class="sig-name descname"><span class="pre">PEPopulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histogram_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_variation_api_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_variation_api_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_selected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.population.population.Population" title="pe.population.population.Population"><code class="xref py py-class docutils literal notranslate"><span class="pre">Population</span></code></a></p>
+<p>The default population algorithm for Private Evolution.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histogram_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_variation_api_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_variation_api_fold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_selected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sample'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api</strong> (<a class="reference internal" href="pe.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code></a>) – The API object that contains the random and variation APIs</p></li>
+<li><p><strong>histogram_threshold</strong> (<em>float</em>) – The threshold for clipping the histogram</p></li>
+<li><p><strong>initial_variation_api_fold</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of variations to apply to the initial synthetic data, defaults to
+0</p></li>
+<li><p><strong>next_variation_api_fold</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of variations to apply to the next synthetic data, defaults to 1</p></li>
+<li><p><strong>keep_selected</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to keep the selected data in the next synthetic data, defaults to False</p></li>
+<li><p><strong>selection_mode</strong> (<em>str</em><em>, </em><em>optional</em>) – The selection mode for selecting the data. It should be one of the following: “sample”(
+random sampling proportional to the histogram). Defaults to “sample”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If next_variation_api_fold is 0 and keep_selected is False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation._post_process_histogram">
+<span class="sig-name descname"><span class="pre">_post_process_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation._post_process_histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation._post_process_histogram" title="Permalink to this definition"></a></dt>
+<dd><p>Post process the histogram of synthetic data (e.g., clipping).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The synthetic data with post-processed histogram in the column
+<a class="reference internal" href="pe.constant.html#pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME" title="pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME"><code class="xref py py-const docutils literal notranslate"><span class="pre">pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span></code></a></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation._select_data">
+<span class="sig-name descname"><span class="pre">_select_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation._select_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation._select_data" title="Permalink to this definition"></a></dt>
+<dd><p>Select data from the synthetic data according to <cite>selection_mode</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to select</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the selection mode is not supported</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The selected data</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation.initial">
+<span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation.initial" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the initial synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_name</strong> (<em>str</em>) – The label name</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The initial synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation.next">
+<span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation.next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation.next" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the next synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The next synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-population-population-module">
-<h2>pe.population.population module<a class="headerlink" href="#pe-population-population-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.population.population">
+<span id="pe-population-population-module"></span><h2>pe.population.population module<a class="headerlink" href="#module-pe.population.population" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.population.population.Population">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.population.population.</span></span><span class="sig-name descname"><span class="pre">Population</span></span><a class="reference internal" href="../_modules/pe/population/population.html#Population"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.population.Population" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The abstract class that generates synthetic data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.population.Population.initial">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/population.html#Population.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.population.Population.initial" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the initial synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_name</strong> (<em>str</em>) – The label name</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.population.population.Population.next">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/population.html#Population.next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.population.Population.next" title="Permalink to this definition"></a></dt>
+<dd><p>Generate the next synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

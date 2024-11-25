@@ -58,11 +58,11 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.histogram.html">pe.histogram package</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.logger package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-logger-csv-print-module">pe.logger.csv_print module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-logger-image-file-module">pe.logger.image_file module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-logger-log-print-module">pe.logger.log_print module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-logger-logger-module">pe.logger.logger module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-logger-matplotlib-pdf-module">pe.logger.matplotlib_pdf module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.logger.csv_print">pe.logger.csv_print module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.logger.image_file">pe.logger.image_file module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.logger.log_print">pe.logger.log_print module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.logger.logger">pe.logger.logger module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.logger.matplotlib_pdf">pe.logger.matplotlib_pdf module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.logging.html">pe.logging package</a></li>
@@ -107,25 +107,316 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-logger-package">
-<h1>pe.logger package<a class="headerlink" href="#pe-logger-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.logger">
+<span id="pe-logger-package"></span><h1>pe.logger package<a class="headerlink" href="#module-pe.logger" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-logger-csv-print-module">
-<h2>pe.logger.csv_print module<a class="headerlink" href="#pe-logger-csv-print-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.logger.csv_print">
+<span id="pe-logger-csv-print-module"></span><h2>pe.logger.csv_print module<a class="headerlink" href="#module-pe.logger.csv_print" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.logger.csv_print.</span></span><span class="sig-name descname"><span class="pre">CSVPrint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.8f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush_iteration_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></a></p>
+<p>The logger that prints the metrics to CSV files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.8f'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush_iteration_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_folder</strong> (<em>str</em>) – The output folder that will be used to save the CSV files</p></li>
+<li><p><strong>path_separator</strong> (<em>str</em><em>, </em><em>optional</em>) – The string that will be used to replace ‘’ and ‘/’ in log names, defaults to “-”</p></li>
+<li><p><strong>float_format</strong> (<em>str</em><em>, </em><em>optional</em>) – The format of the floating point numbers, defaults to “.8f”</p></li>
+<li><p><strong>flush_iteration_freq</strong> (<em>int</em><em>, </em><em>optional</em>) – The frequency to flush the logs, defaults to 1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint._clear_logs">
+<span class="sig-name descname"><span class="pre">_clear_logs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint._clear_logs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint._clear_logs" title="Permalink to this definition"></a></dt>
+<dd><p>Clear the logs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint._flush">
+<span class="sig-name descname"><span class="pre">_flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint._flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint._flush" title="Permalink to this definition"></a></dt>
+<dd><p>Flush the logs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint._get_log_path">
+<span class="sig-name descname"><span class="pre">_get_log_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint._get_log_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint._get_log_path" title="Permalink to this definition"></a></dt>
+<dd><p>Get the log path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code></a>) – The metric item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The log path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint._log_float">
+<span class="sig-name descname"><span class="pre">_log_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint._log_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint._log_float" title="Permalink to this definition"></a></dt>
+<dd><p>Log a float metric item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>log_path</strong> (<em>str</em>) – The path of the log file</p></li>
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatMetricItem" title="pe.metric_item.FloatMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.FloatMetricItem</span></code></a> or <a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatListMetricItem" title="pe.metric_item.FloatListMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.FloatListMetricItem</span></code></a>) – The float metric item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint.clean_up">
+<span class="sig-name descname"><span class="pre">clean_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint.clean_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint.clean_up" title="Permalink to this definition"></a></dt>
+<dd><p>Clean up the logger.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.csv_print.CSVPrint.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/csv_print.html#CSVPrint.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.csv_print.CSVPrint.log" title="Permalink to this definition"></a></dt>
+<dd><p>Log the metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>metric_items</strong> (list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code></a>]) – The metrics to log</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-logger-image-file-module">
-<h2>pe.logger.image_file module<a class="headerlink" href="#pe-logger-image-file-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.logger.image_file">
+<span id="pe-logger-image-file-module"></span><h2>pe.logger.image_file module<a class="headerlink" href="#module-pe.logger.image_file" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.logger.image_file.</span></span><span class="sig-name descname"><span class="pre">ImageFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></a></p>
+<p>The logger that saves images to files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_folder</strong> (<em>str</em>) – The output folder that will be used to save the images</p></li>
+<li><p><strong>path_separator</strong> (<em>str</em><em>, </em><em>optional</em>) – The string that will be used to replace ‘’ and ‘/’ in log names, defaults to “-”</p></li>
+<li><p><strong>iteration_format</strong> (<em>str</em><em>, </em><em>optional</em>) – The format of the iteration number, defaults to “09d”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile._get_image_path">
+<span class="sig-name descname"><span class="pre">_get_image_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile._get_image_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile._get_image_path" title="Permalink to this definition"></a></dt>
+<dd><p>Get the image save path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageMetricItem" title="pe.metric_item.ImageMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageMetricItem</span></code></a> or <a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem" title="pe.metric_item.ImageListMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageListMetricItem</span></code></a>) – The image metric item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The image save path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile._log_image">
+<span class="sig-name descname"><span class="pre">_log_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile._log_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile._log_image" title="Permalink to this definition"></a></dt>
+<dd><p>Log a single image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_path</strong> (<em>str</em>) – The path to save the image</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageMetricItem" title="pe.metric_item.ImageMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageMetricItem</span></code></a>) – The image metric item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile._log_image_list">
+<span class="sig-name descname"><span class="pre">_log_image_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile._log_image_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile._log_image_list" title="Permalink to this definition"></a></dt>
+<dd><p>Log a list of images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_path</strong> (<em>str</em>) – The path to save the image</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem" title="pe.metric_item.ImageListMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageListMetricItem</span></code></a>) – The image list metric item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.image_file.ImageFile.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/image_file.html#ImageFile.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.image_file.ImageFile.log" title="Permalink to this definition"></a></dt>
+<dd><p>Log the images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>metric_items</strong> (list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageMetricItem" title="pe.metric_item.ImageMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageMetricItem</span></code></a> or
+<a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem" title="pe.metric_item.ImageListMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.ImageListMetricItem</span></code></a>]) – The images to log</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-logger-log-print-module">
-<h2>pe.logger.log_print module<a class="headerlink" href="#pe-logger-log-print-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.logger.log_print">
+<span id="pe-logger-log-print-module"></span><h2>pe.logger.log_print module<a class="headerlink" href="#module-pe.logger.log_print" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.logger.log_print.LogPrint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.logger.log_print.</span></span><span class="sig-name descname"><span class="pre">LogPrint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_iteration_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/log_print.html#LogPrint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.log_print.LogPrint" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></a></p>
+<p>The logger that prints the metrics to the console/file using <a class="reference internal" href="pe.logging.html#pe.logging.execution_logger" title="pe.logging.execution_logger"><code class="xref py py-const docutils literal notranslate"><span class="pre">pe.logging.execution_logger</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.log_print.LogPrint.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_iteration_freq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/log_print.html#LogPrint.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.log_print.LogPrint.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_iteration_freq</strong> (<em>int</em><em>, </em><em>optional</em>) – The frequency to log the metrics, defaults to 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.log_print.LogPrint.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/log_print.html#LogPrint.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.log_print.LogPrint.log" title="Permalink to this definition"></a></dt>
+<dd><p>Log the metrics to the console/file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>metric_items</strong> (list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatMetricItem" title="pe.metric_item.FloatMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.FloatMetricItem</span></code></a> or
+<a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatListMetricItem" title="pe.metric_item.FloatListMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.FloatListMetricItem</span></code></a>]) – The metrics to log</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-logger-logger-module">
-<h2>pe.logger.logger module<a class="headerlink" href="#pe-logger-logger-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.logger.logger">
+<span id="pe-logger-logger-module"></span><h2>pe.logger.logger module<a class="headerlink" href="#module-pe.logger.logger" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.logger.logger.Logger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.logger.logger.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><a class="reference internal" href="../_modules/pe/logger/logger.html#Logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.logger.Logger" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The abstract class for logging the metrics</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.logger.Logger.clean_up">
+<span class="sig-name descname"><span class="pre">clean_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/logger.html#Logger.clean_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.logger.Logger.clean_up" title="Permalink to this definition"></a></dt>
+<dd><p>Clean up the logger.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.logger.Logger.log">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/logger.html#Logger.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.logger.Logger.log" title="Permalink to this definition"></a></dt>
+<dd><p>Log the metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>metric_items</strong> (list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code></a>]) – The metrics to log</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-logger-matplotlib-pdf-module">
-<h2>pe.logger.matplotlib_pdf module<a class="headerlink" href="#pe-logger-matplotlib-pdf-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.logger.matplotlib_pdf">
+<span id="pe-logger-matplotlib-pdf-module"></span><h2>pe.logger.matplotlib_pdf module<a class="headerlink" href="#module-pe.logger.matplotlib_pdf" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.logger.matplotlib_pdf.MatplotlibPDF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.logger.matplotlib_pdf.</span></span><span class="sig-name descname"><span class="pre">MatplotlibPDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/matplotlib_pdf.html#MatplotlibPDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.matplotlib_pdf.MatplotlibPDF" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">Logger</span></code></a></p>
+<p>The logger that saves Matplotlib figures to PDF files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.matplotlib_pdf.MatplotlibPDF.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/matplotlib_pdf.html#MatplotlibPDF.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.matplotlib_pdf.MatplotlibPDF.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_folder</strong> (<em>str</em>) – The output folder that will be used to save the PDF files</p></li>
+<li><p><strong>path_separator</strong> (<em>str</em><em>, </em><em>optional</em>) – The string that will be used to replace ‘’ and ‘/’ in log names, defaults to “-”</p></li>
+<li><p><strong>iteration_format</strong> (<em>str</em><em>, </em><em>optional</em>) – The format of the iteration number, defaults to “09d”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path">
+<span class="sig-name descname"><span class="pre">_get_pdf_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/matplotlib_pdf.html#MatplotlibPDF._get_pdf_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path" title="Permalink to this definition"></a></dt>
+<dd><p>Get the PDF save path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>item</strong> (<a class="reference internal" href="pe.metric_item.html#pe.metric_item.MatplotlibMetricItem" title="pe.metric_item.MatplotlibMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MatplotlibMetricItem</span></code></a>) – The Matplotlib figure metric item</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The PDF save path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.logger.matplotlib_pdf.MatplotlibPDF.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/logger/matplotlib_pdf.html#MatplotlibPDF.log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.logger.matplotlib_pdf.MatplotlibPDF.log" title="Permalink to this definition"></a></dt>
+<dd><p>Log the Matplotlib figures to PDF files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p></li>
+<li><p><strong>metric_items</strong> (list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.MatplotlibMetricItem" title="pe.metric_item.MatplotlibMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MatplotlibMetricItem</span></code></a>]) – The Matplotlib figures to log</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

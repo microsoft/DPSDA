@@ -53,7 +53,7 @@
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.callback package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-callback-callback-module">pe.callback.callback module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.callback.callback">pe.callback.callback module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.constant.html">pe.constant package</a></li>
@@ -104,22 +104,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-callback-package">
-<h1>pe.callback package<a class="headerlink" href="#pe-callback-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.callback">
+<span id="pe-callback-package"></span><h1>pe.callback package<a class="headerlink" href="#module-pe.callback" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pe.callback.common.html">pe.callback.common package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pe.callback.common.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.callback.common.html#pe-callback-common-compute-fid-module">pe.callback.common.compute_fid module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.callback.common.html#pe-callback-common-save-checkpoints-module">pe.callback.common.save_checkpoints module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.callback.common.html#module-pe.callback.common.compute_fid">pe.callback.common.compute_fid module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.callback.common.html#pe.callback.common.compute_fid.ComputeFID"><code class="docutils literal notranslate"><span class="pre">ComputeFID</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.callback.common.html#module-pe.callback.common.save_checkpoints">pe.callback.common.save_checkpoints module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pe.callback.image.html">pe.callback.image package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pe.callback.image.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.callback.image.html#pe-callback-image-sample-images-module">pe.callback.image.sample_images module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.callback.image.html#pe-callback-image-save-all-images-module">pe.callback.image.save_all_images module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.callback.image.html#module-pe.callback.image.sample_images">pe.callback.image.sample_images module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.callback.image.html#pe.callback.image.sample_images.SampleImages"><code class="docutils literal notranslate"><span class="pre">SampleImages</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.callback.image.html#module-pe.callback.image.save_all_images">pe.callback.image.save_all_images module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages"><code class="docutils literal notranslate"><span class="pre">SaveAllImages</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -128,8 +140,27 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-callback-callback-module">
-<h2>pe.callback.callback module<a class="headerlink" href="#pe-callback-callback-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.callback.callback">
+<span id="pe-callback-callback-module"></span><h2>pe.callback.callback module<a class="headerlink" href="#module-pe.callback.callback" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.callback.callback.Callback">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.callback.</span></span><span class="sig-name descname"><span class="pre">Callback</span></span><a class="reference internal" href="../_modules/pe/callback/callback.html#Callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.callback.Callback" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The abstract class that defines the callback for the synthetic data generation. These callbacks can be
+configured to be called after each PE iteration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.callback.Callback.__call__">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/callback.html#Callback.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.callback.Callback.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>This function is called after each PE iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The <a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> object of the synthetic data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

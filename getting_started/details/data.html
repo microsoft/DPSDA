@@ -98,8 +98,8 @@
   <section id="data">
 <h1>Data<a class="headerlink" href="#data" title="Permalink to this heading"></a></h1>
 <p>API reference: <a class="reference internal" href="../../api/pe.data.html"><span class="doc">pe.data package</span></a>.</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code> is the base class for holding the synthetic samples or the private samples, along with their metadata. Different components are mostly communicated through objects of this class.
-<code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code> has two key attributes:</p>
+<p><a class="reference internal" href="../../api/pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> is the base class for holding the synthetic samples or the private samples, along with their metadata. Different components are mostly communicated through objects of this class.
+<a class="reference internal" href="../../api/pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> has two key attributes:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">data_frame</span></code>: A <a class="reference external" href="https://pandas.pydata.org/">pandas</a> DataFrame that holds the samples. Each row in the DataFrame is a sample, and each column is part of the sample (e.g., the image, the text, the label) and other information of the sample (e.g., its embedding produced by <a class="reference internal" href="embedding.html"><span class="doc">Embeddings</span></a>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">metadata</span></code>: A <a class="reference external" href="https://omegaconf.readthedocs.io/en/latest/">OmegaConf</a> that holds the metadata of the samples, such as the <strong>Private Evolution</strong> iteration number when the samples are generated, and the label names of the classes.</p></li>
@@ -111,10 +111,10 @@
 <li><p>Image datasets</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.cifar10.Cifar10</span></code>: The <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.camelyon17.Camelyon17</span></code>: The <a class="reference external" href="https://camelyon17.grand-challenge.org/">Camelyon17 dataset</a>.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.cat.Cat</span></code>: The <a class="reference external" href="https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou">Cat dataset</a>.</p></li>
-<li><p>In addition, you can easily load a custom image dataset from a (nested) directory with the image files using <code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.data.image.image.load_image_folder()</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.data.image.html#pe.data.image.cifar10.Cifar10" title="pe.data.image.cifar10.Cifar10"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.cifar10.Cifar10</span></code></a>: The <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17" title="pe.data.image.camelyon17.Camelyon17"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.camelyon17.Camelyon17</span></code></a>: The <a class="reference external" href="https://camelyon17.grand-challenge.org/">Camelyon17 dataset</a>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.data.image.html#pe.data.image.cat.Cat" title="pe.data.image.cat.Cat"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.image.cat.Cat</span></code></a>: The <a class="reference external" href="https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou">Cat dataset</a>.</p></li>
+<li><p>In addition, you can easily load a custom image dataset from a (nested) directory with the image files using <a class="reference internal" href="../../api/pe.data.image.html#pe.data.image.image.load_image_folder" title="pe.data.image.image.load_image_folder"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.data.image.image.load_image_folder()</span></code></a>.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -129,12 +129,12 @@
 </section>
 <section id="using-your-own-datasets">
 <h2>Using Your Own Datasets<a class="headerlink" href="#using-your-own-datasets" title="Permalink to this heading"></a></h2>
-<p>To apply <strong>Private Evolution</strong> to your own private dataset, you need to create a <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code> object that holds your dataset, with two parameters, <code class="docutils literal notranslate"><span class="pre">data_frame</span></code> and <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, passed to the constructor:</p>
+<p>To apply <strong>Private Evolution</strong> to your own private dataset, you need to create a <a class="reference internal" href="../../api/pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> object that holds your dataset, with two parameters, <code class="docutils literal notranslate"><span class="pre">data_frame</span></code> and <code class="docutils literal notranslate"><span class="pre">metadata</span></code>, passed to the constructor:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">data_frame</span></code>: A <a class="reference external" href="https://pandas.pydata.org/">pandas</a> DataFrame that holds the samples. Each row in the DataFrame is a sample. The following columns must be included:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">pe.constant.data.LABEL_ID_COLUMN_NAME</span></code>: The label (class) ID of the sample. The label IDs must be in {0, 1, …, K-1} if there are K classes. If you are targeting unconditional generation, the values of this column can just be zeros.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.constant.html#pe.constant.data.LABEL_ID_COLUMN_NAME" title="pe.constant.data.LABEL_ID_COLUMN_NAME"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pe.constant.data.LABEL_ID_COLUMN_NAME</span></code></a>: The label (class) ID of the sample. The label IDs must be in {0, 1, …, K-1} if there are K classes. If you are targeting unconditional generation, the values of this column can just be zeros.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">data_frame</span></code> can have any numbers of additional columns that hold the data of the samples, as long as the modules you are using (e.g., <a class="reference internal" href="api.html"><span class="doc">APIs</span></a>, <a class="reference internal" href="callback_and_logger.html"><span class="doc">Callbacks</span></a>) can recognize them.</p>
 </div></blockquote>

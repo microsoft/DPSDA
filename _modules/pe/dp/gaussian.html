@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pe.dp.gaussian &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Private Evolution
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pe.dp.gaussian</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pe.dp.gaussian</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">scipy.optimize</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root_scalar</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pe.dp</span> <span class="kn">import</span> <span class="n">DP</span>
+<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">DP_HISTOGRAM_COLUMN_NAME</span>
+
+
+<div class="viewcode-block" id="delta_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.delta_Gaussian">[docs]</a><span class="k">def</span> <span class="nf">delta_Gaussian</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute delta of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</span>
+
+<span class="sd">    :param eps: The epsilon value</span>
+<span class="sd">    :type eps: float</span>
+<span class="sd">    :param mu: The mu value</span>
+<span class="sd">    :type mu: float</span>
+<span class="sd">    :return: The delta value</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mu</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">eps</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">eps</span> <span class="o">/</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">eps</span> <span class="o">/</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="eps_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.eps_Gaussian">[docs]</a><span class="k">def</span> <span class="nf">eps_Gaussian</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute eps of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</span>
+
+<span class="sd">    :param delta: The delta value</span>
+<span class="sd">    :type delta: float</span>
+<span class="sd">    :param mu: The mu value</span>
+<span class="sd">    :type mu: float</span>
+<span class="sd">    :param max_epsilon: The maximum epsilon value to search for</span>
+<span class="sd">    :type max_epsilon: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">delta_Gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span> <span class="o">-</span> <span class="n">delta</span>
+
+    <span class="k">return</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;brentq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span></div>
+
+
+<div class="viewcode-block" id="compute_epsilon"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.compute_epsilon">[docs]</a><span class="k">def</span> <span class="nf">compute_epsilon</span><span class="p">(</span><span class="n">noise_multiplier</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="o">=</span><span class="mf">1e7</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute epsilon of Gaussian mechanism.</span>
+
+<span class="sd">    :param noise_multiplier: The noise multiplier</span>
+<span class="sd">    :type noise_multiplier: float</span>
+<span class="sd">    :param num_steps: The number of steps</span>
+<span class="sd">    :type num_steps: int</span>
+<span class="sd">    :param delta: The delta value</span>
+<span class="sd">    :type delta: float</span>
+<span class="sd">    :param max_epsilon: The maximum epsilon value to search for, defaults to 1e7</span>
+<span class="sd">    :type max_epsilon: float, optional</span>
+<span class="sd">    :return: The epsilon value.</span>
+<span class="sd">    :rtype: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">eps_Gaussian</span><span class="p">(</span><span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span> <span class="o">/</span> <span class="n">noise_multiplier</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="o">=</span><span class="n">max_epsilon</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_noise_multiplier"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.get_noise_multiplier">[docs]</a><span class="k">def</span> <span class="nf">get_noise_multiplier</span><span class="p">(</span>
+    <span class="n">epsilon</span><span class="p">,</span>
+    <span class="n">num_steps</span><span class="p">,</span>
+    <span class="n">delta</span><span class="p">,</span>
+    <span class="n">min_noise_multiplier</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">,</span>
+    <span class="n">max_noise_multiplier</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="n">max_epsilon</span><span class="o">=</span><span class="mf">1e7</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get noise multiplier of Gaussian mechanism.</span>
+
+<span class="sd">    :param epsilon: The epsilon value</span>
+<span class="sd">    :type epsilon: float</span>
+<span class="sd">    :param num_steps: The number of steps</span>
+<span class="sd">    :type num_steps: int</span>
+<span class="sd">    :param delta: The delta value</span>
+<span class="sd">    :type delta: float</span>
+<span class="sd">    :param min_noise_multiplier: The minimum noise multiplier to search for, defaults to 1e-1</span>
+<span class="sd">    :type min_noise_multiplier: float, optional</span>
+<span class="sd">    :param max_noise_multiplier: The maximum noise multiplier to search for, defaults to 500</span>
+<span class="sd">    :type max_noise_multiplier: float, optional</span>
+<span class="sd">    :param max_epsilon: The maximum epsilon value to search for, defaults to 1e7</span>
+<span class="sd">    :type max_epsilon: float, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">compute_epsilon</span><span class="p">(</span>
+                <span class="n">noise_multiplier</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+                <span class="n">num_steps</span><span class="o">=</span><span class="n">num_steps</span><span class="p">,</span>
+                <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+                <span class="n">max_epsilon</span><span class="o">=</span><span class="n">max_epsilon</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="o">-</span> <span class="n">epsilon</span>
+        <span class="p">)</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="n">min_noise_multiplier</span><span class="p">,</span> <span class="n">max_noise_multiplier</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;brentq&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">output</span><span class="o">.</span><span class="n">converged</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Failed to converge&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span></div>
+
+
+<div class="viewcode-block" id="Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian">[docs]</a><span class="k">class</span> <span class="nc">Gaussian</span><span class="p">(</span><span class="n">DP</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Gaussian mechanism for Differential Privacy (DP) histogram.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Gaussian.set_epsilon_and_delta"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta">[docs]</a>    <span class="k">def</span> <span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the epsilon and delta for the Gaussian mechanism.</span>
+
+<span class="sd">        :param num_iterations: The number of PE iterations</span>
+<span class="sd">        :type num_iterations: int</span>
+<span class="sd">        :param epsilon: The epsilon value of DP</span>
+<span class="sd">        :type epsilon: float</span>
+<span class="sd">        :param delta: The delta value of DP</span>
+<span class="sd">        :type delta: float</span>
+<span class="sd">        :param noise_multiplier: The noise multiplier of the DP mechanism</span>
+<span class="sd">        :type noise_multiplier: float</span>
+<span class="sd">        :raises ValueError: If delta is None</span>
+<span class="sd">        :raises ValueError: If both epsilon and noise_multiplier are None or not None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Delta should not be None&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">epsilon</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">noise_multiplier</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Either epsilon or noise multiplier should be None&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_delta</span> <span class="o">=</span> <span class="n">delta</span>
+        <span class="k">if</span> <span class="n">epsilon</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+            <span class="k">if</span> <span class="n">num_iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_noise_multiplier</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Since num_iterations is 0, noise_multiplier is set to 0, and epsilon is ignored.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_noise_multiplier</span> <span class="o">=</span> <span class="n">get_noise_multiplier</span><span class="p">(</span>
+                    <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span>
+                    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_iterations</span><span class="p">,</span>
+                    <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_noise_multiplier</span> <span class="o">=</span> <span class="n">noise_multiplier</span>
+            <span class="k">if</span> <span class="n">num_iterations</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_epsilon</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Since num_iterations is 0, epsilon is set to 0, and noise_multiplier is ignored.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_epsilon</span> <span class="o">=</span> <span class="n">compute_epsilon</span><span class="p">(</span>
+                    <span class="n">noise_multiplier</span><span class="o">=</span><span class="n">noise_multiplier</span><span class="p">,</span>
+                    <span class="n">num_steps</span><span class="o">=</span><span class="n">num_iterations</span><span class="p">,</span>
+                    <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;DP epsilon=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_epsilon</span><span class="si">}</span><span class="s2">, delta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_delta</span><span class="si">}</span><span class="s2">, noise_multiplier=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_noise_multiplier</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;num_iterations=</span><span class="si">{</span><span class="n">num_iterations</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Gaussian.add_noise"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.add_noise">[docs]</a>    <span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add noise to the histogram of synthetic data.</span>
+
+<span class="sd">        :param syn_data: The synthetic data to add noise. The synthetic data should have the</span>
+<span class="sd">            :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` column</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: The synthetic data with noise added to the histogram. The noisy histogram is stored in the</span>
+<span class="sd">            :py:const:`pe.constant.data.DP_HISTOGRAM_COLUMN_NAME` column</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span>
+            <span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span>
+        <span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_noise_multiplier</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">syn_data</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

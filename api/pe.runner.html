@@ -62,7 +62,7 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.population.html">pe.population package</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.runner package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-runner-pe-module">pe.runner.pe module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.runner.pe">pe.runner.pe module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.util.html">pe.util package</a></li>
@@ -103,13 +103,130 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-runner-package">
-<h1>pe.runner package<a class="headerlink" href="#pe-runner-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.runner">
+<span id="pe-runner-package"></span><h1>pe.runner package<a class="headerlink" href="#module-pe.runner" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-runner-pe-module">
-<h2>pe.runner.pe module<a class="headerlink" href="#pe-runner-pe-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.runner.pe">
+<span id="pe-runner-pe-module"></span><h2>pe.runner.pe module<a class="headerlink" href="#module-pe.runner.pe" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.runner.pe.PE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.runner.pe.</span></span><span class="sig-name descname"><span class="pre">PE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loggers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class that runs the PE algorithm.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">histogram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loggers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
+<li><p><strong>population</strong> (<a class="reference internal" href="pe.population.html#pe.population.population.Population" title="pe.population.population.Population"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.population.population.Population</span></code></a>) – The population algorithm</p></li>
+<li><p><strong>histogram</strong> (<a class="reference internal" href="pe.histogram.html#pe.histogram.histogram.Histogram" title="pe.histogram.histogram.Histogram"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.histogram.histogram.Histogram</span></code></a>) – The histogram algorithm</p></li>
+<li><p><strong>dp</strong> (<a class="reference internal" href="pe.dp.html#pe.dp.dp.DP" title="pe.dp.dp.DP"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.dp.DP</span></code></a>, optional) – The DP algorithm, defaults to None, in which case the Gaussian mechanism
+<a class="reference internal" href="pe.dp.html#pe.dp.gaussian.Gaussian" title="pe.dp.gaussian.Gaussian"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.gaussian.Gaussian</span></code></a> is used</p></li>
+<li><p><strong>loggers</strong> (list[<a class="reference internal" href="pe.logger.html#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.logger.Logger</span></code></a>], optional) – The list of loggers, defaults to []</p></li>
+<li><p><strong>callbacks</strong> (list[Callable or <a class="reference internal" href="pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code></a>], optional) – The list of callbacks, defaults to []</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE._clean_up_loggers">
+<span class="sig-name descname"><span class="pre">_clean_up_loggers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE._clean_up_loggers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE._clean_up_loggers" title="Permalink to this definition"></a></dt>
+<dd><p>Clean up loggers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE._get_num_samples_per_label_id">
+<span class="sig-name descname"><span class="pre">_get_num_samples_per_label_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction_per_label_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE._get_num_samples_per_label_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE._get_num_samples_per_label_id" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of samples per label id given the total number of samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_samples</strong> (<em>int</em>) – The total number of samples</p></li>
+<li><p><strong>fraction_per_label_id</strong> (<em>list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – The fraction of samples for each label id. The fraction does not have to be
+normalized. When it is None, the fraction is assumed to be the same as the fraction of label ids in the
+private data. Defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If the length of fraction_per_label_id is not the same as the number of labels</p></li>
+<li><p><strong>ValueError</strong> – If the number of samples is so small that the number of samples for some label ids is zero</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of samples per label id</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE._log_metrics">
+<span class="sig-name descname"><span class="pre">_log_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE._log_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE._log_metrics" title="Permalink to this definition"></a></dt>
+<dd><p>Log metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE.load_checkpoint">
+<span class="sig-name descname"><span class="pre">load_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE.load_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE.load_checkpoint" title="Permalink to this definition"></a></dt>
+<dd><p>Load a checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>checkpoint_path</strong> (<em>str</em>) – The path to the checkpoint</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.runner.pe.PE.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_samples_schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_multiplier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction_per_label_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/runner/pe.html#PE.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.runner.pe.PE.run" title="Permalink to this definition"></a></dt>
+<dd><p>Run the PE algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_samples_schedule</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – The schedule of the number of samples for each PE iteration. The first element is
+the number of samples for the initial data, and the rest are the number of samples for each PE iteration.
+So the length of the list is the number of PE iterations plus one</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The delta value of DP</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em><em>, </em><em>optional</em>) – The epsilon value of DP, defaults to None</p></li>
+<li><p><strong>noise_multiplier</strong> (<em>float</em><em>, </em><em>optional</em>) – The noise multiplier of the DP mechanism, defaults to None</p></li>
+<li><p><strong>checkpoint_path</strong> (<em>str</em><em>, </em><em>optional</em>) – The path to load and save the checkpoint, defaults to None</p></li>
+<li><p><strong>save_checkpoint</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to save the checkpoint, defaults to True</p></li>
+<li><p><strong>fraction_per_label_id</strong> (<em>list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – The fraction of samples for each label id. The fraction does not have to be
+normalized. When it is None, the fraction is assumed to be the same as the fraction of label ids in the
+private data. Defaults to None</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

@@ -98,7 +98,7 @@
   <section id="callbacks-and-loggers">
 <h1>Callbacks and Loggers<a class="headerlink" href="#callbacks-and-loggers" title="Permalink to this heading"></a></h1>
 <p>API reference: <a class="reference internal" href="../../api/pe.callback.html"><span class="doc">pe.callback package</span></a> and <a class="reference internal" href="../../api/pe.logger.html"><span class="doc">pe.logger package</span></a>.</p>
-<p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code> can be configured to be called after each <strong>Private Evolution</strong> iteration with the synthetic data as the input. It is useful for computing metrics, saving the synthetic samples, monitoring the progress, etc. Each <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code> can return a list of results (float numbers, images, matplotlib plots, etc.) in the form of <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code> (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">pe.metric_item</span></code>). All <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code> from all  <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code> will be passed through each of the <code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.logger.Logger</span></code> modules, which will then log the results in the desired way.</p>
+<p><a class="reference internal" href="../../api/pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code></a> can be configured to be called after each <strong>Private Evolution</strong> iteration with the synthetic data as the input. It is useful for computing metrics, saving the synthetic samples, monitoring the progress, etc. Each <a class="reference internal" href="../../api/pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code></a> can return a list of results (float numbers, images, matplotlib plots, etc.) in the form of <a class="reference internal" href="../../api/pe.metric_item.html#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code></a> (see <a class="reference internal" href="../../api/pe.metric_item.html#module-pe.metric_item" title="pe.metric_item"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pe.metric_item</span></code></a>). All <a class="reference internal" href="../../api/pe.metric_item.html#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.MetricItem</span></code></a> from all  <a class="reference internal" href="../../api/pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code></a> will be passed through each of the <a class="reference internal" href="../../api/pe.logger.html#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.logger.Logger</span></code></a> modules, which will then log the results in the desired way.</p>
 <section id="available-callbacks">
 <h2>Available Callbacks<a class="headerlink" href="#available-callbacks" title="Permalink to this heading"></a></h2>
 <p>Currently, the following callbacks are implemented:</p>
@@ -106,16 +106,16 @@
 <li><p>For any data modality</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.common.compute_fid.ComputeFID</span></code>: Computes the FID between the synthetic samples and the private samples.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.common.save_checkpoints.SaveCheckpoints</span></code>: Saves the checkpoint of current synthetic samples to files.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.callback.common.html#pe.callback.common.compute_fid.ComputeFID" title="pe.callback.common.compute_fid.ComputeFID"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.common.compute_fid.ComputeFID</span></code></a>: Computes the FID between the synthetic samples and the private samples.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints" title="pe.callback.common.save_checkpoints.SaveCheckpoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.common.save_checkpoints.SaveCheckpoints</span></code></a>: Saves the checkpoint of current synthetic samples to files.</p></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p>Images</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.image.sample_images.SampleImages</span></code>: Samples some images from each class.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.image.save_all_images.SaveAllImages</span></code>: Saves all synthetic images to files.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages" title="pe.callback.image.sample_images.SampleImages"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.image.sample_images.SampleImages</span></code></a>: Samples some images from each class.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages" title="pe.callback.image.save_all_images.SaveAllImages"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.image.save_all_images.SaveAllImages</span></code></a>: Saves all synthetic images to files.</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -132,10 +132,10 @@
 <h2>Available Loggers<a class="headerlink" href="#available-loggers" title="Permalink to this heading"></a></h2>
 <p>Currently, the following loggers are implemented:</p>
 <ul class="simple">
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.csv_print.CSVPrint</span></code>: Saves the float results to a CSV file.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.log_print.LogPrint</span></code>: Prints the float results to the console and/or files using the logging module.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.image_file.ImageFile</span></code>: Saves the images to files.</p></li>
-<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.matplotlib_pdf.MatplotlibPDF</span></code>: Saves the matplotlib plots to PDF files.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.logger.html#pe.logger.csv_print.CSVPrint" title="pe.logger.csv_print.CSVPrint"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.csv_print.CSVPrint</span></code></a>: Saves the float results to a CSV file.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.logger.html#pe.logger.log_print.LogPrint" title="pe.logger.log_print.LogPrint"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.log_print.LogPrint</span></code></a>: Prints the float results to the console and/or files using the logging module.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.logger.html#pe.logger.image_file.ImageFile" title="pe.logger.image_file.ImageFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.image_file.ImageFile</span></code></a>: Saves the images to files.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF" title="pe.logger.matplotlib_pdf.MatplotlibPDF"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.matplotlib_pdf.MatplotlibPDF</span></code></a>: Saves the matplotlib plots to PDF files.</p></li>
 </ul>
 </section>
 </section>

@@ -52,8 +52,8 @@
 <li class="toctree-l5 current"><a class="current reference internal" href="#">pe.api package</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-api-api-module">pe.api.api module</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pe-api-util-module">pe.api.util module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.api.api">pe.api.api module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#module-pe.api.util">pe.api.util module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.callback.html">pe.callback package</a></li>
@@ -105,8 +105,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-api-package">
-<h1>pe.api package<a class="headerlink" href="#pe-api-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.api">
+<span id="pe-api-package"></span><h1>pe.api package<a class="headerlink" href="#module-pe.api" title="Permalink to this heading"></a></h1>
 <section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
 <div class="toctree-wrapper compound">
@@ -117,8 +117,17 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pe.api.image.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.api.image.html#pe-api-image-improved-diffusion-api-module">pe.api.image.improved_diffusion_api module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pe.api.image.html#pe-api-image-stable-diffusion-api-module">pe.api.image.stable_diffusion_api module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pe.api.image.html#module-pe.api.image.improved_diffusion_api">pe.api.image.improved_diffusion_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion270M</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.html#pe.api.image.improved_diffusion_api.Sampler"><code class="docutils literal notranslate"><span class="pre">Sampler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.html#pe.api.image.improved_diffusion_api.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pe.api.image.html#module-pe.api.image.stable_diffusion_api">pe.api.image.stable_diffusion_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion"><code class="docutils literal notranslate"><span class="pre">StableDiffusion</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -127,11 +136,49 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-api-api-module">
-<h2>pe.api.api module<a class="headerlink" href="#pe-api-api-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.api.api">
+<span id="pe-api-api-module"></span><h2>pe.api.api module<a class="headerlink" href="#module-pe.api.api" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.api.API">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.api.</span></span><span class="sig-name descname"><span class="pre">API</span></span><a class="reference internal" href="../_modules/pe/api/api.html#API"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.api.API" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The abstract class that defines the APIs for the synthetic data generation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.api.API.random_api">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/api.html#API.random_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.api.API.random_api" title="Permalink to this definition"></a></dt>
+<dd><p>The abstract method that generates random synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>label_name</strong> (<em>str</em>) – The name of the label</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – The number of random samples to generate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.api.api.API.variation_api">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">variation_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/api.html#API.variation_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.api.API.variation_api" title="Permalink to this definition"></a></dt>
+<dd><p>The abstract method that generates variations of the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The data object of the synthetic data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-api-util-module">
-<h2>pe.api.util module<a class="headerlink" href="#pe-api-util-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.api.util">
+<span id="pe-api-util-module"></span><h2>pe.api.util module<a class="headerlink" href="#module-pe.api.util" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.api.util.ConstantList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.api.util.</span></span><span class="sig-name descname"><span class="pre">ConstantList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/api/util.html#ConstantList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.api.util.ConstantList" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
 </section>
 </section>
 

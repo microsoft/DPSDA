@@ -55,7 +55,7 @@
 <li class="toctree-l5 current"><a class="reference internal" href="pe.data.html">pe.data package</a><ul class="current">
 <li class="toctree-l6 current"><a class="reference internal" href="pe.data.html#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="pe.data.html#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe-data-data-module">pe.data.data module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#module-pe.data.data">pe.data.data module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.dp.html">pe.dp package</a></li>
@@ -105,22 +105,147 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-data-image-package">
-<h1>pe.data.image package<a class="headerlink" href="#pe-data-image-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.data.image">
+<span id="pe-data-image-package"></span><h1>pe.data.image package<a class="headerlink" href="#module-pe.data.image" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-data-image-camelyon17-module">
-<h2>pe.data.image.camelyon17 module<a class="headerlink" href="#pe-data-image-camelyon17-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.data.image.camelyon17">
+<span id="pe-data-image-camelyon17-module"></span><h2>pe.data.image.camelyon17 module<a class="headerlink" href="#module-pe.data.image.camelyon17" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.data.image.camelyon17.Camelyon17">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.data.image.camelyon17.</span></span><span class="sig-name descname"><span class="pre">Camelyon17</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/camelyon17.html#Camelyon17"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.camelyon17.Camelyon17" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>The Camelyon17 dataset.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.image.camelyon17.Camelyon17.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/camelyon17.html#Camelyon17.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.camelyon17.Camelyon17.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>split</strong> (<em>str</em><em>, </em><em>optional</em>) – The split of the dataset. It should be either “train”, “val”, or “test”, defaults to “train”</p></li>
+<li><p><strong>root_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – The root directory to save the dataset, defaults to “data”</p></li>
+<li><p><strong>res</strong> (<em>int</em><em>, </em><em>optional</em>) – The resolution of the images, defaults to 64</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the split is invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-data-image-cat-module">
-<h2>pe.data.image.cat module<a class="headerlink" href="#pe-data-image-cat-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.data.image.cat">
+<span id="pe-data-image-cat-module"></span><h2>pe.data.image.cat module<a class="headerlink" href="#module-pe.data.image.cat" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.data.image.cat.Cat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.data.image.cat.</span></span><span class="sig-name descname"><span class="pre">Cat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cat.html#Cat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cat.Cat" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>The Cat dataset.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pe.data.image.cat.Cat.URL">
+<span class="sig-name descname"><span class="pre">URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://www.kaggle.com/api/v1/datasets/download/fjxmlzn/cat-cookie-doudou'</span></em><a class="headerlink" href="#pe.data.image.cat.Cat.URL" title="Permalink to this definition"></a></dt>
+<dd><p>The URL of the dataset</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.image.cat.Cat.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cat.html#Cat.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cat.Cat.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>root_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – The root directory to save the dataset, defaults to “data”</p></li>
+<li><p><strong>res</strong> (<em>int</em><em>, </em><em>optional</em>) – The resolution of the images, defaults to 512</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.image.cat.Cat._download">
+<span class="sig-name descname"><span class="pre">_download</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cat.html#Cat._download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cat.Cat._download" title="Permalink to this definition"></a></dt>
+<dd><p>Download the dataset if it does not exist.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.image.cat.Cat._read_data">
+<span class="sig-name descname"><span class="pre">_read_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cat.html#Cat._read_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cat.Cat._read_data" title="Permalink to this definition"></a></dt>
+<dd><p>Read the data from the zip file.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-data-image-cifar10-module">
-<h2>pe.data.image.cifar10 module<a class="headerlink" href="#pe-data-image-cifar10-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.data.image.cifar10">
+<span id="pe-data-image-cifar10-module"></span><h2>pe.data.image.cifar10 module<a class="headerlink" href="#module-pe.data.image.cifar10" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.data.image.cifar10.Cifar10">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.data.image.cifar10.</span></span><span class="sig-name descname"><span class="pre">Cifar10</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cifar10.html#Cifar10"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cifar10.Cifar10" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>The CIFAR10 dataset.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.data.image.cifar10.Cifar10.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/cifar10.html#Cifar10.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.cifar10.Cifar10.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>split</strong> (<em>str</em><em>, </em><em>optional</em>) – The split of the dataset. It should be either “train” or “test”, defaults to “train”</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the split is invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-data-image-image-module">
-<h2>pe.data.image.image module<a class="headerlink" href="#pe-data-image-image-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.data.image.image">
+<span id="pe-data-image-image-module"></span><h2>pe.data.image.image module<a class="headerlink" href="#module-pe.data.image.image" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.data.image.image.ImageDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.data.image.image.</span></span><span class="sig-name descname"><span class="pre">ImageDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/image.html#ImageDataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.image.ImageDataset" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.data.image.image._list_image_files_recursively">
+<span class="sig-prename descclassname"><span class="pre">pe.data.image.image.</span></span><span class="sig-name descname"><span class="pre">_list_image_files_recursively</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/image.html#_list_image_files_recursively"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.image._list_image_files_recursively" title="Permalink to this definition"></a></dt>
+<dd><p>List all image files in a directory recursively. Adapted from
+<a class="reference external" href="https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/image_datasets.py">https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/image_datasets.py</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.data.image.image.load_image_folder">
+<span class="sig-prename descclassname"><span class="pre">pe.data.image.image.</span></span><span class="sig-name descname"><span class="pre">load_image_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_cond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/image/image.html#load_image_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.image.image.load_image_folder" title="Permalink to this definition"></a></dt>
+<dd><p>Load a image dataset from a folder that contains image files. The folder can be nested arbitrarily. The image
+file names must be in the format of “{class_name without ‘_’}_{suffix in any string}.ext”. The “ext” can be “jpg”,
+“jpeg”, “png”, or “gif”. The class names will be extracted from the file names before the first “_”. If class_cond
+is False, the class names will be ignored and all images will be treated as the same class with class name “None”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path to the root folder that contains the image files</p></li>
+<li><p><strong>image_size</strong> (<em>int</em>) – The size of the images. Images will be resized to this size</p></li>
+<li><p><strong>class_cond</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to treat the loaded dataset as class conditional, defaults to True</p></li>
+<li><p><strong>num_images</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of images to load. If -1, load all images. Defaults to -1</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of workers to use for loading the images, defaults to 10</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size to use for loading the images, defaults to 1000</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The loaded data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

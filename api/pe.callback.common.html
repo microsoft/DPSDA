@@ -53,7 +53,7 @@
 <li class="toctree-l5 current"><a class="reference internal" href="pe.callback.html">pe.callback package</a><ul class="current">
 <li class="toctree-l6 current"><a class="reference internal" href="pe.callback.html#subpackages">Subpackages</a></li>
 <li class="toctree-l6"><a class="reference internal" href="pe.callback.html#submodules">Submodules</a></li>
-<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe-callback-callback-module">pe.callback.callback module</a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#module-pe.callback.callback">pe.callback.callback module</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="pe.constant.html">pe.constant package</a></li>
@@ -105,16 +105,104 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-callback-common-package">
-<h1>pe.callback.common package<a class="headerlink" href="#pe-callback-common-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.callback.common">
+<span id="pe-callback-common-package"></span><h1>pe.callback.common package<a class="headerlink" href="#module-pe.callback.common" title="Permalink to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="pe-callback-common-compute-fid-module">
-<h2>pe.callback.common.compute_fid module<a class="headerlink" href="#pe-callback-common-compute-fid-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.callback.common.compute_fid">
+<span id="pe-callback-common-compute-fid-module"></span><h2>pe.callback.common.compute_fid module<a class="headerlink" href="#module-pe.callback.common.compute_fid" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.callback.common.compute_fid.ComputeFID">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.common.compute_fid.</span></span><span class="sig-name descname"><span class="pre">ComputeFID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>The callback that computes the Frechet Inception Distance (FID) between the private and synthetic data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.common.compute_fid.ComputeFID.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>This function is called after each PE iteration that computes the FID between the private and synthetic
+data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The FID between the private and synthetic data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatMetricItem" title="pe.metric_item.FloatMetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.metric_item.FloatMetricItem</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.common.compute_fid.ComputeFID.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
+<li><p><strong>embedding</strong> (<a class="reference internal" href="pe.embedding.html#pe.embedding.embedding.Embedding" title="pe.embedding.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.embedding.Embedding</span></code></a>) – The embedding to compute the FID</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="pe-callback-common-save-checkpoints-module">
-<h2>pe.callback.common.save_checkpoints module<a class="headerlink" href="#pe-callback-common-save-checkpoints-module" title="Permalink to this heading"></a></h2>
+<section id="module-pe.callback.common.save_checkpoints">
+<span id="pe-callback-common-save-checkpoints-module"></span><h2>pe.callback.common.save_checkpoints module<a class="headerlink" href="#module-pe.callback.common.save_checkpoints" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.callback.common.save_checkpoints.SaveCheckpoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.common.save_checkpoints.</span></span><span class="sig-name descname"><span class="pre">SaveCheckpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/save_checkpoints.html#SaveCheckpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.save_checkpoints.SaveCheckpoints" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="pe.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
+<p>The callback that saves checkpoints of the synthetic data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.common.save_checkpoints.SaveCheckpoints.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/save_checkpoints.html#SaveCheckpoints.__call__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.save_checkpoints.SaveCheckpoints.__call__" title="Permalink to this definition"></a></dt>
+<dd><p>This function is called after each PE iteration that saves checkpoints of the synthetic data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.common.save_checkpoints.SaveCheckpoints.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'09d'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/save_checkpoints.html#SaveCheckpoints.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.save_checkpoints.SaveCheckpoints.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output_folder</strong> (<em>str</em>) – The output folder that will be used to save the checkpoints</p></li>
+<li><p><strong>iteration_format</strong> (<em>str</em><em>, </em><em>optional</em>) – The format of the iteration number, defaults to “09d”</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.common.save_checkpoints.SaveCheckpoints._get_checkpoint_path">
+<span class="sig-name descname"><span class="pre">_get_checkpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iteration</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/save_checkpoints.html#SaveCheckpoints._get_checkpoint_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.save_checkpoints.SaveCheckpoints._get_checkpoint_path" title="Permalink to this definition"></a></dt>
+<dd><p>Get the checkpoint path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>iteration</strong> (<em>int</em>) – The PE iteration number</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The checkpoint path</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 

@@ -58,7 +58,16 @@
 <li class="toctree-l5"><a class="reference internal" href="pe.histogram.html">pe.histogram package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.logger.html">pe.logger package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.logging.html">pe.logging package</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">pe.metric_item package</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">pe.metric_item package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.FloatListMetricItem"><code class="docutils literal notranslate"><span class="pre">FloatListMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.FloatMetricItem"><code class="docutils literal notranslate"><span class="pre">FloatMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.ImageListMetricItem"><code class="docutils literal notranslate"><span class="pre">ImageListMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.ImageMetricItem"><code class="docutils literal notranslate"><span class="pre">ImageMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.MatplotlibMetricItem"><code class="docutils literal notranslate"><span class="pre">MatplotlibMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.MetricItem"><code class="docutils literal notranslate"><span class="pre">MetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pe.metric_item.metric_scope"><code class="docutils literal notranslate"><span class="pre">metric_scope</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l5"><a class="reference internal" href="pe.population.html">pe.population package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.runner.html">pe.runner package</a></li>
 <li class="toctree-l5"><a class="reference internal" href="pe.util.html">pe.util package</a></li>
@@ -99,8 +108,136 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-metric-item-package">
-<h1>pe.metric_item package<a class="headerlink" href="#pe-metric-item-package" title="Permalink to this heading"></a></h1>
+  <section id="module-pe.metric_item">
+<span id="pe-metric-item-package"></span><h1>pe.metric_item package<a class="headerlink" href="#module-pe.metric_item" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.FloatListMetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">FloatListMetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#FloatListMetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.FloatListMetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricItem</span></code></a></p>
+<p>The metric item for a list of float values.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.FloatMetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">FloatMetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#FloatMetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.FloatMetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricItem</span></code></a></p>
+<p>The metric item for a single float value.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.ImageListMetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">ImageListMetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_images_per_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#ImageListMetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.ImageListMetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricItem</span></code></a></p>
+<p>The metric item for a list of images.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.metric_item.ImageListMetricItem.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_images_per_row</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#ImageListMetricItem.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.ImageListMetricItem.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_images_per_row</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of images per row when saving to the file, defaults to None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pe.metric_item.ImageListMetricItem.num_images_per_row">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_images_per_row</span></span><a class="headerlink" href="#pe.metric_item.ImageListMetricItem.num_images_per_row" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of images per row when saving to the file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The number of images per row when saving to the file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.ImageMetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">ImageMetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#ImageMetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.ImageMetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricItem</span></code></a></p>
+<p>The metric item for an image.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.MatplotlibMetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">MatplotlibMetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#MatplotlibMetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.MatplotlibMetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pe.metric_item.MetricItem" title="pe.metric_item.MetricItem"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricItem</span></code></a></p>
+<p>The metric item for Matplotlib figures.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.metric_item.MatplotlibMetricItem.clean_up">
+<span class="sig-name descname"><span class="pre">clean_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#MatplotlibMetricItem.clean_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.MatplotlibMetricItem.clean_up" title="Permalink to this definition"></a></dt>
+<dd><p>Clean up the metric item.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.MetricItem">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">MetricItem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#MetricItem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.MetricItem" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The base class for the metric item.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.metric_item.MetricItem.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#MetricItem.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.MetricItem.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the metric item</p></li>
+<li><p><strong>value</strong> (<em>object</em>) – The value of the metric item</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.metric_item.MetricItem.clean_up">
+<span class="sig-name descname"><span class="pre">clean_up</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#MetricItem.clean_up"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.MetricItem.clean_up" title="Permalink to this definition"></a></dt>
+<dd><p>Clean up the metric item.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pe.metric_item.MetricItem.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pe.metric_item.MetricItem.name" title="Permalink to this definition"></a></dt>
+<dd><p>Get the name of the metric item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The name of the metric item</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pe.metric_item.MetricItem.value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pe.metric_item.MetricItem.value" title="Permalink to this definition"></a></dt>
+<dd><p>Get the value of the metric item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the metric item</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.metric_item.metric_scope">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.metric_item.</span></span><span class="sig-name descname"><span class="pre">metric_scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/metric_item.html#metric_scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.metric_item.metric_scope" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The context manager to manage the metric scope.</p>
+</dd></dl>
+
 </section>
 
 
