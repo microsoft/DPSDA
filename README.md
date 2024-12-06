@@ -2,7 +2,7 @@
 
 This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework that only utilizes the blackbox inference APIs of foundation models (e.g., Stable Diffusion, GPT models).
 
-* Differentially Private Synthetic Data via Foundation Model APIs 1: Images  
+* **Differentially Private Synthetic Data via Foundation Model APIs 1: Images**  
     [[paper (ICLR 2024)]](https://openreview.net/forum?id=YEhQs8POIo) [[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
     **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
 
@@ -10,9 +10,9 @@ This repo is a Python library to **generate differentially private (DP) syntheti
 ## Documentation
 Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more details, including the installation instructions, usage, and examples.
 
-## Attention
+## News
 
-The code that was published along with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch on 11/21/2024, which is no longer maintained. The code in the current main branch is a refactored version of the original codebase, which is more modularized and easier to use, with support of more advanced Private Evolution algorithms and APIs.
+* `11/21/2024`: The refactored codebase for image generation has been released. It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch, which is no longer maintained.
 
 ## Contributing
 
