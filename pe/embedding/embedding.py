@@ -18,4 +18,4 @@ class Embedding(ABC):
         :param data: The data to compute the embedding
         :type data: :py:class:`pe.data.data.Data`
         """
-        pass
+        ...

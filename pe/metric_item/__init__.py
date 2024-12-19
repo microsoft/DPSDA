@@ -50,7 +50,7 @@ class MetricItem(object):
 
     def clean_up(self):
         """Clean up the metric item."""
-        pass
+        ...
 
 
 class MatplotlibMetricItem(MetricItem):
@@ -63,19 +63,19 @@ class MatplotlibMetricItem(MetricItem):
 class FloatMetricItem(MetricItem):
     """The metric item for a single float value."""
 
-    pass
+    ...
 
 
 class FloatListMetricItem(MetricItem):
     """The metric item for a list of float values."""
 
-    pass
+    ...
 
 
 class ImageMetricItem(MetricItem):
     """The metric item for an image."""
 
-    pass
+    ...
 
 
 class ImageListMetricItem(MetricItem):

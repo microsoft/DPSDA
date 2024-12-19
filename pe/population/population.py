@@ -13,7 +13,7 @@ class Population(ABC):
         :param num_samples: The number of samples to generate
         :type num_samples: int
         """
-        pass
+        ...
 
     @abstractmethod
     def next(self, syn_data, num_samples):
@@ -24,4 +24,4 @@ class Population(ABC):
         :param num_samples: The number of samples to generate
         :type num_samples: int
         """
-        pass
+        ...
