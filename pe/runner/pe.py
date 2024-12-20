@@ -87,9 +87,9 @@ class PE(object):
             fraction_per_label_id = self._priv_data.data_frame[LABEL_ID_COLUMN_NAME].value_counts().to_dict()
             fraction_per_label_id = [
                 0 if i not in fraction_per_label_id else fraction_per_label_id[i]
-                for i in range(len(self._priv_data.metadata.label_names))
+                for i in range(len(self._priv_data.metadata.label_info))
             ]
-        if len(fraction_per_label_id) != len(self._priv_data.metadata.label_names):
+        if len(fraction_per_label_id) != len(self._priv_data.metadata.label_info):
             raise ValueError("fraction_per_label_id should have the same length as the number of labels.")
         fraction_per_label_id = np.array(fraction_per_label_id)
         fraction_per_label_id = fraction_per_label_id / np.sum(fraction_per_label_id)
@@ -162,9 +162,9 @@ class PE(object):
                     fraction_per_label_id=fraction_per_label_id,
                 )
                 syn_data_list = []
-                for label_id, label_name in enumerate(self._priv_data.metadata.label_names):
+                for label_id, label_info in enumerate(self._priv_data.metadata.label_info):
                     syn_data = self._population.initial(
-                        label_name=label_name,
+                        label_info=label_info,
                         num_samples=num_samples_per_label_id[label_id],
                     )
                     syn_data.set_label_id(label_id)
@@ -172,7 +172,7 @@ class PE(object):
                 syn_data = Data.concat(syn_data_list, metadata=self._priv_data.metadata)
                 syn_data.data_frame.reset_index(drop=True, inplace=True)
                 syn_data.metadata.iteration = 0
-                syn_data.metadata.label_names = self._priv_data.metadata.label_names
+                syn_data.metadata.label_info = self._priv_data.metadata.label_info
                 self._log_metrics(syn_data)
 
             # Run PE iterations.
@@ -186,7 +186,7 @@ class PE(object):
                 priv_data_list = []
 
                 # Generate synthetic data for each label.
-                for label_id in range(len(self._priv_data.metadata.label_names)):
+                for label_id in range(len(self._priv_data.metadata.label_info)):
                     execution_logger.info(f"Label {label_id}")
                     sub_priv_data = self._priv_data.filter_label_id(label_id=label_id)
                     sub_syn_data = syn_data.filter_label_id(label_id=label_id)

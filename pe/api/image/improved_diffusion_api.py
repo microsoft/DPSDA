@@ -123,16 +123,17 @@ class ImprovedDiffusion(API):
         else:
             self._variation_degrees = variation_degrees
 
-    def random_api(self, label_name, num_samples):
+    def random_api(self, label_info, num_samples):
         """Generating random synthetic data.
 
-        :param label_name: The name of the label, not utilized in this API
-        :type label_name: str
+        :param label_info: The info of the label, not utilized in this API
+        :type label_info: dict
         :param num_samples: The number of random samples to generate
         :type num_samples: int
         :return: The data object of the generated synthetic data
         :rtype: :py:class:`pe.data.data.Data`
         """
+        label_name = label_info.name
         execution_logger.info(f"RANDOM API: creating {num_samples} samples for label {label_name}")
         samples, labels = sample(
             sampler=self._timestep_respacing_to_sampler[self._timestep_respacing[0]],

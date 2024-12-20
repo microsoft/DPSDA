@@ -46,5 +46,5 @@ class Camelyon17(Data):
                 LABEL_ID_COLUMN_NAME: labels,
             }
         )
-        metadata = {"label_names": CAMELYON17_LABEL_NAMES}
+        metadata = {"label_info": [{"name": n} for n in CAMELYON17_LABEL_NAMES]}
         super().__init__(data_frame=data_frame, metadata=metadata)

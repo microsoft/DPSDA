@@ -26,7 +26,7 @@ class SampleImages(Callback):
         :rtype: list[:py:class:`pe.metric_item.ImageListMetricItem`]
         """
         all_image_list = []
-        num_classes = len(syn_data.metadata.label_names)
+        num_classes = len(syn_data.metadata.label_info)
         for class_id in range(num_classes):
             image_list = syn_data.data_frame[syn_data.data_frame[LABEL_ID_COLUMN_NAME] == class_id][
                 IMAGE_DATA_COLUMN_NAME

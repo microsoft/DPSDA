@@ -52,11 +52,11 @@ class PEPopulation(Population):
                 "synthetic data will be empty."
             )
 
-    def initial(self, label_name, num_samples):
+    def initial(self, label_info, num_samples):
         """Generate the initial synthetic data.
 
-        :param label_name: The label name
-        :type label_name: str
+        :param label_info: The label info
+        :type label_info: dict
         :param num_samples: The number of samples to generate
         :type num_samples: int
         :return: The initial synthetic data
@@ -64,9 +64,9 @@ class PEPopulation(Population):
         """
         execution_logger.info(
             f"Population: generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
-            f"synthetic samples for label {label_name}"
+            f"synthetic samples for label {label_info.name}"
         )
-        random_data = self._api.random_api(label_name=label_name, num_samples=num_samples)
+        random_data = self._api.random_api(label_info=label_info, num_samples=num_samples)
         variation_data_list = []
         for _ in range(self._initial_variation_api_fold):
             variation_data = self._api.variation_api(syn_data=random_data)
@@ -74,7 +74,7 @@ class PEPopulation(Population):
         data = Data.concat([random_data] + variation_data_list)
         execution_logger.info(
             f"Population: finished generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
-            f"synthetic samples for label {label_name}"
+            f"synthetic samples for label {label_info.name}"
         )
         return data
 

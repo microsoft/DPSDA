@@ -37,7 +37,7 @@ To apply **Private Evolution** to your own private dataset, you need to create a
 
 * ``metadata``: A dictionary that holds the metadata of the samples. The following keys must be included:
 
-    * ``label_names``: A list of strings that holds the names of the classes. The length of the list must be equal to K.
+    * ``label_info``: A list of dictionaries that hold the information of the classes. The length of the list must be equal to K. Inside each dictionary, a key ``name`` must be included, which refers to the name of the class.
 
     In addition, you can include any other keys that hold the metadata of the samples if needed.
 

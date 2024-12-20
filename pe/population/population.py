@@ -5,11 +5,11 @@ class Population(ABC):
     """The abstract class that generates synthetic data."""
 
     @abstractmethod
-    def initial(self, label_name, num_samples):
+    def initial(self, label_info, num_samples):
         """Generate the initial synthetic data.
 
-        :param label_name: The label name
-        :type label_name: str
+        :param label_info: The label info
+        :type label_info: dict
         :param num_samples: The number of samples to generate
         :type num_samples: int
         """

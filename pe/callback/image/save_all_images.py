@@ -58,7 +58,7 @@ class SaveAllImages(Callback):
         for i in iterator:
             image = syn_data.data_frame[IMAGE_DATA_COLUMN_NAME][i]
             label_id = int(syn_data.data_frame[LABEL_ID_COLUMN_NAME][i])
-            label_name = syn_data.metadata.label_names[label_id]
+            label_name = syn_data.metadata.label_info[label_id].name
             index = syn_data.data_frame.index[i]
             self._save_image(
                 image=image,

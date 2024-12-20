@@ -121,5 +121,5 @@ def load_image_folder(path, image_size, class_cond=True, num_images=-1, num_work
             LABEL_ID_COLUMN_NAME: list(all_labels),
         }
     )
-    metadata = {"label_names": dataset.class_names if class_cond else ["None"]}
+    metadata = {"label_info": [{"name": n} for n in dataset.class_names] if class_cond else [{"name": "None"}]}
     return Data(data_frame=data_frame, metadata=metadata)
