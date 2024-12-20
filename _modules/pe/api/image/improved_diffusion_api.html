@@ -195,16 +195,17 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span> <span class="o">=</span> <span class="n">variation_degrees</span></div>
 
-<div class="viewcode-block" id="ImprovedDiffusion.random_api"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api">[docs]</a>    <span class="k">def</span> <span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+<div class="viewcode-block" id="ImprovedDiffusion.random_api"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api">[docs]</a>    <span class="k">def</span> <span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data.</span>
 
-<span class="sd">        :param label_name: The name of the label, not utilized in this API</span>
-<span class="sd">        :type label_name: str</span>
+<span class="sd">        :param label_info: The info of the label, not utilized in this API</span>
+<span class="sd">        :type label_info: dict</span>
 <span class="sd">        :param num_samples: The number of random samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The data object of the generated synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">name</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span>
             <span class="n">sampler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestep_respacing_to_sampler</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestep_respacing</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>

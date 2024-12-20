@@ -124,11 +124,11 @@
                 <span class="s2">&quot;synthetic data will be empty.&quot;</span>
             <span class="p">)</span></div>
 
-<div class="viewcode-block" id="PEPopulation.initial"><a class="viewcode-back" href="../../../api/pe.population.html#pe.population.pe_population.PEPopulation.initial">[docs]</a>    <span class="k">def</span> <span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+<div class="viewcode-block" id="PEPopulation.initial"><a class="viewcode-back" href="../../../api/pe.population.html#pe.population.pe_population.PEPopulation.initial">[docs]</a>    <span class="k">def</span> <span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial synthetic data.</span>
 
-<span class="sd">        :param label_name: The label name</span>
-<span class="sd">        :type label_name: str</span>
+<span class="sd">        :param label_info: The label info</span>
+<span class="sd">        :type label_info: dict</span>
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The initial synthetic data</span>
@@ -136,9 +136,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
-        <span class="n">random_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">random_api</span><span class="p">(</span><span class="n">label_name</span><span class="o">=</span><span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
+        <span class="n">random_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">random_api</span><span class="p">(</span><span class="n">label_info</span><span class="o">=</span><span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="n">variation_data_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="p">):</span>
             <span class="n">variation_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">variation_api</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">random_data</span><span class="p">)</span>
@@ -146,7 +146,7 @@
         <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">random_data</span><span class="p">]</span> <span class="o">+</span> <span class="n">variation_data_list</span><span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>
 

@@ -77,11 +77,11 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class that generates synthetic data.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Population.initial"><a class="viewcode-back" href="../../../api/pe.population.html#pe.population.population.Population.initial">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial synthetic data.</span>
 
-<span class="sd">        :param label_name: The label name</span>
-<span class="sd">        :type label_name: str</span>
+<span class="sd">        :param label_info: The label info</span>
+<span class="sd">        :type label_info: dict</span>
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>

@@ -77,11 +77,11 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class that defines the APIs for the synthetic data generation.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="API.random_api"><a class="viewcode-back" href="../../../api/pe.api.html#pe.api.api.API.random_api">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The abstract method that generates random synthetic data.</span>
 
-<span class="sd">        :param label_name: The name of the label</span>
-<span class="sd">        :type label_name: str</span>
+<span class="sd">        :param label_info: The info of the label</span>
+<span class="sd">        :type label_info: dict</span>
 <span class="sd">        :param num_samples: The number of random samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>

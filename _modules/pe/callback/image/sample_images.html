@@ -98,7 +98,7 @@
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.ImageListMetricItem`]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">all_image_list</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_names</span><span class="p">)</span>
+        <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_info</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">class_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
             <span class="n">image_list</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">==</span> <span class="n">class_id</span><span class="p">][</span>
                 <span class="n">IMAGE_DATA_COLUMN_NAME</span>

@@ -182,12 +182,12 @@ random sampling proportional to the histogram). Defaults to “sample”</p></li
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pe.population.pe_population.PEPopulation.initial">
-<span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation.initial" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/pe_population.html#PEPopulation.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.pe_population.PEPopulation.initial" title="Permalink to this definition"></a></dt>
 <dd><p>Generate the initial synthetic data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_name</strong> (<em>str</em>) – The label name</p></li>
+<li><p><strong>label_info</strong> (<em>dict</em>) – The label info</p></li>
 <li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
 </ul>
 </dd>
@@ -232,12 +232,12 @@ random sampling proportional to the histogram). Defaults to “sample”</p></li
 <p>The abstract class that generates synthetic data.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pe.population.population.Population.initial">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/population.html#Population.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.population.Population.initial" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/population/population.html#Population.initial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.population.population.Population.initial" title="Permalink to this definition"></a></dt>
 <dd><p>Generate the initial synthetic data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>label_name</strong> (<em>str</em>) – The label name</p></li>
+<li><p><strong>label_info</strong> (<em>dict</em>) – The label info</p></li>
 <li><p><strong>num_samples</strong> (<em>int</em>) – The number of samples to generate</p></li>
 </ul>
 </dd>
