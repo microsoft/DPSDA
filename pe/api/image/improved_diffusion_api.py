@@ -153,10 +153,12 @@ class ImprovedDiffusion(API):
             {
                 IMAGE_DATA_COLUMN_NAME: list(samples),
                 IMAGE_MODEL_LABEL_COLUMN_NAME: list(labels),
+                LABEL_ID_COLUMN_NAME: 0,
             }
         )
+        metadata = {"label_info": [label_info]}
         execution_logger.info(f"RANDOM API: finished creating {num_samples} samples for label {label_name}")
-        return Data(data_frame=data_frame)
+        return Data(data_frame=data_frame, metadata=metadata)
 
     def variation_api(self, syn_data):
         """Generating variations of the synthetic data.
@@ -200,6 +202,7 @@ class ImprovedDiffusion(API):
             {
                 IMAGE_DATA_COLUMN_NAME: list(variations),
                 IMAGE_MODEL_LABEL_COLUMN_NAME: list(labels),
+                LABEL_ID_COLUMN_NAME: syn_data.data_frame[LABEL_ID_COLUMN_NAME].values,
             }
         )
         if LABEL_ID_COLUMN_NAME in syn_data.data_frame.columns:
