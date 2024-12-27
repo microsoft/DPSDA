@@ -224,10 +224,12 @@
             <span class="p">{</span>
                 <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">images</span><span class="p">),</span>
                 <span class="n">IMAGE_PROMPT_COLUMN_NAME</span><span class="p">:</span> <span class="n">prompt</span><span class="p">,</span>
+                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="StableDiffusion.variation_api"><a class="viewcode-back" href="../../../../api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.variation_api">[docs]</a>    <span class="k">def</span> <span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating variations of the synthetic data.</span>
@@ -271,6 +273,7 @@
             <span class="p">{</span>
                 <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">variations</span><span class="p">),</span>
                 <span class="n">IMAGE_PROMPT_COLUMN_NAME</span><span class="p">:</span> <span class="n">prompts</span><span class="p">,</span>
+                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="n">LABEL_ID_COLUMN_NAME</span> <span class="ow">in</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
