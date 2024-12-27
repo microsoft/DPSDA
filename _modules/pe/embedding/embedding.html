@@ -73,6 +73,7 @@
 <span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
 <span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">EMBEDDING_COLUMN_NAME</span>
+<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
 
 
 <div class="viewcode-block" id="Embedding"><a class="viewcode-back" href="../../../api/pe.embedding.html#pe.embedding.embedding.Embedding">[docs]</a><span class="k">class</span> <span class="nc">Embedding</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
@@ -90,7 +91,19 @@
 <span class="sd">        :param data: The data to compute the embedding</span>
 <span class="sd">        :type data: :py:class:`pe.data.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="o">...</span></div></div>
+        <span class="o">...</span></div>
+
+<div class="viewcode-block" id="Embedding.filter_uncomputed_rows"><a class="viewcode-back" href="../../../api/pe.embedding.html#pe.embedding.embedding.Embedding.filter_uncomputed_rows">[docs]</a>    <span class="k">def</span> <span class="nf">filter_uncomputed_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_frame</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_name</span> <span class="ow">in</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Embedding.merge_computed_rows"><a class="viewcode-back" href="../../../api/pe.embedding.html#pe.embedding.embedding.Embedding.merge_computed_rows">[docs]</a>    <span class="k">def</span> <span class="nf">merge_computed_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">computed_data</span><span class="p">):</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_frame</span>
+        <span class="n">computed_data_frame</span> <span class="o">=</span> <span class="n">computed_data</span><span class="o">.</span><span class="n">data_frame</span>
+        <span class="n">data_frame</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">computed_data_frame</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
