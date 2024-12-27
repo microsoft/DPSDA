@@ -54,11 +54,15 @@ class Inception(Embedding):
         :return: The data object with the computed embedding
         :rtype: :py:class:`pe.data.data.Data`
         """
-        if self.column_name in data.data_frame.columns:
+        uncomputed_data = self.filter_uncomputed_rows(data)
+        if len(uncomputed_data.data_frame) == 0:
             execution_logger.info(f"Embedding: {self.column_name} already computed")
             return data
-        execution_logger.info(f"Embedding: computing {self.column_name} for {len(data.data_frame)} samples")
-        x = np.stack(data.data_frame[IMAGE_DATA_COLUMN_NAME].values, axis=0)
+        execution_logger.info(
+            f"Embedding: computing {self.column_name} for {len(uncomputed_data.data_frame)}/{len(data.data_frame)}"
+            " samples"
+        )
+        x = np.stack(uncomputed_data.data_frame[IMAGE_DATA_COLUMN_NAME].values, axis=0)
         if x.shape[3] == 1:
             x = np.repeat(x, 3, axis=3)
         embeddings = []
@@ -74,6 +78,11 @@ class Inception(Embedding):
             embeddings.append(self._inception(torch.from_numpy(transformed_x).to(self._device)))
         embeddings = torch.cat(embeddings, dim=0)
         embeddings = embeddings.cpu().detach().numpy()
-        data.data_frame[self.column_name] = pd.Series(list(embeddings), index=data.data_frame.index)
-        execution_logger.info(f"Embedding: finished computing {self.column_name} for {len(data.data_frame)} samples")
-        return data
+        uncomputed_data.data_frame[self.column_name] = pd.Series(
+            list(embeddings), index=uncomputed_data.data_frame.index
+        )
+        execution_logger.info(
+            f"Embedding: finished computing {self.column_name} for "
+            f"{len(uncomputed_data.data_frame)}/{len(data.data_frame)} samples"
+        )
+        return self.merge_computed_rows(data, uncomputed_data)
