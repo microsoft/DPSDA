@@ -71,7 +71,6 @@
              
   <h1>Source code for pe.runner.pe</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">copy</span>
 
 <span class="kn">from</span> <span class="nn">pe.dp</span> <span class="kn">import</span> <span class="n">Gaussian</span>
 <span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
@@ -244,7 +243,6 @@
                     <span class="n">syn_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
                 <span class="n">syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">syn_data_list</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
                 <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
                 <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_log_metrics</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
 
