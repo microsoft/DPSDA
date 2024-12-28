@@ -1,5 +1,4 @@
 import numpy as np
-import copy
 
 from pe.dp import Gaussian
 from pe.data import Data
@@ -172,7 +171,6 @@ class PE(object):
                     syn_data_list.append(syn_data)
                 syn_data = Data.concat(syn_data_list, metadata=self._priv_data.metadata)
                 syn_data.data_frame.reset_index(drop=True, inplace=True)
-                syn_data.metadata = copy.deepcopy(self._priv_data.metadata)
                 syn_data.metadata.iteration = 0
                 self._log_metrics(syn_data)
 
