@@ -47,6 +47,6 @@ class ComputeFID(Callback):
             mu2=syn_mu,
             sigma2=syn_sigma,
         )
-        metric_item = FloatMetricItem(name=f"fid_{type(self._embedding).__name__}", value=fid)
+        metric_item = FloatMetricItem(name=f"fid_{self._embedding.column_name}", value=fid)
         execution_logger.info(f"Finished computing FID ({type(self._embedding).__name__})")
         return [metric_item]
