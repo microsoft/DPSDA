@@ -34,8 +34,6 @@ if __name__ == "__main__":
         embedding=embedding,
         mode="L2",
         lookahead_degree=8,
-        lookahead_log_folder=os.path.join(exp_folder, "lookahead"),
-        voting_details_log_folder=os.path.join(exp_folder, "voting_details"),
         api=api,
     )
     population = PEPopulation(api=api, histogram_threshold=4)
