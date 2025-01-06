@@ -1,3 +1,11 @@
+"""
+This example follows the experimental settings of the Camelyon17 experiments in the ICLR 2024 paper,
+"Differentially Private Synthetic Data via Foundation Model APIs 1: Images" (https://arxiv.org/abs/2305.15560).
+
+For detailed information about parameters and APIs, please consult the documentation of the Private Evolution library:
+https://microsoft.github.io/DPSDA/.
+"""
+
 from pe.data.image import Camelyon17
 from pe.logging import setup_logging
 from pe.runner import PE
