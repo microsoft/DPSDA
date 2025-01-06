@@ -56,6 +56,9 @@ def compute_epsilon(noise_multiplier, num_steps, delta, max_epsilon=1e7):
     :return: The epsilon value.
     :rtype: float
     """
+    if noise_multiplier == 0:
+        execution_logger.warning("Since noise_multiplier is 0, epsilon is INF.")
+        return np.inf
     return eps_Gaussian(delta=delta, mu=np.sqrt(num_steps) / noise_multiplier, max_epsilon=max_epsilon)
 
 
