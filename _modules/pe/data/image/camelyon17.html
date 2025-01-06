@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.data.image.camelyon17 &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,15 +70,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.data.image.camelyon17</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">wilds</span> <span class="kn">import</span> <span class="n">get_dataset</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">T</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">wilds</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">T</span>
 
-<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
 
 <span class="n">CAMELYON17_LABEL_NAMES</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;no_tumor&quot;</span><span class="p">,</span>
@@ -86,10 +86,10 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="Camelyon17"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17">[docs]</a><span class="k">class</span> <span class="nc">Camelyon17</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<div class="viewcode-block" id="Camelyon17"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Camelyon17</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The Camelyon17 dataset.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Camelyon17.__init__"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+<div class="viewcode-block" id="Camelyon17.__init__"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param split: The split of the dataset. It should be either &quot;train&quot;, &quot;val&quot;, or &quot;test&quot;, defaults to &quot;train&quot;</span>

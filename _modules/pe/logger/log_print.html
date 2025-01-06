@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.logger.log_print &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,15 +70,15 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.logger.log_print</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">pe.metric_item</span> <span class="kn">import</span> <span class="n">FloatMetricItem</span><span class="p">,</span> <span class="n">FloatListMetricItem</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.metric_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatMetricItem</span><span class="p">,</span> <span class="n">FloatListMetricItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 
 
-<div class="viewcode-block" id="LogPrint"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint">[docs]</a><span class="k">class</span> <span class="nc">LogPrint</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+<div class="viewcode-block" id="LogPrint"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">LogPrint</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The logger that prints the metrics to the console/file using :py:const:`pe.logging.execution_logger`.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="LogPrint.__init__"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_iteration_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="LogPrint.__init__"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_iteration_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param log_iteration_freq: The frequency to log the metrics, defaults to 1</span>
@@ -86,7 +86,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_log_iteration_freq</span> <span class="o">=</span> <span class="n">log_iteration_freq</span></div>
 
-<div class="viewcode-block" id="LogPrint.log"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
+<div class="viewcode-block" id="LogPrint.log"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.log_print.LogPrint.log">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the metrics to the console/file.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>

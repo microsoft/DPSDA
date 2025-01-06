@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.dp.gaussian &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,17 +70,17 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.dp.gaussian</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">scipy.optimize</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root_scalar</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root_scalar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pe.dp</span> <span class="kn">import</span> <span class="n">DP</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">DP_HISTOGRAM_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.dp</span><span class="w"> </span><span class="kn">import</span> <span class="n">DP</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">CLEAN_HISTOGRAM_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DP_HISTOGRAM_COLUMN_NAME</span>
 
 
-<div class="viewcode-block" id="delta_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.delta_Gaussian">[docs]</a><span class="k">def</span> <span class="nf">delta_Gaussian</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
+<div class="viewcode-block" id="delta_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.delta_Gaussian">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">delta_Gaussian</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">mu</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute delta of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</span>
 
 <span class="sd">    :param eps: The epsilon value</span>
@@ -97,7 +97,7 @@
     <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">eps</span> <span class="o">/</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span> <span class="o">*</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="n">eps</span> <span class="o">/</span> <span class="n">mu</span> <span class="o">-</span> <span class="n">mu</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="eps_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.eps_Gaussian">[docs]</a><span class="k">def</span> <span class="nf">eps_Gaussian</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="p">):</span>
+<div class="viewcode-block" id="eps_Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.eps_Gaussian">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">eps_Gaussian</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute eps of Gaussian mechanism with shift mu or equivalently noise scale 1/mu.</span>
 
 <span class="sd">    :param delta: The delta value</span>
@@ -108,13 +108,13 @@
 <span class="sd">    :type max_epsilon: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">delta_Gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span> <span class="o">-</span> <span class="n">delta</span>
 
     <span class="k">return</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;brentq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span></div>
 
 
-<div class="viewcode-block" id="compute_epsilon"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.compute_epsilon">[docs]</a><span class="k">def</span> <span class="nf">compute_epsilon</span><span class="p">(</span><span class="n">noise_multiplier</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="o">=</span><span class="mf">1e7</span><span class="p">):</span>
+<div class="viewcode-block" id="compute_epsilon"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.compute_epsilon">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">compute_epsilon</span><span class="p">(</span><span class="n">noise_multiplier</span><span class="p">,</span> <span class="n">num_steps</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="o">=</span><span class="mf">1e7</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute epsilon of Gaussian mechanism.</span>
 
 <span class="sd">    :param noise_multiplier: The noise multiplier</span>
@@ -128,10 +128,13 @@
 <span class="sd">    :return: The epsilon value.</span>
 <span class="sd">    :rtype: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">noise_multiplier</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Since noise_multiplier is 0, epsilon is INF.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
     <span class="k">return</span> <span class="n">eps_Gaussian</span><span class="p">(</span><span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">num_steps</span><span class="p">)</span> <span class="o">/</span> <span class="n">noise_multiplier</span><span class="p">,</span> <span class="n">max_epsilon</span><span class="o">=</span><span class="n">max_epsilon</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_noise_multiplier"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.get_noise_multiplier">[docs]</a><span class="k">def</span> <span class="nf">get_noise_multiplier</span><span class="p">(</span>
+<div class="viewcode-block" id="get_noise_multiplier"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.get_noise_multiplier">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">get_noise_multiplier</span><span class="p">(</span>
     <span class="n">epsilon</span><span class="p">,</span>
     <span class="n">num_steps</span><span class="p">,</span>
     <span class="n">delta</span><span class="p">,</span>
@@ -155,7 +158,7 @@
 <span class="sd">    :type max_epsilon: float, optional</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span>
             <span class="n">compute_epsilon</span><span class="p">(</span>
                 <span class="n">noise_multiplier</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
@@ -174,10 +177,10 @@
     <span class="k">return</span> <span class="n">output</span><span class="o">.</span><span class="n">root</span></div>
 
 
-<div class="viewcode-block" id="Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian">[docs]</a><span class="k">class</span> <span class="nc">Gaussian</span><span class="p">(</span><span class="n">DP</span><span class="p">):</span>
+<div class="viewcode-block" id="Gaussian"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Gaussian</span><span class="p">(</span><span class="n">DP</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The Gaussian mechanism for Differential Privacy (DP) histogram.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Gaussian.set_epsilon_and_delta"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta">[docs]</a>    <span class="k">def</span> <span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
+<div class="viewcode-block" id="Gaussian.set_epsilon_and_delta"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the epsilon and delta for the Gaussian mechanism.</span>
 
 <span class="sd">        :param num_iterations: The number of PE iterations</span>
@@ -228,7 +231,7 @@
             <span class="sa">f</span><span class="s2">&quot;num_iterations=</span><span class="si">{</span><span class="n">num_iterations</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Gaussian.add_noise"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.add_noise">[docs]</a>    <span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<div class="viewcode-block" id="Gaussian.add_noise"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.gaussian.Gaussian.add_noise">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add noise to the histogram of synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data to add noise. The synthetic data should have the</span>

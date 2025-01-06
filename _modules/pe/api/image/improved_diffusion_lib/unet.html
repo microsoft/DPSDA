@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.api.image.improved_diffusion_lib.unet &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -79,18 +79,18 @@
 <span class="sd">not supported by DataParallel.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion.unet</span> <span class="kn">import</span> <span class="n">UNetModel</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion.script_util</span> <span class="kn">import</span> <span class="n">NUM_CLASSES</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.unet</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNetModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.script_util</span><span class="w"> </span><span class="kn">import</span> <span class="n">NUM_CLASSES</span>
 
 
-<div class="viewcode-block" id="FP32UNetModel"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel">[docs]</a><span class="k">class</span> <span class="nc">FP32UNetModel</span><span class="p">(</span><span class="n">UNetModel</span><span class="p">):</span>
+<div class="viewcode-block" id="FP32UNetModel"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">FP32UNetModel</span><span class="p">(</span><span class="n">UNetModel</span><span class="p">):</span>
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">inner_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inner_dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span></div>
 
 
-<div class="viewcode-block" id="create_model"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.create_model">[docs]</a><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span>
+<div class="viewcode-block" id="create_model"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.create_model">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">create_model</span><span class="p">(</span>
     <span class="n">image_size</span><span class="p">,</span>
     <span class="n">num_channels</span><span class="p">,</span>
     <span class="n">num_res_blocks</span><span class="p">,</span>

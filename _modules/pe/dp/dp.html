@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.dp.dp &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,14 +70,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.dp.dp</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
 
 
-<div class="viewcode-block" id="DP"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.dp.DP">[docs]</a><span class="k">class</span> <span class="nc">DP</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<div class="viewcode-block" id="DP"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.dp.DP">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">DP</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class for Differential Privacy (DP) histogram mechanism.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DP.set_epsilon_and_delta"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.dp.DP.set_epsilon_and_delta">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the epsilon and delta for the DP mechanism. Either epsilon or noise_multiplier should be None.</span>
 
 <span class="sd">        :param num_iterations: The number of PE iterations</span>
@@ -92,7 +92,7 @@
         <span class="o">...</span></div>
 
 <div class="viewcode-block" id="DP.add_noise"><a class="viewcode-back" href="../../../api/pe.dp.html#pe.dp.dp.DP.add_noise">[docs]</a>    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add noise to the histogram of synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data to add noise</span>

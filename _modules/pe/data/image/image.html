@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.data.image.image &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,22 +70,22 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.data.image.image</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
-<span class="kn">import</span> <span class="nn">blobfile</span> <span class="k">as</span> <span class="nn">bf</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
-<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">T</span>
-<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">blobfile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">T</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
 
 
-<div class="viewcode-block" id="_list_image_files_recursively"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image._list_image_files_recursively">[docs]</a><span class="k">def</span> <span class="nf">_list_image_files_recursively</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="_list_image_files_recursively"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image._list_image_files_recursively">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">_list_image_files_recursively</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;List all image files in a directory recursively. Adapted from</span>
 <span class="sd">    https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/image_datasets.py</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -100,8 +100,8 @@
     <span class="k">return</span> <span class="n">results</span></div>
 
 
-<div class="viewcode-block" id="ImageDataset"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image.ImageDataset">[docs]</a><span class="k">class</span> <span class="nc">ImageDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
+<div class="viewcode-block" id="ImageDataset"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image.ImageDataset">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">ImageDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
@@ -112,10 +112,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">class_name_to_id</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_names</span><span class="p">)}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">local_classes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">class_name_to_id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_class_names</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_images</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_images</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="k">with</span> <span class="n">bf</span><span class="o">.</span><span class="n">BlobFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">pil_image</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -127,7 +127,7 @@
         <span class="k">return</span> <span class="n">arr</span><span class="p">,</span> <span class="n">label</span></div>
 
 
-<div class="viewcode-block" id="load_image_folder"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image.load_image_folder">[docs]</a><span class="k">def</span> <span class="nf">load_image_folder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">class_cond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<div class="viewcode-block" id="load_image_folder"><a class="viewcode-back" href="../../../../api/pe.data.image.html#pe.data.image.image.load_image_folder">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">load_image_folder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">class_cond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a image dataset from a folder that contains image files. The folder can be nested arbitrarily. The image</span>
 <span class="sd">    file names must be in the format of &quot;{class_name without &#39;_&#39;}_{suffix in any string}.ext&quot;. The &quot;ext&quot; can be &quot;jpg&quot;,</span>
 <span class="sd">    &quot;jpeg&quot;, &quot;png&quot;, or &quot;gif&quot;. The class names will be extracted from the file names before the first &quot;_&quot;. If class_cond</span>

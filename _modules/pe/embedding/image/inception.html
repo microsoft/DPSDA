@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.embedding.image.inception &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,31 +70,31 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.embedding.image.inception</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
-<span class="kn">from</span> <span class="nn">cleanfid.inception_torchscript</span> <span class="kn">import</span> <span class="n">InceptionV3W</span>
-<span class="kn">from</span> <span class="nn">cleanfid.resize</span> <span class="kn">import</span> <span class="n">build_resizer</span>
-<span class="kn">from</span> <span class="nn">cleanfid.resize</span> <span class="kn">import</span> <span class="n">make_resizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cleanfid.inception_torchscript</span><span class="w"> </span><span class="kn">import</span> <span class="n">InceptionV3W</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cleanfid.resize</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_resizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cleanfid.resize</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_resizer</span>
 
-<span class="kn">from</span> <span class="nn">pe.embedding</span> <span class="kn">import</span> <span class="n">Embedding</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.embedding</span><span class="w"> </span><span class="kn">import</span> <span class="n">Embedding</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 
 
-<div class="viewcode-block" id="to_uint8"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.to_uint8">[docs]</a><span class="k">def</span> <span class="nf">to_uint8</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
+<div class="viewcode-block" id="to_uint8"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.to_uint8">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">to_uint8</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">max</span> <span class="o">-</span> <span class="nb">min</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="mi">255</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span></div>
 
 
-<div class="viewcode-block" id="Inception"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception">[docs]</a><span class="k">class</span> <span class="nc">Inception</span><span class="p">(</span><span class="n">Embedding</span><span class="p">):</span>
+<div class="viewcode-block" id="Inception"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Inception</span><span class="p">(</span><span class="n">Embedding</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Inception embedding of images.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Inception.__init__"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+<div class="viewcode-block" id="Inception.__init__"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param res: The resolution of the images. The images will be resized to (res, res) before computing the</span>
@@ -118,7 +118,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_resizer</span> <span class="o">=</span> <span class="n">build_resizer</span><span class="p">(</span><span class="s2">&quot;clean&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="n">batch_size</span></div>
 
-<div class="viewcode-block" id="Inception.compute_embedding"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception.compute_embedding">[docs]</a>    <span class="k">def</span> <span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="Inception.compute_embedding"><a class="viewcode-back" href="../../../../api/pe.embedding.image.html#pe.embedding.image.inception.Inception.compute_embedding">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the Inception embedding of images.</span>
 
 <span class="sd">        :param data: The data object containing the images</span>

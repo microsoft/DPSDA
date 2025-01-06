@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.data.data &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,16 +70,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.data.data</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmegaConf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
 
 
-<div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data">[docs]</a><span class="k">class</span> <span class="nc">Data</span><span class="p">:</span>
+<div class="viewcode-block" id="Data"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">Data</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The class that holds the private data or synthetic data from PE.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Data.__init__"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_frame</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{}):</span>
+<div class="viewcode-block" id="Data.__init__"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_frame</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{}):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param data_frame: A pandas dataframe that holds the data, defaults to None</span>
@@ -92,10 +92,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_data_frame_file_name</span> <span class="o">=</span> <span class="s2">&quot;data_frame.pkl&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span> <span class="o">=</span> <span class="s2">&quot;metadata.yaml&quot;</span></div>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Metadata:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="si">}</span><span class="se">\n</span><span class="s2">Data frame:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<div class="viewcode-block" id="Data.save_checkpoint"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.save_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.save_checkpoint"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.save_checkpoint">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the data to a checkpoint.</span>
 
 <span class="sd">        :param path: The folder to save the checkpoint</span>
@@ -112,7 +112,7 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Data.load_checkpoint"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.load_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.load_checkpoint"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.load_checkpoint">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Load data from a checkpoint</span>
 
 <span class="sd">        :param path: The folder that contains the checkpoint</span>
@@ -129,7 +129,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="Data.filter_label_id"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.filter_label_id">[docs]</a>    <span class="k">def</span> <span class="nf">filter_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.filter_label_id"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.filter_label_id">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">filter_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter the data frame according to a label id</span>
 
 <span class="sd">        :param label_id: The label id that is used to filter the data frame</span>
@@ -142,7 +142,7 @@
             <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
         <span class="p">)</span></div>
 
-<div class="viewcode-block" id="Data.set_label_id"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.set_label_id">[docs]</a>    <span class="k">def</span> <span class="nf">set_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.set_label_id"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.set_label_id">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the label id for the data frame</span>
 
 <span class="sd">        :param label_id: The label id to set</span>
@@ -150,7 +150,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_id</span></div>
 
-<div class="viewcode-block" id="Data.truncate"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.truncate">[docs]</a>    <span class="k">def</span> <span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.truncate"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.truncate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Truncate the data frame to a certain number of samples</span>
 
 <span class="sd">        :param num_samples: The number of samples to truncate</span>
@@ -160,7 +160,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[:</span><span class="n">num_samples</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Data.random_truncate"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.random_truncate">[docs]</a>    <span class="k">def</span> <span class="nf">random_truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.random_truncate"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.random_truncate">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">random_truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Randomly truncate the data frame to a certain number of samples</span>
 
 <span class="sd">        :param num_samples: The number of samples to randomly truncate</span>
@@ -171,7 +171,7 @@
         <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Data.merge"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.merge">[docs]</a>    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="Data.merge"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.merge">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge the data object with another data object</span>
 
 <span class="sd">        :param data: The data object to merge</span>
@@ -189,7 +189,7 @@
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Data.concat"><a class="viewcode-back" href="../../../api/pe.data.html#pe.data.data.Data.concat">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Concatenate the data frames of a list of data objects</span>
 
 <span class="sd">        :param data_list: The list of data objects to concatenate</span>

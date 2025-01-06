@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.runner.pe &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,18 +70,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.runner.pe</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pe.dp</span> <span class="kn">import</span> <span class="n">Gaussian</span>
-<span class="kn">from</span> <span class="nn">pe.data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.dp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Gaussian</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 
 
-<div class="viewcode-block" id="PE"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE">[docs]</a><span class="k">class</span> <span class="nc">PE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="PE"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">PE</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The class that runs the PE algorithm.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="PE.__init__"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">histogram</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loggers</span><span class="o">=</span><span class="p">[],</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[]):</span>
+<div class="viewcode-block" id="PE.__init__"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">histogram</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">loggers</span><span class="o">=</span><span class="p">[],</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
@@ -108,7 +108,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_loggers</span> <span class="o">=</span> <span class="n">loggers</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span> <span class="o">=</span> <span class="n">callbacks</span></div>
 
-<div class="viewcode-block" id="PE.load_checkpoint"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.load_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint_path</span><span class="p">):</span>
+<div class="viewcode-block" id="PE.load_checkpoint"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.load_checkpoint">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint_path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Load a checkpoint.</span>
 
 <span class="sd">        :param checkpoint_path: The path to the checkpoint</span>
@@ -121,7 +121,7 @@
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">return</span> <span class="n">syn_data</span></div>
 
-<div class="viewcode-block" id="PE._log_metrics"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._log_metrics">[docs]</a>    <span class="k">def</span> <span class="nf">_log_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<div class="viewcode-block" id="PE._log_metrics"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._log_metrics">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">_log_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log metrics.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
@@ -137,7 +137,7 @@
         <span class="k">for</span> <span class="n">metric_item</span> <span class="ow">in</span> <span class="n">metric_items</span><span class="p">:</span>
             <span class="n">metric_item</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="PE._get_num_samples_per_label_id"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._get_num_samples_per_label_id">[docs]</a>    <span class="k">def</span> <span class="nf">_get_num_samples_per_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">fraction_per_label_id</span><span class="p">):</span>
+<div class="viewcode-block" id="PE._get_num_samples_per_label_id"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._get_num_samples_per_label_id">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_num_samples_per_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">fraction_per_label_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the number of samples per label id given the total number of samples</span>
 
 <span class="sd">        :param num_samples: The total number of samples</span>
@@ -176,12 +176,12 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;num_samples is so small that the number of samples for some label ids is zero.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">num_samples_per_label_id</span></div>
 
-<div class="viewcode-block" id="PE._clean_up_loggers"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._clean_up_loggers">[docs]</a>    <span class="k">def</span> <span class="nf">_clean_up_loggers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="PE._clean_up_loggers"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE._clean_up_loggers">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">_clean_up_loggers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up loggers.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">logger</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loggers</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">clean_up</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="PE.run"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+<div class="viewcode-block" id="PE.run"><a class="viewcode-back" href="../../../api/pe.runner.html#pe.runner.pe.PE.run">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">num_samples_schedule</span><span class="p">,</span>
         <span class="n">delta</span><span class="p">,</span>

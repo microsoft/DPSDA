@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.api.image.improved_diffusion_lib.gaussian_diffusion &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -79,15 +79,15 @@
 <span class="sd">start_image arguments.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">torch</span> <span class="k">as</span> <span class="nn">th</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion.respace</span> <span class="kn">import</span> <span class="n">SpacedDiffusion</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion.respace</span> <span class="kn">import</span> <span class="n">space_timesteps</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion.gaussian_diffusion</span> <span class="kn">import</span> <span class="n">_extract_into_tensor</span>
-<span class="kn">from</span> <span class="nn">improved_diffusion</span> <span class="kn">import</span> <span class="n">gaussian_diffusion</span> <span class="k">as</span> <span class="n">gd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">th</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.respace</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpacedDiffusion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.respace</span><span class="w"> </span><span class="kn">import</span> <span class="n">space_timesteps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.gaussian_diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">_extract_into_tensor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_diffusion</span> <span class="k">as</span> <span class="n">gd</span>
 
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion">[docs]</a><span class="k">class</span> <span class="nc">SkippedSpacedDiffusion</span><span class="p">(</span><span class="n">SpacedDiffusion</span><span class="p">):</span>
-<div class="viewcode-block" id="SkippedSpacedDiffusion.p_sample_loop"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop">[docs]</a>    <span class="k">def</span> <span class="nf">p_sample_loop</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SkippedSpacedDiffusion</span><span class="p">(</span><span class="n">SpacedDiffusion</span><span class="p">):</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.p_sample_loop"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">p_sample_loop</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">shape</span><span class="p">,</span>
@@ -133,7 +133,7 @@
             <span class="n">final</span> <span class="o">=</span> <span class="n">sample</span>
         <span class="k">return</span> <span class="n">final</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion.p_sample_loop_progressive"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop_progressive">[docs]</a>    <span class="k">def</span> <span class="nf">p_sample_loop_progressive</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.p_sample_loop_progressive"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop_progressive">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">p_sample_loop_progressive</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">shape</span><span class="p">,</span>
@@ -168,7 +168,7 @@
             <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_sample</span><span class="p">(</span><span class="n">start_image</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t_batch</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">progress</span><span class="p">:</span>
             <span class="c1"># Lazy import so that we don&#39;t depend on tqdm.</span>
-            <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
             <span class="n">indices</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 
@@ -186,7 +186,7 @@
                 <span class="k">yield</span> <span class="n">out</span>
                 <span class="n">img</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample">[docs]</a>    <span class="k">def</span> <span class="nf">ddim_sample</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">ddim_sample</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">x</span><span class="p">,</span>
@@ -222,7 +222,7 @@
         <span class="n">sample</span> <span class="o">=</span> <span class="n">mean_pred</span> <span class="o">+</span> <span class="n">nonzero_mask</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">noise</span>
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;sample&quot;</span><span class="p">:</span> <span class="n">sample</span><span class="p">,</span> <span class="s2">&quot;pred_xstart&quot;</span><span class="p">:</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;pred_xstart&quot;</span><span class="p">]}</span></div>
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_reverse_sample"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_reverse_sample">[docs]</a>    <span class="k">def</span> <span class="nf">ddim_reverse_sample</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_reverse_sample"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_reverse_sample">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">ddim_reverse_sample</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">x</span><span class="p">,</span>
@@ -256,7 +256,7 @@
 
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;sample&quot;</span><span class="p">:</span> <span class="n">mean_pred</span><span class="p">,</span> <span class="s2">&quot;pred_xstart&quot;</span><span class="p">:</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;pred_xstart&quot;</span><span class="p">]}</span></div>
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample_loop"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop">[docs]</a>    <span class="k">def</span> <span class="nf">ddim_sample_loop</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample_loop"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">ddim_sample_loop</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">shape</span><span class="p">,</span>
@@ -292,7 +292,7 @@
             <span class="n">final</span> <span class="o">=</span> <span class="n">sample</span>
         <span class="k">return</span> <span class="n">final</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample_loop_progressive"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop_progressive">[docs]</a>    <span class="k">def</span> <span class="nf">ddim_sample_loop_progressive</span><span class="p">(</span>
+<div class="viewcode-block" id="SkippedSpacedDiffusion.ddim_sample_loop_progressive"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop_progressive">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">ddim_sample_loop_progressive</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">model</span><span class="p">,</span>
         <span class="n">shape</span><span class="p">,</span>
@@ -326,7 +326,7 @@
             <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">q_sample</span><span class="p">(</span><span class="n">start_image</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="n">t_batch</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="n">img</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">progress</span><span class="p">:</span>
             <span class="c1"># Lazy import so that we don&#39;t depend on tqdm.</span>
-            <span class="kn">from</span> <span class="nn">tqdm.auto</span> <span class="kn">import</span> <span class="n">tqdm</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
             <span class="n">indices</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 
@@ -346,7 +346,7 @@
                 <span class="n">img</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">]</span></div></div>
 
 
-<div class="viewcode-block" id="create_gaussian_diffusion"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.create_gaussian_diffusion">[docs]</a><span class="k">def</span> <span class="nf">create_gaussian_diffusion</span><span class="p">(</span>
+<div class="viewcode-block" id="create_gaussian_diffusion"><a class="viewcode-back" href="../../../../../api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.create_gaussian_diffusion">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">create_gaussian_diffusion</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
     <span class="n">learn_sigma</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>

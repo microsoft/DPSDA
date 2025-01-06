@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.callback.image.sample_images &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,18 +70,18 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.callback.image.sample_images</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">pe.callback.callback</span> <span class="kn">import</span> <span class="n">Callback</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.metric_item</span> <span class="kn">import</span> <span class="n">ImageListMetricItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.callback.callback</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.metric_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageListMetricItem</span>
 
 
-<div class="viewcode-block" id="SampleImages"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages">[docs]</a><span class="k">class</span> <span class="nc">SampleImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<div class="viewcode-block" id="SampleImages"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SampleImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that samples images from the synthetic data.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="SampleImages.__init__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="viewcode-block" id="SampleImages.__init__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param num_images_per_class: number of images to sample per class, defaults to 10</span>
@@ -89,7 +89,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_images_per_class</span> <span class="o">=</span> <span class="n">num_images_per_class</span></div>
 
-<div class="viewcode-block" id="SampleImages.__call__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<div class="viewcode-block" id="SampleImages.__call__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__call__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that samples images from the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data</span>

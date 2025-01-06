@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.callback.image.save_all_images &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,20 +70,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.callback.image.save_all_images</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">imageio</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">imageio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
-<span class="kn">from</span> <span class="nn">pe.callback.callback</span> <span class="kn">import</span> <span class="n">Callback</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.constant.data</span> <span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.callback.callback</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 
 
-<div class="viewcode-block" id="SaveAllImages"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages">[docs]</a><span class="k">class</span> <span class="nc">SaveAllImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<div class="viewcode-block" id="SaveAllImages"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">SaveAllImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that saves all images.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="SaveAllImages.__init__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="SaveAllImages.__init__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">output_folder</span><span class="p">,</span>
         <span class="n">path_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{iteration:09d}</span><span class="s2">/</span><span class="si">{label_id}</span><span class="s2">_</span><span class="si">{label_name}</span><span class="s2">/</span><span class="si">{index}</span><span class="s2">.png&quot;</span><span class="p">,</span>
@@ -103,7 +103,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_path_format</span> <span class="o">=</span> <span class="n">path_format</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tqdm_enabled</span> <span class="o">=</span> <span class="n">tqdm_enabled</span></div>
 
-<div class="viewcode-block" id="SaveAllImages._save_image"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages._save_image">[docs]</a>    <span class="k">def</span> <span class="nf">_save_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">label_id</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
+<div class="viewcode-block" id="SaveAllImages._save_image"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages._save_image">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">_save_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">label_name</span><span class="p">,</span> <span class="n">label_id</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;A helper function that saves an image.&quot;&quot;&quot;</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span>
@@ -117,7 +117,7 @@
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">imageio</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SaveAllImages.__call__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__call__">[docs]</a>    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<div class="viewcode-block" id="SaveAllImages.__call__"><a class="viewcode-back" href="../../../../api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__call__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that saves all images.</span>
 
 <span class="sd">        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data</span>

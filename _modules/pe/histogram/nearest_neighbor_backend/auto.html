@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.histogram.nearest_neighbor_backend.auto &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,11 +70,11 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.histogram.nearest_neighbor_backend.auto</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">traceback</span>
-<span class="kn">from</span> <span class="nn">pe.logging</span> <span class="kn">import</span> <span class="n">execution_logger</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 
 
-<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../../api/pe.histogram.nearest_neighbor_backend.html#pe.histogram.nearest_neighbor_backend.auto.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+<div class="viewcode-block" id="search"><a class="viewcode-back" href="../../../../api/pe.histogram.nearest_neighbor_backend.html#pe.histogram.nearest_neighbor_backend.auto.search">[docs]</a><span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors of the private embedding in the synthetic embedding using Faiss. If Faiss is not</span>
 <span class="sd">    installed or an error occurs, fall back to the sklearn backend.</span>
 
@@ -93,7 +93,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Using faiss backend for nearest neighbor search&quot;</span><span class="p">)</span>
-        <span class="kn">from</span> <span class="nn">pe.histogram.nearest_neighbor_backend.faiss</span> <span class="kn">import</span> <span class="n">search</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pe.histogram.nearest_neighbor_backend.faiss</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
 
         <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -104,7 +104,7 @@
             <span class="s2">&quot;https://microsoft.github.io/DPSDA/getting_started/installation.html#faiss&quot;</span>
         <span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Using sklearn backend for nearest neighbor search&quot;</span><span class="p">)</span>
-        <span class="kn">from</span> <span class="nn">pe.histogram.nearest_neighbor_backend.sklearn</span> <span class="kn">import</span> <span class="n">search</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pe.histogram.nearest_neighbor_backend.sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
 
         <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span></div>
 </pre></div>

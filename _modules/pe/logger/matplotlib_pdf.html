@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pe.logger.matplotlib_pdf &mdash; Private Evolution 0.0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
@@ -70,16 +70,16 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.logger.matplotlib_pdf</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="kn">from</span> <span class="nn">.logger</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">pe.metric_item</span> <span class="kn">import</span> <span class="n">MatplotlibMetricItem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.metric_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">MatplotlibMetricItem</span>
 
 
-<div class="viewcode-block" id="MatplotlibPDF"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF">[docs]</a><span class="k">class</span> <span class="nc">MatplotlibPDF</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
+<div class="viewcode-block" id="MatplotlibPDF"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF">[docs]</a><span class="k">class</span><span class="w"> </span><span class="nc">MatplotlibPDF</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The logger that saves Matplotlib figures to PDF files.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="MatplotlibPDF.__init__"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="viewcode-block" id="MatplotlibPDF.__init__"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">output_folder</span><span class="p">,</span>
         <span class="n">path_separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
@@ -99,7 +99,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span> <span class="o">=</span> <span class="n">path_separator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_iteration_format</span> <span class="o">=</span> <span class="n">iteration_format</span></div>
 
-<div class="viewcode-block" id="MatplotlibPDF.log"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.log">[docs]</a>    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
+<div class="viewcode-block" id="MatplotlibPDF.log"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.log">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the Matplotlib figures to PDF files.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
@@ -113,7 +113,7 @@
             <span class="n">pdf_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_pdf_path</span><span class="p">(</span><span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
             <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MatplotlibPDF._get_pdf_path"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path">[docs]</a>    <span class="k">def</span> <span class="nf">_get_pdf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<div class="viewcode-block" id="MatplotlibPDF._get_pdf_path"><a class="viewcode-back" href="../../../api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">_get_pdf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the PDF save path.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
