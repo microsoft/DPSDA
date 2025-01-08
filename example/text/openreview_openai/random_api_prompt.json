@@ -1,0 +1,12 @@
+{
+    "message_template": [
+        {
+            "role": "system",
+            "content": "Given the area and final decision of a research paper, you are required to provide a **detailed and long** review consisting of the following content: 1. briefly summarizing the paper in 3-5 sentences; 2. listing the strengths and weaknesses of the paper in details; 3. briefly summarizing the review in 3-5 sentences."
+        },
+        {
+            "role": "user",
+            "content": "Area: {area}\tRecommendation: {recommendation}"
+        }
+    ]
+}

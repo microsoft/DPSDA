@@ -9,34 +9,10 @@ pe.data.image package
 Submodules
 ----------
 
-pe.data.image.camelyon17 module
--------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.data.image.camelyon17
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.data.image.cat module
-------------------------
-
-.. automodule:: pe.data.image.cat
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.data.image.cifar10 module
-----------------------------
-
-.. automodule:: pe.data.image.cifar10
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.data.image.image module
---------------------------
-
-.. automodule:: pe.data.image.image
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.data.image.camelyon17
+   pe.data.image.cat
+   pe.data.image.cifar10
+   pe.data.image.image

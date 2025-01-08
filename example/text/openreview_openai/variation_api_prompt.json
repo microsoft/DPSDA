@@ -1,0 +1,12 @@
+{
+    "message_template": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information."
+        },
+        {
+            "role": "user",
+            "content": "Based on the area and final decision of a research paper, you are required to fill in the blanks for the input sentences **in a concise manner**. If there is no blanks, please output the original input sentences.\nArea: Applications (eg, speech processing, computer vision, NLP)\tRecommendation: 3: reject, not good enough.\nInput: __ proposes an__ method_ ROI detection__arial_f_ without attention_. The_ map can_ used____ for__ and____ show_ improvements on different medical__._Strength__ \n--The idea using__actual images_ sali__ generation_ interesting.\n\n_The improvement____aks is significant. \n\nWeak____The___ and_____ experiments are needed_ such as__f___the_ method_ interesting_ but_ novelty_ limited\nFill-in-Blanks and your answer MUST be exactly 85 words: This paper proposes an attention generation method for ROI detection by adversarial counterfactual without attention label. The attention map can be used to highlight useful information for disease classification and detection. The experiments show its improvements on different medical imaging tasks.  \nStrengths: \n--The idea using counterfactual images for saliency map generation is interesting.\n\n--The improvement for medical imaging taks is significant. \n\nWeaknesses:\n\n--The novelty is simple and limited. \n\n--More experiments are needed, such as existing counterfactual generation.\nthe proposed method is interesting, but the novelty is limited\n\n\nArea: {area}\tRecommendation: {recommendation}.\nInput: {masked_sample}\nFill-in-Blanks and your answer MUST be exactly {word_count} words:"
+        }
+    ]
+}

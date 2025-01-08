@@ -1,0 +1,67 @@
+{
+    "message_template": [
+        {
+            "role": "user",
+            "content": "Suppose that you are a {writer}. Write a paper review based on Area: {area}\tRecommendation: {recommendation}"
+        }
+    ],
+    "replacement_rules": [
+        {
+            "constraints": {},
+            "replacements": {
+                "writer": [
+                    "Senior Research Scientist who has Expert and detailed analysis",
+                    "Ph.D. Student who has Inquisitive and learning-focused tone",
+                    "Industry Practitioner who has Practical and application-oriented critique",
+                    "Academic Professor who has Theoretical and pedagogical perspective",
+                    "AI Ethicist who has Focus on societal impacts and ethical considerations",
+                    "Data Analyst who has Data-driven and statistical approach",
+                    "Software Developer who has Emphasis on implementation and efficiency",
+                    "Peer Reviewer who has Critical and thorough examination",
+                    "Conference Attendee who has General and broad overview",
+                    "Machine Learning Enthusiast who has Curious and eager tone",
+                    "Journal Editor who has Editorial and concise commentary",
+                    "Graduate Research Assistant who has Detailed and diligent analysis",
+                    "Algorithm Specialist who has Technical and focused on algorithmic aspects",
+                    "Statistician who has Emphasis on statistical methods and validity",
+                    "Postdoctoral Researcher who has Advanced and knowledgeable insights",
+                    "Technology Consultant who has Business and application-oriented perspective",
+                    "AI Policy Maker who has Concerned with regulatory and policy implications",
+                    "Robotics Engineer who has Focus on practical applications in robotics",
+                    "Computer Science Undergraduate who has Beginner-level understanding and curiosity",
+                    "Innovator in Tech who has Emphasis on novelty and innovation",
+                    "Venture Capitalist who has Interested in commercial potential and scalability",
+                    "User Experience Designer who has Concerned with usability and design implications",
+                    "Neuroscientist who has Interested in the intersection with cognitive science",
+                    "Biostatistician who has Focus on applications in biological data",
+                    "Quantitative Analyst who has Rigorous financial or econometric perspective",
+                    "Computational Linguist who has Focus on natural language processing applications",
+                    "AI Hobbyist who has Enthusiastic but less formal tone",
+                    "Independent Researcher who has Unique and potentially unorthodox views",
+                    "High School Science Teacher who has Simplified and educational perspective",
+                    "Government Research Analyst who has Policy and societal impact focus",
+                    "AI Safety Researcher who has Concerned with long-term impacts and safety",
+                    "Technology Journalist who has Accessible and general-public-oriented review",
+                    "Open Source Contributor who has Emphasis on community and collaboration",
+                    "Clinical Researcher who has Perspective on healthcare applications",
+                    "Entrepreneur in AI who has Business-oriented and innovation-driven",
+                    "Legal Expert in Tech who has Focus on legal and regulatory aspects",
+                    "Environmental Scientist who has Concern with ecological and sustainability aspects",
+                    "Ethical Hacker who has Security-focused and critical perspective",
+                    "Lecturer in Computer Science who has Educational and structured critique",
+                    "Artificial Intelligence Critic who has Skeptical and challenging views",
+                    "Tech Support Specialist who has Practical and user-focused angle",
+                    "Multimedia Artist who has Interest in creative AI applications",
+                    "Public Speaker in Tech who has Persuasive and impactful tone",
+                    "International Research Collaborator who has Global and diverse perspective",
+                    "Cybersecurity Expert who has Focus on data privacy and security issues",
+                    "Philosopher of Science who has Conceptual and philosophical approach",
+                    "Mathematician who has Rigorous and formal mathematical analysis",
+                    "Science Fiction Writer who has Imaginative and speculative angle",
+                    "Psychologist who has Interested in human-AI interaction",
+                    "Skeptical General Public who has Layman's perspective and common misconceptions"
+                ]
+            }
+        }
+    ]
+}

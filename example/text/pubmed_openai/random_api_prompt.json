@@ -1,0 +1,71 @@
+{
+    "message_template": [
+        {
+            "role": "system",
+            "content": "Please act as a sentence generator for the medical domain. Generated sentences should mimic the style of PubMed journal articles, using a variety of sentence structures."
+        },
+        {
+            "role": "user",
+            "content": "Suppose that you are a {writer}. Please provide an example of an abstract for a medical research paper:"
+        }
+    ],
+    "replacement_rules": [
+        {
+            "constraints": {},
+            "replacements": {
+                "writer": [
+                    "Clinical Researcher",
+                    "Principal Investigator",
+                    "Biomedical Engineer",
+                    "Psychologist",
+                    "Endocrinologist",
+                    "Oncologist",
+                    "Neurologist",
+                    "Epidemiologist",
+                    "Biostatistician",
+                    "Medical Reviewer",
+                    "Laboratory Technician",
+                    "Pharmaceutics Expert",
+                    "Geneticist",
+                    "Immunologist",
+                    "Public Health Official",
+                    "Clinical Trial Coordinator",
+                    "Medical Ethicist",
+                    "Healthcare Policy Maker",
+                    "Medical Journal Editor",
+                    "Peer Reviewer",
+                    "Pharmacologist",
+                    "Graduate Medical Student",
+                    "Postdoctoral Researcher",
+                    "Medical Librarian",
+                    "Nursing Researcher",
+                    "Physiologist",
+                    "Toxicologist",
+                    "Pathologist",
+                    "Radiologist",
+                    "Surgical Researcher",
+                    "Medical Historian",
+                    "Biogerontologist",
+                    "Bioinformatician",
+                    "Gynecologist",
+                    "Pediatrician",
+                    "Dermatologist",
+                    "Orthopedic Surgeon",
+                    "Anesthesiologist",
+                    "Cardiologist",
+                    "Virologist",
+                    "Molecular Biologist",
+                    "Nutritionist",
+                    "Sports Medicine Specialist",
+                    "Rehabilitation Specialist",
+                    "Health Economist",
+                    "Patient Advocate",
+                    "Bioethics Committee",
+                    "Clinical Data Manager",
+                    "Medical Statistician",
+                    "Health Technology Assessor"
+                ]
+            }
+        }
+    ]
+}

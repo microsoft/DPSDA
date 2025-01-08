@@ -1,0 +1,26 @@
+{
+    "message_template": [
+        {
+            "role": "user",
+            "content": "Please rephrase the following sentences {tone} as an abstract for medical research paper:\n{sample}"
+        }
+    ],
+    "replacement_rules": [
+        {
+            "constraints": {},
+            "replacements": {
+                "tone": [
+                    "in a professional way",
+                    "in a professional tone",
+                    "in a professional style",
+                    "in a concise manner",
+                    "in a creative style",
+                    "using imagination",
+                    "in a storytelling tone",
+                    "in a formal manner",
+                    "using a variety of sentence structures"
+                ]
+            }
+        }
+    ]
+}

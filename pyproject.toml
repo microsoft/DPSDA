@@ -22,7 +22,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pre-commit", "black", "sphinx", "sphinx-rtd-theme"]
+dev = [
+  "pre-commit",
+  "black",
+  "sphinx",
+  "sphinx-rtd-theme",
+  "sphinx-toolbox",
+]
 image = [
   "blobfile",
   "torch",
@@ -32,6 +38,20 @@ image = [
   "improved-diffusion@git+https://github.com/fjxmlzn/improved-diffusion.git@8f6677c3c47d1c1ad2e22ad2603eaec4cc639805",
   "wilds",
 ]
+text = [
+  "gdown",
+  "openai",
+  "tenacity",
+  "azure-identity",
+  "tiktoken",
+  "python-dotenv",
+  "sentence-transformers",
+  "protobuf",
+  "sentencepiece",
+  "fschat",
+  "transformers",
+  "accelerate",
+]
 
 [project.urls]
 Homepage = "https://microsoft.github.io/DPSDA/"
@@ -39,5 +59,17 @@ Documentation = "https://microsoft.github.io/DPSDA/"
 Repository = "https://github.com/microsoft/DPSDA"
 "Bug Tracker" = "https://github.com/microsoft/DPSDA/issues"
 
+[tool.setuptools]
+include-package-data = false
+
 [tool.setuptools.packages.find]
-exclude = ["doc", "data", "example", "docker*", "amlt", "dist*", "_*", "result*", "*.egg-info", "__pycache__", ".git*"]
+exclude = [
+  "doc*",
+  "data*",
+  "example*",
+  "docker*",
+  "amlt*",
+  "dist*",
+  "_*",
+  "result*",
+]

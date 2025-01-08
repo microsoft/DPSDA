@@ -10,17 +10,15 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.data.image
+   pe.data.text
 
 Submodules
 ----------
 
-pe.data.data module
--------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.data.data
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.data.data

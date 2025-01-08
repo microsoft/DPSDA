@@ -4,17 +4,32 @@ Installation
 PIP
 ---
 
+The Main Package
+^^^^^^^^^^^^^^^^
+
 To install the core package of **Private Evolution**, please use the following command:
 
 .. code-block:: bash
 
     pip install "private-evolution @ git+https://github.com/microsoft/DPSDA.git"
 
-If you are using **Private Evolution** to generate images, use the following command instead to install the package with the necessary dependencies for image generation:
+Image Generation
+^^^^^^^^^^^^^^^^
+
+If you are using **Private Evolution** to generate **images**, use the following command instead to install the package with the necessary dependencies:
 
 .. code-block:: bash
 
     pip install "private-evolution[image] @ git+https://github.com/microsoft/DPSDA.git"
+
+Text Generation
+^^^^^^^^^^^^^^^
+
+If you are using **Private Evolution** to generate **text**, use the following command instead to install the package with the necessary dependencies:
+
+.. code-block:: bash
+
+    pip install "private-evolution[text] @ git+https://github.com/microsoft/DPSDA.git"
 
 Faiss
 -----

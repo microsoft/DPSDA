@@ -1,0 +1,8 @@
+{
+    "message_template": [
+        {
+            "role": "user",
+            "content": "Using a variety of sentence structures, write an abstract for a medical research paper:"
+        }
+    ]
+}

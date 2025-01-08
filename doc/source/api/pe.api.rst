@@ -10,25 +10,16 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.api.image
+   pe.api.text
 
 Submodules
 ----------
 
-pe.api.api module
------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.api.api
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.api.util module
-------------------
-
-.. automodule:: pe.api.util
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.api.api
+   pe.api.util

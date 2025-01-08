@@ -25,5 +25,13 @@ IMAGE_MODEL_LABEL_COLUMN_NAME = "PE.IMAGE_MODEL_LABEL"
 #: The column name of the prompt for the image
 IMAGE_PROMPT_COLUMN_NAME = "PE.IMAGE_PROMPT"
 
+#: The column name of the text data
+TEXT_DATA_COLUMN_NAME = "PE.TEXT"
+
+#: The column name of the LLM request messages
+LLM_REQUEST_MESSAGES_COLUMN_NAME = "PE.LLM.MESSAGES"
+#: The column name of the LLM parameters
+LLM_PARAMETERS_COLUMN_NAME = "PE.LLM.PARAMETERS"
+
 #: The column name of the nearest neighbors voting IDs
 HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME = "PE.HISTOGRAM.NEAREST_NEIGHBORS.VOTING_IDS"

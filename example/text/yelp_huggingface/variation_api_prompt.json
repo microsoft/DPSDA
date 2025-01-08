@@ -1,0 +1,45 @@
+{
+    "message_template": [
+        {
+            "role": "user",
+            "content": "Based on Business Category:  {business_category}\tReview Stars: {review_stars}, please rephrase the following sentences {tone}:\n{sample}"
+        }
+    ],
+    "replacement_rules": [
+        {
+            "constraints": {},
+            "replacements": {
+                "tone": [
+                    "in a casual way",
+                    "in a creative style",
+                    "in an informal way",
+                    "casually",
+                    "in a detailed way",
+                    "in a professional way",
+                    "with more details",
+                    "with a professional tone",
+                    "in a casual style",
+                    "in a professional style",
+                    "in a short way",
+                    "in a concise manner",
+                    "concisely",
+                    "briefly",
+                    "orally",
+                    "with imagination",
+                    "with a tone of earnestness",
+                    "in a grammarly-incorrect way",
+                    "with grammatical errors",
+                    "in a non-standard grammar fashion",
+                    "in an oral way",
+                    "in a spoken manner",
+                    "articulately",
+                    "by word of mouth",
+                    "in a storytelling tone",
+                    "in a formal manner",
+                    "with an informal tone",
+                    "in a laid-back manner"
+                ]
+            }
+        }
+    ]
+}

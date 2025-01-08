@@ -1,0 +1,12 @@
+{
+    "message_template": [
+        {
+            "role": "system",
+            "content": "Please act as a sentence generator for the medical domain. Generated sentences should mimic the style of PubMed journal articles, using a variety of sentence structures."
+        },
+        {
+            "role": "user",
+            "content": "You are required to fill in the blanks with more details for the input medical abstract in a professional tone. If there is no blanks, please output the original medical abstract.\nPlease fill in the blanks in the following sentences to write an abstract of a medical research paper: \"{masked_sample}\" and your answer MUST be exactly {word_count} words.\n"
+        }
+    ]
+}

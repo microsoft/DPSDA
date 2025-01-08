@@ -1,0 +1,23 @@
+{
+    "message_template": [
+        {
+            "role": "user",
+            "content": "Based on Area: {area}\tRecommendation: {recommendation}, please rephrase the following sentences {tone} as a paper review:\n{sample}"
+        }
+    ],
+    "replacement_rules": [
+        {
+            "constraints": {},
+            "replacements": {
+                "tone": [
+                    "in a detailed way",
+                    "in a professional way",
+                    "with more details",
+                    "with a professional tone",
+                    "in a professional style",
+                    "in a concise manner"
+                ]
+            }
+        }
+    ]
+}

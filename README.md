@@ -5,14 +5,17 @@ This repo is a Python library to **generate differentially private (DP) syntheti
 * **Differentially Private Synthetic Data via Foundation Model APIs 1: Images**  
     [[paper (ICLR 2024)]](https://openreview.net/forum?id=YEhQs8POIo) [[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
     **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
-
+* **Differentially Private Synthetic Data via Foundation Model APIs 2: Text**  
+    [[paper (ICML 2024 Spotlight)]](https://proceedings.mlr.press/v235/xie24g.html) [[paper (arxiv)](https://arxiv.org/abs/2403.01749)] [[website](https://alphapav.github.io/augpe-dpapitext)]  
+    **Authors:** [[Chulin Xie](https://alphapav.github.io/)], [[Zinan Lin](https://zinanlin.me/)], [[Arturs Backurs](https://www.mit.edu/~backurs/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Da Yu](https://dayu11.github.io/)], [[Huseyin Inan](https://www.microsoft.com/en-us/research/people/huinan/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Haotian Jiang](https://jhtdavid96.wixsite.com/jianghaotian)], [[Huishuai Zhang](https://huishuai-git.github.io/)], [[Yin Tat Lee](https://yintat.com/)], [[Bo Li](https://aisecure.github.io/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
 
 ## Documentation
 Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more details, including the installation instructions, usage, and examples.
 
 ## News
 
-* `11/21/2024`: The refactored codebase for image generation has been released. It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch, which is no longer maintained.
+* `1/8/2025`: **Text generation** based on the paper `Differentially Private Synthetic Data via Foundation Model APIs 2: Text` has been integrated into the library! If you want to reproduce the results in the [paper](https://arxiv.org/abs/2403.01749), please refer to [our original codebase](https://github.com/AI-secure/aug-pe).
+* `11/21/2024`: The refactored codebase for **image generation** based on the paper `Differentially Private Synthetic Data via Foundation Model APIs 1: Images` has been released! It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch in this repository, which is no longer maintained.
 
 ## Contributing
 

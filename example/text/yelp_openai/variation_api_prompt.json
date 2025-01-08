@@ -1,0 +1,12 @@
+{
+    "message_template": [
+        {
+            "role": "system",
+            "content": "You are a helpful, pattern-following assistant."
+        },
+        {
+            "role": "user",
+            "content": "Based on the Business Category and Review Stars, you are required to fill in the blanks in the Input sentences with grammatical errors. If there are no blanks, you are required to output the original Input sentences.\nBusiness Category: Restaurants\tReview Stars: 2.0\nInput: _ that great , terrible _ rolls and fish _ smelling _ _.\nFill-in-Blanks and your answer MUST be exactly 10 words: Not that great, terrible egg rolls and fishy smelling shrimp.\nBusiness Category: Beauty & Spas\tReview Stars: 5.0\nInput: Very clean! Staff are super friendly!!\nFill-in-Blanks and your answer MUST be exactly 6 words: Very clean! Staff are super friendly!!\nBusiness Category: Shopping\tReview Stars: 3.0\nInput: I _ in _ and stopped in for a _. I was _ surprised. Good _, nice price.\nFill-in-Blanks and your answer MUST be exactly 19 words: I was in a rush and stopped in for a mani-pedi. I was pleasantly surprised. Good service, nice price.\nBusiness Category: {business_category}\tReview Stars: {review_stars} \nInput: {masked_sample} \nFill-in-Blanks and your answer MUST be exactly {word_count} words:"
+        }
+    ]
+}

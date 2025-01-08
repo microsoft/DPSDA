@@ -9,18 +9,8 @@ pe.dp package
 Submodules
 ----------
 
-pe.dp.dp module
----------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.dp.dp
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.dp.gaussian module
----------------------
-
-.. automodule:: pe.dp.gaussian
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.dp.dp
+   pe.dp.gaussian
