@@ -10,18 +10,16 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.callback.common
    pe.callback.image
+   pe.callback.text
 
 Submodules
 ----------
 
-pe.callback.callback module
----------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.callback.callback
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.callback.callback

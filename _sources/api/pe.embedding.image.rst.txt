@@ -9,10 +9,7 @@ pe.embedding.image package
 Submodules
 ----------
 
-pe.embedding.image.inception module
------------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.embedding.image.inception
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.embedding.image.inception

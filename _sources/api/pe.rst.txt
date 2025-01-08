@@ -10,7 +10,7 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.api
    pe.callback
@@ -19,6 +19,7 @@ Subpackages
    pe.dp
    pe.embedding
    pe.histogram
+   pe.llm
    pe.logger
    pe.logging
    pe.metric_item

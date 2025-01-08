@@ -3,8 +3,8 @@ Data
 
 API reference: :doc:`/api/pe.data`.
 
-:py:class:`pe.data.data.Data` is the base class for holding the synthetic samples or the private samples, along with their metadata. Different components are mostly communicated through objects of this class.
-:py:class:`pe.data.data.Data` has two key attributes:
+:py:class:`pe.data.Data` is the base class for holding the synthetic samples or the private samples, along with their metadata. Different components are mostly communicated through objects of this class.
+:py:class:`pe.data.Data` has two key attributes:
 
 * ``data_frame``: A pandas_ DataFrame that holds the samples. Each row in the DataFrame is a sample, and each column is part of the sample (e.g., the image, the text, the label) and other information of the sample (e.g., its embedding produced by :doc:`embedding`).
 * ``metadata``: A OmegaConf_ that holds the metadata of the samples, such as the **Private Evolution** iteration number when the samples are generated, and the label names of the classes.
@@ -12,22 +12,25 @@ API reference: :doc:`/api/pe.data`.
 Available Datasets
 ------------------
 
-For convenience, some well-known datasets are already packaged as `pe.data.data.Data` classes:
+For convenience, some well-known datasets are already packaged as :py:class:`pe.data.Data` classes:
 
 * Image datasets
 
-    * :py:class:`pe.data.image.cifar10.Cifar10`: The `CIFAR10 dataset`_.
-    * :py:class:`pe.data.image.camelyon17.Camelyon17`: The `Camelyon17 dataset`_.
-    * :py:class:`pe.data.image.cat.Cat`: The `Cat dataset`_.
-    * In addition, you can easily load a custom image dataset from a (nested) directory with the image files using :py:meth:`pe.data.image.image.load_image_folder`.
+    * :py:class:`pe.data.Cifar10`: The `CIFAR10 dataset`_.
+    * :py:class:`pe.data.Camelyon17`: The `Camelyon17 dataset`_.
+    * :py:class:`pe.data.Cat`: The `Cat dataset`_.
+    * In addition, you can easily load a custom image dataset from a (nested) directory with the image files using :py:meth:`pe.data.load_image_folder`.
 
 * Text datasets
     
-        * Coming soon!
+    * :py:class:`pe.data.Yelp`: The `Yelp dataset`_.
+    * :py:class:`pe.data.OpenReview`: The `OpenReview dataset`_.
+    * :py:class:`pe.data.PubMed`: The `PubMed dataset`_.
+    * In addition, you can easily load a custom text dataset from a CSV file using :py:class:`pe.data.TextCSV`.
 
 Using Your Own Datasets
 -----------------------
-To apply **Private Evolution** to your own private dataset, you need to create a :py:class:`pe.data.data.Data` object that holds your dataset, with two parameters, ``data_frame`` and ``metadata``, passed to the constructor:
+To apply **Private Evolution** to your own private dataset, you need to create a :py:class:`pe.data.Data` object that holds your dataset, with two parameters, ``data_frame`` and ``metadata``, passed to the constructor:
 
 * ``data_frame``: A pandas_ DataFrame that holds the samples. Each row in the DataFrame is a sample. The following columns must be included:
 
@@ -47,3 +50,6 @@ To apply **Private Evolution** to your own private dataset, you need to create a
 .. _Cat dataset: https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou
 .. _CIFAR10 dataset: https://www.cs.toronto.edu/~kriz/cifar.html
 .. _Camelyon17 dataset: https://camelyon17.grand-challenge.org/
+.. _Yelp dataset: https://github.com/AI-secure/aug-pe/tree/main/data
+.. _OpenReview dataset: https://github.com/AI-secure/aug-pe/tree/main/data
+.. _PubMed dataset: https://github.com/AI-secure/aug-pe/tree/main/data

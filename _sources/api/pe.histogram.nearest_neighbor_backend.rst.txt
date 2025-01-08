@@ -9,26 +9,9 @@ pe.histogram.nearest\_neighbor\_backend package
 Submodules
 ----------
 
-pe.histogram.nearest\_neighbor\_backend.auto module
----------------------------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.histogram.nearest_neighbor_backend.auto
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.histogram.nearest\_neighbor\_backend.faiss module
-----------------------------------------------------
-
-.. automodule:: pe.histogram.nearest_neighbor_backend.faiss
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.histogram.nearest\_neighbor\_backend.sklearn module
-------------------------------------------------------
-
-.. automodule:: pe.histogram.nearest_neighbor_backend.sklearn
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.histogram.nearest_neighbor_backend.auto
+   pe.histogram.nearest_neighbor_backend.faiss
+   pe.histogram.nearest_neighbor_backend.sklearn

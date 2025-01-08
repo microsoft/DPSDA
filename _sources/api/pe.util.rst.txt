@@ -9,10 +9,7 @@ pe.util package
 Submodules
 ----------
 
-pe.util.download module
------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.util.download
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.util.download

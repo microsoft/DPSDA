@@ -9,10 +9,7 @@ pe.constant package
 Submodules
 ----------
 
-pe.constant.data module
------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.constant.data
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.constant.data

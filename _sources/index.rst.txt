@@ -10,7 +10,7 @@ The source code of this **Private Evolution** library is available at https://gi
 
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 7
    :caption: Contents:
 
    getting_started/getting_started

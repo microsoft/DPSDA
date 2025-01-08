@@ -9,18 +9,8 @@ pe.population package
 Submodules
 ----------
 
-pe.population.pe\_population module
------------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.population.pe_population
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.population.population module
--------------------------------
-
-.. automodule:: pe.population.population
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.population.pe_population
+   pe.population.population

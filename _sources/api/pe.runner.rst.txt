@@ -9,10 +9,7 @@ pe.runner package
 Submodules
 ----------
 
-pe.runner.pe module
--------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.runner.pe
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.runner.pe

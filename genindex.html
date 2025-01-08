@@ -10,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=f6245a2f"></script>
@@ -30,6 +31,7 @@
           
           <a href="index.html" class="icon icon-home">
             Private Evolution
+              <img src="_static/icon.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -41,8 +43,410 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/intro.html">What is Private Evolution?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/intro.html#key-features">Key Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/intro.html#what-this-library-provides">What This Library Provides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/intro.html#citations">Citations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/installation.html#pip">PIP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/installation.html#the-main-package">The Main Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/installation.html#image-generation">Image Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/installation.html#text-generation">Text Generation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/installation.html#faiss">Faiss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/examples.html">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/examples.html#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/examples.html#text">Text</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/using_your_own_data_apis.html">Using Your Own Data/APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/using_your_own_data_apis.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/using_your_own_data_apis.html#apis">APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/details/details.html">Details of the Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/overview.html#the-private-evolution-algorithm">The Private Evolution Algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/overview.html#core-design-principles-of-this-library">Core Design Principles of This Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/overview.html#core-components-of-this-library">Core Components of This Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/data.html">Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/data.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/data.html#using-your-own-datasets">Using Your Own Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/population.html">Population</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/population.html#available-populations">Available Populations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/api.html">APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/api.html#available-apis">Available APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/api.html#adding-your-own-apis">Adding Your Own APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/histogram.html">Histograms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/histogram.html#available-histograms">Available Histograms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/dp.html">DP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/dp.html#available-differential-privacy-mechanisms">Available Differential Privacy Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/embedding.html">Embeddings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/embedding.html#available-embeddings">Available Embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/callback_and_logger.html">Callbacks and Loggers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/callback_and_logger.html#available-callbacks">Available Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="getting_started/details/callback_and_logger.html#available-loggers">Available Loggers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started/details/runner.html">Runner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/modules.html">pe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/pe.html">pe package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="api/pe.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.api.html">pe.api package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.api.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.api.image.html">pe.api.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.api.image.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.api.image.improved_diffusion_lib.html">pe.api.image.improved_diffusion_lib package</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.api.image.improved_diffusion_lib.html#submodules">Submodules</a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.api.image.improved_diffusion_lib.gaussian_diffusion.html">pe.api.image.improved_diffusion_lib.gaussian_diffusion module</a></li>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.api.image.improved_diffusion_lib.unet.html">pe.api.image.improved_diffusion_lib.unet module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.api.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.api.image.improved_diffusion_api.html">pe.api.image.improved_diffusion_api module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.api.image.stable_diffusion_api.html">pe.api.image.stable_diffusion_api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.api.text.html">pe.api.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.api.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.api.text.llm_augpe_api.html">pe.api.text.llm_augpe_api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.api.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.api.api.html">pe.api.api module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.api.util.html">pe.api.util module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.callback.html">pe.callback package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.callback.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.callback.common.html">pe.callback.common package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.callback.common.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.callback.common.compute_fid.html">pe.callback.common.compute_fid module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.callback.common.save_checkpoints.html">pe.callback.common.save_checkpoints module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.callback.image.html">pe.callback.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.callback.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.callback.image.sample_images.html">pe.callback.image.sample_images module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.callback.image.save_all_images.html">pe.callback.image.save_all_images module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.callback.text.html">pe.callback.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.callback.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.callback.text.save_text_to_csv.html">pe.callback.text.save_text_to_csv module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.callback.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.callback.callback.html">pe.callback.callback module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.constant.html">pe.constant package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.constant.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.constant.data.html">pe.constant.data module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLEAN_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">EMBEDDING_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">FROM_LAST_FLAG_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.IMAGE_DATA_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_DATA_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.IMAGE_MODEL_LABEL_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_MODEL_LABEL_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.IMAGE_PROMPT_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_PROMPT_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.LABEL_ID_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LABEL_ID_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.LLM_PARAMETERS_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LLM_PARAMETERS_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.LLM_REQUEST_MESSAGES_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LLM_REQUEST_MESSAGES_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.PARENT_SYN_DATA_INDEX_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">PARENT_SYN_DATA_INDEX_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.TEXT_DATA_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">TEXT_DATA_COLUMN_NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.data.html">pe.data package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.data.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.image.html">pe.data.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.data.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.image.camelyon17.html">pe.data.image.camelyon17 module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17"><code class="docutils literal notranslate"><span class="pre">Camelyon17</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17.__init__"><code class="docutils literal notranslate"><span class="pre">Camelyon17.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.image.cat.html">pe.data.image.cat module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.cat.html#pe.data.image.cat.Cat"><code class="docutils literal notranslate"><span class="pre">Cat</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.cat.html#pe.data.image.cat.Cat.URL"><code class="docutils literal notranslate"><span class="pre">Cat.URL</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.cat.html#pe.data.image.cat.Cat.__init__"><code class="docutils literal notranslate"><span class="pre">Cat.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.cat.html#pe.data.image.cat.Cat._download"><code class="docutils literal notranslate"><span class="pre">Cat._download()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.cat.html#pe.data.image.cat.Cat._read_data"><code class="docutils literal notranslate"><span class="pre">Cat._read_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.image.cifar10.html">pe.data.image.cifar10 module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10"><code class="docutils literal notranslate"><span class="pre">Cifar10</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10.__init__"><code class="docutils literal notranslate"><span class="pre">Cifar10.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.image.image.html">pe.data.image.image module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.image.html#pe.data.image.image.ImageDataset"><code class="docutils literal notranslate"><span class="pre">ImageDataset</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.image.html#pe.data.image.image._list_image_files_recursively"><code class="docutils literal notranslate"><span class="pre">_list_image_files_recursively()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.image.image.html#pe.data.image.image.load_image_folder"><code class="docutils literal notranslate"><span class="pre">load_image_folder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.text.html">pe.data.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.data.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.text.openreview.html">pe.data.text.openreview module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.text.pubmed.html">pe.data.text.pubmed module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.text.text_csv.html">pe.data.text.text_csv module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV"><code class="docutils literal notranslate"><span class="pre">TextCSV</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TextCSV.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.text.yelp.html">pe.data.text.yelp module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.data.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.data.html">pe.data.data module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.dp.html">pe.dp package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.dp.html#pe.dp.DP"><code class="docutils literal notranslate"><span class="pre">DP</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.html#pe.dp.DP.add_noise"><code class="docutils literal notranslate"><span class="pre">DP.add_noise()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.html#pe.dp.DP.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">DP.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.dp.html#pe.dp.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.html#pe.dp.Gaussian.add_noise"><code class="docutils literal notranslate"><span class="pre">Gaussian.add_noise()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.html#pe.dp.Gaussian.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">Gaussian.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.dp.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.dp.html">pe.dp.dp module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.dp.html#pe.dp.dp.DP"><code class="docutils literal notranslate"><span class="pre">DP</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.dp.dp.html#pe.dp.dp.DP.add_noise"><code class="docutils literal notranslate"><span class="pre">DP.add_noise()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.dp.dp.html#pe.dp.dp.DP.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">DP.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.dp.gaussian.html">pe.dp.gaussian module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.add_noise"><code class="docutils literal notranslate"><span class="pre">Gaussian.add_noise()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">Gaussian.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.compute_epsilon"><code class="docutils literal notranslate"><span class="pre">compute_epsilon()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.delta_Gaussian"><code class="docutils literal notranslate"><span class="pre">delta_Gaussian()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.eps_Gaussian"><code class="docutils literal notranslate"><span class="pre">eps_Gaussian()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.dp.gaussian.html#pe.dp.gaussian.get_noise_multiplier"><code class="docutils literal notranslate"><span class="pre">get_noise_multiplier()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.embedding.html">pe.embedding package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.embedding.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.embedding.image.html">pe.embedding.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.embedding.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.embedding.image.inception.html">pe.embedding.image.inception module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.embedding.text.html">pe.embedding.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.embedding.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.embedding.text.sentence_transformer.html">pe.embedding.text.sentence_transformer module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.embedding.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.embedding.embedding.html">pe.embedding.embedding module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.histogram.html">pe.histogram package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.histogram.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.histogram.nearest_neighbor_backend.html">pe.histogram.nearest_neighbor_backend package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.histogram.nearest_neighbor_backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.histogram.nearest_neighbor_backend.auto.html">pe.histogram.nearest_neighbor_backend.auto module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.histogram.nearest_neighbor_backend.faiss.html">pe.histogram.nearest_neighbor_backend.faiss module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.histogram.nearest_neighbor_backend.sklearn.html">pe.histogram.nearest_neighbor_backend.sklearn module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.histogram.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.histogram.histogram.html">pe.histogram.histogram module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.histogram.nearest_neighbors.html">pe.histogram.nearest_neighbors module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.llm.html">pe.llm package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.llm.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.llm.huggingface.html">pe.llm.huggingface package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.llm.huggingface.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.llm.huggingface.register_fastchat.html">pe.llm.huggingface.register_fastchat package</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="api/pe.llm.huggingface.register_fastchat.html#submodules">Submodules</a><ul>
+<li class="toctree-l11"><a class="reference internal" href="api/pe.llm.huggingface.register_fastchat.gpt2.html">pe.llm.huggingface.register_fastchat.gpt2 module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.llm.huggingface.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.llm.huggingface.huggingface.html">pe.llm.huggingface.huggingface module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.llm.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.llm.azure_openai.html">pe.llm.azure_openai module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.llm.llm.html">pe.llm.llm module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.llm.openai.html">pe.llm.openai module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.llm.request.html">pe.llm.request module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.logger.html">pe.logger package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.logger.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.logger.csv_print.html">pe.logger.csv_print module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.logger.image_file.html">pe.logger.image_file module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.logger.log_print.html">pe.logger.log_print module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.logger.logger.html">pe.logger.logger module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.logger.matplotlib_pdf.html">pe.logger.matplotlib_pdf module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.logging.html">pe.logging package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.logging.html#pe.logging.execution_logger"><code class="docutils literal notranslate"><span class="pre">execution_logger</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.logging.html#pe.logging.setup_logging"><code class="docutils literal notranslate"><span class="pre">setup_logging()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.metric_item.html">pe.metric_item package</a></li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.population.html">pe.population package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.population.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.population.pe_population.html">pe.population.pe_population module</a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.population.population.html">pe.population.population module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.runner.html">pe.runner package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.runner.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.runner.pe.html">pe.runner.pe module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="api/pe.util.html">pe.util package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="api/pe.util.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.util.download.html">pe.util.download module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.util.download.html#pe.util.download.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -83,117 +487,35 @@
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
- | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
- | <a href="#V"><strong>V</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.callback.html#pe.callback.callback.Callback.__call__">__call__() (pe.callback.callback.Callback method)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.__init__">__init__() (pe.data.data.Data method)</a>
 
       <ul>
-        <li><a href="api/pe.callback.common.html#pe.callback.common.compute_fid.ComputeFID.__call__">(pe.callback.common.compute_fid.ComputeFID method)</a>
+        <li><a href="api/pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17.__init__">(pe.data.image.camelyon17.Camelyon17 method)</a>
 </li>
-        <li><a href="api/pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints.__call__">(pe.callback.common.save_checkpoints.SaveCheckpoints method)</a>
+        <li><a href="api/pe.data.image.cat.html#pe.data.image.cat.Cat.__init__">(pe.data.image.cat.Cat method)</a>
 </li>
-        <li><a href="api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__call__">(pe.callback.image.sample_images.SampleImages method)</a>
+        <li><a href="api/pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10.__init__">(pe.data.image.cifar10.Cifar10 method)</a>
 </li>
-        <li><a href="api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__call__">(pe.callback.image.save_all_images.SaveAllImages method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.__init__">__init__() (pe.api.image.improved_diffusion_api.ImprovedDiffusion method)</a>
-
-      <ul>
-        <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.__init__">(pe.api.image.improved_diffusion_api.ImprovedDiffusion270M method)</a>
-</li>
-        <li><a href="api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.__init__">(pe.api.image.stable_diffusion_api.StableDiffusion method)</a>
-</li>
-        <li><a href="api/pe.callback.common.html#pe.callback.common.compute_fid.ComputeFID.__init__">(pe.callback.common.compute_fid.ComputeFID method)</a>
-</li>
-        <li><a href="api/pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints.__init__">(pe.callback.common.save_checkpoints.SaveCheckpoints method)</a>
-</li>
-        <li><a href="api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages.__init__">(pe.callback.image.sample_images.SampleImages method)</a>
-</li>
-        <li><a href="api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages.__init__">(pe.callback.image.save_all_images.SaveAllImages method)</a>
-</li>
-        <li><a href="api/pe.data.html#pe.data.data.Data.__init__">(pe.data.data.Data method)</a>
-</li>
-        <li><a href="api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17.__init__">(pe.data.image.camelyon17.Camelyon17 method)</a>
-</li>
-        <li><a href="api/pe.data.image.html#pe.data.image.cat.Cat.__init__">(pe.data.image.cat.Cat method)</a>
-</li>
-        <li><a href="api/pe.data.image.html#pe.data.image.cifar10.Cifar10.__init__">(pe.data.image.cifar10.Cifar10 method)</a>
-</li>
-        <li><a href="api/pe.embedding.image.html#pe.embedding.image.inception.Inception.__init__">(pe.embedding.image.inception.Inception method)</a>
-</li>
-        <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors.__init__">(pe.histogram.nearest_neighbors.NearestNeighbors method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint.__init__">(pe.logger.csv_print.CSVPrint method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile.__init__">(pe.logger.image_file.ImageFile method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.log_print.LogPrint.__init__">(pe.logger.log_print.LogPrint method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.__init__">(pe.logger.matplotlib_pdf.MatplotlibPDF method)</a>
-</li>
-        <li><a href="api/pe.metric_item.html#pe.metric_item.ImageListMetricItem.__init__">(pe.metric_item.ImageListMetricItem method)</a>
-</li>
-        <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem.__init__">(pe.metric_item.MetricItem method)</a>
-</li>
-        <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation.__init__">(pe.population.pe_population.PEPopulation method)</a>
-</li>
-        <li><a href="api/pe.runner.html#pe.runner.pe.PE.__init__">(pe.runner.pe.PE method)</a>
+        <li><a href="api/pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV.__init__">(pe.data.text.text_csv.TextCSV method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.runner.html#pe.runner.pe.PE._clean_up_loggers">_clean_up_loggers() (pe.runner.pe.PE method)</a>
+      <li><a href="api/pe.data.image.cat.html#pe.data.image.cat.Cat._download">_download() (pe.data.image.cat.Cat method)</a>
 </li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint._clear_logs">_clear_logs() (pe.logger.csv_print.CSVPrint method)</a>
+      <li><a href="api/pe.data.image.image.html#pe.data.image.image._list_image_files_recursively">_list_image_files_recursively() (in module pe.data.image.image)</a>
 </li>
-      <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._compute_lookahead_embedding">_compute_lookahead_embedding() (pe.histogram.nearest_neighbors.NearestNeighbors method)</a>
-</li>
-      <li><a href="api/pe.data.image.html#pe.data.image.cat.Cat._download">_download() (pe.data.image.cat.Cat method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint._flush">_flush() (pe.logger.csv_print.CSVPrint method)</a>
-</li>
-      <li><a href="api/pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints._get_checkpoint_path">_get_checkpoint_path() (pe.callback.common.save_checkpoints.SaveCheckpoints method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile._get_image_path">_get_image_path() (pe.logger.image_file.ImageFile method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint._get_log_path">_get_log_path() (pe.logger.csv_print.CSVPrint method)</a>
-</li>
-      <li><a href="api/pe.runner.html#pe.runner.pe.PE._get_num_samples_per_label_id">_get_num_samples_per_label_id() (pe.runner.pe.PE method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path">_get_pdf_path() (pe.logger.matplotlib_pdf.MatplotlibPDF method)</a>
-</li>
-      <li><a href="api/pe.data.image.html#pe.data.image.image._list_image_files_recursively">_list_image_files_recursively() (in module pe.data.image.image)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint._log_float">_log_float() (pe.logger.csv_print.CSVPrint method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile._log_image">_log_image() (pe.logger.image_file.ImageFile method)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile._log_image_list">_log_image_list() (pe.logger.image_file.ImageFile method)</a>
-</li>
-      <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_lookahead">_log_lookahead() (pe.histogram.nearest_neighbors.NearestNeighbors method)</a>
-</li>
-      <li><a href="api/pe.runner.html#pe.runner.pe.PE._log_metrics">_log_metrics() (pe.runner.pe.PE method)</a>
-</li>
-      <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_voting_details">_log_voting_details() (pe.histogram.nearest_neighbors.NearestNeighbors method)</a>
-</li>
-      <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation._post_process_histogram">_post_process_histogram() (pe.population.pe_population.PEPopulation method)</a>
-</li>
-      <li><a href="api/pe.data.image.html#pe.data.image.cat.Cat._read_data">_read_data() (pe.data.image.cat.Cat method)</a>
-</li>
-      <li><a href="api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages._save_image">_save_image() (pe.callback.image.save_all_images.SaveAllImages method)</a>
-</li>
-      <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation._select_data">_select_data() (pe.population.pe_population.PEPopulation method)</a>
+      <li><a href="api/pe.data.image.cat.html#pe.data.image.cat.Cat._read_data">_read_data() (pe.data.image.cat.Cat method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -201,73 +523,35 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.dp.html#pe.dp.dp.DP.add_noise">add_noise() (pe.dp.dp.DP method)</a>
+      <li><a href="api/pe.dp.html#pe.dp.DP.add_noise">add_noise() (pe.dp.DP method)</a>
 
       <ul>
-        <li><a href="api/pe.dp.html#pe.dp.gaussian.Gaussian.add_noise">(pe.dp.gaussian.Gaussian method)</a>
+        <li><a href="api/pe.dp.dp.html#pe.dp.dp.DP.add_noise">(pe.dp.dp.DP method)</a>
+</li>
+        <li><a href="api/pe.dp.html#pe.dp.Gaussian.add_noise">(pe.dp.Gaussian method)</a>
+</li>
+        <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.add_noise">(pe.dp.gaussian.Gaussian method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.api.html#pe.api.api.API">API (class in pe.api.api)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.callback.html#pe.callback.callback.Callback">Callback (class in pe.callback.callback)</a>
+      <li><a href="api/pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17">Camelyon17 (class in pe.data.image.camelyon17)</a>
 </li>
-      <li><a href="api/pe.data.image.html#pe.data.image.camelyon17.Camelyon17">Camelyon17 (class in pe.data.image.camelyon17)</a>
+      <li><a href="api/pe.data.image.cat.html#pe.data.image.cat.Cat">Cat (class in pe.data.image.cat)</a>
 </li>
-      <li><a href="api/pe.data.image.html#pe.data.image.cat.Cat">Cat (class in pe.data.image.cat)</a>
-</li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.CHECKPOINT_URL">CHECKPOINT_URL (pe.api.image.improved_diffusion_api.ImprovedDiffusion270M attribute)</a>
-</li>
-      <li><a href="api/pe.data.image.html#pe.data.image.cifar10.Cifar10">Cifar10 (class in pe.data.image.cifar10)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME">CLEAN_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint.clean_up">clean_up() (pe.logger.csv_print.CSVPrint method)</a>
-
-      <ul>
-        <li><a href="api/pe.logger.html#pe.logger.logger.Logger.clean_up">(pe.logger.logger.Logger method)</a>
-</li>
-        <li><a href="api/pe.metric_item.html#pe.metric_item.MatplotlibMetricItem.clean_up">(pe.metric_item.MatplotlibMetricItem method)</a>
-</li>
-        <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem.clean_up">(pe.metric_item.MetricItem method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.embedding.html#pe.embedding.embedding.Embedding.column_name">column_name (pe.embedding.embedding.Embedding property)</a>
+      <li><a href="api/pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10">Cifar10 (class in pe.data.image.cifar10)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.embedding.html#pe.embedding.embedding.Embedding.compute_embedding">compute_embedding() (pe.embedding.embedding.Embedding method)</a>
-
-      <ul>
-        <li><a href="api/pe.embedding.image.html#pe.embedding.image.inception.Inception.compute_embedding">(pe.embedding.image.inception.Inception method)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME">CLEAN_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      </ul></li>
-      <li><a href="api/pe.dp.html#pe.dp.gaussian.compute_epsilon">compute_epsilon() (in module pe.dp.gaussian)</a>
+      <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.compute_epsilon">compute_epsilon() (in module pe.dp.gaussian)</a>
 </li>
-      <li><a href="api/pe.histogram.html#pe.histogram.histogram.Histogram.compute_histogram">compute_histogram() (pe.histogram.histogram.Histogram method)</a>
-
-      <ul>
-        <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors.compute_histogram">(pe.histogram.nearest_neighbors.NearestNeighbors method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.callback.common.html#pe.callback.common.compute_fid.ComputeFID">ComputeFID (class in pe.callback.common.compute_fid)</a>
-</li>
-      <li><a href="api/pe.data.html#pe.data.data.Data.concat">concat() (pe.data.data.Data class method)</a>
-</li>
-      <li><a href="api/pe.api.html#pe.api.util.ConstantList">ConstantList (class in pe.api.util)</a>
-</li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.create_gaussian_diffusion">create_gaussian_diffusion() (in module pe.api.image.improved_diffusion_lib.gaussian_diffusion)</a>
-</li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.create_model">create_model() (in module pe.api.image.improved_diffusion_lib.unet)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint">CSVPrint (class in pe.logger.csv_print)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.concat">concat() (pe.data.data.Data class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -275,25 +559,21 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.data.html#pe.data.data.Data">Data (class in pe.data.data)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data">Data (class in pe.data.data)</a>
 </li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_reverse_sample">ddim_reverse_sample() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
+      <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.delta_Gaussian">delta_Gaussian() (in module pe.dp.gaussian)</a>
 </li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample">ddim_sample() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
-</li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop">ddim_sample_loop() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
+      <li><a href="api/pe.util.download.html#pe.util.download.download">download() (in module pe.util.download)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.ddim_sample_loop_progressive">ddim_sample_loop_progressive() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
+      <li><a href="api/pe.dp.html#pe.dp.DP">DP (class in pe.dp)</a>
+
+      <ul>
+        <li><a href="api/pe.dp.dp.html#pe.dp.dp.DP">(class in pe.dp.dp)</a>
 </li>
-      <li><a href="api/pe.dp.html#pe.dp.gaussian.delta_Gaussian">delta_Gaussian() (in module pe.dp.gaussian)</a>
-</li>
-      <li><a href="api/pe.util.html#pe.util.download.download">download() (in module pe.util.download)</a>
-</li>
-      <li><a href="api/pe.dp.html#pe.dp.dp.DP">DP (class in pe.dp.dp)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME">DP_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
+      </ul></li>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME">DP_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -301,13 +581,11 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.embedding.html#pe.embedding.embedding.Embedding">Embedding (class in pe.embedding.embedding)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.EMBEDDING_COLUMN_NAME">EMBEDDING_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.EMBEDDING_COLUMN_NAME">EMBEDDING_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.dp.html#pe.dp.gaussian.eps_Gaussian">eps_Gaussian() (in module pe.dp.gaussian)</a>
+      <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.eps_Gaussian">eps_Gaussian() (in module pe.dp.gaussian)</a>
 </li>
       <li><a href="api/pe.logging.html#pe.logging.execution_logger">execution_logger (in module pe.logging)</a>
 </li>
@@ -317,21 +595,11 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.data.html#pe.data.data.Data.filter_label_id">filter_label_id() (pe.data.data.Data method)</a>
-</li>
-      <li><a href="api/pe.embedding.html#pe.embedding.embedding.Embedding.filter_uncomputed_rows">filter_uncomputed_rows() (pe.embedding.embedding.Embedding method)</a>
-</li>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.FloatListMetricItem">FloatListMetricItem (class in pe.metric_item)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.filter_label_id">filter_label_id() (pe.data.data.Data method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.FloatMetricItem">FloatMetricItem (class in pe.metric_item)</a>
-</li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.Sampler.forward">forward() (pe.api.image.improved_diffusion_api.Sampler method)</a>
-</li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel">FP32UNetModel (class in pe.api.image.improved_diffusion_lib.unet)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME">FROM_LAST_FLAG_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME">FROM_LAST_FLAG_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -339,11 +607,15 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.dp.html#pe.dp.gaussian.Gaussian">Gaussian (class in pe.dp.gaussian)</a>
+      <li><a href="api/pe.dp.html#pe.dp.Gaussian">Gaussian (class in pe.dp)</a>
+
+      <ul>
+        <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian">(class in pe.dp.gaussian)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.dp.html#pe.dp.gaussian.get_noise_multiplier">get_noise_multiplier() (in module pe.dp.gaussian)</a>
+      <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.get_noise_multiplier">get_noise_multiplier() (in module pe.dp.gaussian)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -351,11 +623,7 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.histogram.html#pe.histogram.histogram.Histogram">Histogram (class in pe.histogram.histogram)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.constant.html#pe.constant.data.HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -363,35 +631,15 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.constant.html#pe.constant.data.IMAGE_DATA_COLUMN_NAME">IMAGE_DATA_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.IMAGE_DATA_COLUMN_NAME">IMAGE_DATA_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.constant.html#pe.constant.data.IMAGE_MODEL_LABEL_COLUMN_NAME">IMAGE_MODEL_LABEL_COLUMN_NAME (in module pe.constant.data)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.IMAGE_PROMPT_COLUMN_NAME">IMAGE_PROMPT_COLUMN_NAME (in module pe.constant.data)</a>
-</li>
-      <li><a href="api/pe.data.image.html#pe.data.image.image.ImageDataset">ImageDataset (class in pe.data.image.image)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile">ImageFile (class in pe.logger.image_file)</a>
-</li>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.ImageListMetricItem">ImageListMetricItem (class in pe.metric_item)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.IMAGE_MODEL_LABEL_COLUMN_NAME">IMAGE_MODEL_LABEL_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.ImageMetricItem">ImageMetricItem (class in pe.metric_item)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.IMAGE_PROMPT_COLUMN_NAME">IMAGE_PROMPT_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion">ImprovedDiffusion (class in pe.api.image.improved_diffusion_api)</a>
-</li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M">ImprovedDiffusion270M (class in pe.api.image.improved_diffusion_api)</a>
-</li>
-      <li><a href="api/pe.embedding.image.html#pe.embedding.image.inception.Inception">Inception (class in pe.embedding.image.inception)</a>
-</li>
-      <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation.initial">initial() (pe.population.pe_population.PEPopulation method)</a>
-
-      <ul>
-        <li><a href="api/pe.population.html#pe.population.population.Population.initial">(pe.population.population.Population method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel.inner_dtype">inner_dtype (pe.api.image.improved_diffusion_lib.unet.FP32UNetModel property)</a>
+      <li><a href="api/pe.data.image.image.html#pe.data.image.image.ImageDataset">ImageDataset (class in pe.data.image.image)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -399,35 +647,19 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.constant.html#pe.constant.data.LABEL_ID_COLUMN_NAME">LABEL_ID_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.LABEL_ID_COLUMN_NAME">LABEL_ID_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.data.html#pe.data.data.Data.load_checkpoint">load_checkpoint() (pe.data.data.Data method)</a>
-
-      <ul>
-        <li><a href="api/pe.runner.html#pe.runner.pe.PE.load_checkpoint">(pe.runner.pe.PE method)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.LLM_PARAMETERS_COLUMN_NAME">LLM_PARAMETERS_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      </ul></li>
-      <li><a href="api/pe.data.image.html#pe.data.image.image.load_image_folder">load_image_folder() (in module pe.data.image.image)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.LLM_REQUEST_MESSAGES_COLUMN_NAME">LLM_REQUEST_MESSAGES_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.logger.html#pe.logger.csv_print.CSVPrint.log">log() (pe.logger.csv_print.CSVPrint method)</a>
-
-      <ul>
-        <li><a href="api/pe.logger.html#pe.logger.image_file.ImageFile.log">(pe.logger.image_file.ImageFile method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.log_print.LogPrint.log">(pe.logger.log_print.LogPrint method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.logger.Logger.log">(pe.logger.logger.Logger method)</a>
-</li>
-        <li><a href="api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF.log">(pe.logger.matplotlib_pdf.MatplotlibPDF method)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.logger.html#pe.logger.logger.Logger">Logger (class in pe.logger.logger)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.load_checkpoint">load_checkpoint() (pe.data.data.Data method)</a>
 </li>
-      <li><a href="api/pe.logger.html#pe.logger.log_print.LogPrint">LogPrint (class in pe.logger.log_print)</a>
+      <li><a href="api/pe.data.image.image.html#pe.data.image.image.load_image_folder">load_image_folder() (in module pe.data.image.image)</a>
 </li>
-      <li><a href="api/pe.constant.html#pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME">LOOKAHEAD_EMBEDDING_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME">LOOKAHEAD_EMBEDDING_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -435,295 +667,51 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.MatplotlibMetricItem">MatplotlibMetricItem (class in pe.metric_item)</a>
-</li>
-      <li><a href="api/pe.logger.html#pe.logger.matplotlib_pdf.MatplotlibPDF">MatplotlibPDF (class in pe.logger.matplotlib_pdf)</a>
-</li>
-      <li><a href="api/pe.data.html#pe.data.data.Data.merge">merge() (pe.data.data.Data method)</a>
-</li>
-      <li><a href="api/pe.embedding.html#pe.embedding.embedding.Embedding.merge_computed_rows">merge_computed_rows() (pe.embedding.embedding.Embedding method)</a>
-</li>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.metric_scope">metric_scope (class in pe.metric_item)</a>
-</li>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem">MetricItem (class in pe.metric_item)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.merge">merge() (pe.data.data.Data method)</a>
 </li>
       <li>
     module
 
       <ul>
-        <li><a href="api/pe.html#module-pe">pe</a>
-</li>
-        <li><a href="api/pe.api.html#module-pe.api">pe.api</a>
-</li>
-        <li><a href="api/pe.api.html#module-pe.api.api">pe.api.api</a>
-</li>
-        <li><a href="api/pe.api.image.html#module-pe.api.image">pe.api.image</a>
-</li>
-        <li><a href="api/pe.api.image.html#module-pe.api.image.improved_diffusion_api">pe.api.image.improved_diffusion_api</a>
-</li>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib">pe.api.image.improved_diffusion_lib</a>
-</li>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.gaussian_diffusion">pe.api.image.improved_diffusion_lib.gaussian_diffusion</a>
-</li>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.unet">pe.api.image.improved_diffusion_lib.unet</a>
-</li>
-        <li><a href="api/pe.api.image.html#module-pe.api.image.stable_diffusion_api">pe.api.image.stable_diffusion_api</a>
-</li>
-        <li><a href="api/pe.api.html#module-pe.api.util">pe.api.util</a>
-</li>
-        <li><a href="api/pe.callback.html#module-pe.callback">pe.callback</a>
-</li>
-        <li><a href="api/pe.callback.html#module-pe.callback.callback">pe.callback.callback</a>
-</li>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common">pe.callback.common</a>
-</li>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common.compute_fid">pe.callback.common.compute_fid</a>
-</li>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common.save_checkpoints">pe.callback.common.save_checkpoints</a>
-</li>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image">pe.callback.image</a>
-</li>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image.sample_images">pe.callback.image.sample_images</a>
-</li>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image.save_all_images">pe.callback.image.save_all_images</a>
-</li>
         <li><a href="api/pe.constant.html#module-pe.constant">pe.constant</a>
 </li>
-        <li><a href="api/pe.constant.html#module-pe.constant.data">pe.constant.data</a>
+        <li><a href="api/pe.constant.data.html#module-pe.constant.data">pe.constant.data</a>
 </li>
-        <li><a href="api/pe.data.html#module-pe.data">pe.data</a>
-</li>
-        <li><a href="api/pe.data.html#module-pe.data.data">pe.data.data</a>
+        <li><a href="api/pe.data.data.html#module-pe.data.data">pe.data.data</a>
 </li>
         <li><a href="api/pe.data.image.html#module-pe.data.image">pe.data.image</a>
 </li>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.camelyon17">pe.data.image.camelyon17</a>
+        <li><a href="api/pe.data.image.camelyon17.html#module-pe.data.image.camelyon17">pe.data.image.camelyon17</a>
 </li>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.cat">pe.data.image.cat</a>
+        <li><a href="api/pe.data.image.cat.html#module-pe.data.image.cat">pe.data.image.cat</a>
 </li>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.cifar10">pe.data.image.cifar10</a>
+        <li><a href="api/pe.data.image.cifar10.html#module-pe.data.image.cifar10">pe.data.image.cifar10</a>
 </li>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.image">pe.data.image.image</a>
+        <li><a href="api/pe.data.image.image.html#module-pe.data.image.image">pe.data.image.image</a>
+</li>
+        <li><a href="api/pe.data.text.text_csv.html#module-pe.data.text.text_csv">pe.data.text.text_csv</a>
 </li>
         <li><a href="api/pe.dp.html#module-pe.dp">pe.dp</a>
 </li>
-        <li><a href="api/pe.dp.html#module-pe.dp.dp">pe.dp.dp</a>
+        <li><a href="api/pe.dp.dp.html#module-pe.dp.dp">pe.dp.dp</a>
 </li>
-        <li><a href="api/pe.dp.html#module-pe.dp.gaussian">pe.dp.gaussian</a>
-</li>
-        <li><a href="api/pe.embedding.html#module-pe.embedding">pe.embedding</a>
-</li>
-        <li><a href="api/pe.embedding.html#module-pe.embedding.embedding">pe.embedding.embedding</a>
-</li>
-        <li><a href="api/pe.embedding.image.html#module-pe.embedding.image">pe.embedding.image</a>
-</li>
-        <li><a href="api/pe.embedding.image.html#module-pe.embedding.image.inception">pe.embedding.image.inception</a>
-</li>
-        <li><a href="api/pe.histogram.html#module-pe.histogram">pe.histogram</a>
-</li>
-        <li><a href="api/pe.histogram.html#module-pe.histogram.histogram">pe.histogram.histogram</a>
-</li>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend">pe.histogram.nearest_neighbor_backend</a>
-</li>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.auto">pe.histogram.nearest_neighbor_backend.auto</a>
-</li>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.faiss">pe.histogram.nearest_neighbor_backend.faiss</a>
-</li>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.sklearn">pe.histogram.nearest_neighbor_backend.sklearn</a>
-</li>
-        <li><a href="api/pe.histogram.html#module-pe.histogram.nearest_neighbors">pe.histogram.nearest_neighbors</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger">pe.logger</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger.csv_print">pe.logger.csv_print</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger.image_file">pe.logger.image_file</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger.log_print">pe.logger.log_print</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger.logger">pe.logger.logger</a>
-</li>
-        <li><a href="api/pe.logger.html#module-pe.logger.matplotlib_pdf">pe.logger.matplotlib_pdf</a>
+        <li><a href="api/pe.dp.gaussian.html#module-pe.dp.gaussian">pe.dp.gaussian</a>
 </li>
         <li><a href="api/pe.logging.html#module-pe.logging">pe.logging</a>
 </li>
-        <li><a href="api/pe.metric_item.html#module-pe.metric_item">pe.metric_item</a>
-</li>
-        <li><a href="api/pe.population.html#module-pe.population">pe.population</a>
-</li>
-        <li><a href="api/pe.population.html#module-pe.population.pe_population">pe.population.pe_population</a>
-</li>
-        <li><a href="api/pe.population.html#module-pe.population.population">pe.population.population</a>
-</li>
-        <li><a href="api/pe.runner.html#module-pe.runner">pe.runner</a>
-</li>
-        <li><a href="api/pe.runner.html#module-pe.runner.pe">pe.runner.pe</a>
-</li>
         <li><a href="api/pe.util.html#module-pe.util">pe.util</a>
 </li>
-        <li><a href="api/pe.util.html#module-pe.util.download">pe.util.download</a>
+        <li><a href="api/pe.util.download.html#module-pe.util.download">pe.util.download</a>
 </li>
       </ul></li>
-  </ul></td>
-</tr></table>
-
-<h2 id="N">N</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem.name">name (pe.metric_item.MetricItem property)</a>
-</li>
-      <li><a href="api/pe.histogram.html#pe.histogram.nearest_neighbors.NearestNeighbors">NearestNeighbors (class in pe.histogram.nearest_neighbors)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation.next">next() (pe.population.pe_population.PEPopulation method)</a>
-
-      <ul>
-        <li><a href="api/pe.population.html#pe.population.population.Population.next">(pe.population.population.Population method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.ImageListMetricItem.num_images_per_row">num_images_per_row (pe.metric_item.ImageListMetricItem property)</a>
-</li>
   </ul></td>
 </tr></table>
 
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop">p_sample_loop() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.PARENT_SYN_DATA_INDEX_COLUMN_NAME">PARENT_SYN_DATA_INDEX_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion.p_sample_loop_progressive">p_sample_loop_progressive() (pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion method)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.PARENT_SYN_DATA_INDEX_COLUMN_NAME">PARENT_SYN_DATA_INDEX_COLUMN_NAME (in module pe.constant.data)</a>
-</li>
-      <li>
-    pe
-
-      <ul>
-        <li><a href="api/pe.html#module-pe">module</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.runner.html#pe.runner.pe.PE">PE (class in pe.runner.pe)</a>
-</li>
-      <li>
-    pe.api
-
-      <ul>
-        <li><a href="api/pe.api.html#module-pe.api">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.api
-
-      <ul>
-        <li><a href="api/pe.api.html#module-pe.api.api">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image
-
-      <ul>
-        <li><a href="api/pe.api.image.html#module-pe.api.image">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image.improved_diffusion_api
-
-      <ul>
-        <li><a href="api/pe.api.image.html#module-pe.api.image.improved_diffusion_api">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image.improved_diffusion_lib
-
-      <ul>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image.improved_diffusion_lib.gaussian_diffusion
-
-      <ul>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.gaussian_diffusion">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image.improved_diffusion_lib.unet
-
-      <ul>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#module-pe.api.image.improved_diffusion_lib.unet">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.image.stable_diffusion_api
-
-      <ul>
-        <li><a href="api/pe.api.image.html#module-pe.api.image.stable_diffusion_api">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.api.util
-
-      <ul>
-        <li><a href="api/pe.api.html#module-pe.api.util">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback
-
-      <ul>
-        <li><a href="api/pe.callback.html#module-pe.callback">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.callback
-
-      <ul>
-        <li><a href="api/pe.callback.html#module-pe.callback.callback">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.common
-
-      <ul>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.common.compute_fid
-
-      <ul>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common.compute_fid">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.common.save_checkpoints
-
-      <ul>
-        <li><a href="api/pe.callback.common.html#module-pe.callback.common.save_checkpoints">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.image
-
-      <ul>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.image.sample_images
-
-      <ul>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image.sample_images">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.callback.image.save_all_images
-
-      <ul>
-        <li><a href="api/pe.callback.image.html#module-pe.callback.image.save_all_images">module</a>
-</li>
-      </ul></li>
       <li>
     pe.constant
 
@@ -735,21 +723,14 @@
     pe.constant.data
 
       <ul>
-        <li><a href="api/pe.constant.html#module-pe.constant.data">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.data
-
-      <ul>
-        <li><a href="api/pe.data.html#module-pe.data">module</a>
+        <li><a href="api/pe.constant.data.html#module-pe.constant.data">module</a>
 </li>
       </ul></li>
       <li>
     pe.data.data
 
       <ul>
-        <li><a href="api/pe.data.html#module-pe.data.data">module</a>
+        <li><a href="api/pe.data.data.html#module-pe.data.data">module</a>
 </li>
       </ul></li>
       <li>
@@ -763,28 +744,37 @@
     pe.data.image.camelyon17
 
       <ul>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.camelyon17">module</a>
+        <li><a href="api/pe.data.image.camelyon17.html#module-pe.data.image.camelyon17">module</a>
 </li>
       </ul></li>
       <li>
     pe.data.image.cat
 
       <ul>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.cat">module</a>
+        <li><a href="api/pe.data.image.cat.html#module-pe.data.image.cat">module</a>
 </li>
       </ul></li>
       <li>
     pe.data.image.cifar10
 
       <ul>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.cifar10">module</a>
+        <li><a href="api/pe.data.image.cifar10.html#module-pe.data.image.cifar10">module</a>
 </li>
       </ul></li>
       <li>
     pe.data.image.image
 
       <ul>
-        <li><a href="api/pe.data.image.html#module-pe.data.image.image">module</a>
+        <li><a href="api/pe.data.image.image.html#module-pe.data.image.image">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pe.data.text.text_csv
+
+      <ul>
+        <li><a href="api/pe.data.text.text_csv.html#module-pe.data.text.text_csv">module</a>
 </li>
       </ul></li>
       <li>
@@ -794,139 +784,18 @@
         <li><a href="api/pe.dp.html#module-pe.dp">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     pe.dp.dp
 
       <ul>
-        <li><a href="api/pe.dp.html#module-pe.dp.dp">module</a>
+        <li><a href="api/pe.dp.dp.html#module-pe.dp.dp">module</a>
 </li>
       </ul></li>
       <li>
     pe.dp.gaussian
 
       <ul>
-        <li><a href="api/pe.dp.html#module-pe.dp.gaussian">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.embedding
-
-      <ul>
-        <li><a href="api/pe.embedding.html#module-pe.embedding">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.embedding.embedding
-
-      <ul>
-        <li><a href="api/pe.embedding.html#module-pe.embedding.embedding">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.embedding.image
-
-      <ul>
-        <li><a href="api/pe.embedding.image.html#module-pe.embedding.image">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.embedding.image.inception
-
-      <ul>
-        <li><a href="api/pe.embedding.image.html#module-pe.embedding.image.inception">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram
-
-      <ul>
-        <li><a href="api/pe.histogram.html#module-pe.histogram">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.histogram
-
-      <ul>
-        <li><a href="api/pe.histogram.html#module-pe.histogram.histogram">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.nearest_neighbor_backend
-
-      <ul>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.nearest_neighbor_backend.auto
-
-      <ul>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.auto">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.nearest_neighbor_backend.faiss
-
-      <ul>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.faiss">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.nearest_neighbor_backend.sklearn
-
-      <ul>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#module-pe.histogram.nearest_neighbor_backend.sklearn">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.histogram.nearest_neighbors
-
-      <ul>
-        <li><a href="api/pe.histogram.html#module-pe.histogram.nearest_neighbors">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger.csv_print
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger.csv_print">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger.image_file
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger.image_file">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger.log_print
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger.log_print">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger.logger
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger.logger">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.logger.matplotlib_pdf
-
-      <ul>
-        <li><a href="api/pe.logger.html#module-pe.logger.matplotlib_pdf">module</a>
+        <li><a href="api/pe.dp.gaussian.html#module-pe.dp.gaussian">module</a>
 </li>
       </ul></li>
       <li>
@@ -934,48 +803,6 @@
 
       <ul>
         <li><a href="api/pe.logging.html#module-pe.logging">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.metric_item
-
-      <ul>
-        <li><a href="api/pe.metric_item.html#module-pe.metric_item">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.population
-
-      <ul>
-        <li><a href="api/pe.population.html#module-pe.population">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.population.pe_population
-
-      <ul>
-        <li><a href="api/pe.population.html#module-pe.population.pe_population">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.population.population
-
-      <ul>
-        <li><a href="api/pe.population.html#module-pe.population.population">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.runner
-
-      <ul>
-        <li><a href="api/pe.runner.html#module-pe.runner">module</a>
-</li>
-      </ul></li>
-      <li>
-    pe.runner.pe
-
-      <ul>
-        <li><a href="api/pe.runner.html#module-pe.runner.pe">module</a>
 </li>
       </ul></li>
       <li>
@@ -989,14 +816,10 @@
     pe.util.download
 
       <ul>
-        <li><a href="api/pe.util.html#module-pe.util.download">module</a>
+        <li><a href="api/pe.util.download.html#module-pe.util.download">module</a>
 </li>
       </ul></li>
-      <li><a href="api/pe.population.html#pe.population.pe_population.PEPopulation">PEPopulation (class in pe.population.pe_population)</a>
-</li>
-      <li><a href="api/pe.population.html#pe.population.population.Population">Population (class in pe.population.population)</a>
-</li>
-      <li><a href="api/pe.constant.html#pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1004,19 +827,7 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.api.html#pe.api.api.API.random_api">random_api() (pe.api.api.API method)</a>
-
-      <ul>
-        <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api">(pe.api.image.improved_diffusion_api.ImprovedDiffusion method)</a>
-</li>
-        <li><a href="api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.random_api">(pe.api.image.stable_diffusion_api.StableDiffusion method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.data.html#pe.data.data.Data.random_truncate">random_truncate() (pe.data.data.Data method)</a>
-</li>
-      <li><a href="api/pe.runner.html#pe.runner.pe.PE.run">run() (pe.runner.pe.PE method)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.random_truncate">random_truncate() (pe.data.data.Data method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1024,41 +835,23 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.sample">sample() (in module pe.api.image.improved_diffusion_api)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.save_checkpoint">save_checkpoint() (pe.data.data.Data method)</a>
 </li>
-      <li><a href="api/pe.callback.image.html#pe.callback.image.sample_images.SampleImages">SampleImages (class in pe.callback.image.sample_images)</a>
-</li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.Sampler">Sampler (class in pe.api.image.improved_diffusion_api)</a>
-</li>
-      <li><a href="api/pe.data.html#pe.data.data.Data.save_checkpoint">save_checkpoint() (pe.data.data.Data method)</a>
-</li>
-      <li><a href="api/pe.callback.image.html#pe.callback.image.save_all_images.SaveAllImages">SaveAllImages (class in pe.callback.image.save_all_images)</a>
-</li>
-      <li><a href="api/pe.callback.common.html#pe.callback.common.save_checkpoints.SaveCheckpoints">SaveCheckpoints (class in pe.callback.common.save_checkpoints)</a>
-</li>
-      <li><a href="api/pe.histogram.nearest_neighbor_backend.html#pe.histogram.nearest_neighbor_backend.auto.search">search() (in module pe.histogram.nearest_neighbor_backend.auto)</a>
+      <li><a href="api/pe.dp.html#pe.dp.DP.set_epsilon_and_delta">set_epsilon_and_delta() (pe.dp.DP method)</a>
 
       <ul>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#pe.histogram.nearest_neighbor_backend.faiss.search">(in module pe.histogram.nearest_neighbor_backend.faiss)</a>
+        <li><a href="api/pe.dp.dp.html#pe.dp.dp.DP.set_epsilon_and_delta">(pe.dp.dp.DP method)</a>
 </li>
-        <li><a href="api/pe.histogram.nearest_neighbor_backend.html#pe.histogram.nearest_neighbor_backend.sklearn.search">(in module pe.histogram.nearest_neighbor_backend.sklearn)</a>
+        <li><a href="api/pe.dp.html#pe.dp.Gaussian.set_epsilon_and_delta">(pe.dp.Gaussian method)</a>
+</li>
+        <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta">(pe.dp.gaussian.Gaussian method)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.dp.html#pe.dp.dp.DP.set_epsilon_and_delta">set_epsilon_and_delta() (pe.dp.dp.DP method)</a>
-
-      <ul>
-        <li><a href="api/pe.dp.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta">(pe.dp.gaussian.Gaussian method)</a>
-</li>
-      </ul></li>
-      <li><a href="api/pe.data.html#pe.data.data.Data.set_label_id">set_label_id() (pe.data.data.Data method)</a>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.set_label_id">set_label_id() (pe.data.data.Data method)</a>
 </li>
       <li><a href="api/pe.logging.html#pe.logging.setup_logging">setup_logging() (in module pe.logging)</a>
-</li>
-      <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.SkippedSpacedDiffusion">SkippedSpacedDiffusion (class in pe.api.image.improved_diffusion_lib.gaussian_diffusion)</a>
-</li>
-      <li><a href="api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion">StableDiffusion (class in pe.api.image.stable_diffusion_api)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1066,17 +859,13 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.embedding.image.html#pe.embedding.image.inception.to_uint8">to_uint8() (in module pe.embedding.image.inception)</a>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.TEXT_DATA_COLUMN_NAME">TEXT_DATA_COLUMN_NAME (in module pe.constant.data)</a>
 </li>
-      <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.Sampler.training">training (pe.api.image.improved_diffusion_api.Sampler attribute)</a>
-
-      <ul>
-        <li><a href="api/pe.api.image.improved_diffusion_lib.html#pe.api.image.improved_diffusion_lib.unet.FP32UNetModel.training">(pe.api.image.improved_diffusion_lib.unet.FP32UNetModel attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.data.html#pe.data.data.Data.truncate">truncate() (pe.data.data.Data method)</a>
+      <li><a href="api/pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV">TextCSV (class in pe.data.text.text_csv)</a>
+</li>
+      <li><a href="api/pe.data.data.html#pe.data.data.Data.truncate">truncate() (pe.data.data.Data method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1084,24 +873,8 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.data.image.html#pe.data.image.cat.Cat.URL">URL (pe.data.image.cat.Cat attribute)</a>
+      <li><a href="api/pe.data.image.cat.html#pe.data.image.cat.Cat.URL">URL (pe.data.image.cat.Cat attribute)</a>
 </li>
-  </ul></td>
-</tr></table>
-
-<h2 id="V">V</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem.value">value (pe.metric_item.MetricItem property)</a>
-</li>
-      <li><a href="api/pe.api.html#pe.api.api.API.variation_api">variation_api() (pe.api.api.API method)</a>
-
-      <ul>
-        <li><a href="api/pe.api.image.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.variation_api">(pe.api.image.improved_diffusion_api.ImprovedDiffusion method)</a>
-</li>
-        <li><a href="api/pe.api.image.html#pe.api.image.stable_diffusion_api.StableDiffusion.variation_api">(pe.api.image.stable_diffusion_api.StableDiffusion method)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 

@@ -37,4 +37,4 @@ If you use **Private Evolution** in your research or work, please cite the follo
 .. literalinclude:: pe2.bib
     :language: bibtex
 
-Please see https://github.com/fjxmlzn/private-evolution-papers for the full list of **Private Evolution** papers done by the community.
+Please see https://github.com/fjxmlzn/private-evolution-papers for the full list of **Private Evolution** papers and code repositories done by the community.

@@ -9,18 +9,8 @@ pe.callback.image package
 Submodules
 ----------
 
-pe.callback.image.sample\_images module
----------------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.callback.image.sample_images
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.callback.image.save\_all\_images module
-------------------------------------------
-
-.. automodule:: pe.callback.image.save_all_images
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.callback.image.sample_images
+   pe.callback.image.save_all_images

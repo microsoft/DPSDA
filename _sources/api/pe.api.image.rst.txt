@@ -10,25 +10,15 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.api.image.improved_diffusion_lib
 
 Submodules
 ----------
 
-pe.api.image.improved\_diffusion\_api module
---------------------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.api.image.improved_diffusion_api
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-pe.api.image.stable\_diffusion\_api module
-------------------------------------------
-
-.. automodule:: pe.api.image.stable_diffusion_api
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.api.image.improved_diffusion_api
+   pe.api.image.stable_diffusion_api

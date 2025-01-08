@@ -10,17 +10,15 @@ Subpackages
 -----------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 7
 
    pe.embedding.image
+   pe.embedding.text
 
 Submodules
 ----------
 
-pe.embedding.embedding module
------------------------------
+.. toctree::
+   :maxdepth: 7
 
-.. automodule:: pe.embedding.embedding
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   pe.embedding.embedding
