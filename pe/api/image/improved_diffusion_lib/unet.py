@@ -12,12 +12,6 @@ from improved_diffusion.unet import UNetModel
 from improved_diffusion.script_util import NUM_CLASSES
 
 
-class FP32UNetModel(UNetModel):
-    @property
-    def inner_dtype(self):
-        return torch.float32
-
-
 def create_model(
     image_size,
     num_channels,
@@ -31,6 +25,14 @@ def create_model(
     use_scale_shift_norm,
     dropout,
 ):
+    # Putting the class inside the function to avoid raising errors when the optional dependency improved_diffusion is
+    # not installed. Waiting for generalimport to support this subclassing use case:
+    # https://github.com/ManderaGeneral/generalimport/pull/28
+    class FP32UNetModel(UNetModel):
+        @property
+        def inner_dtype(self):
+            return torch.float32
+
     if image_size == 256:
         channel_mult = (1, 1, 2, 2, 4, 4)
     elif image_size == 64:

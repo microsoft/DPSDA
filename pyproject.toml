@@ -19,6 +19,7 @@ dependencies = [
   "omegaconf",
   "pandas",
   "scikit-learn",
+  "generalimport",
 ]
 
 [project.optional-dependencies]
