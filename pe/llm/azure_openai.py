@@ -27,7 +27,7 @@ class AzureOpenAILLM(LLM):
       which case the Azure CLI will be used to authenticate the requests, and the environment variable
       ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI authentication documentation for more information:
       https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication
-    * ``AZURE_OPENAI_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
+    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
     * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/."""
 
     def __init__(self, dry_run=False, num_threads=1, **generation_args):

@@ -15,7 +15,7 @@ of :py:class:`pe.llm.openai.OpenAILLM`. In that case, the following environment 
     case the Azure CLI will be used to authenticate the requests, and the environment variable AZURE_OPENAI_API_SCOPE
     needs to be set. See Azure OpenAI authentication documentation for more information:
     https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication
-* AZURE_OPENAI_ENDPOINT: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
+* AZURE_OPENAI_API_ENDPOINT: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
 * AZURE_OPENAI_API_VERSION: Azure OpenAI API version. You can get it from https://portal.azure.com/.
 
 These environment variables can be set in a .env file in the same directory as this script. For example:
