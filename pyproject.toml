@@ -52,6 +52,7 @@ text = [
   "fschat",
   "transformers",
   "accelerate",
+  "tqdm"
 ]
 
 [project.urls]

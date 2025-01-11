@@ -4,6 +4,7 @@ from openai import AuthenticationError
 from openai import NotFoundError
 from openai import PermissionDeniedError
 import os
+from tqdm import tqdm
 from tenacity import retry
 from tenacity import retry_if_not_exception_type
 from tenacity import stop_after_attempt
@@ -24,9 +25,11 @@ class OpenAILLM(LLM):
     * ``OPENAI_API_KEY``: OpenAI API key. You can get it from https://platform.openai.com/account/api-keys. Multiple
       keys can be separated by commas, and a key will be selected randomly for each request."""
 
-    def __init__(self, dry_run=False, num_threads=1, **generation_args):
+    def __init__(self, progress_bar=True, dry_run=False, num_threads=1, **generation_args):
         """Constructor.
 
+        :param progress_bar: Whether to show the progress bar, defaults to True
+        :type progress_bar: bool, optional
         :param dry_run: Whether to enable dry run. When dry run is enabled, the responses are fake and the APIs are
             not called. Defaults to False
         :type dry_run: bool, optional
@@ -35,6 +38,7 @@ class OpenAILLM(LLM):
         :param \\*\\*generation_args: The generation arguments that will be passed to the OpenAI API
         :type \\*\\*generation_args: str
         """
+        self._progress_bar = progress_bar
         self._dry_run = dry_run
         self._num_threads = num_threads
         self._generation_args = generation_args
@@ -74,7 +78,13 @@ class OpenAILLM(LLM):
             for request in requests
         ]
         with ThreadPoolExecutor(max_workers=self._num_threads) as executor:
-            responses = list(executor.map(self._get_response_for_one_request, messages_list, generation_args_list))
+            responses = list(
+                tqdm(
+                    executor.map(self._get_response_for_one_request, messages_list, generation_args_list),
+                    total=len(messages_list),
+                    disable=not self._progress_bar,
+                )
+            )
         return responses
 
     @retry(
