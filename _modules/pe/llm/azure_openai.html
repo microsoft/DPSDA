@@ -1028,6 +1028,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">PermissionDeniedError</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">azure.identity</span><span class="w"> </span><span class="kn">import</span> <span class="n">AzureCliCredential</span><span class="p">,</span> <span class="n">get_bearer_token_provider</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tenacity</span><span class="w"> </span><span class="kn">import</span> <span class="n">retry</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tenacity</span><span class="w"> </span><span class="kn">import</span> <span class="n">retry_if_not_exception_type</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">tenacity</span><span class="w"> </span><span class="kn">import</span> <span class="n">stop_after_attempt</span>
@@ -1053,9 +1054,11 @@
 <span class="sd">    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.</span>
 <span class="sd">    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="AzureOpenAILLM.__init__"><a class="viewcode-back" href="../../../api/pe.llm.azure_openai.html#pe.llm.AzureOpenAILLM.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
+<div class="viewcode-block" id="AzureOpenAILLM.__init__"><a class="viewcode-back" href="../../../api/pe.llm.azure_openai.html#pe.llm.AzureOpenAILLM.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
+<span class="sd">        :param progress_bar: Whether to show the progress bar, defaults to True</span>
+<span class="sd">        :type progress_bar: bool, optional</span>
 <span class="sd">        :param dry_run: Whether to enable dry run. When dry run is enabled, the responses are fake and the APIs are</span>
 <span class="sd">            not called. Defaults to False</span>
 <span class="sd">        :type dry_run: bool, optional</span>
@@ -1064,6 +1067,7 @@
 <span class="sd">        :param \\*\\*generation_args: The generation arguments that will be passed to the OpenAI API</span>
 <span class="sd">        :type \\*\\*generation_args: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress_bar</span> <span class="o">=</span> <span class="n">progress_bar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span> <span class="o">=</span> <span class="n">num_threads</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_generation_args</span> <span class="o">=</span> <span class="n">generation_args</span>
@@ -1130,7 +1134,13 @@
             <span class="k">for</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">requests</span>
         <span class="p">]</span>
         <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
-            <span class="n">responses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_response_for_one_request</span><span class="p">,</span> <span class="n">messages_list</span><span class="p">,</span> <span class="n">generation_args_list</span><span class="p">))</span>
+            <span class="n">responses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="n">tqdm</span><span class="p">(</span>
+                    <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_response_for_one_request</span><span class="p">,</span> <span class="n">messages_list</span><span class="p">,</span> <span class="n">generation_args_list</span><span class="p">),</span>
+                    <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">messages_list</span><span class="p">),</span>
+                    <span class="n">disable</span><span class="o">=</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_progress_bar</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">responses</span></div>
 
 <div class="viewcode-block" id="AzureOpenAILLM._get_response_for_one_request"><a class="viewcode-back" href="../../../api/pe.llm.azure_openai.html#pe.llm.AzureOpenAILLM._get_response_for_one_request">[docs]</a>    <span class="nd">@retry</span><span class="p">(</span>
