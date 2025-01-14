@@ -24,7 +24,7 @@ class PEPopulation(Population):
         """Constructor.
 
         :param api: The API object that contains the random and variation APIs
-        :type api: :py:class:`pe.api.api.API`
+        :type api: :py:class:`pe.api.API`
         :param histogram_threshold: The threshold for clipping the histogram. None means no clipping. Defaults to None
         :type histogram_threshold: float, optional
         :param initial_variation_api_fold: The number of variations to apply to the initial synthetic data, defaults to
@@ -61,7 +61,7 @@ class PEPopulation(Population):
         :param num_samples: The number of samples to generate
         :type num_samples: int
         :return: The initial synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(
             f"Population: generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
@@ -83,10 +83,10 @@ class PEPopulation(Population):
         """Post process the histogram of synthetic data (e.g., clipping).
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The synthetic data with post-processed histogram in the column
             :py:const:`pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME`
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         count = syn_data.data_frame[DP_HISTOGRAM_COLUMN_NAME].to_numpy()
         if self._histogram_threshold is not None:
@@ -101,12 +101,12 @@ class PEPopulation(Population):
         """Select data from the synthetic data according to `selection_mode`.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :param num_samples: The number of samples to select
         :type num_samples: int
         :raises ValueError: If the selection mode is not supported
         :return: The selected data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         if self._selection_mode == "sample":
             count = syn_data.data_frame[POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME].to_numpy()
@@ -128,11 +128,11 @@ class PEPopulation(Population):
         """Generate the next synthetic data.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :param num_samples: The number of samples to generate
         :type num_samples: int
         :return: The next synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(
             f"Population: generating {num_samples}*{self._next_variation_api_fold} " "next synthetic samples"

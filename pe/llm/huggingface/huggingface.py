@@ -12,7 +12,11 @@ class HuggingfaceLLM(LLM):
     def __init__(self, model_name_or_path, batch_size=128, dry_run=False, **generation_args):
         """Constructor.
 
-        :param model_name_or_path: The model name or path of the Huggingface model
+        :param model_name_or_path: The model name or path of the Huggingface model. Note that we use the FastChat
+            library (https://github.com/lm-sys/FastChat) to manage the conversation template. If the conversation
+            template of your desired model is not available in FastChat, please register the conversation template in
+            the FastChat library. See the following link for an example:
+            https://github.com/microsoft/DPSDA/blob/main/pe/llm/huggingface/register_fastchat/gpt2.py
         :type model_name_or_path: str
         :param batch_size: The batch size to use for generating the responses, defaults to 128
         :type batch_size: int, optional
@@ -91,7 +95,7 @@ class HuggingfaceLLM(LLM):
         """Get the responses from the LLM.
 
         :param requests: The requests
-        :type requests: list[:py:class:`pe.llm.request.Request`]
+        :type requests: list[:py:class:`pe.llm.Request`]
         :param \\*\\*generation_args: The generation arguments. The priority of the generation arguments from the
             highest to the lowerest is in the order of: the arguments set in the requests > the arguments passed to
             this function > and the arguments passed to the constructor

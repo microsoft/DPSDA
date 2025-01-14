@@ -32,9 +32,9 @@ class SentenceTransformer(Embedding):
         """Compute the Sentence Transformers embedding of text.
 
         :param data: The data object containing the text
-        :type data: :py:class:`pe.data.data.Data`
+        :type data: :py:class:`pe.data.Data`
         :return: The data object with the computed embedding
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         uncomputed_data = self.filter_uncomputed_rows(data)
         if len(uncomputed_data.data_frame) == 0:

@@ -131,7 +131,7 @@ class ImprovedDiffusion(API):
         :param num_samples: The number of random samples to generate
         :type num_samples: int
         :return: The data object of the generated synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         label_name = label_info.name
         execution_logger.info(f"RANDOM API: creating {num_samples} samples for label {label_name}")
@@ -164,9 +164,9 @@ class ImprovedDiffusion(API):
         """Generating variations of the synthetic data.
 
         :param syn_data: The data object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The data object of the variation of the input synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(f"VARIATION API: creating variations for {len(syn_data.data_frame)} samples")
         images = np.stack(syn_data.data_frame[IMAGE_DATA_COLUMN_NAME].values)
