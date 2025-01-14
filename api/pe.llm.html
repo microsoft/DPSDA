@@ -1149,7 +1149,11 @@ this function &gt; and the arguments passed to the constructor</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_name_or_path</strong> (<em>str</em>) – The model name or path of the Huggingface model</p></li>
+<li><p><strong>model_name_or_path</strong> (<em>str</em>) – The model name or path of the Huggingface model. Note that we use the FastChat
+library (<a class="reference external" href="https://github.com/lm-sys/FastChat">https://github.com/lm-sys/FastChat</a>) to manage the conversation template. If the conversation
+template of your desired model is not available in FastChat, please register the conversation template in
+the FastChat library. See the following link for an example:
+<a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/pe/llm/huggingface/register_fastchat/gpt2.py">https://github.com/microsoft/DPSDA/blob/main/pe/llm/huggingface/register_fastchat/gpt2.py</a></p></li>
 <li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – The batch size to use for generating the responses, defaults to 128</p></li>
 <li><p><strong>dry_run</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to enable dry run. When dry run is enabled, the responses are fake and the LLMs are
 not called. Defaults to False</p></li>
@@ -1234,7 +1238,7 @@ not called. Defaults to False</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>requests</strong> (list[<a class="reference internal" href="pe.llm.request.html#pe.llm.request.Request" title="pe.llm.request.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.llm.request.Request</span></code></a>]) – The requests</p></li>
+<li><p><strong>requests</strong> (list[<a class="reference internal" href="#pe.llm.Request" title="pe.llm.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.llm.Request</span></code></a>]) – The requests</p></li>
 <li><p><strong>**generation_args</strong> (<em>str</em>) – The generation arguments. The priority of the generation arguments from the
 highest to the lowerest is in the order of: the arguments set in the requests &gt; the arguments passed to
 this function &gt; and the arguments passed to the constructor</p></li>

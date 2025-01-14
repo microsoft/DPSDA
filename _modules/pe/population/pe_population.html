@@ -1047,7 +1047,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param api: The API object that contains the random and variation APIs</span>
-<span class="sd">        :type api: :py:class:`pe.api.api.API`</span>
+<span class="sd">        :type api: :py:class:`pe.api.API`</span>
 <span class="sd">        :param histogram_threshold: The threshold for clipping the histogram. None means no clipping. Defaults to None</span>
 <span class="sd">        :type histogram_threshold: float, optional</span>
 <span class="sd">        :param initial_variation_api_fold: The number of variations to apply to the initial synthetic data, defaults to</span>
@@ -1084,7 +1084,7 @@
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The initial synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial &quot;</span>
@@ -1106,10 +1106,10 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Post process the histogram of synthetic data (e.g., clipping).</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The synthetic data with post-processed histogram in the column</span>
 <span class="sd">            :py:const:`pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME`</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram_threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1124,12 +1124,12 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Select data from the synthetic data according to `selection_mode`.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param num_samples: The number of samples to select</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :raises ValueError: If the selection mode is not supported</span>
 <span class="sd">        :return: The selected data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">==</span> <span class="s2">&quot;sample&quot;</span><span class="p">:</span>
             <span class="n">count</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
@@ -1151,11 +1151,11 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the next synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The next synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span><span class="si">}</span><span class="s2"> &quot;</span> <span class="s2">&quot;next synthetic samples&quot;</span>
