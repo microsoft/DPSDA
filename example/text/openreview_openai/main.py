@@ -6,17 +6,22 @@ paper is no longer available.
 
 To run the code, the following environment variables are required:
 * OPENAI_API_KEY: OpenAI API key. You can get it from https://platform.openai.com/account/api-keys. Multiple keys can
-    be separated by commas, and a key will be selected randomly for each request.
+    be separated by commas, and a key with the lowest current workload will be used for each request.
 
-We can also switch from OpenAI API to Azure OpenAI API by using :py:class:`pe.llm.azure_openai.AzureOpenAILLM` instead
-of :py:class:`pe.llm.openai.OpenAILLM`. In that case, the following environment variables are required:
-* AZURE_OPENAI_API_KEY: Azure OpenAI API key. You can get it from https://portal.azure.com/. Multiple keys can be
-    separated by commas, and a key will be selected randomly for each request. The key can also be "AZ_CLI", in which
-    case the Azure CLI will be used to authenticate the requests, and the environment variable AZURE_OPENAI_API_SCOPE
-    needs to be set. See Azure OpenAI authentication documentation for more information:
+We can also switch from OpenAI API to Azure OpenAI API by using :py:class:`pe.llm.AzureOpenAILLM` instead
+of :py:class:`pe.llm.OpenAILLM`. In that case, the following environment variables are required:
+* ``AZURE_OPENAI_API_KEY``: Azure OpenAI API key. You can get it from https://portal.azure.com/. Multiple keys can
+    be separated by commas. The key can also be "AZ_CLI", in which case the Azure CLI will be used to authenticate
+    the requests, and the environment variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI
+    authentication documentation for more information:
     https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication
-* AZURE_OPENAI_API_ENDPOINT: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
-* AZURE_OPENAI_API_VERSION: Azure OpenAI API version. You can get it from https://portal.azure.com/.
+* ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. Multiple endpoints can be separated by commas. You can get
+    it from https://portal.azure.com/.
+* ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.
+Assuming $x_1$ API keys and $x_2$ endpoints are provided. When it is desired to use $X$ endpoints/API keys, then
+$x_1,x_2$ must be equal to either $X$ or 1, and the maximum of $x_1,x_2$ must be $X$. For the $x_i$ that equals to
+1, the same value will be used for all endpoints/API keys. For each request, the API key + endpoint pair with the
+lowest current workload will be used.
 
 These environment variables can be set in a .env file in the same directory as this script. For example:
 ```
