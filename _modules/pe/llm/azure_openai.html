@@ -1037,7 +1037,8 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LLM</span>
@@ -1092,7 +1093,10 @@
                     <span class="n">azure_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_ENDPOINT&quot;</span><span class="p">),</span>
                 <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">)</span><span class="si">}</span><span class="s2"> AzureOpenAI API keys&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">)</span><span class="si">}</span><span class="s2"> AzureOpenAI API keys&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span><span class="si">}</span><span class="s2"> threads for making concurrent API calls&quot;</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">generation_arg_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1169,12 +1173,18 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
             <span class="n">response</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Dry run enabled. The request is </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">client</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">)</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="n">client_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span>
+                <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Workload </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">full_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
                 <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
                 <span class="o">**</span><span class="n">generation_args</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">response</span> <span class="o">=</span> <span class="n">full_response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+            <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span><span class="p">[</span><span class="n">client_id</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">response</span></div></div>
 </pre></div>
 
