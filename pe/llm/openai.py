@@ -13,7 +13,8 @@ from tenacity import before_sleep_log
 import json
 import logging
 from concurrent.futures import ThreadPoolExecutor
-import random
+import threading
+import numpy as np
 
 from pe.logging import execution_logger
 from .llm import LLM
@@ -23,7 +24,7 @@ class OpenAILLM(LLM):
     """A wrapper for OpenAI LLM APIs. The following environment variables are required:
 
     * ``OPENAI_API_KEY``: OpenAI API key. You can get it from https://platform.openai.com/account/api-keys. Multiple
-      keys can be separated by commas, and a key will be selected randomly for each request."""
+      keys can be separated by commas, and a key with the lowest current workload will be used for each request."""
 
     def __init__(self, progress_bar=True, dry_run=False, num_threads=1, **generation_args):
         """Constructor.
@@ -45,7 +46,10 @@ class OpenAILLM(LLM):
 
         self._api_keys = self._get_environment_variable("OPENAI_API_KEY").split(",")
         self._clients = [OpenAI(api_key=api_key) for api_key in self._api_keys]
+        self._lock = threading.Lock()
+        self._client_workload = [0] * len(self._clients)
         execution_logger.info(f"Using {len(self._api_keys)} OpenAI API keys")
+        execution_logger.info(f"Using {self._num_threads} threads for making concurrent API calls")
 
     def _get_environment_variable(self, name):
         """Get the environment variable.
@@ -113,10 +117,16 @@ class OpenAILLM(LLM):
         if self._dry_run:
             response = f"Dry run enabled. The request is {json.dumps(messages)}"
         else:
-            client = random.choice(self._clients)
+            with self._lock:
+                client_id = np.argmin(self._client_workload)
+                self._client_workload[client_id] += 1
+                client = self._clients[client_id]
+                execution_logger.info(f"Workload {self._client_workload}")
             full_response = client.chat.completions.create(
                 messages=messages,
                 **generation_args,
             )
             response = full_response.choices[0].message.content
+            with self._lock:
+                self._client_workload[client_id] -= 1
         return response
