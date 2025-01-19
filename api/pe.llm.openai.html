@@ -1036,7 +1036,7 @@
 <p>A wrapper for OpenAI LLM APIs. The following environment variables are required:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code>: OpenAI API key. You can get it from <a class="reference external" href="https://platform.openai.com/account/api-keys">https://platform.openai.com/account/api-keys</a>. Multiple
-keys can be separated by commas, and a key will be selected randomly for each request.</p></li>
+keys can be separated by commas, and a key with the lowest current workload will be used for each request.</p></li>
 </ul>
 <dl class="py method">
 <dt class="sig sig-object py" id="pe.llm.openai.OpenAILLM.__init__">

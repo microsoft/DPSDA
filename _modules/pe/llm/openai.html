@@ -1047,7 +1047,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A wrapper for OpenAI LLM APIs. The following environment variables are required:</span>
 
 <span class="sd">    * ``OPENAI_API_KEY``: OpenAI API key. You can get it from https://platform.openai.com/account/api-keys. Multiple</span>
-<span class="sd">      keys can be separated by commas, and a key will be selected randomly for each request.&quot;&quot;&quot;</span>
+<span class="sd">      keys can be separated by commas, and a key with the lowest current workload will be used for each request.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="OpenAILLM.__init__"><a class="viewcode-back" href="../../../api/pe.llm.openai.html#pe.llm.OpenAILLM.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>

@@ -1048,9 +1048,10 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A wrapper for Azure OpenAI LLM APIs. The following environment variables are required:</span>
 
 <span class="sd">    * ``AZURE_OPENAI_API_KEY``: Azure OpenAI API key. You can get it from https://portal.azure.com/. Multiple keys can</span>
-<span class="sd">      be separated by commas, and a key will be selected randomly for each request. The key can also be &quot;AZ_CLI&quot;, in</span>
-<span class="sd">      which case the Azure CLI will be used to authenticate the requests, and the environment variable</span>
-<span class="sd">      ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI authentication documentation for more information:</span>
+<span class="sd">      be separated by commas, and a key with the lowest current workload will be used for each request. The key can</span>
+<span class="sd">      also be &quot;AZ_CLI&quot;, in which case the Azure CLI will be used to authenticate the requests, and the environment</span>
+<span class="sd">      variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI authentication documentation for more</span>
+<span class="sd">      information:</span>
 <span class="sd">      https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication</span>
 <span class="sd">    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.</span>
 <span class="sd">    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.&quot;&quot;&quot;</span>

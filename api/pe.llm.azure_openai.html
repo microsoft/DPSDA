@@ -1036,9 +1036,10 @@
 <p>A wrapper for Azure OpenAI LLM APIs. The following environment variables are required:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_KEY</span></code>: Azure OpenAI API key. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>. Multiple keys can
-be separated by commas, and a key will be selected randomly for each request. The key can also be “AZ_CLI”, in
-which case the Azure CLI will be used to authenticate the requests, and the environment variable
-<code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_SCOPE</span></code> needs to be set. See Azure OpenAI authentication documentation for more information:
+be separated by commas, and a key with the lowest current workload will be used for each request. The key can
+also be “AZ_CLI”, in which case the Azure CLI will be used to authenticate the requests, and the environment
+variable <code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_SCOPE</span></code> needs to be set. See Azure OpenAI authentication documentation for more
+information:
 <a class="reference external" href="https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication">https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_ENDPOINT</span></code>: Azure OpenAI endpoint. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_VERSION</span></code>: Azure OpenAI API version. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>.</p></li>
