@@ -1035,14 +1035,18 @@
 <p>A wrapper for Azure OpenAI LLM APIs. The following environment variables are required:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_KEY</span></code>: Azure OpenAI API key. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>. Multiple keys can
-be separated by commas, and a key with the lowest current workload will be used for each request. The key can
-also be “AZ_CLI”, in which case the Azure CLI will be used to authenticate the requests, and the environment
-variable <code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_SCOPE</span></code> needs to be set. See Azure OpenAI authentication documentation for more
-information:
+be separated by commas. The key can also be “AZ_CLI”, in which case the Azure CLI will be used to authenticate
+the requests, and the environment variable <code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_SCOPE</span></code> needs to be set. See Azure OpenAI
+authentication documentation for more information:
 <a class="reference external" href="https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication">https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_ENDPOINT</span></code>: Azure OpenAI endpoint. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_ENDPOINT</span></code>: Azure OpenAI endpoint. Multiple endpoints can be separated by commas. You can get
+it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">AZURE_OPENAI_API_VERSION</span></code>: Azure OpenAI API version. You can get it from <a class="reference external" href="https://portal.azure.com/">https://portal.azure.com/</a>.</p></li>
 </ul>
+<p>Assuming $x_1$ API keys and $x_2$ endpoints are provided. When it is desired to use $X$ endpoints/API keys, then
+$x_1,x_2$ must be equal to either $X$ or 1, and the maximum of $x_1,x_2$ must be $X$. For the $x_i$ that equals to
+1, the same value will be used for all endpoints/API keys. For each request, the API key + endpoint pair with the
+lowest current workload will be used.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pe.llm.AzureOpenAILLM.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">generation_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/llm/azure_openai.html#AzureOpenAILLM.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.llm.AzureOpenAILLM.__init__" title="Permalink to this definition"></a></dt>
@@ -1056,6 +1060,9 @@ not called. Defaults to False</p></li>
 <li><p><strong>num_threads</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of threads to use for making concurrent API calls, defaults to 1</p></li>
 <li><p><strong>**generation_args</strong> (<em>str</em>) – The generation arguments that will be passed to the OpenAI API</p></li>
 </ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the number of API keys and endpoints are not equal</p>
 </dd>
 </dl>
 </dd></dl>

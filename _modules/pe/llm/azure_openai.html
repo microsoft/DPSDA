@@ -1048,13 +1048,18 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A wrapper for Azure OpenAI LLM APIs. The following environment variables are required:</span>
 
 <span class="sd">    * ``AZURE_OPENAI_API_KEY``: Azure OpenAI API key. You can get it from https://portal.azure.com/. Multiple keys can</span>
-<span class="sd">      be separated by commas, and a key with the lowest current workload will be used for each request. The key can</span>
-<span class="sd">      also be &quot;AZ_CLI&quot;, in which case the Azure CLI will be used to authenticate the requests, and the environment</span>
-<span class="sd">      variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI authentication documentation for more</span>
-<span class="sd">      information:</span>
+<span class="sd">      be separated by commas. The key can also be &quot;AZ_CLI&quot;, in which case the Azure CLI will be used to authenticate</span>
+<span class="sd">      the requests, and the environment variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI</span>
+<span class="sd">      authentication documentation for more information:</span>
 <span class="sd">      https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication</span>
-<span class="sd">    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.</span>
-<span class="sd">    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.&quot;&quot;&quot;</span>
+<span class="sd">    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. Multiple endpoints can be separated by commas. You can get</span>
+<span class="sd">      it from https://portal.azure.com/.</span>
+<span class="sd">    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.</span>
+
+<span class="sd">    Assuming $x_1$ API keys and $x_2$ endpoints are provided. When it is desired to use $X$ endpoints/API keys, then</span>
+<span class="sd">    $x_1,x_2$ must be equal to either $X$ or 1, and the maximum of $x_1,x_2$ must be $X$. For the $x_i$ that equals to</span>
+<span class="sd">    1, the same value will be used for all endpoints/API keys. For each request, the API key + endpoint pair with the</span>
+<span class="sd">    lowest current workload will be used.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="AzureOpenAILLM.__init__"><a class="viewcode-back" href="../../../api/pe.llm.azure_openai.html#pe.llm.AzureOpenAILLM.__init__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_threads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
@@ -1068,6 +1073,7 @@
 <span class="sd">        :type num_threads: int, optional</span>
 <span class="sd">        :param \\*\\*generation_args: The generation arguments that will be passed to the OpenAI API</span>
 <span class="sd">        :type \\*\\*generation_args: str</span>
+<span class="sd">        :raises ValueError: If the number of API keys and endpoints are not equal</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_progress_bar</span> <span class="o">=</span> <span class="n">progress_bar</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
@@ -1075,8 +1081,16 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_generation_args</span> <span class="o">=</span> <span class="n">generation_args</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_KEY&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_ENDPOINT&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">num_clients</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span> <span class="o">*</span> <span class="n">num_clients</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span> <span class="o">*</span> <span class="n">num_clients</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The number of API keys and endpoints must be equal.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">api_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">api_key_i</span><span class="p">,</span> <span class="n">api_key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">api_key</span> <span class="o">==</span> <span class="s2">&quot;AZ_CLI&quot;</span><span class="p">:</span>
                 <span class="n">credential</span> <span class="o">=</span> <span class="n">get_bearer_token_provider</span><span class="p">(</span>
                     <span class="n">AzureCliCredential</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_SCOPE&quot;</span><span class="p">)</span>
@@ -1084,19 +1098,18 @@
                 <span class="n">client</span> <span class="o">=</span> <span class="n">AzureOpenAI</span><span class="p">(</span>
                     <span class="n">azure_ad_token_provider</span><span class="o">=</span><span class="n">credential</span><span class="p">,</span>
                     <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_VERSION&quot;</span><span class="p">),</span>
-                    <span class="n">azure_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_ENDPOINT&quot;</span><span class="p">),</span>
+                    <span class="n">azure_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span><span class="p">[</span><span class="n">api_key_i</span><span class="p">],</span>
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-
                 <span class="n">client</span> <span class="o">=</span> <span class="n">AzureOpenAI</span><span class="p">(</span>
-                    <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_KEY&quot;</span><span class="p">),</span>
+                    <span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span>
                     <span class="n">api_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_VERSION&quot;</span><span class="p">),</span>
-                    <span class="n">azure_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_environment_variable</span><span class="p">(</span><span class="s2">&quot;AZURE_OPENAI_API_ENDPOINT&quot;</span><span class="p">),</span>
+                    <span class="n">azure_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpoints</span><span class="p">[</span><span class="n">api_key_i</span><span class="p">],</span>
                 <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client_workload</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_keys</span><span class="p">)</span><span class="si">}</span><span class="s2"> AzureOpenAI API keys&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clients</span><span class="p">)</span><span class="si">}</span><span class="s2"> AzureOpenAI clients&quot;</span><span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_threads</span><span class="si">}</span><span class="s2"> threads for making concurrent API calls&quot;</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
