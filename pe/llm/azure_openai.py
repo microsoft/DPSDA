@@ -25,13 +25,18 @@ class AzureOpenAILLM(LLM):
     """A wrapper for Azure OpenAI LLM APIs. The following environment variables are required:
 
     * ``AZURE_OPENAI_API_KEY``: Azure OpenAI API key. You can get it from https://portal.azure.com/. Multiple keys can
-      be separated by commas, and a key with the lowest current workload will be used for each request. The key can
-      also be "AZ_CLI", in which case the Azure CLI will be used to authenticate the requests, and the environment
-      variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI authentication documentation for more
-      information:
+      be separated by commas. The key can also be "AZ_CLI", in which case the Azure CLI will be used to authenticate
+      the requests, and the environment variable ``AZURE_OPENAI_API_SCOPE`` needs to be set. See Azure OpenAI
+      authentication documentation for more information:
       https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/switching-endpoints#microsoft-entra-id-authentication
-    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. You can get it from https://portal.azure.com/.
-    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/."""
+    * ``AZURE_OPENAI_API_ENDPOINT``: Azure OpenAI endpoint. Multiple endpoints can be separated by commas. You can get
+      it from https://portal.azure.com/.
+    * ``AZURE_OPENAI_API_VERSION``: Azure OpenAI API version. You can get it from https://portal.azure.com/.
+
+    Assuming $x_1$ API keys and $x_2$ endpoints are provided. When it is desired to use $X$ endpoints/API keys, then
+    $x_1,x_2$ must be equal to either $X$ or 1, and the maximum of $x_1,x_2$ must be $X$. For the $x_i$ that equals to
+    1, the same value will be used for all endpoints/API keys. For each request, the API key + endpoint pair with the
+    lowest current workload will be used."""
 
     def __init__(self, progress_bar=True, dry_run=False, num_threads=1, **generation_args):
         """Constructor.
@@ -45,6 +50,7 @@ class AzureOpenAILLM(LLM):
         :type num_threads: int, optional
         :param \\*\\*generation_args: The generation arguments that will be passed to the OpenAI API
         :type \\*\\*generation_args: str
+        :raises ValueError: If the number of API keys and endpoints are not equal
         """
         self._progress_bar = progress_bar
         self._dry_run = dry_run
@@ -52,8 +58,16 @@ class AzureOpenAILLM(LLM):
         self._generation_args = generation_args
 
         self._api_keys = self._get_environment_variable("AZURE_OPENAI_API_KEY").split(",")
+        self._endpoints = self._get_environment_variable("AZURE_OPENAI_API_ENDPOINT").split(",")
+        num_clients = max(len(self._api_keys), len(self._endpoints))
+        if len(self._api_keys) == 1:
+            self._api_keys = self._api_keys * num_clients
+        if len(self._endpoints) == 1:
+            self._endpoints = self._endpoints * num_clients
+        if len(self._api_keys) != len(self._endpoints):
+            raise ValueError("The number of API keys and endpoints must be equal.")
         self._clients = []
-        for api_key in self._api_keys:
+        for api_key_i, api_key in enumerate(self._api_keys):
             if api_key == "AZ_CLI":
                 credential = get_bearer_token_provider(
                     AzureCliCredential(), self._get_environment_variable("AZURE_OPENAI_API_SCOPE")
@@ -61,19 +75,18 @@ class AzureOpenAILLM(LLM):
                 client = AzureOpenAI(
                     azure_ad_token_provider=credential,
                     api_version=self._get_environment_variable("AZURE_OPENAI_API_VERSION"),
-                    azure_endpoint=self._get_environment_variable("AZURE_OPENAI_API_ENDPOINT"),
+                    azure_endpoint=self._endpoints[api_key_i],
                 )
             else:
-
                 client = AzureOpenAI(
-                    api_key=self._get_environment_variable("AZURE_OPENAI_API_KEY"),
+                    api_key=api_key,
                     api_version=self._get_environment_variable("AZURE_OPENAI_API_VERSION"),
-                    azure_endpoint=self._get_environment_variable("AZURE_OPENAI_API_ENDPOINT"),
+                    azure_endpoint=self._endpoints[api_key_i],
                 )
             self._clients.append(client)
         self._lock = threading.Lock()
         self._client_workload = [0] * len(self._clients)
-        execution_logger.info(f"Using {len(self._api_keys)} AzureOpenAI API keys")
+        execution_logger.info(f"Using {len(self._clients)} AzureOpenAI clients")
         execution_logger.info(f"Using {self._num_threads} threads for making concurrent API calls")
 
     @property
