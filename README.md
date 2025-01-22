@@ -9,6 +9,8 @@ This repo is a Python library to **generate differentially private (DP) syntheti
     [[paper (ICML 2024 Spotlight)]](https://proceedings.mlr.press/v235/xie24g.html) [[paper (arxiv)](https://arxiv.org/abs/2403.01749)] [[website](https://alphapav.github.io/augpe-dpapitext)]  
     **Authors:** [[Chulin Xie](https://alphapav.github.io/)], [[Zinan Lin](https://zinanlin.me/)], [[Arturs Backurs](https://www.mit.edu/~backurs/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Da Yu](https://dayu11.github.io/)], [[Huseyin Inan](https://www.microsoft.com/en-us/research/people/huinan/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Haotian Jiang](https://jhtdavid96.wixsite.com/jianghaotian)], [[Huishuai Zhang](https://huishuai-git.github.io/)], [[Yin Tat Lee](https://yintat.com/)], [[Bo Li](https://aisecure.github.io/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
 
+Please refer to [this repo](https://github.com/fjxmlzn/private-evolution-papers) for the full list of Private Evolution papers and code repositories related to PE.
+
 ## Documentation
 Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more details, including the installation instructions, usage, and examples.
 
