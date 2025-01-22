@@ -204,7 +204,5 @@ class StableDiffusion(API):
                 LABEL_ID_COLUMN_NAME: syn_data.data_frame[LABEL_ID_COLUMN_NAME].values,
             }
         )
-        if LABEL_ID_COLUMN_NAME in syn_data.data_frame.columns:
-            data_frame[LABEL_ID_COLUMN_NAME] = syn_data.data_frame[LABEL_ID_COLUMN_NAME].values
         execution_logger.info(f"VARIATION API: finished creating variations for {len(syn_data.data_frame)} samples")
         return Data(data_frame=data_frame, metadata=syn_data.metadata)
