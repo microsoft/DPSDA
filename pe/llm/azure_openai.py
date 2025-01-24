@@ -168,7 +168,6 @@ class AzureOpenAILLM(LLM):
                 client_id = np.argmin(self._client_workload)
                 self._client_workload[client_id] += 1
                 client = self._clients[client_id]
-                execution_logger.info(f"Workload {self._client_workload}")
             full_response = client.chat.completions.create(
                 messages=messages,
                 **generation_args,
