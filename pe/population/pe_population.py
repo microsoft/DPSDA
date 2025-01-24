@@ -6,6 +6,7 @@ from pe.constant.data import DP_HISTOGRAM_COLUMN_NAME
 from pe.constant.data import POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME
 from pe.constant.data import PARENT_SYN_DATA_INDEX_COLUMN_NAME
 from pe.constant.data import FROM_LAST_FLAG_COLUMN_NAME
+from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
 from pe.logging import execution_logger
 
 
@@ -68,9 +69,11 @@ class PEPopulation(Population):
             f"synthetic samples for label {label_info.name}"
         )
         random_data = self._api.random_api(label_info=label_info, num_samples=num_samples)
+        random_data.data_frame[VARIATION_API_FOLD_ID_COLUMN_NAME] = -1
         variation_data_list = []
-        for _ in range(self._initial_variation_api_fold):
+        for variation_api_fold_id in range(self._initial_variation_api_fold):
             variation_data = self._api.variation_api(syn_data=random_data)
+            variation_data.data_frame[VARIATION_API_FOLD_ID_COLUMN_NAME] = variation_api_fold_id
             variation_data_list.append(variation_data)
         data = Data.concat([random_data] + variation_data_list)
         execution_logger.info(
@@ -140,13 +143,15 @@ class PEPopulation(Population):
         syn_data = self._post_process_histogram(syn_data)
         selected_data = self._select_data(syn_data, num_samples)
         selected_data.data_frame[FROM_LAST_FLAG_COLUMN_NAME] = 1
+        selected_data.data_frame[VARIATION_API_FOLD_ID_COLUMN_NAME] = -1
         variation_data_list = []
-        for _ in range(self._next_variation_api_fold):
+        for variation_api_fold_id in range(self._next_variation_api_fold):
             variation_data = self._api.variation_api(syn_data=selected_data)
             variation_data.data_frame[PARENT_SYN_DATA_INDEX_COLUMN_NAME] = selected_data.data_frame[
                 PARENT_SYN_DATA_INDEX_COLUMN_NAME
             ].values
             variation_data.data_frame[FROM_LAST_FLAG_COLUMN_NAME] = 0
+            variation_data.data_frame[VARIATION_API_FOLD_ID_COLUMN_NAME] = variation_api_fold_id
             variation_data_list.append(variation_data)
         new_syn_data = Data.concat(variation_data_list + ([selected_data] if self._keep_selected else []))
         execution_logger.info(

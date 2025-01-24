@@ -17,6 +17,8 @@ LOOKAHEAD_EMBEDDING_COLUMN_NAME = "PE.LOOKAHEAD_EMBEDDING"
 PARENT_SYN_DATA_INDEX_COLUMN_NAME = "PE.PARENT_SYN_DATA_INDEX"
 #: The column name of the flag that indicates whether the sample is from the last iteration
 FROM_LAST_FLAG_COLUMN_NAME = "PE.FROM_LAST_FLAG"
+#: The column name that indicates the fold ID of the variation API
+VARIATION_API_FOLD_ID_COLUMN_NAME = "PE.VARIATION_API_FOLD_ID"
 
 #: The column name of the image data
 IMAGE_DATA_COLUMN_NAME = "PE.IMAGE"
