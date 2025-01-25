@@ -13,9 +13,9 @@ class ComputeFID(Callback):
         """Constructor.
 
         :param priv_data: The private data
-        :type priv_data: :py:class:`pe.data.data.Data`
+        :type priv_data: :py:class:`pe.data.Data`
         :param embedding: The embedding to compute the FID
-        :type embedding: :py:class:`pe.embedding.embedding.Embedding`
+        :type embedding: :py:class:`pe.embedding.Embedding`
         :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no
             filtering. Defaults to None
         :type filter_criterion: dict, optional
@@ -42,7 +42,7 @@ class ComputeFID(Callback):
         data.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The FID between the private and synthetic data
         :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]
         """

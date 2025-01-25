@@ -115,7 +115,7 @@ class AzureOpenAILLM(LLM):
         """Get the responses from the LLM.
 
         :param requests: The requests
-        :type requests: list[:py:class:`pe.llm.request.Request`]
+        :type requests: list[:py:class:`pe.llm.Request`]
         :param \\*\\*generation_args: The generation arguments. The priority of the generation arguments from the
             highest to the lowerest is in the order of: the arguments set in the requests > the arguments passed to
             this function > and the arguments passed to the constructor

@@ -13,18 +13,18 @@ class PE(object):
         """Constructor.
 
         :param priv_data: The private data
-        :type priv_data: :py:class:`pe.data.data.Data`
+        :type priv_data: :py:class:`pe.data.Data`
         :param population: The population algorithm
-        :type population: :py:class:`pe.population.population.Population`
+        :type population: :py:class:`pe.population.Population`
         :param histogram: The histogram algorithm
-        :type histogram: :py:class:`pe.histogram.histogram.Histogram`
+        :type histogram: :py:class:`pe.histogram.Histogram`
         :param dp: The DP algorithm, defaults to None, in which case the Gaussian mechanism
-            :py:class:`pe.dp.gaussian.Gaussian` is used
-        :type dp: :py:class:`pe.dp.dp.DP`, optional
+            :py:class:`pe.dp.Gaussian` is used
+        :type dp: :py:class:`pe.dp.DP`, optional
         :param loggers: The list of loggers, defaults to []
-        :type loggers: list[:py:class:`pe.logger.logger.Logger`], optional
+        :type loggers: list[:py:class:`pe.logger.Logger`], optional
         :param callbacks: The list of callbacks, defaults to []
-        :type callbacks: list[Callable or :py:class:`pe.callback.callback.Callback`], optional
+        :type callbacks: list[Callable or :py:class:`pe.callback.Callback`], optional
         """
         super().__init__()
         self._priv_data = priv_data
@@ -42,7 +42,7 @@ class PE(object):
         :param checkpoint_path: The path to the checkpoint
         :type checkpoint_path: str
         :return: The synthetic data
-        :rtype: :py:class:`pe.data.data.Data` or None
+        :rtype: :py:class:`pe.data.Data` or None
         """
         syn_data = Data()
         if not syn_data.load_checkpoint(checkpoint_path):
@@ -53,7 +53,7 @@ class PE(object):
         """Log metrics.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         """
         if not self._callbacks:
             return
@@ -140,7 +140,7 @@ class PE(object):
             private data. Defaults to None
         :type fraction_per_label_id: list[float], optional
         :return: The synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         try:
             # Set privacy budget.

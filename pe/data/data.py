@@ -62,8 +62,8 @@ class Data:
 
         :param label_id: The label id that is used to filter the data frame
         :type label_id: int
-        :return: :py:class:`pe.data.data.Data` object with the filtered data frame
-        :rtype: :py:class:`pe.data.data.Data`
+        :return: :py:class:`pe.data.Data` object with the filtered data frame
+        :rtype: :py:class:`pe.data.Data`
         """
         return Data(
             data_frame=self.data_frame[self.data_frame[LABEL_ID_COLUMN_NAME] == label_id],
@@ -83,8 +83,8 @@ class Data:
 
         :param num_samples: The number of samples to truncate
         :type num_samples: int
-        :return: A new :py:class:`pe.data.data.Data` object with the truncated data frame
-        :rtype: :py:class:`pe.data.data.Data`
+        :return: A new :py:class:`pe.data.Data` object with the truncated data frame
+        :rtype: :py:class:`pe.data.Data`
         """
         return Data(data_frame=self.data_frame[:num_samples], metadata=self.metadata)
 
@@ -93,8 +93,8 @@ class Data:
 
         :param num_samples: The number of samples to randomly truncate
         :type num_samples: int
-        :return: A new :py:class:`pe.data.data.Data` object with the randomly truncated data frame
-        :rtype: :py:class:`pe.data.data.Data`
+        :return: A new :py:class:`pe.data.Data` object with the randomly truncated data frame
+        :rtype: :py:class:`pe.data.Data`
         """
         data_frame = self.data_frame.sample(n=num_samples)
         return Data(data_frame=data_frame, metadata=self.metadata)
@@ -103,10 +103,10 @@ class Data:
         """Merge the data object with another data object
 
         :param data: The data object to merge
-        :type data: :py:class:`pe.data.data.Data`
+        :type data: :py:class:`pe.data.Data`
         :raises ValueError: If the metadata of `data` is not the same as the metadata of the current object
         :return: The merged data object
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         if self.metadata != data.metadata:
             raise ValueError("Metadata must be the same")
@@ -122,7 +122,7 @@ class Data:
         :param filter_criteria: The filter criteria. None means no filter
         :type filter_criteria: dict
         :return: The filtered data object
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         if filter_criteria is None:
             return self
@@ -136,13 +136,13 @@ class Data:
         """Concatenate the data frames of a list of data objects
 
         :param data_list: The list of data objects to concatenate
-        :type data_list: list[:py:class:`pe.data.data.Data`]
+        :type data_list: list[:py:class:`pe.data.Data`]
         :param metadata: The metadata of the concatenated data. When None, the metadata of the list of data objects
             must be the same and will be used. Defaults to None
         :type metadata: dict, optional
         :raises ValueError: If the metadata of the data objects are not the same
         :return: The concatenated data object
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         data_frame_list = [data.data_frame for data in data_list]
         if metadata is None:
