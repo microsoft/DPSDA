@@ -116,6 +116,21 @@ class Data:
         data_frame = self.data_frame.join(data.data_frame[cols_to_use])
         return Data(data_frame=data_frame, metadata=self.metadata)
 
+    def filter(self, filter_criteria):
+        """Filter the data object according to a filter criteria
+
+        :param filter_criteria: The filter criteria. None means no filter
+        :type filter_criteria: dict
+        :return: The filtered data object
+        :rtype: :py:class:`pe.data.data.Data`
+        """
+        if filter_criteria is None:
+            return self
+        data_frame = self.data_frame
+        for column, value in filter_criteria.items():
+            data_frame = data_frame[data_frame[column] == value]
+        return Data(data_frame=data_frame, metadata=self.metadata)
+
     @classmethod
     def concat(cls, data_list, metadata=None):
         """Concatenate the data frames of a list of data objects
