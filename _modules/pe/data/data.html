@@ -390,6 +390,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="../../../api/pe.data.html#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -509,6 +510,7 @@
 <li class="toctree-l8"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="../../../api/pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -1138,6 +1140,20 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols_to_use</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
         <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">cols_to_use</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Data.filter"><a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.filter">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_criteria</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter the data object according to a filter criteria</span>
+<span class="sd">        :param filter_criteria: The filter criteria. None means no filter</span>
+<span class="sd">        :type filter_criteria: dict</span>
+<span class="sd">        :return: The filtered data object</span>
+<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">filter_criteria</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span>
+        <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">filter_criteria</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="n">data_frame</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="n">value</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Data.concat"><a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.concat">[docs]</a>    <span class="nd">@classmethod</span>

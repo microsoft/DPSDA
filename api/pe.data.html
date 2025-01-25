@@ -393,6 +393,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#pe.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -512,6 +513,7 @@
 <li class="toctree-l8"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -1158,6 +1160,16 @@ must be the same and will be used. Defaults to None</p></li>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="pe.data.Data.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_criteria</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.Data.filter" title="Permalink to this definition"></a></dt>
+<dd><p>Filter the data object according to a filter criteria
+:param filter_criteria: The filter criteria. None means no filter
+:type filter_criteria: dict
+:return: The filtered data object
+:rtype: <a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="pe.data.Data.filter_label_id">
 <span class="sig-name descname"><span class="pre">filter_label_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/data/data.html#Data.filter_label_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.data.Data.filter_label_id" title="Permalink to this definition"></a></dt>
 <dd><p>Filter the data frame according to a label id</p>
@@ -1563,6 +1575,7 @@ is False, the class names will be ignored and all images will be treated as the 
 <li class="toctree-l2"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>

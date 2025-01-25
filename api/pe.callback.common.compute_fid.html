@@ -393,6 +393,7 @@
 <li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -512,6 +513,7 @@
 <li class="toctree-l8"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
@@ -1033,7 +1035,7 @@
 <span id="pe-callback-common-compute-fid-module"></span><h1>pe.callback.common.compute_fid module<a class="headerlink" href="#module-pe.callback.common.compute_fid" title="Permalink to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pe.callback.common.compute_fid.ComputeFID">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.common.compute_fid.</span></span><span class="sig-name descname"><span class="pre">ComputeFID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.common.compute_fid.</span></span><span class="sig-name descname"><span class="pre">ComputeFID</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_criterion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="pe.callback.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></a></p>
 <p>The callback that computes the Frechet Inception Distance (FID) between the private and synthetic data.</p>
 <dl class="py method">
@@ -1056,13 +1058,15 @@ data.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pe.callback.common.compute_fid.ComputeFID.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID.__init__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">priv_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_criterion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/common/compute_fid.html#ComputeFID.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.common.compute_fid.ComputeFID.__init__" title="Permalink to this definition"></a></dt>
 <dd><p>Constructor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
 <li><p><strong>embedding</strong> (<a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding" title="pe.embedding.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.embedding.Embedding</span></code></a>) – The embedding to compute the FID</p></li>
+<li><p><strong>filter_criterion</strong> (<em>dict</em><em>, </em><em>optional</em>) – Only computes the metric based on samples satisfying the criterion. None means no
+filtering. Defaults to None</p></li>
 </ul>
 </dd>
 </dl>
