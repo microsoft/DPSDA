@@ -1039,18 +1039,18 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
-<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param population: The population algorithm</span>
-<span class="sd">        :type population: :py:class:`pe.population.population.Population`</span>
+<span class="sd">        :type population: :py:class:`pe.population.Population`</span>
 <span class="sd">        :param histogram: The histogram algorithm</span>
-<span class="sd">        :type histogram: :py:class:`pe.histogram.histogram.Histogram`</span>
+<span class="sd">        :type histogram: :py:class:`pe.histogram.Histogram`</span>
 <span class="sd">        :param dp: The DP algorithm, defaults to None, in which case the Gaussian mechanism</span>
-<span class="sd">            :py:class:`pe.dp.gaussian.Gaussian` is used</span>
-<span class="sd">        :type dp: :py:class:`pe.dp.dp.DP`, optional</span>
+<span class="sd">            :py:class:`pe.dp.Gaussian` is used</span>
+<span class="sd">        :type dp: :py:class:`pe.dp.DP`, optional</span>
 <span class="sd">        :param loggers: The list of loggers, defaults to []</span>
-<span class="sd">        :type loggers: list[:py:class:`pe.logger.logger.Logger`], optional</span>
+<span class="sd">        :type loggers: list[:py:class:`pe.logger.Logger`], optional</span>
 <span class="sd">        :param callbacks: The list of callbacks, defaults to []</span>
-<span class="sd">        :type callbacks: list[Callable or :py:class:`pe.callback.callback.Callback`], optional</span>
+<span class="sd">        :type callbacks: list[Callable or :py:class:`pe.callback.Callback`], optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="n">priv_data</span>
@@ -1068,7 +1068,7 @@
 <span class="sd">        :param checkpoint_path: The path to the checkpoint</span>
 <span class="sd">        :type checkpoint_path: str</span>
 <span class="sd">        :return: The synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data` or None</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data` or None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">):</span>
@@ -1079,7 +1079,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log metrics.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callbacks</span><span class="p">:</span>
             <span class="k">return</span>
@@ -1166,7 +1166,7 @@
 <span class="sd">            private data. Defaults to None</span>
 <span class="sd">        :type fraction_per_label_id: list[float], optional</span>
 <span class="sd">        :return: The synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Set privacy budget.</span>

@@ -1043,13 +1043,13 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
-<li><p><strong>population</strong> (<a class="reference internal" href="pe.population.population.html#pe.population.population.Population" title="pe.population.population.Population"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.population.population.Population</span></code></a>) – The population algorithm</p></li>
-<li><p><strong>histogram</strong> (<a class="reference internal" href="pe.histogram.histogram.html#pe.histogram.histogram.Histogram" title="pe.histogram.histogram.Histogram"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.histogram.histogram.Histogram</span></code></a>) – The histogram algorithm</p></li>
-<li><p><strong>dp</strong> (<a class="reference internal" href="pe.dp.dp.html#pe.dp.dp.DP" title="pe.dp.dp.DP"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.dp.DP</span></code></a>, optional) – The DP algorithm, defaults to None, in which case the Gaussian mechanism
-<a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.Gaussian" title="pe.dp.gaussian.Gaussian"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.gaussian.Gaussian</span></code></a> is used</p></li>
-<li><p><strong>loggers</strong> (list[<a class="reference internal" href="pe.logger.logger.html#pe.logger.logger.Logger" title="pe.logger.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.logger.Logger</span></code></a>], optional) – The list of loggers, defaults to []</p></li>
-<li><p><strong>callbacks</strong> (list[Callable or <a class="reference internal" href="pe.callback.callback.html#pe.callback.callback.Callback" title="pe.callback.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.callback.Callback</span></code></a>], optional) – The list of callbacks, defaults to []</p></li>
+<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The private data</p></li>
+<li><p><strong>population</strong> (<a class="reference internal" href="pe.population.html#pe.population.Population" title="pe.population.Population"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.population.Population</span></code></a>) – The population algorithm</p></li>
+<li><p><strong>histogram</strong> (<a class="reference internal" href="pe.histogram.html#pe.histogram.Histogram" title="pe.histogram.Histogram"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.histogram.Histogram</span></code></a>) – The histogram algorithm</p></li>
+<li><p><strong>dp</strong> (<a class="reference internal" href="pe.dp.html#pe.dp.DP" title="pe.dp.DP"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.DP</span></code></a>, optional) – The DP algorithm, defaults to None, in which case the Gaussian mechanism
+<a class="reference internal" href="pe.dp.html#pe.dp.Gaussian" title="pe.dp.Gaussian"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.dp.Gaussian</span></code></a> is used</p></li>
+<li><p><strong>loggers</strong> (list[<a class="reference internal" href="pe.logger.html#pe.logger.Logger" title="pe.logger.Logger"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.logger.Logger</span></code></a>], optional) – The list of loggers, defaults to []</p></li>
+<li><p><strong>callbacks</strong> (list[Callable or <a class="reference internal" href="pe.callback.html#pe.callback.Callback" title="pe.callback.Callback"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.callback.Callback</span></code></a>], optional) – The list of callbacks, defaults to []</p></li>
 </ul>
 </dd>
 </dl>
@@ -1095,7 +1095,7 @@ private data. Defaults to None</p></li>
 <dd><p>Log metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The synthetic data</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1112,7 +1112,7 @@ private data. Defaults to None</p></li>
 <dd class="field-even"><p>The synthetic data</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a> or None</p>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a> or None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1141,7 +1141,7 @@ private data. Defaults to None</p></li>
 <dd class="field-even"><p>The synthetic data</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>

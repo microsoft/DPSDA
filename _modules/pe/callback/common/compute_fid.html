@@ -1039,9 +1039,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
-<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param embedding: The embedding to compute the FID</span>
-<span class="sd">        :type embedding: :py:class:`pe.embedding.embedding.Embedding`</span>
+<span class="sd">        :type embedding: :py:class:`pe.embedding.Embedding`</span>
 <span class="sd">        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no</span>
 <span class="sd">            filtering. Defaults to None</span>
 <span class="sd">        :type filter_criterion: dict, optional</span>
@@ -1068,7 +1068,7 @@
 <span class="sd">        data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The FID between the private and synthetic data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]</span>
 <span class="sd">        &quot;&quot;&quot;</span>

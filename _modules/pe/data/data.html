@@ -1088,8 +1088,8 @@
 
 <span class="sd">        :param label_id: The label id that is used to filter the data frame</span>
 <span class="sd">        :type label_id: int</span>
-<span class="sd">        :return: :py:class:`pe.data.data.Data` object with the filtered data frame</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: :py:class:`pe.data.Data` object with the filtered data frame</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span>
             <span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_id</span><span class="p">],</span>
@@ -1109,8 +1109,8 @@
 
 <span class="sd">        :param num_samples: The number of samples to truncate</span>
 <span class="sd">        :type num_samples: int</span>
-<span class="sd">        :return: A new :py:class:`pe.data.data.Data` object with the truncated data frame</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: A new :py:class:`pe.data.Data` object with the truncated data frame</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[:</span><span class="n">num_samples</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
@@ -1119,8 +1119,8 @@
 
 <span class="sd">        :param num_samples: The number of samples to randomly truncate</span>
 <span class="sd">        :type num_samples: int</span>
-<span class="sd">        :return: A new :py:class:`pe.data.data.Data` object with the randomly truncated data frame</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :return: A new :py:class:`pe.data.Data` object with the randomly truncated data frame</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
@@ -1129,10 +1129,10 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge the data object with another data object</span>
 
 <span class="sd">        :param data: The data object to merge</span>
-<span class="sd">        :type data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :raises ValueError: If the metadata of `data` is not the same as the metadata of the current object</span>
 <span class="sd">        :return: The merged data object</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">!=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Metadata must be the same&quot;</span><span class="p">)</span>
@@ -1148,7 +1148,7 @@
 <span class="sd">        :param filter_criteria: The filter criteria. None means no filter</span>
 <span class="sd">        :type filter_criteria: dict</span>
 <span class="sd">        :return: The filtered data object</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">filter_criteria</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
@@ -1162,13 +1162,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Concatenate the data frames of a list of data objects</span>
 
 <span class="sd">        :param data_list: The list of data objects to concatenate</span>
-<span class="sd">        :type data_list: list[:py:class:`pe.data.data.Data`]</span>
+<span class="sd">        :type data_list: list[:py:class:`pe.data.Data`]</span>
 <span class="sd">        :param metadata: The metadata of the concatenated data. When None, the metadata of the list of data objects</span>
 <span class="sd">            must be the same and will be used. Defaults to None</span>
 <span class="sd">        :type metadata: dict, optional</span>
 <span class="sd">        :raises ValueError: If the metadata of the data objects are not the same</span>
 <span class="sd">        :return: The concatenated data object</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data_frame_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">metadata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
