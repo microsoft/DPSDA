@@ -1,6 +1,10 @@
-from generalimport import generalimport
+import generalimport
+from generalimport import generalimport as optionalimport
 
-generalimport(
+# This is a temporary hack to support libraries such as azure.identity
+generalimport.top._assert_no_dots = lambda names: ...
+
+optionalimport(
     "blobfile",
     "torch",
     "imageio",
@@ -13,17 +17,17 @@ generalimport(
         "See https://microsoft.github.io/DPSDA/getting_started/installation.html for more details."
     ),
 )
-generalimport(
+optionalimport(
     "gdown",
     "openai",
     "tenacity",
-    "azure",
+    "azure.identity",
     "tiktoken",
     "dotenv",
     "sentence_transformers",
     "protobuf",
     "sentencepiece",
-    "fschat",
+    "fastchat",
     "transformers",
     "accelerate",
     message=(
