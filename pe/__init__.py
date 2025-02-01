@@ -1,8 +1,5 @@
-import generalimport
 from generalimport import generalimport as optionalimport
 
-# This is a temporary hack to support libraries such as azure.identity
-generalimport.top._assert_no_dots = lambda names: ...
 
 optionalimport(
     "blobfile",
@@ -21,7 +18,6 @@ optionalimport(
     "gdown",
     "openai",
     "tenacity",
-    "azure.identity",
     "tiktoken",
     "dotenv",
     "sentence_transformers",

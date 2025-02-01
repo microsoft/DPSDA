@@ -20,30 +20,26 @@ dependencies = [
   "pandas",
   "scikit-learn",
   "generalimport",
+  "fld@git+https://github.com/marcojira/fld.git",
+  "openai",
+  "tenacity",
 ]
 
 [project.optional-dependencies]
-dev = [
-  "pre-commit",
-  "black",
-  "sphinx",
-  "sphinx-rtd-theme",
-  "sphinx-toolbox",
-]
+dev = ["pre-commit", "black", "sphinx", "sphinx-rtd-theme", "sphinx-toolbox"]
 image = [
   "blobfile",
   "torch",
   "imageio",
-  "clip@git+https://github.com/openai/CLIP.git@dcba3cb2e2827b402d2701e7e1c7d9fed8a20ef1",
+  "clip@git+https://github.com/openai/CLIP.git",
   "diffusers[pytorch]",
+  "transformers",
   "improved-diffusion@git+https://github.com/fjxmlzn/improved-diffusion.git@8f6677c3c47d1c1ad2e22ad2603eaec4cc639805",
   "wilds",
+  "azure-identity",
 ]
 text = [
   "gdown",
-  "openai",
-  "tenacity",
-  "azure-identity",
   "tiktoken",
   "python-dotenv",
   "sentence-transformers",
@@ -52,7 +48,8 @@ text = [
   "fschat",
   "transformers",
   "accelerate",
-  "tqdm"
+  "tqdm",
+  "azure-identity",
 ]
 
 [project.urls]
