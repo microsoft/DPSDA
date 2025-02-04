@@ -31,6 +31,26 @@ If you are using **Private Evolution** to generate **text**, use the following c
 
     pip install "private-evolution[text] @ git+https://github.com/microsoft/DPSDA.git"
 
+Multiple dependencies can also be combined, such as:
+
+.. code-block:: bash
+
+    pip install "private-evolution[image,text] @ git+https://github.com/microsoft/DPSDA.git"
+
+Editable Mode
+^^^^^^^^^^^^^
+
+To install **Private Evolution** in editable mode, please use the following command:
+
+.. code-block:: bash
+
+    git clone https://github.com/microsoft/DPSDA.git
+    cd DPSDA
+    pip install -e .[option]
+
+where `option` can be `image`, `text`, or `image,text`.
+
+
 Faiss
 -----
 
