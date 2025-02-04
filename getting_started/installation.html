@@ -58,6 +58,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-main-package">The Main Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#image-generation">Image Generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#text-generation">Text Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editable-mode">Editable Mode</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#faiss">Faiss</a></li>
@@ -1045,6 +1046,16 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;private-evolution[text] @ git+https://github.com/microsoft/DPSDA.git&quot;</span>
 </pre></div>
 </div>
+</section>
+<section id="editable-mode">
+<h3>Editable Mode<a class="headerlink" href="#editable-mode" title="Permalink to this heading"></a></h3>
+<p>To install <strong>Private Evolution</strong> in editable mode, please use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/microsoft/DPSDA.git
+<span class="nb">cd</span><span class="w"> </span>DPSDA
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="o">[</span>option<span class="o">]</span>
+</pre></div>
+</div>
+<p>where <cite>option</cite> can be <cite>image</cite> or <cite>text</cite>.</p>
 </section>
 </section>
 <section id="faiss">
