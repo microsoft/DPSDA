@@ -86,6 +86,9 @@ def get_noise_multiplier(
     :type max_epsilon: float, optional
     """
 
+    if epsilon == np.inf:
+        return 0.0
+
     def objective(x):
         return (
             compute_epsilon(
