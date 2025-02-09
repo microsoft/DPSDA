@@ -48,6 +48,7 @@ from pe.callback import ComputeFID
 from pe.callback import SaveTextToCSV
 from pe.logger import CSVPrint
 from pe.logger import LogPrint
+from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
 
 import pandas as pd
 import os
@@ -87,7 +88,9 @@ if __name__ == "__main__":
     )
 
     save_checkpoints = SaveCheckpoints(os.path.join(exp_folder, "checkpoint"))
-    compute_fid = ComputeFID(priv_data=data, embedding=embedding)
+    compute_fid = ComputeFID(
+        priv_data=data, embedding=embedding, filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1}
+    )
     save_text_to_csv = SaveTextToCSV(output_folder=os.path.join(exp_folder, "synthetic_text"))
 
     csv_print = CSVPrint(output_folder=exp_folder)
