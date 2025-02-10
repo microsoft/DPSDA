@@ -25,7 +25,7 @@ class SaveCheckpoints(Callback):
         """This function is called after each PE iteration that saves checkpoints of the synthetic data.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         """
         syn_data.save_checkpoint(self._get_checkpoint_path(syn_data.metadata.iteration))
 

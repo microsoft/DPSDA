@@ -11,8 +11,8 @@ class Histogram(ABC):
         """Compute the histogram over the synthetic data using the private data.
 
         :param priv_data: The private data
-        :type priv_data: :py:class:`pe.data.data.Data`
+        :type priv_data: :py:class:`pe.data.Data`
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         """
         ...

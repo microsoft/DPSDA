@@ -10,7 +10,7 @@ class Callback(ABC):
     def __call__(self, syn_data):
         """This function is called after each PE iteration.
 
-        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data
+        :type syn_data: :py:class:`pe.data.Data`
         """
         ...

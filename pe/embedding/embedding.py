@@ -17,7 +17,7 @@ class Embedding(ABC):
         """Compute the embedding of samples.
 
         :param data: The data to compute the embedding
-        :type data: :py:class:`pe.data.data.Data`
+        :type data: :py:class:`pe.data.Data`
         """
         ...
 

@@ -167,10 +167,10 @@ class Gaussian(DP):
 
         :param syn_data: The synthetic data to add noise. The synthetic data should have the
             :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` column
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The synthetic data with noise added to the histogram. The noisy histogram is stored in the
             :py:const:`pe.constant.data.DP_HISTOGRAM_COLUMN_NAME` column
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         syn_data.data_frame[DP_HISTOGRAM_COLUMN_NAME] = syn_data.data_frame[
             CLEAN_HISTOGRAM_COLUMN_NAME

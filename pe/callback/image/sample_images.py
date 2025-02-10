@@ -20,8 +20,8 @@ class SampleImages(Callback):
     def __call__(self, syn_data):
         """This function is called after each PE iteration that samples images from the synthetic data.
 
-        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data
+        :type syn_data: :py:class:`pe.data.Data`
         :return: A metric item with the list of sampled images
         :rtype: list[:py:class:`pe.metric_item.ImageListMetricItem`]
         """

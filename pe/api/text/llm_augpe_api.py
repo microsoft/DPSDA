@@ -36,7 +36,7 @@ class LLMAugPE(API):
         """Constructor.
 
         :param llm: The LLM utilized for the random and variation generation
-        :type llm: :py:class:`pe.llm.llm.LLM`
+        :type llm: :py:class:`pe.llm.LLM`
         :param random_api_prompt_file: The prompt file for the random API. See the explanations to
             ``variation_api_prompt_file`` for the format of the prompt file
         :type random_api_prompt_file: str
@@ -139,11 +139,11 @@ class LLMAugPE(API):
         """Generating random synthetic data.
 
         :param label_info: The info of the label
-        :type label_info: dict
+        :type label_info: omegaconf.dictconfig.DictConfig
         :param num_samples: The number of random samples to generate
         :type num_samples: int
         :return: The data object of the generated synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         label_name = label_info.name
         execution_logger.info(f"RANDOM API: creating {num_samples} samples for label {label_name}")
@@ -188,9 +188,9 @@ class LLMAugPE(API):
         """Generating variations of the synthetic data.
 
         :param syn_data: The data object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The data object of the variation of the input synthetic data
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(f"VARIATION API: creating variations for {len(syn_data.data_frame)} samples")
 

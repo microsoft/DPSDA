@@ -24,6 +24,6 @@ class DP(ABC):
         """Add noise to the histogram of synthetic data.
 
         :param syn_data: The synthetic data to add noise
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         """
         ...

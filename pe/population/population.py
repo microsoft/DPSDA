@@ -9,7 +9,7 @@ class Population(ABC):
         """Generate the initial synthetic data.
 
         :param label_info: The label info
-        :type label_info: dict
+        :type label_info: omegaconf.dictconfig.DictConfig
         :param num_samples: The number of samples to generate
         :type num_samples: int
         """
@@ -20,7 +20,7 @@ class Population(ABC):
         """Generate the next synthetic data.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :param num_samples: The number of samples to generate
         :type num_samples: int
         """

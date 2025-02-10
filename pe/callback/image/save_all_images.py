@@ -48,8 +48,8 @@ class SaveAllImages(Callback):
     def __call__(self, syn_data):
         """This function is called after each PE iteration that saves all images.
 
-        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data
+        :type syn_data: :py:class:`pe.data.Data`
         """
         execution_logger.info("Saving all images")
         iterator = range(len(syn_data.data_frame))

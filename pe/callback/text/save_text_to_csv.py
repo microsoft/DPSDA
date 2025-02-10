@@ -44,8 +44,8 @@ class SaveTextToCSV(Callback):
     def __call__(self, syn_data):
         """This function is called after each PE iteration that saves the synthetic text to a CSV file.
 
-        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data
+        :type syn_data: :py:class:`pe.data.Data`
         """
         execution_logger.info("Saving the synthetic text to a CSV file")
         samples = syn_data.data_frame[TEXT_DATA_COLUMN_NAME].tolist()

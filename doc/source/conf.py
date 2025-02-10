@@ -68,4 +68,5 @@ nitpick_ignore = [
     ("py:class", "pandas.DataFrame"),
     ("py:class", "improved_diffusion.respace.SpacedDiffusion"),
     ("py:class", "improved_diffusion.unet.UNetModel"),
+    ("py:class", "omegaconf.dictconfig.DictConfig"),
 ]

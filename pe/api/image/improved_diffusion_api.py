@@ -127,7 +127,7 @@ class ImprovedDiffusion(API):
         """Generating random synthetic data.
 
         :param label_info: The info of the label, not utilized in this API
-        :type label_info: dict
+        :type label_info: omegaconf.dictconfig.DictConfig
         :param num_samples: The number of random samples to generate
         :type num_samples: int
         :return: The data object of the generated synthetic data

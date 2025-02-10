@@ -29,8 +29,8 @@ class NearestNeighbors(Histogram):
     ):
         """Constructor.
 
-        :param embedding: The :py:class:`pe.embedding.embedding.Embedding` object to compute the embedding of samples
-        :type embedding: :py:class:`pe.embedding.embedding.Embedding`
+        :param embedding: The :py:class:`pe.embedding.Embedding` object to compute the embedding of samples
+        :type embedding: :py:class:`pe.embedding.Embedding`
         :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:
             "l2" (l2 distance), "cos_sim" (cosine similarity), "ip" (inner product). Not all backends support all
             modes
@@ -48,7 +48,7 @@ class NearestNeighbors(Histogram):
         :type voting_details_log_folder: str, optional
         :param api: The API to generate synthetic samples. It should be provided when `lookahead_degree` is greater
             than 0. Defaults to None
-        :type api: :py:class:`pe.api.api.API`, optional
+        :type api: :py:class:`pe.api.API`, optional
         :param num_nearest_neighbors: The number of nearest neighbors to consider for each private sample, defaults to
             1
         :type num_nearest_neighbors: int, optional
@@ -90,7 +90,7 @@ class NearestNeighbors(Histogram):
         """Log the lookahead data.
 
         :param syn_data: The lookahead data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :param lookahead_id: The ID of the lookahead
         :type lookahead_id: int
         """
@@ -109,9 +109,9 @@ class NearestNeighbors(Histogram):
         """Log the voting details.
 
         :param priv_data: The private data
-        :type priv_data: :py:class:`pe.data.data.Data`
+        :type priv_data: :py:class:`pe.data.Data`
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :param ids: The IDs of the nearest neighbors for each private sample
         :type ids: np.ndarray
         """
@@ -130,10 +130,10 @@ class NearestNeighbors(Histogram):
         """Compute the embedding of synthetic samples with lookahead.
 
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The synthetic data with the computed embedding in the column
             :py:const:`pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME`
-        :rtype: :py:class:`pe.data.data.Data`
+        :rtype: :py:class:`pe.data.Data`
         """
         if self._lookahead_degree == 0:
             syn_data = self._embedding.compute_embedding(syn_data)
@@ -160,13 +160,13 @@ class NearestNeighbors(Histogram):
         """Compute the nearest neighbors histogram.
 
         :param priv_data: The private data
-        :type priv_data: :py:class:`pe.data.data.Data`
+        :type priv_data: :py:class:`pe.data.Data`
         :param syn_data: The synthetic data
-        :type syn_data: :py:class:`pe.data.data.Data`
+        :type syn_data: :py:class:`pe.data.Data`
         :return: The private data, possibly with the additional embedding column, and the synthetic data, with the
             computed histogram in the column :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` and possibly with
             the additional embedding column
-        :rtype: tuple[:py:class:`pe.data.data.Data`, :py:class:`pe.data.data.Data`]
+        :rtype: tuple[:py:class:`pe.data.Data`, :py:class:`pe.data.Data`]
         """
         execution_logger.info(
             f"Histogram: computing nearest neighbors histogram for {len(priv_data.data_frame)} private "

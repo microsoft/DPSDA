@@ -74,7 +74,7 @@ def load_image_folder(path, image_size, class_cond=True, num_images=-1, num_work
     :param batch_size: The batch size to use for loading the images, defaults to 1000
     :type batch_size: int, optional
     :return: The loaded data
-    :rtype: :py:class:`pe.data.data.Data`
+    :rtype: :py:class:`pe.data.Data`
     """
     transform = T.Compose([T.Resize(image_size), T.CenterCrop(image_size), T.ToTensor()])
     dataset = ImageDataset(folder=path, transform=transform)

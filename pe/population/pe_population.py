@@ -58,7 +58,7 @@ class PEPopulation(Population):
         """Generate the initial synthetic data.
 
         :param label_info: The label info
-        :type label_info: dict
+        :type label_info: omegaconf.dictconfig.DictConfig
         :param num_samples: The number of samples to generate
         :type num_samples: int
         :return: The initial synthetic data
