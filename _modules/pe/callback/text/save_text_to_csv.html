@@ -1065,8 +1065,8 @@
 <div class="viewcode-block" id="SaveTextToCSV.__call__"><a class="viewcode-back" href="../../../../api/pe.callback.text.save_text_to_csv.html#pe.callback.SaveTextToCSV.__call__">[docs]</a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that saves the synthetic text to a CSV file.</span>
 
-<span class="sd">        :param syn_data: The :py:class:`pe.data.data.Data` object of the synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Saving the synthetic text to a CSV file&quot;</span><span class="p">)</span>
         <span class="n">samples</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TEXT_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>

@@ -1050,8 +1050,8 @@
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
-<span class="sd">        :param embedding: The :py:class:`pe.embedding.embedding.Embedding` object to compute the embedding of samples</span>
-<span class="sd">        :type embedding: :py:class:`pe.embedding.embedding.Embedding`</span>
+<span class="sd">        :param embedding: The :py:class:`pe.embedding.Embedding` object to compute the embedding of samples</span>
+<span class="sd">        :type embedding: :py:class:`pe.embedding.Embedding`</span>
 <span class="sd">        :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:</span>
 <span class="sd">            &quot;l2&quot; (l2 distance), &quot;cos_sim&quot; (cosine similarity), &quot;ip&quot; (inner product). Not all backends support all</span>
 <span class="sd">            modes</span>
@@ -1069,7 +1069,7 @@
 <span class="sd">        :type voting_details_log_folder: str, optional</span>
 <span class="sd">        :param api: The API to generate synthetic samples. It should be provided when `lookahead_degree` is greater</span>
 <span class="sd">            than 0. Defaults to None</span>
-<span class="sd">        :type api: :py:class:`pe.api.api.API`, optional</span>
+<span class="sd">        :type api: :py:class:`pe.api.API`, optional</span>
 <span class="sd">        :param num_nearest_neighbors: The number of nearest neighbors to consider for each private sample, defaults to</span>
 <span class="sd">            1</span>
 <span class="sd">        :type num_nearest_neighbors: int, optional</span>
@@ -1111,7 +1111,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the lookahead data.</span>
 
 <span class="sd">        :param syn_data: The lookahead data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param lookahead_id: The ID of the lookahead</span>
 <span class="sd">        :type lookahead_id: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1130,9 +1130,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the voting details.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
-<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param ids: The IDs of the nearest neighbors for each private sample</span>
 <span class="sd">        :type ids: np.ndarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1151,10 +1151,10 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the embedding of synthetic samples with lookahead.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The synthetic data with the computed embedding in the column</span>
 <span class="sd">            :py:const:`pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME`</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lookahead_degree</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
@@ -1181,13 +1181,13 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors histogram.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
-<span class="sd">        :type priv_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param syn_data: The synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The private data, possibly with the additional embedding column, and the synthetic data, with the</span>
 <span class="sd">            computed histogram in the column :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` and possibly with</span>
 <span class="sd">            the additional embedding column</span>
-<span class="sd">        :rtype: tuple[:py:class:`pe.data.data.Data`, :py:class:`pe.data.data.Data`]</span>
+<span class="sd">        :rtype: tuple[:py:class:`pe.data.Data`, :py:class:`pe.data.Data`]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
             <span class="sa">f</span><span class="s2">&quot;Histogram: computing nearest neighbors histogram for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">priv_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> private &quot;</span>

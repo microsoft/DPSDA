@@ -1095,7 +1095,7 @@
 <span class="sd">    :param batch_size: The batch size to use for loading the images, defaults to 1000</span>
 <span class="sd">    :type batch_size: int, optional</span>
 <span class="sd">    :return: The loaded data</span>
-<span class="sd">    :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">    :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">image_size</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="n">image_size</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()])</span>
     <span class="n">dataset</span> <span class="o">=</span> <span class="n">ImageDataset</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>

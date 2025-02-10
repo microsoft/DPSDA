@@ -1040,7 +1040,7 @@ synthetic samples to construct the histogram. The l2 norm of the votes from each
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>embedding</strong> (<a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding" title="pe.embedding.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.embedding.Embedding</span></code></a>) – The <a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding" title="pe.embedding.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.embedding.Embedding</span></code></a> object to compute the embedding of samples</p></li>
+<li><p><strong>embedding</strong> (<a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding" title="pe.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.Embedding</span></code></a>) – The <a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding" title="pe.embedding.Embedding"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.embedding.Embedding</span></code></a> object to compute the embedding of samples</p></li>
 <li><p><strong>mode</strong> (<em>str</em>) – The distance metric to use for finding the nearest neighbors. It should be one of the following:
 “l2” (l2 distance), “cos_sim” (cosine similarity), “ip” (inner product). Not all backends support all
 modes</p></li>
@@ -1052,7 +1052,7 @@ times</p></li>
 saved. Defaults to None</p></li>
 <li><p><strong>voting_details_log_folder</strong> (<em>str</em><em>, </em><em>optional</em>) – The folder to save the logs of the voting details. If it is None, the logs
 are not saved. Defaults to None</p></li>
-<li><p><strong>api</strong> (<a class="reference internal" href="pe.api.api.html#pe.api.api.API" title="pe.api.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.api.API</span></code></a>, optional) – The API to generate synthetic samples. It should be provided when <cite>lookahead_degree</cite> is greater
+<li><p><strong>api</strong> (<a class="reference internal" href="pe.api.html#pe.api.API" title="pe.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.API</span></code></a>, optional) – The API to generate synthetic samples. It should be provided when <cite>lookahead_degree</cite> is greater
 than 0. Defaults to None</p></li>
 <li><p><strong>num_nearest_neighbors</strong> (<em>int</em><em>, </em><em>optional</em>) – The number of nearest neighbors to consider for each private sample, defaults to
 1</p></li>
@@ -1078,14 +1078,14 @@ private samples is large. It requires the installation of <cite>faiss-gpu</cite>
 <dd><p>Compute the embedding of synthetic samples with lookahead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p>
+<dd class="field-odd"><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The synthetic data</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The synthetic data with the computed embedding in the column
 <a class="reference internal" href="pe.constant.data.html#pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME" title="pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME"><code class="xref py py-const docutils literal notranslate"><span class="pre">pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME</span></code></a></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a></p>
+<dd class="field-odd"><p><a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1097,7 +1097,7 @@ private samples is large. It requires the installation of <cite>faiss-gpu</cite>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The lookahead data</p></li>
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The lookahead data</p></li>
 <li><p><strong>lookahead_id</strong> (<em>int</em>) – The ID of the lookahead</p></li>
 </ul>
 </dd>
@@ -1111,8 +1111,8 @@ private samples is large. It requires the installation of <cite>faiss-gpu</cite>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
-<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p></li>
+<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The private data</p></li>
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The synthetic data</p></li>
 <li><p><strong>ids</strong> (<em>np.ndarray</em>) – The IDs of the nearest neighbors for each private sample</p></li>
 </ul>
 </dd>
@@ -1126,8 +1126,8 @@ private samples is large. It requires the installation of <cite>faiss-gpu</cite>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The private data</p></li>
-<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>) – The synthetic data</p></li>
+<li><p><strong>priv_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The private data</p></li>
+<li><p><strong>syn_data</strong> (<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>) – The synthetic data</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1136,7 +1136,7 @@ computed histogram in the column <a class="reference internal" href="pe.constant
 the additional embedding column</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>tuple[<a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>, <a class="reference internal" href="pe.data.data.html#pe.data.data.Data" title="pe.data.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.data.Data</span></code></a>]</p>
+<dd class="field-odd"><p>tuple[<a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>, <a class="reference internal" href="pe.data.html#pe.data.Data" title="pe.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.data.Data</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>

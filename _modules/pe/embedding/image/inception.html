@@ -1071,9 +1071,9 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the Inception embedding of images.</span>
 
 <span class="sd">        :param data: The data object containing the images</span>
-<span class="sd">        :type data: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object with the computed embedding</span>
-<span class="sd">        :rtype: :py:class:`pe.data.data.Data`</span>
+<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">uncomputed_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_uncomputed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
