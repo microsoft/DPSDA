@@ -28,7 +28,7 @@ pd.options.mode.copy_on_write = True
 
 
 if __name__ == "__main__":
-    exp_folder = "results/image/camelyon17"
+    exp_folder = "results/image/diffusion_model/camelyon17_improved_diffusion"
 
     setup_logging(log_file=os.path.join(exp_folder, "log.txt"))
 

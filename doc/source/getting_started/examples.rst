@@ -6,13 +6,11 @@ Here are some examples of how to use the **Private Evolution** library.
 Images
 ------
 
-These examples follow the experimental settings in the paper `Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024) <pe1_paper_>`__.
+* Using **foundation models (diffusion models)** as the APIs. These examples follow the experimental settings in the paper `Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024) <pe1_paper_>`__.
 
-* **CIFAR10 dataset**: `This example <CIFAR10 example_>`__ shows how to generate differentially private synthetic images for the `CIFAR10 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
-
-* **Camelyon17 dataset**: `This example <Camelyon17 example_>`__ shows how to generate differentially private synthetic images for the `Camelyon17 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
-
-* **Cat dataset**: `This example <Cat example_>`__ shows how to generate differentially private synthetic images of the `Cat dataset`_ using the APIs from `Stable Diffusion`_.
+    * **CIFAR10 dataset**: `This example <CIFAR10 example_>`__ shows how to generate differentially private synthetic images for the `CIFAR10 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
+    * **Camelyon17 dataset**: `This example <Camelyon17 example_>`__ shows how to generate differentially private synthetic images for the `Camelyon17 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
+    * **Cat dataset**: `This example <Cat example_>`__ shows how to generate differentially private synthetic images of the `Cat dataset`_ using the APIs from `Stable Diffusion`_.
 
 Text
 ----
@@ -45,9 +43,9 @@ These examples follow the experimental settings in the paper `Differentially Pri
 .. _OpenReview dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 .. _PubMed dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 
-.. _CIFAR10 example: https://github.com/microsoft/DPSDA/blob/main/example/image/cifar10_diffusion.py
-.. _Camelyon17 example: https://github.com/microsoft/DPSDA/blob/main/example/image/camelyon17_diffusion.py
-.. _Cat example: https://github.com/microsoft/DPSDA/blob/main/example/image/cat_diffusion.py
+.. _CIFAR10 example: https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/cifar10_improved_diffusion.py
+.. _Camelyon17 example: https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/camelyon17_improved_diffusion.py
+.. _Cat example: https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/cat_stable_diffusion.py
 .. _Yelp OpenAI example: https://github.com/microsoft/DPSDA/blob/main/example/text/yelp_openai/main.py
 .. _Yelp Huggingface example: https://github.com/microsoft/DPSDA/blob/main/example/text/yelp_huggingface/main.py
 .. _Openreview OpenAI example: https://github.com/microsoft/DPSDA/blob/main/example/text/openreview_openai/main.py
