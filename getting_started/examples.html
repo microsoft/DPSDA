@@ -1027,11 +1027,16 @@
 <p>Here are some examples of how to use the <strong>Private Evolution</strong> library.</p>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this heading"></a></h2>
-<p>These examples follow the experimental settings in the paper <a class="reference external" href="https://arxiv.org/abs/2305.15560">Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024)</a>.</p>
-<ul class="simple">
-<li><p><strong>CIFAR10 dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/cifar10_diffusion.py">This example</a> shows how to generate differentially private synthetic images for the <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a> using the APIs from a pre-trained <a class="reference external" href="https://github.com/openai/improved-diffusion">ImageNet diffusion model</a>.</p></li>
-<li><p><strong>Camelyon17 dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/camelyon17_diffusion.py">This example</a> shows how to generate differentially private synthetic images for the <a class="reference external" href="https://camelyon17.grand-challenge.org/">Camelyon17 dataset</a> using the APIs from a pre-trained <a class="reference external" href="https://github.com/openai/improved-diffusion">ImageNet diffusion model</a>.</p></li>
-<li><p><strong>Cat dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/cat_diffusion.py">This example</a> shows how to generate differentially private synthetic images of the <a class="reference external" href="https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou">Cat dataset</a> using the APIs from <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a>.</p></li>
+<ul>
+<li><p>Using <strong>foundation models (diffusion models)</strong> as the APIs. These examples follow the experimental settings in the paper <a class="reference external" href="https://arxiv.org/abs/2305.15560">Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024)</a>.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>CIFAR10 dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/cifar10_improved_diffusion.py">This example</a> shows how to generate differentially private synthetic images for the <a class="reference external" href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a> using the APIs from a pre-trained <a class="reference external" href="https://github.com/openai/improved-diffusion">ImageNet diffusion model</a>.</p></li>
+<li><p><strong>Camelyon17 dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/camelyon17_improved_diffusion.py">This example</a> shows how to generate differentially private synthetic images for the <a class="reference external" href="https://camelyon17.grand-challenge.org/">Camelyon17 dataset</a> using the APIs from a pre-trained <a class="reference external" href="https://github.com/openai/improved-diffusion">ImageNet diffusion model</a>.</p></li>
+<li><p><strong>Cat dataset</strong>: <a class="reference external" href="https://github.com/microsoft/DPSDA/blob/main/example/image/diffusion_model/cat_stable_diffusion.py">This example</a> shows how to generate differentially private synthetic images of the <a class="reference external" href="https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou">Cat dataset</a> using the APIs from <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a>.</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </section>
 <section id="text">
