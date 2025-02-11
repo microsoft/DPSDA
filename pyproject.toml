@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "private-evolution"
 version = "0.0.1"
 maintainers = [{ name = "Zinan Lin", email = "zinanlin@microsoft.com" }]
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
   "Programming Language :: Python :: 3",
   "License :: OSI Approved :: MIT License",
@@ -36,6 +36,8 @@ image = [
   "transformers",
   "improved-diffusion@git+https://github.com/fjxmlzn/improved-diffusion.git@8f6677c3c47d1c1ad2e22ad2603eaec4cc639805",
   "wilds",
+  "cairosvg",
+  "python_avatars",
   "azure-identity",
 ]
 text = [

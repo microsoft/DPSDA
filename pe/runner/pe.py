@@ -109,6 +109,16 @@ class PE(object):
         for logger in self._loggers:
             logger.clean_up()
 
+    def evaluate(self, checkpoint_path):
+        """Evaluate the synthetic data.
+
+        :param checkpoint_path: The path to the checkpoint
+        :type checkpoint_path: str
+        """
+        syn_data = self.load_checkpoint(checkpoint_path)
+        execution_logger.info(f"Loaded checkpoint from {checkpoint_path}, iteration={syn_data.metadata.iteration}")
+        self._log_metrics(syn_data)
+
     def run(
         self,
         num_samples_schedule,

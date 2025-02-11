@@ -14,7 +14,7 @@ Key Features
 
 Compared to other DP synthetic data alternatives, **Private Evolution** has the following key features:
 
-* ✅ **No training needed!** **Private Evolution** only requires the inference APIs of foundation models. Therefore, it can leverage any state-of-the-art black-box models (e.g., GPT-4) and open-source models (e.g., Stable Diffusion, Llama).
+* ✅ **No training needed!** **Private Evolution** only requires the inference APIs of foundation models or non-neural-network data synthesis tools. Therefore, it can leverage any state-of-the-art black-box models (e.g., GPT-4), open-source models (e.g., Stable Diffusion, Llama), or tools (e.g., computer graphics-based image synthesis tools).
 * ✅ **Protects privacy even from the API provider.** Even when using APIs from a third-party provider, you can rest assured that the information of individuals in the original dataset is still protected, as all API queries made from **Private Evolution** are also differentially private.
 * ✅ **Works across images, text, etc.** **Private Evolution** can generate synthetic data for various data types, including images and text. More data modalities are coming soon!
 * ✅ **Could even match/beat SoTA training-based methods in data quality.** **Private Evolution** can generate synthetic data that is statistically similar to the original data, and in some cases, it can even match or beat the state-of-the-art training-based methods in data quality even though it does not require any training.
@@ -22,7 +22,7 @@ Compared to other DP synthetic data alternatives, **Private Evolution** has the 
 What This Library Provides
 --------------------------
 
-**This library is the official Python package of Private Evolution**. It allows you to generate differentially private synthetic data (e.g., images, text) using the **Private Evolution** algorithm. This library is designed to be easy to use, flexible, modular, and extensible. It provides several popular foundation model APIs, and you can easily extend it to work with your own foundation models (and/or APIs), data types, or new **Private Evolution** algorithms if needed.
+**This library is the official Python package of Private Evolution**. It allows you to generate differentially private synthetic data (e.g., images, text) using the **Private Evolution** algorithm. This library is designed to be easy to use, flexible, modular, and extensible. It provides several popular foundation models and data synthesis tools, and you can easily extend it to work with your own foundation models (and/or APIs), data synthesis tools, data types, or new **Private Evolution** algorithms if needed.
 
 The source code of this **Private Evolution** library is available at https://github.com/microsoft/DPSDA.
 
@@ -35,6 +35,9 @@ If you use **Private Evolution** in your research or work, please cite the follo
     :language: bibtex
 
 .. literalinclude:: pe2.bib
+    :language: bibtex
+
+.. literalinclude:: pe3.bib
     :language: bibtex
 
 Please see https://github.com/fjxmlzn/private-evolution-papers for the full list of **Private Evolution** papers and code repositories done by the community.

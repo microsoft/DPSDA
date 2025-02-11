@@ -1,3 +1,4 @@
 sphinx_rtd_theme==3.0.2
 private-evolution[image,text,dev] @ git+https://github.com/microsoft/DPSDA.git
 faiss-gpu
+numpy==1.26.4

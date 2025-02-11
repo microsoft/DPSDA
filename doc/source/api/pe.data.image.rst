@@ -14,5 +14,8 @@ Submodules
 
    pe.data.image.camelyon17
    pe.data.image.cat
+   pe.data.image.celeba
    pe.data.image.cifar10
+   pe.data.image.digiface1m
    pe.data.image.image
+   pe.data.image.mnist

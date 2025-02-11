@@ -31,11 +31,11 @@ class SampleImages(Callback):
             image_list = syn_data.data_frame[syn_data.data_frame[LABEL_ID_COLUMN_NAME] == class_id][
                 IMAGE_DATA_COLUMN_NAME
             ]
-            image_list = image_list.sample(min(self._num_images_per_class, len(image_list)))
+            image_list = image_list.sample(min(self._num_images_per_class, len(image_list))).tolist()
             all_image_list.extend(image_list)
             assert len(image_list) > 0
             if len(image_list) < self._num_images_per_class:
-                all_image_list.extend(np.zeros_like(image_list[0]) * (self._num_images_per_class - len(image_list)))
+                all_image_list.extend([np.zeros_like(image_list[0])] * (self._num_images_per_class - len(image_list)))
         metric_item = ImageListMetricItem(
             name="image_sample",
             value=all_image_list,

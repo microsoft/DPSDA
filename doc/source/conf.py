@@ -69,4 +69,7 @@ nitpick_ignore = [
     ("py:class", "improved_diffusion.respace.SpacedDiffusion"),
     ("py:class", "improved_diffusion.unet.UNetModel"),
     ("py:class", "omegaconf.dictconfig.DictConfig"),
+    ("py:class", "python_avatars.Avatar"),
+    ("py:class", "torch.utils.data.DataLoader"),
+    ("py:class", "torch.nn.Module"),
 ]

@@ -9,6 +9,8 @@ optionalimport(
     "diffusers",
     "wilds",
     "improved_diffusion",
+    "python_avatars",
+    "cairosvg",
     message=(
         "Please install private_evolution with [image] dependencies. "
         "See https://microsoft.github.io/DPSDA/getting_started/installation.html for more details."

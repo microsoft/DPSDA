@@ -1,6 +1,7 @@
 import os
 from omegaconf import OmegaConf
 import pandas as pd
+import numpy as np
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 
 
@@ -98,6 +99,36 @@ class Data:
         """
         data_frame = self.data_frame.sample(n=num_samples)
         return Data(data_frame=data_frame, metadata=self.metadata)
+
+    def random_split(self, num_samples_list, seed=0):
+        """Randomly split the data frame into multiple data frames
+
+        :param num_samples_list: The list of numbers of samples for each data frame
+        :type num_samples_list: list[int]
+        :param seed: The seed for the random number generator, defaults to 0
+        :type seed: int, optional
+        :raises ValueError: If the sum of num_samples_list is not equal to the number of samples
+        :return: The list of :py:class:`pe.data.Data` objects with the splited data
+        :rtype: list[:py:class:`pe.data.Data`]
+        """
+        if sum(num_samples_list) != len(self.data_frame):
+            raise ValueError("The sum of num_samples_list must be equal to the number of samples")
+        data_frame_list = (
+            self.data_frame.sample(frac=1, random_state=seed)
+            .reset_index(drop=True)
+            .groupby(
+                pd.cut(
+                    range(len(self.data_frame)),
+                    bins=[0] + list(np.cumsum(num_samples_list)),
+                    right=False,
+                    labels=False,
+                )
+            )
+        )
+        return [
+            Data(data_frame=data_frame.reset_index(drop=True), metadata=self.metadata)
+            for _, data_frame in data_frame_list
+        ]
 
     def merge(self, data):
         """Merge the data object with another data object
