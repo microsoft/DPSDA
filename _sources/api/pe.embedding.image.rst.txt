@@ -12,4 +12,5 @@ Submodules
 .. toctree::
    :maxdepth: 7
 
+   pe.embedding.image.fld_inception
    pe.embedding.image.inception

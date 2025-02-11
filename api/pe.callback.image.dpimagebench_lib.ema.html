@@ -1,0 +1,1267 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pe.callback.image.dpimagebench_lib.ema module &mdash; Private Evolution 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=f6245a2f"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pe.callback.image.dpimagebench_lib.resnet module" href="pe.callback.image.dpimagebench_lib.resnet.html" />
+    <link rel="prev" title="pe.callback.image.dpimagebench_lib.densenet module" href="pe.callback.image.dpimagebench_lib.densenet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Private Evolution
+              <img src="../_static/icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/intro.html">What is Private Evolution?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/intro.html#key-features">Key Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/intro.html#what-this-library-provides">What This Library Provides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/intro.html#citations">Citations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/installation.html">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/installation.html#pip">PIP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#the-main-package">The Main Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#image-generation">Image Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#text-generation">Text Generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#editable-mode">Editable Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/installation.html#faiss">Faiss</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/examples.html">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#text">Text</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/using_your_own_data_apis.html">Using Your Own Data/APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/using_your_own_data_apis.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/using_your_own_data_apis.html#apis">APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../getting_started/details/details.html">Details of the Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/overview.html">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/overview.html#the-private-evolution-algorithm">The Private Evolution Algorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/overview.html#core-design-principles-of-this-library">Core Design Principles of This Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/overview.html#core-components-of-this-library">Core Components of This Library</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/data.html">Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/data.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/data.html#using-your-own-datasets">Using Your Own Datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/population.html">Population</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/population.html#available-populations">Available Populations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/api.html">APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/api.html#available-apis">Available APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/api.html#adding-your-own-apis">Adding Your Own APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/histogram.html">Histograms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/histogram.html#available-histograms">Available Histograms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/dp.html">DP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/dp.html#available-differential-privacy-mechanisms">Available Differential Privacy Mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/embedding.html">Embeddings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/embedding.html#available-embeddings">Available Embeddings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/callback_and_logger.html">Callbacks and Loggers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/callback_and_logger.html#available-callbacks">Available Callbacks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../getting_started/details/callback_and_logger.html#available-loggers">Available Loggers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../getting_started/details/runner.html">Runner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">pe</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pe.html">pe package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="pe.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="pe.api.html">pe.api package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.api.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.api.image.html">pe.api.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.api.image.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html">pe.api.image.improved_diffusion_lib package</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.html#submodules">Submodules</a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.gaussian_diffusion.html">pe.api.image.improved_diffusion_lib.gaussian_diffusion module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.gaussian_diffusion.html#pe.api.image.improved_diffusion_lib.gaussian_diffusion.create_gaussian_diffusion"><code class="docutils literal notranslate"><span class="pre">create_gaussian_diffusion()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.unet.html">pe.api.image.improved_diffusion_lib.unet module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.api.image.improved_diffusion_lib.unet.html#pe.api.image.improved_diffusion_lib.unet.create_model"><code class="docutils literal notranslate"><span class="pre">create_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="pe.api.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.avatar_api.html">pe.api.image.avatar_api module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.draw_text_api.html">pe.api.image.draw_text_api module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText"><code class="docutils literal notranslate"><span class="pre">DrawText</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText.__init__"><code class="docutils literal notranslate"><span class="pre">DrawText.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText._create_image"><code class="docutils literal notranslate"><span class="pre">DrawText._create_image()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText._get_random_image"><code class="docutils literal notranslate"><span class="pre">DrawText._get_random_image()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText._get_variation_image"><code class="docutils literal notranslate"><span class="pre">DrawText._get_variation_image()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText.random_api"><code class="docutils literal notranslate"><span class="pre">DrawText.random_api()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.draw_text_api.html#pe.api.image.draw_text_api.DrawText.variation_api"><code class="docutils literal notranslate"><span class="pre">DrawText.variation_api()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html">pe.api.image.improved_diffusion_api module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.__init__"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.random_api"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion.random_api()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion.variation_api"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion.variation_api()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion270M</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.CHECKPOINT_URL"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion270M.CHECKPOINT_URL</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.ImprovedDiffusion270M.__init__"><code class="docutils literal notranslate"><span class="pre">ImprovedDiffusion270M.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.Sampler"><code class="docutils literal notranslate"><span class="pre">Sampler</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.Sampler.forward"><code class="docutils literal notranslate"><span class="pre">Sampler.forward()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.Sampler.training"><code class="docutils literal notranslate"><span class="pre">Sampler.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.improved_diffusion_api.html#pe.api.image.improved_diffusion_api.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.nearest_image_api.html">pe.api.image.nearest_image_api module</a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.image.stable_diffusion_api.html">pe.api.image.stable_diffusion_api module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.api.image.stable_diffusion_api.html#pe.api.image.stable_diffusion_api.StableDiffusion"><code class="docutils literal notranslate"><span class="pre">StableDiffusion</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.stable_diffusion_api.html#pe.api.image.stable_diffusion_api.StableDiffusion.__init__"><code class="docutils literal notranslate"><span class="pre">StableDiffusion.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.stable_diffusion_api.html#pe.api.image.stable_diffusion_api.StableDiffusion.random_api"><code class="docutils literal notranslate"><span class="pre">StableDiffusion.random_api()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.api.image.stable_diffusion_api.html#pe.api.image.stable_diffusion_api.StableDiffusion.variation_api"><code class="docutils literal notranslate"><span class="pre">StableDiffusion.variation_api()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.api.text.html">pe.api.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.api.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.text.llm_augpe_api.html">pe.api.text.llm_augpe_api module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.api.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.api.api.html">pe.api.api module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.api.api.html#pe.api.api.API"><code class="docutils literal notranslate"><span class="pre">API</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.api.html#pe.api.api.API.random_api"><code class="docutils literal notranslate"><span class="pre">API.random_api()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.api.api.html#pe.api.api.API.variation_api"><code class="docutils literal notranslate"><span class="pre">API.variation_api()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.api.util.html">pe.api.util module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.api.util.html#pe.api.util.ConstantList"><code class="docutils literal notranslate"><span class="pre">ConstantList</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5 current"><a class="reference internal" href="pe.callback.html">pe.callback package</a><ul class="current">
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.Callback"><code class="docutils literal notranslate"><span class="pre">Callback</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.Callback.__call__"><code class="docutils literal notranslate"><span class="pre">Callback.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeFID"><code class="docutils literal notranslate"><span class="pre">ComputeFID</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeFID.__call__"><code class="docutils literal notranslate"><span class="pre">ComputeFID.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeFID.__init__"><code class="docutils literal notranslate"><span class="pre">ComputeFID.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.ComputePrecisionRecall"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputePrecisionRecall.__call__"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputePrecisionRecall.__init__"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages.__call__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages.__init__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages._get_data_loader"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_data_loader()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages._get_images_and_label_from_data"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_images_and_label_from_data()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages._get_model"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_model()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages.evaluate"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.evaluate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SampleImages"><code class="docutils literal notranslate"><span class="pre">SampleImages</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SampleImages.__call__"><code class="docutils literal notranslate"><span class="pre">SampleImages.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SampleImages.__init__"><code class="docutils literal notranslate"><span class="pre">SampleImages.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SaveAllImages"><code class="docutils literal notranslate"><span class="pre">SaveAllImages</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveAllImages.__call__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveAllImages.__init__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveAllImages._save_image"><code class="docutils literal notranslate"><span class="pre">SaveAllImages._save_image()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SaveCheckpoints"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveCheckpoints.__call__"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveCheckpoints.__init__"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveCheckpoints._get_checkpoint_path"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints._get_checkpoint_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__call__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV._get_csv_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6 current"><a class="reference internal" href="pe.callback.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.common.html">pe.callback.common package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.callback.common.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.common.compute_fid.html">pe.callback.common.compute_fid module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.common.compute_fid.html#pe.callback.common.compute_fid.ComputeFID"><code class="docutils literal notranslate"><span class="pre">ComputeFID</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.compute_fid.html#pe.callback.common.compute_fid.ComputeFID.__call__"><code class="docutils literal notranslate"><span class="pre">ComputeFID.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.compute_fid.html#pe.callback.common.compute_fid.ComputeFID.__init__"><code class="docutils literal notranslate"><span class="pre">ComputeFID.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.common.compute_precision_recall.html">pe.callback.common.compute_precision_recall module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.common.compute_precision_recall.html#pe.callback.common.compute_precision_recall.ComputePrecisionRecall"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.compute_precision_recall.html#pe.callback.common.compute_precision_recall.ComputePrecisionRecall.__call__"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.compute_precision_recall.html#pe.callback.common.compute_precision_recall.ComputePrecisionRecall.__init__"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.common.save_checkpoints.html">pe.callback.common.save_checkpoints module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.common.save_checkpoints.html#pe.callback.common.save_checkpoints.SaveCheckpoints"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.save_checkpoints.html#pe.callback.common.save_checkpoints.SaveCheckpoints.__call__"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.save_checkpoints.html#pe.callback.common.save_checkpoints.SaveCheckpoints.__init__"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.common.save_checkpoints.html#pe.callback.common.save_checkpoints.SaveCheckpoints._get_checkpoint_path"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints._get_checkpoint_path()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7 current"><a class="reference internal" href="pe.callback.image.html">pe.callback.image package</a><ul class="current">
+<li class="toctree-l8 current"><a class="reference internal" href="pe.callback.image.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l9 current"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.html">pe.callback.image.dpimagebench_lib package</a><ul class="current">
+<li class="toctree-l10 current"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.densenet.html">pe.callback.image.dpimagebench_lib.densenet module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.densenet.html#pe.callback.image.dpimagebench_lib.densenet.densenet"><code class="docutils literal notranslate"><span class="pre">densenet()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l11 current"><a class="current reference internal" href="#">pe.callback.image.dpimagebench_lib.ema module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage</span></code></a><ul>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.__init__"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.__init__()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.copy_to"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.copy_to()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.load_state_dict"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.load_state_dict()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.restore"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.restore()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.state_dict"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.state_dict()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.store"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.store()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.update"><code class="docutils literal notranslate"><span class="pre">ExponentialMovingAverage.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.resnet.html">pe.callback.image.dpimagebench_lib.resnet module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.resnet.html#pe.callback.image.dpimagebench_lib.resnet.resnet"><code class="docutils literal notranslate"><span class="pre">resnet()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.resnext.html">pe.callback.image.dpimagebench_lib.resnext module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.resnext.html#pe.callback.image.dpimagebench_lib.resnext.resnext"><code class="docutils literal notranslate"><span class="pre">resnext()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html">pe.callback.image.dpimagebench_lib.wrn module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.BasicBlock"><code class="docutils literal notranslate"><span class="pre">BasicBlock</span></code></a><ul>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.BasicBlock.forward"><code class="docutils literal notranslate"><span class="pre">BasicBlock.forward()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.BasicBlock.training"><code class="docutils literal notranslate"><span class="pre">BasicBlock.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.NetworkBlock"><code class="docutils literal notranslate"><span class="pre">NetworkBlock</span></code></a><ul>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.NetworkBlock.forward"><code class="docutils literal notranslate"><span class="pre">NetworkBlock.forward()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.NetworkBlock.training"><code class="docutils literal notranslate"><span class="pre">NetworkBlock.training</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l12"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.WideResNet"><code class="docutils literal notranslate"><span class="pre">WideResNet</span></code></a><ul>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.WideResNet.forward"><code class="docutils literal notranslate"><span class="pre">WideResNet.forward()</span></code></a></li>
+<li class="toctree-l13"><a class="reference internal" href="pe.callback.image.dpimagebench_lib.wrn.html#pe.callback.image.dpimagebench_lib.wrn.WideResNet.training"><code class="docutils literal notranslate"><span class="pre">WideResNet.training</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="pe.callback.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html">pe.callback.image.dpimagebench_classify_images module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages.__call__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages.__init__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages._get_data_loader"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_data_loader()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages._get_images_and_label_from_data"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_images_and_label_from_data()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages._get_model"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages._get_model()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.dpimagebench_classify_images.html#pe.callback.image.dpimagebench_classify_images.DPImageBenchClassifyImages.evaluate"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.evaluate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.image.sample_images.html">pe.callback.image.sample_images module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.image.sample_images.html#pe.callback.image.sample_images.SampleImages"><code class="docutils literal notranslate"><span class="pre">SampleImages</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.sample_images.html#pe.callback.image.sample_images.SampleImages.__call__"><code class="docutils literal notranslate"><span class="pre">SampleImages.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.sample_images.html#pe.callback.image.sample_images.SampleImages.__init__"><code class="docutils literal notranslate"><span class="pre">SampleImages.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.image.save_all_images.html">pe.callback.image.save_all_images module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages"><code class="docutils literal notranslate"><span class="pre">SaveAllImages</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages.__call__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages.__init__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages._save_image"><code class="docutils literal notranslate"><span class="pre">SaveAllImages._save_image()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.text.html">pe.callback.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.callback.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.text.save_text_to_csv.html">pe.callback.text.save_text_to_csv module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.callback.text.save_text_to_csv.html#pe.callback.text.save_text_to_csv.SaveTextToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.text.save_text_to_csv.html#pe.callback.text.save_text_to_csv.SaveTextToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__call__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.text.save_text_to_csv.html#pe.callback.text.save_text_to_csv.SaveTextToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.callback.text.save_text_to_csv.html#pe.callback.text.save_text_to_csv.SaveTextToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV._get_csv_path()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.callback.callback.html">pe.callback.callback module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.callback.callback.html#pe.callback.callback.Callback"><code class="docutils literal notranslate"><span class="pre">Callback</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.callback.callback.html#pe.callback.callback.Callback.__call__"><code class="docutils literal notranslate"><span class="pre">Callback.__call__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.constant.html">pe.constant package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.constant.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.constant.data.html">pe.constant.data module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLEAN_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">EMBEDDING_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">FROM_LAST_FLAG_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">HISTOGRAM_NEAREST_NEIGHBORS_VOTING_IDS_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.IMAGE_DATA_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_DATA_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.IMAGE_MODEL_LABEL_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_MODEL_LABEL_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.IMAGE_PROMPT_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">IMAGE_PROMPT_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.LABEL_ID_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LABEL_ID_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.LLM_PARAMETERS_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LLM_PARAMETERS_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.LLM_REQUEST_MESSAGES_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LLM_REQUEST_MESSAGES_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.LOOKAHEAD_EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">LOOKAHEAD_EMBEDDING_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.PARENT_SYN_DATA_INDEX_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">PARENT_SYN_DATA_INDEX_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.TEXT_DATA_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">TEXT_DATA_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.constant.data.html#pe.constant.data.VARIATION_API_FOLD_ID_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">VARIATION_API_FOLD_ID_COLUMN_NAME</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.data.html">pe.data package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Camelyon17"><code class="docutils literal notranslate"><span class="pre">Camelyon17</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Camelyon17.__init__"><code class="docutils literal notranslate"><span class="pre">Camelyon17.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Cat"><code class="docutils literal notranslate"><span class="pre">Cat</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Cat.URL"><code class="docutils literal notranslate"><span class="pre">Cat.URL</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Cat.__init__"><code class="docutils literal notranslate"><span class="pre">Cat.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Cat._download"><code class="docutils literal notranslate"><span class="pre">Cat._download()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Cat._read_data"><code class="docutils literal notranslate"><span class="pre">Cat._read_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.CelebA"><code class="docutils literal notranslate"><span class="pre">CelebA</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.CelebA.__init__"><code class="docutils literal notranslate"><span class="pre">CelebA.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Cifar10"><code class="docutils literal notranslate"><span class="pre">Cifar10</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Cifar10.__init__"><code class="docutils literal notranslate"><span class="pre">Cifar10.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.DigiFace1M"><code class="docutils literal notranslate"><span class="pre">DigiFace1M</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.DigiFace1M.__init__"><code class="docutils literal notranslate"><span class="pre">DigiFace1M.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.DigiFace1M._read_and_process_image"><code class="docutils literal notranslate"><span class="pre">DigiFace1M._read_and_process_image()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.MNIST"><code class="docutils literal notranslate"><span class="pre">MNIST</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.MNIST.__init__"><code class="docutils literal notranslate"><span class="pre">MNIST.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.OpenReview"><code class="docutils literal notranslate"><span class="pre">OpenReview</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.OpenReview.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">OpenReview.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.OpenReview.__init__"><code class="docutils literal notranslate"><span class="pre">OpenReview.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.OpenReview._download"><code class="docutils literal notranslate"><span class="pre">OpenReview._download()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.PubMed"><code class="docutils literal notranslate"><span class="pre">PubMed</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.PubMed.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">PubMed.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.PubMed.__init__"><code class="docutils literal notranslate"><span class="pre">PubMed.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.PubMed._download"><code class="docutils literal notranslate"><span class="pre">PubMed._download()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.TextCSV"><code class="docutils literal notranslate"><span class="pre">TextCSV</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TextCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TextCSV.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.Yelp"><code class="docutils literal notranslate"><span class="pre">Yelp</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Yelp.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">Yelp.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Yelp.__init__"><code class="docutils literal notranslate"><span class="pre">Yelp.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Yelp._download"><code class="docutils literal notranslate"><span class="pre">Yelp._download()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.load_image_folder"><code class="docutils literal notranslate"><span class="pre">load_image_folder()</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.image.html">pe.data.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.data.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.camelyon17.html">pe.data.image.camelyon17 module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17"><code class="docutils literal notranslate"><span class="pre">Camelyon17</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.camelyon17.html#pe.data.image.camelyon17.Camelyon17.__init__"><code class="docutils literal notranslate"><span class="pre">Camelyon17.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.cat.html">pe.data.image.cat module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.cat.html#pe.data.image.cat.Cat"><code class="docutils literal notranslate"><span class="pre">Cat</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.cat.html#pe.data.image.cat.Cat.URL"><code class="docutils literal notranslate"><span class="pre">Cat.URL</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.cat.html#pe.data.image.cat.Cat.__init__"><code class="docutils literal notranslate"><span class="pre">Cat.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.cat.html#pe.data.image.cat.Cat._download"><code class="docutils literal notranslate"><span class="pre">Cat._download()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.cat.html#pe.data.image.cat.Cat._read_data"><code class="docutils literal notranslate"><span class="pre">Cat._read_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.celeba.html">pe.data.image.celeba module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.celeba.html#pe.data.image.celeba.CelebA"><code class="docutils literal notranslate"><span class="pre">CelebA</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.celeba.html#pe.data.image.celeba.CelebA.__init__"><code class="docutils literal notranslate"><span class="pre">CelebA.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.celeba.html#pe.data.image.celeba.target_transform"><code class="docutils literal notranslate"><span class="pre">target_transform</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.cifar10.html">pe.data.image.cifar10 module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10"><code class="docutils literal notranslate"><span class="pre">Cifar10</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.cifar10.html#pe.data.image.cifar10.Cifar10.__init__"><code class="docutils literal notranslate"><span class="pre">Cifar10.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.digiface1m.html">pe.data.image.digiface1m module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.digiface1m.html#pe.data.image.digiface1m.DigiFace1M"><code class="docutils literal notranslate"><span class="pre">DigiFace1M</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.digiface1m.html#pe.data.image.digiface1m.DigiFace1M.__init__"><code class="docutils literal notranslate"><span class="pre">DigiFace1M.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.digiface1m.html#pe.data.image.digiface1m.DigiFace1M._read_and_process_image"><code class="docutils literal notranslate"><span class="pre">DigiFace1M._read_and_process_image()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.image.html">pe.data.image.image module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.image.html#pe.data.image.image.ImageDataset"><code class="docutils literal notranslate"><span class="pre">ImageDataset</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.image.html#pe.data.image.image._list_image_files_recursively"><code class="docutils literal notranslate"><span class="pre">_list_image_files_recursively()</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.image.html#pe.data.image.image.load_image_folder"><code class="docutils literal notranslate"><span class="pre">load_image_folder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.image.mnist.html">pe.data.image.mnist module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.image.mnist.html#pe.data.image.mnist.MNIST"><code class="docutils literal notranslate"><span class="pre">MNIST</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.image.mnist.html#pe.data.image.mnist.MNIST.__init__"><code class="docutils literal notranslate"><span class="pre">MNIST.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.text.html">pe.data.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.data.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.text.openreview.html">pe.data.text.openreview module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.openreview.html#pe.data.text.openreview.DownloadInfo"><code class="docutils literal notranslate"><span class="pre">DownloadInfo</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.openreview.html#pe.data.text.openreview.OpenReview"><code class="docutils literal notranslate"><span class="pre">OpenReview</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.openreview.html#pe.data.text.openreview.OpenReview.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">OpenReview.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.openreview.html#pe.data.text.openreview.OpenReview.__init__"><code class="docutils literal notranslate"><span class="pre">OpenReview.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.openreview.html#pe.data.text.openreview.OpenReview._download"><code class="docutils literal notranslate"><span class="pre">OpenReview._download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.text.pubmed.html">pe.data.text.pubmed module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.pubmed.html#pe.data.text.pubmed.DownloadInfo"><code class="docutils literal notranslate"><span class="pre">DownloadInfo</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.pubmed.html#pe.data.text.pubmed.PubMed"><code class="docutils literal notranslate"><span class="pre">PubMed</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.pubmed.html#pe.data.text.pubmed.PubMed.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">PubMed.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.pubmed.html#pe.data.text.pubmed.PubMed.__init__"><code class="docutils literal notranslate"><span class="pre">PubMed.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.pubmed.html#pe.data.text.pubmed.PubMed._download"><code class="docutils literal notranslate"><span class="pre">PubMed._download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.text.text_csv.html">pe.data.text.text_csv module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV"><code class="docutils literal notranslate"><span class="pre">TextCSV</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.text_csv.html#pe.data.text.text_csv.TextCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TextCSV.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.text.yelp.html">pe.data.text.yelp module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.yelp.html#pe.data.text.yelp.DownloadInfo"><code class="docutils literal notranslate"><span class="pre">DownloadInfo</span></code></a></li>
+<li class="toctree-l10"><a class="reference internal" href="pe.data.text.yelp.html#pe.data.text.yelp.Yelp"><code class="docutils literal notranslate"><span class="pre">Yelp</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.yelp.html#pe.data.text.yelp.Yelp.DOWNLOAD_INFO_DICT"><code class="docutils literal notranslate"><span class="pre">Yelp.DOWNLOAD_INFO_DICT</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.yelp.html#pe.data.text.yelp.Yelp.__init__"><code class="docutils literal notranslate"><span class="pre">Yelp.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.data.text.yelp.html#pe.data.text.yelp.Yelp._download"><code class="docutils literal notranslate"><span class="pre">Yelp._download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.data.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.data.html">pe.data.data module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.concat"><code class="docutils literal notranslate"><span class="pre">Data.concat()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter"><code class="docutils literal notranslate"><span class="pre">Data.filter()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.filter_label_id"><code class="docutils literal notranslate"><span class="pre">Data.filter_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.load_checkpoint()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.dp.html">pe.dp package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.dp.html#pe.dp.DP"><code class="docutils literal notranslate"><span class="pre">DP</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.html#pe.dp.DP.add_noise"><code class="docutils literal notranslate"><span class="pre">DP.add_noise()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.html#pe.dp.DP.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">DP.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.dp.html#pe.dp.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.html#pe.dp.Gaussian.add_noise"><code class="docutils literal notranslate"><span class="pre">Gaussian.add_noise()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.html#pe.dp.Gaussian.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">Gaussian.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.dp.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.dp.html">pe.dp.dp module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.dp.html#pe.dp.dp.DP"><code class="docutils literal notranslate"><span class="pre">DP</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.dp.dp.html#pe.dp.dp.DP.add_noise"><code class="docutils literal notranslate"><span class="pre">DP.add_noise()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.dp.dp.html#pe.dp.dp.DP.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">DP.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.dp.gaussian.html">pe.dp.gaussian module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.add_noise"><code class="docutils literal notranslate"><span class="pre">Gaussian.add_noise()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.Gaussian.set_epsilon_and_delta"><code class="docutils literal notranslate"><span class="pre">Gaussian.set_epsilon_and_delta()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.compute_epsilon"><code class="docutils literal notranslate"><span class="pre">compute_epsilon()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.delta_Gaussian"><code class="docutils literal notranslate"><span class="pre">delta_Gaussian()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.eps_Gaussian"><code class="docutils literal notranslate"><span class="pre">eps_Gaussian()</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="pe.dp.gaussian.html#pe.dp.gaussian.get_noise_multiplier"><code class="docutils literal notranslate"><span class="pre">get_noise_multiplier()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.embedding.html">pe.embedding package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding"><code class="docutils literal notranslate"><span class="pre">Embedding</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding.column_name"><code class="docutils literal notranslate"><span class="pre">Embedding.column_name</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding.compute_embedding"><code class="docutils literal notranslate"><span class="pre">Embedding.compute_embedding()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding.filter_uncomputed_rows"><code class="docutils literal notranslate"><span class="pre">Embedding.filter_uncomputed_rows()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Embedding.merge_computed_rows"><code class="docutils literal notranslate"><span class="pre">Embedding.merge_computed_rows()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe.embedding.FLDInception"><code class="docutils literal notranslate"><span class="pre">FLDInception</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.FLDInception.__init__"><code class="docutils literal notranslate"><span class="pre">FLDInception.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.FLDInception.compute_embedding"><code class="docutils literal notranslate"><span class="pre">FLDInception.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe.embedding.Inception"><code class="docutils literal notranslate"><span class="pre">Inception</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Inception.__init__"><code class="docutils literal notranslate"><span class="pre">Inception.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.Inception.compute_embedding"><code class="docutils literal notranslate"><span class="pre">Inception.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe.embedding.SentenceTransformer"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.SentenceTransformer.__init__"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.SentenceTransformer.column_name"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.column_name</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.SentenceTransformer.compute_embedding"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.image.html">pe.embedding.image package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.embedding.image.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.image.fld_inception.html">pe.embedding.image.fld_inception module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.embedding.image.fld_inception.html#pe.embedding.image.fld_inception.FLDInception"><code class="docutils literal notranslate"><span class="pre">FLDInception</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.image.fld_inception.html#pe.embedding.image.fld_inception.FLDInception.__init__"><code class="docutils literal notranslate"><span class="pre">FLDInception.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.image.fld_inception.html#pe.embedding.image.fld_inception.FLDInception.compute_embedding"><code class="docutils literal notranslate"><span class="pre">FLDInception.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.embedding.image.fld_inception.html#pe.embedding.image.fld_inception.to_uint8"><code class="docutils literal notranslate"><span class="pre">to_uint8()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.image.inception.html">pe.embedding.image.inception module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.embedding.image.inception.html#pe.embedding.image.inception.Inception"><code class="docutils literal notranslate"><span class="pre">Inception</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.image.inception.html#pe.embedding.image.inception.Inception.__init__"><code class="docutils literal notranslate"><span class="pre">Inception.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.image.inception.html#pe.embedding.image.inception.Inception.compute_embedding"><code class="docutils literal notranslate"><span class="pre">Inception.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l10"><a class="reference internal" href="pe.embedding.image.inception.html#pe.embedding.image.inception.to_uint8"><code class="docutils literal notranslate"><span class="pre">to_uint8()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.text.html">pe.embedding.text package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.embedding.text.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.text.sentence_transformer.html">pe.embedding.text.sentence_transformer module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer.__init__"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer.column_name"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.column_name</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer.compute_embedding"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.compute_embedding()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.embedding.embedding.html">pe.embedding.embedding module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding"><code class="docutils literal notranslate"><span class="pre">Embedding</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding.column_name"><code class="docutils literal notranslate"><span class="pre">Embedding.column_name</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding.compute_embedding"><code class="docutils literal notranslate"><span class="pre">Embedding.compute_embedding()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding.filter_uncomputed_rows"><code class="docutils literal notranslate"><span class="pre">Embedding.filter_uncomputed_rows()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.embedding.embedding.html#pe.embedding.embedding.Embedding.merge_computed_rows"><code class="docutils literal notranslate"><span class="pre">Embedding.merge_computed_rows()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.histogram.html">pe.histogram package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.histogram.html#pe.histogram.Histogram"><code class="docutils literal notranslate"><span class="pre">Histogram</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.Histogram.compute_histogram"><code class="docutils literal notranslate"><span class="pre">Histogram.compute_histogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors.__init__"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors._compute_lookahead_embedding"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._compute_lookahead_embedding()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors._log_lookahead"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._log_lookahead()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors._log_voting_details"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._log_voting_details()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.html#pe.histogram.NearestNeighbors.compute_histogram"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors.compute_histogram()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.histogram.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.html">pe.histogram.nearest_neighbor_backend package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.auto.html">pe.histogram.nearest_neighbor_backend.auto module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.auto.html#pe.histogram.nearest_neighbor_backend.auto.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.faiss.html">pe.histogram.nearest_neighbor_backend.faiss module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.faiss.html#pe.histogram.nearest_neighbor_backend.faiss.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.sklearn.html">pe.histogram.nearest_neighbor_backend.sklearn module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.sklearn.html#pe.histogram.nearest_neighbor_backend.sklearn.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.histogram.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.histogram.html">pe.histogram.histogram module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.histogram.histogram.html#pe.histogram.histogram.Histogram"><code class="docutils literal notranslate"><span class="pre">Histogram</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.histogram.html#pe.histogram.histogram.Histogram.compute_histogram"><code class="docutils literal notranslate"><span class="pre">Histogram.compute_histogram()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.histogram.nearest_neighbors.html">pe.histogram.nearest_neighbors module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors.__init__"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors._compute_lookahead_embedding"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._compute_lookahead_embedding()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_lookahead"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._log_lookahead()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors._log_voting_details"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors._log_voting_details()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbors.html#pe.histogram.nearest_neighbors.NearestNeighbors.compute_histogram"><code class="docutils literal notranslate"><span class="pre">NearestNeighbors.compute_histogram()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.llm.html">pe.llm package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM.__init__"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM._get_environment_variable"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM._get_environment_variable()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM._get_response_for_one_request"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM._get_response_for_one_request()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.AzureOpenAILLM.get_responses"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM.__init__"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM._get_conv_template"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_conv_template()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM._get_prompt"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_prompt()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM._get_responses"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_responses()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.HuggingfaceLLM.get_responses"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#pe.llm.LLM"><code class="docutils literal notranslate"><span class="pre">LLM</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.LLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">LLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.LLM.get_generation_args"><code class="docutils literal notranslate"><span class="pre">LLM.get_generation_args()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.LLM.get_responses"><code class="docutils literal notranslate"><span class="pre">LLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#pe.llm.OpenAILLM"><code class="docutils literal notranslate"><span class="pre">OpenAILLM</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.OpenAILLM.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAILLM.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.OpenAILLM._get_environment_variable"><code class="docutils literal notranslate"><span class="pre">OpenAILLM._get_environment_variable()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.OpenAILLM._get_response_for_one_request"><code class="docutils literal notranslate"><span class="pre">OpenAILLM._get_response_for_one_request()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.html#pe.llm.OpenAILLM.get_responses"><code class="docutils literal notranslate"><span class="pre">OpenAILLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#pe.llm.Request"><code class="docutils literal notranslate"><span class="pre">Request</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.huggingface.html">pe.llm.huggingface package</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.huggingface.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.huggingface.register_fastchat.html">pe.llm.huggingface.register_fastchat package</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.llm.huggingface.register_fastchat.html#submodules">Submodules</a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.register_fastchat.gpt2.html">pe.llm.huggingface.register_fastchat.gpt2 module</a><ul>
+<li class="toctree-l12"><a class="reference internal" href="pe.llm.huggingface.register_fastchat.gpt2.html#pe.llm.huggingface.register_fastchat.gpt2.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.huggingface.html#submodules">Submodules</a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.huggingface.huggingface.html">pe.llm.huggingface.huggingface module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM.__init__"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.__init__()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM._get_conv_template"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_conv_template()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM._get_prompt"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_prompt()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM._get_responses"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM._get_responses()</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l11"><a class="reference internal" href="pe.llm.huggingface.huggingface.html#pe.llm.huggingface.huggingface.HuggingfaceLLM.get_responses"><code class="docutils literal notranslate"><span class="pre">HuggingfaceLLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.llm.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.azure_openai.html">pe.llm.azure_openai module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM.__init__"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM._get_environment_variable"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM._get_environment_variable()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM._get_response_for_one_request"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM._get_response_for_one_request()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.azure_openai.html#pe.llm.azure_openai.AzureOpenAILLM.get_responses"><code class="docutils literal notranslate"><span class="pre">AzureOpenAILLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.llm.html">pe.llm.llm module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.llm.html#pe.llm.llm.LLM"><code class="docutils literal notranslate"><span class="pre">LLM</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.llm.html#pe.llm.llm.LLM.generation_arg_map"><code class="docutils literal notranslate"><span class="pre">LLM.generation_arg_map</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.llm.html#pe.llm.llm.LLM.get_generation_args"><code class="docutils literal notranslate"><span class="pre">LLM.get_generation_args()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.llm.html#pe.llm.llm.LLM.get_responses"><code class="docutils literal notranslate"><span class="pre">LLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.openai.html">pe.llm.openai module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.openai.html#pe.llm.openai.OpenAILLM"><code class="docutils literal notranslate"><span class="pre">OpenAILLM</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.openai.html#pe.llm.openai.OpenAILLM.__init__"><code class="docutils literal notranslate"><span class="pre">OpenAILLM.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.openai.html#pe.llm.openai.OpenAILLM._get_environment_variable"><code class="docutils literal notranslate"><span class="pre">OpenAILLM._get_environment_variable()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.openai.html#pe.llm.openai.OpenAILLM._get_response_for_one_request"><code class="docutils literal notranslate"><span class="pre">OpenAILLM._get_response_for_one_request()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.llm.openai.html#pe.llm.openai.OpenAILLM.get_responses"><code class="docutils literal notranslate"><span class="pre">OpenAILLM.get_responses()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.llm.request.html">pe.llm.request module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.llm.request.html#pe.llm.request.Request"><code class="docutils literal notranslate"><span class="pre">Request</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.logger.html">pe.logger package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint"><code class="docutils literal notranslate"><span class="pre">CSVPrint</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint.__init__"><code class="docutils literal notranslate"><span class="pre">CSVPrint.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint._clear_logs"><code class="docutils literal notranslate"><span class="pre">CSVPrint._clear_logs()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint._flush"><code class="docutils literal notranslate"><span class="pre">CSVPrint._flush()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint._get_log_path"><code class="docutils literal notranslate"><span class="pre">CSVPrint._get_log_path()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint._log_float"><code class="docutils literal notranslate"><span class="pre">CSVPrint._log_float()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint.clean_up"><code class="docutils literal notranslate"><span class="pre">CSVPrint.clean_up()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.CSVPrint.log"><code class="docutils literal notranslate"><span class="pre">CSVPrint.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile"><code class="docutils literal notranslate"><span class="pre">ImageFile</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile.__init__"><code class="docutils literal notranslate"><span class="pre">ImageFile.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile._get_image_path"><code class="docutils literal notranslate"><span class="pre">ImageFile._get_image_path()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile._log_image"><code class="docutils literal notranslate"><span class="pre">ImageFile._log_image()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile._log_image_list"><code class="docutils literal notranslate"><span class="pre">ImageFile._log_image_list()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.ImageFile.log"><code class="docutils literal notranslate"><span class="pre">ImageFile.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#pe.logger.LogPrint"><code class="docutils literal notranslate"><span class="pre">LogPrint</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.LogPrint.__init__"><code class="docutils literal notranslate"><span class="pre">LogPrint.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.LogPrint.log"><code class="docutils literal notranslate"><span class="pre">LogPrint.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#pe.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.Logger.clean_up"><code class="docutils literal notranslate"><span class="pre">Logger.clean_up()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#pe.logger.MatplotlibPDF"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.MatplotlibPDF.__init__"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.MatplotlibPDF._get_pdf_path"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF._get_pdf_path()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.html#pe.logger.MatplotlibPDF.log"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logger.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.csv_print.html">pe.logger.csv_print module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint"><code class="docutils literal notranslate"><span class="pre">CSVPrint</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint.__init__"><code class="docutils literal notranslate"><span class="pre">CSVPrint.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint._clear_logs"><code class="docutils literal notranslate"><span class="pre">CSVPrint._clear_logs()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint._flush"><code class="docutils literal notranslate"><span class="pre">CSVPrint._flush()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint._get_log_path"><code class="docutils literal notranslate"><span class="pre">CSVPrint._get_log_path()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint._log_float"><code class="docutils literal notranslate"><span class="pre">CSVPrint._log_float()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint.clean_up"><code class="docutils literal notranslate"><span class="pre">CSVPrint.clean_up()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.csv_print.html#pe.logger.csv_print.CSVPrint.log"><code class="docutils literal notranslate"><span class="pre">CSVPrint.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.image_file.html">pe.logger.image_file module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile"><code class="docutils literal notranslate"><span class="pre">ImageFile</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile.__init__"><code class="docutils literal notranslate"><span class="pre">ImageFile.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile._get_image_path"><code class="docutils literal notranslate"><span class="pre">ImageFile._get_image_path()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile._log_image"><code class="docutils literal notranslate"><span class="pre">ImageFile._log_image()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile._log_image_list"><code class="docutils literal notranslate"><span class="pre">ImageFile._log_image_list()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.image_file.html#pe.logger.image_file.ImageFile.log"><code class="docutils literal notranslate"><span class="pre">ImageFile.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.log_print.html">pe.logger.log_print module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.logger.log_print.html#pe.logger.log_print.LogPrint"><code class="docutils literal notranslate"><span class="pre">LogPrint</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.log_print.html#pe.logger.log_print.LogPrint.__init__"><code class="docutils literal notranslate"><span class="pre">LogPrint.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.log_print.html#pe.logger.log_print.LogPrint.log"><code class="docutils literal notranslate"><span class="pre">LogPrint.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.logger.html">pe.logger.logger module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.logger.logger.html#pe.logger.logger.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.logger.html#pe.logger.logger.Logger.clean_up"><code class="docutils literal notranslate"><span class="pre">Logger.clean_up()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.logger.html#pe.logger.logger.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.logger.matplotlib_pdf.html">pe.logger.matplotlib_pdf module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.logger.matplotlib_pdf.html#pe.logger.matplotlib_pdf.MatplotlibPDF"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.matplotlib_pdf.html#pe.logger.matplotlib_pdf.MatplotlibPDF.__init__"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.matplotlib_pdf.html#pe.logger.matplotlib_pdf.MatplotlibPDF._get_pdf_path"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF._get_pdf_path()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.logger.matplotlib_pdf.html#pe.logger.matplotlib_pdf.MatplotlibPDF.log"><code class="docutils literal notranslate"><span class="pre">MatplotlibPDF.log()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.logging.html">pe.logging package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.logging.html#pe.logging.execution_logger"><code class="docutils literal notranslate"><span class="pre">execution_logger</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.logging.html#pe.logging.setup_logging"><code class="docutils literal notranslate"><span class="pre">setup_logging()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.metric_item.html">pe.metric_item package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatListMetricItem"><code class="docutils literal notranslate"><span class="pre">FloatListMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.FloatMetricItem"><code class="docutils literal notranslate"><span class="pre">FloatMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem"><code class="docutils literal notranslate"><span class="pre">ImageListMetricItem</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem.__init__"><code class="docutils literal notranslate"><span class="pre">ImageListMetricItem.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageListMetricItem.num_images_per_row"><code class="docutils literal notranslate"><span class="pre">ImageListMetricItem.num_images_per_row</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.ImageMetricItem"><code class="docutils literal notranslate"><span class="pre">ImageMetricItem</span></code></a></li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MatplotlibMetricItem"><code class="docutils literal notranslate"><span class="pre">MatplotlibMetricItem</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MatplotlibMetricItem.clean_up"><code class="docutils literal notranslate"><span class="pre">MatplotlibMetricItem.clean_up()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem"><code class="docutils literal notranslate"><span class="pre">MetricItem</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem.__init__"><code class="docutils literal notranslate"><span class="pre">MetricItem.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem.clean_up"><code class="docutils literal notranslate"><span class="pre">MetricItem.clean_up()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem.name"><code class="docutils literal notranslate"><span class="pre">MetricItem.name</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.MetricItem.value"><code class="docutils literal notranslate"><span class="pre">MetricItem.value</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.metric_item.html#pe.metric_item.metric_scope"><code class="docutils literal notranslate"><span class="pre">metric_scope</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.population.html">pe.population package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation"><code class="docutils literal notranslate"><span class="pre">PEPopulation</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation.__init__"><code class="docutils literal notranslate"><span class="pre">PEPopulation.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation._post_process_histogram"><code class="docutils literal notranslate"><span class="pre">PEPopulation._post_process_histogram()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation._select_data"><code class="docutils literal notranslate"><span class="pre">PEPopulation._select_data()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation.initial"><code class="docutils literal notranslate"><span class="pre">PEPopulation.initial()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.PEPopulation.next"><code class="docutils literal notranslate"><span class="pre">PEPopulation.next()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.population.html#pe.population.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.Population.initial"><code class="docutils literal notranslate"><span class="pre">Population.initial()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.html#pe.population.Population.next"><code class="docutils literal notranslate"><span class="pre">Population.next()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.population.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.pe_population.html">pe.population.pe_population module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation"><code class="docutils literal notranslate"><span class="pre">PEPopulation</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation.__init__"><code class="docutils literal notranslate"><span class="pre">PEPopulation.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation._post_process_histogram"><code class="docutils literal notranslate"><span class="pre">PEPopulation._post_process_histogram()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation._select_data"><code class="docutils literal notranslate"><span class="pre">PEPopulation._select_data()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation.initial"><code class="docutils literal notranslate"><span class="pre">PEPopulation.initial()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.pe_population.html#pe.population.pe_population.PEPopulation.next"><code class="docutils literal notranslate"><span class="pre">PEPopulation.next()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="pe.population.population.html">pe.population.population module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.population.population.html#pe.population.population.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.population.html#pe.population.population.Population.initial"><code class="docutils literal notranslate"><span class="pre">Population.initial()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.population.population.html#pe.population.population.Population.next"><code class="docutils literal notranslate"><span class="pre">Population.next()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.runner.html">pe.runner package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.runner.html#pe.runner.PE"><code class="docutils literal notranslate"><span class="pre">PE</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE.__init__"><code class="docutils literal notranslate"><span class="pre">PE.__init__()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE._clean_up_loggers"><code class="docutils literal notranslate"><span class="pre">PE._clean_up_loggers()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE._get_num_samples_per_label_id"><code class="docutils literal notranslate"><span class="pre">PE._get_num_samples_per_label_id()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE._log_metrics"><code class="docutils literal notranslate"><span class="pre">PE._log_metrics()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE.evaluate"><code class="docutils literal notranslate"><span class="pre">PE.evaluate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">PE.load_checkpoint()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.html#pe.runner.PE.run"><code class="docutils literal notranslate"><span class="pre">PE.run()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="pe.runner.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.runner.pe.html">pe.runner.pe module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE"><code class="docutils literal notranslate"><span class="pre">PE</span></code></a><ul>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE.__init__"><code class="docutils literal notranslate"><span class="pre">PE.__init__()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE._clean_up_loggers"><code class="docutils literal notranslate"><span class="pre">PE._clean_up_loggers()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE._get_num_samples_per_label_id"><code class="docutils literal notranslate"><span class="pre">PE._get_num_samples_per_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE._log_metrics"><code class="docutils literal notranslate"><span class="pre">PE._log_metrics()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE.evaluate"><code class="docutils literal notranslate"><span class="pre">PE.evaluate()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">PE.load_checkpoint()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.runner.pe.html#pe.runner.pe.PE.run"><code class="docutils literal notranslate"><span class="pre">PE.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="pe.util.html">pe.util package</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="pe.util.html#submodules">Submodules</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="pe.util.download.html">pe.util.download module</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="pe.util.download.html#pe.util.download.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Private Evolution</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="api.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pe</a></li>
+          <li class="breadcrumb-item"><a href="pe.html">pe package</a></li>
+          <li class="breadcrumb-item"><a href="pe.callback.html">pe.callback package</a></li>
+          <li class="breadcrumb-item"><a href="pe.callback.image.html">pe.callback.image package</a></li>
+          <li class="breadcrumb-item"><a href="pe.callback.image.dpimagebench_lib.html">pe.callback.image.dpimagebench_lib package</a></li>
+      <li class="breadcrumb-item active">pe.callback.image.dpimagebench_lib.ema module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/pe.callback.image.dpimagebench_lib.ema.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-pe.callback.image.dpimagebench_lib.ema">
+<span id="pe-callback-image-dpimagebench-lib-ema-module"></span><h1>pe.callback.image.dpimagebench_lib.ema module<a class="headerlink" href="#module-pe.callback.image.dpimagebench_lib.ema" title="Permalink to this heading"></a></h1>
+<p>Adapted from DPImageBench: <a class="reference external" href="https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/ema.py">https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/ema.py</a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pe.callback.image.dpimagebench_lib.ema.</span></span><span class="sig-name descname"><span class="pre">ExponentialMovingAverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_num_updates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Maintains (exponential) moving average of a set of parameters.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_num_updates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameters</strong> – Iterable of <cite>torch.nn.Parameter</cite>; usually the result of
+<cite>model.parameters()</cite>.</p></li>
+<li><p><strong>decay</strong> – The exponential decay.</p></li>
+<li><p><strong>use_num_updates</strong> – Whether to use number of updates when computing
+averages.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.copy_to">
+<span class="sig-name descname"><span class="pre">copy_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.copy_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.copy_to" title="Permalink to this definition"></a></dt>
+<dd><p>Copy current parameters into given collection of parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Iterable of <cite>torch.nn.Parameter</cite>; the parameters to be
+updated with the stored moving averages.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.load_state_dict">
+<span class="sig-name descname"><span class="pre">load_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.load_state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.load_state_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.restore">
+<span class="sig-name descname"><span class="pre">restore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.restore"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.restore" title="Permalink to this definition"></a></dt>
+<dd><p>Restore the parameters stored with the <cite>store</cite> method.
+Useful to validate the model with EMA parameters without affecting the
+original optimization process. Store the parameters before the
+<cite>copy_to</cite> method. After validation (or model saving), use this to
+restore the former parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Iterable of <cite>torch.nn.Parameter</cite>; the parameters to be
+updated with the stored parameters.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.state_dict">
+<span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.state_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.state_dict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.store">
+<span class="sig-name descname"><span class="pre">store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.store" title="Permalink to this definition"></a></dt>
+<dd><p>Save the current parameters for restoring later.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Iterable of <cite>torch.nn.Parameter</cite>; the parameters to be
+temporarily stored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/callback/image/dpimagebench_lib/ema.html#ExponentialMovingAverage.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update currently maintained parameters.</p>
+<p>Call this every time the parameters are updated, such as the result of
+the <cite>optimizer.step()</cite> call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Iterable of <cite>torch.nn.Parameter</cite>; usually the same set of
+parameters used to initialize this object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pe.callback.image.dpimagebench_lib.densenet.html" class="btn btn-neutral float-left" title="pe.callback.image.dpimagebench_lib.densenet module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pe.callback.image.dpimagebench_lib.resnet.html" class="btn btn-neutral float-right" title="pe.callback.image.dpimagebench_lib.resnet module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Zinan Lin.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
