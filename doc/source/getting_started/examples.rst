@@ -10,7 +10,7 @@ These examples follow the experimental settings in the paper `Differentially Pri
 
 * **CIFAR10 dataset**: `This example <CIFAR10 example_>`__ shows how to generate differentially private synthetic images for the `CIFAR10 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
 
-* **Camelyon17 dadtaset**: `This example <Camelyon17 example_>`__ shows how to generate differentially private synthetic images for the `Camelyon17 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
+* **Camelyon17 dataset**: `This example <Camelyon17 example_>`__ shows how to generate differentially private synthetic images for the `Camelyon17 dataset`_ using the APIs from a pre-trained `ImageNet diffusion model`_.
 
 * **Cat dataset**: `This example <Cat example_>`__ shows how to generate differentially private synthetic images of the `Cat dataset`_ using the APIs from `Stable Diffusion`_.
 
