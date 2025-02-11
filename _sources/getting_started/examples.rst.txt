@@ -45,9 +45,9 @@ These examples follow the experimental settings in the paper `Differentially Pri
 .. _OpenReview dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 .. _PubMed dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 
-.. _CIFAR10 example: https://github.com/microsoft/DPSDA/blob/main/example/image/cifar10.py
-.. _Camelyon17 example: https://github.com/microsoft/DPSDA/blob/main/example/image/camelyon17.py
-.. _Cat example: https://github.com/microsoft/DPSDA/blob/main/example/image/cat.py
+.. _CIFAR10 example: https://github.com/microsoft/DPSDA/blob/main/example/image/cifar10_diffusion.py
+.. _Camelyon17 example: https://github.com/microsoft/DPSDA/blob/main/example/image/camelyon17_diffusion.py
+.. _Cat example: https://github.com/microsoft/DPSDA/blob/main/example/image/cat_diffusion.py
 .. _Yelp OpenAI example: https://github.com/microsoft/DPSDA/blob/main/example/text/yelp_openai/main.py
 .. _Yelp Huggingface example: https://github.com/microsoft/DPSDA/blob/main/example/text/yelp_huggingface/main.py
 .. _Openreview OpenAI example: https://github.com/microsoft/DPSDA/blob/main/example/text/openreview_openai/main.py
