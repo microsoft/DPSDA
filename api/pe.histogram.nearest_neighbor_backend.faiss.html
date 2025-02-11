@@ -848,7 +848,10 @@
 <li class="toctree-l10"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.auto.html#pe.histogram.nearest_neighbor_backend.auto.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l9 current"><a class="current reference internal" href="#">pe.histogram.nearest_neighbor_backend.faiss module</a></li>
+<li class="toctree-l9 current"><a class="current reference internal" href="#">pe.histogram.nearest_neighbor_backend.faiss module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="#pe.histogram.nearest_neighbor_backend.faiss.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l9"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.sklearn.html">pe.histogram.nearest_neighbor_backend.sklearn module</a><ul>
 <li class="toctree-l10"><a class="reference internal" href="pe.histogram.nearest_neighbor_backend.sklearn.html#pe.histogram.nearest_neighbor_backend.sklearn.search"><code class="docutils literal notranslate"><span class="pre">search()</span></code></a></li>
 </ul>
@@ -1220,8 +1223,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="pe-histogram-nearest-neighbor-backend-faiss-module">
-<h1>pe.histogram.nearest_neighbor_backend.faiss module<a class="headerlink" href="#pe-histogram-nearest-neighbor-backend-faiss-module" title="Link to this heading"></a></h1>
+  <section id="module-pe.histogram.nearest_neighbor_backend.faiss">
+<span id="pe-histogram-nearest-neighbor-backend-faiss-module"></span><h1>pe.histogram.nearest_neighbor_backend.faiss module<a class="headerlink" href="#module-pe.histogram.nearest_neighbor_backend.faiss" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="pe.histogram.nearest_neighbor_backend.faiss.search">
+<span class="sig-prename descclassname"><span class="pre">pe.histogram.nearest_neighbor_backend.faiss.</span></span><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">syn_embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priv_embedding</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_nearest_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pe/histogram/nearest_neighbor_backend/faiss.html#search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pe.histogram.nearest_neighbor_backend.faiss.search" title="Link to this definition"></a></dt>
+<dd><p>Compute the nearest neighbors of the private embedding in the synthetic embedding using FAISS.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>syn_embedding</strong> (<em>np.ndarray</em>) – The synthetic embedding</p></li>
+<li><p><strong>priv_embedding</strong> (<em>np.ndarray</em>) – The private embedding</p></li>
+<li><p><strong>num_nearest_neighbors</strong> (<em>int</em>) – The number of nearest neighbors to search</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – The distance metric to use for finding the nearest neighbors. It should be one of the following:
+“l2” (l2 distance), “cos_sim” (cosine similarity), “ip” (inner product)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the mode is unknown</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The distances and indices of the nearest neighbors</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

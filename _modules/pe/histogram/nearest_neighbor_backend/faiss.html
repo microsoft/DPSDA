@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pe.data.image.cifar10 &mdash; Private Evolution 0.0.1 documentation</title>
+  <title>pe.histogram.nearest_neighbor_backend.faiss &mdash; Private Evolution 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
@@ -1206,7 +1206,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">pe.data.image.cifar10</li>
+      <li class="breadcrumb-item active">pe.histogram.nearest_neighbor_backend.faiss</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1215,57 +1215,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pe.data.image.cifar10</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torchvision</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
-
-<span class="n">CIFAR10_LABEL_NAMES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;plane&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;car&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;bird&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;cat&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;deer&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dog&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;frog&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;horse&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ship&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;truck&quot;</span><span class="p">,</span>
-<span class="p">]</span>
+  <h1>Source code for pe.histogram.nearest_neighbor_backend.faiss</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">faiss</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
-<div class="viewcode-block" id="Cifar10">
-<a class="viewcode-back" href="../../../../api/pe.data.image.cifar10.html#pe.data.Cifar10">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Cifar10</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CIFAR10 dataset.&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="search">
+<a class="viewcode-back" href="../../../../api/pe.histogram.nearest_neighbor_backend.faiss.html#pe.histogram.nearest_neighbor_backend.faiss.search">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors of the private embedding in the synthetic embedding using FAISS.</span>
 
-<div class="viewcode-block" id="Cifar10.__init__">
-<a class="viewcode-back" href="../../../../api/pe.data.image.cifar10.html#pe.data.Cifar10.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="sd">    :param syn_embedding: The synthetic embedding</span>
+<span class="sd">    :type syn_embedding: np.ndarray</span>
+<span class="sd">    :param priv_embedding: The private embedding</span>
+<span class="sd">    :type priv_embedding: np.ndarray</span>
+<span class="sd">    :param num_nearest_neighbors: The number of nearest neighbors to search</span>
+<span class="sd">    :type num_nearest_neighbors: int</span>
+<span class="sd">    :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:</span>
+<span class="sd">            &quot;l2&quot; (l2 distance), &quot;cos_sim&quot; (cosine similarity), &quot;ip&quot; (inner product)</span>
+<span class="sd">    :type mode: str</span>
+<span class="sd">    :raises ValueError: If the mode is unknown</span>
+<span class="sd">    :return: The distances and indices of the nearest neighbors</span>
+<span class="sd">    :rtype: tuple[np.ndarray, np.ndarray]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;l2&quot;</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatL2</span><span class="p">(</span><span class="n">syn_embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ip&quot;</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatIP</span><span class="p">(</span><span class="n">syn_embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;cos_sim&quot;</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">IndexFlatIP</span><span class="p">(</span><span class="n">syn_embedding</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">faiss</span><span class="o">.</span><span class="n">normalize_L2</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">)</span>
+        <span class="n">faiss</span><span class="o">.</span><span class="n">normalize_L2</span><span class="p">(</span><span class="n">priv_embedding</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode: </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="sd">        :param split: The split of the dataset. It should be either &quot;train&quot; or &quot;test&quot;, defaults to &quot;train&quot;</span>
-<span class="sd">        :type split: str, optional</span>
-<span class="sd">        :raises ValueError: If the split is invalid</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">split</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid split: </span><span class="si">{</span><span class="n">split</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">train</span> <span class="o">=</span> <span class="n">split</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span>
-        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp_dir</span><span class="p">:</span>
-            <span class="n">dataset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CIFAR10</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">tmp_dir</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="n">train</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
-                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">CIFAR10_LABEL_NAMES</span><span class="p">]}</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
-</div>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="n">ngpus</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">get_num_gpus</span><span class="p">()</span>
+        <span class="n">co</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">GpuMultipleClonerOptions</span><span class="p">()</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">faiss</span><span class="o">.</span><span class="n">index_cpu_to_all_gpus</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">co</span><span class="p">,</span> <span class="n">ngpus</span><span class="p">)</span>
+
+    <span class="n">index</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">)</span>
+    <span class="n">distances</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">distances</span><span class="p">),</span> <span class="n">ids</span></div>
 
 </pre></div>
 
