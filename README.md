@@ -4,13 +4,13 @@ This repo is a Python library to **generate differentially private (DP) syntheti
 
 * **Differentially Private Synthetic Data via Foundation Model APIs 1: Images**  
     [[paper (ICLR 2024)]](https://openreview.net/forum?id=YEhQs8POIo) [[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
-    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
+    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Janardhan Kulkarni](https://www.microsoft.com/en-us/research/people/jakul/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 * **Differentially Private Synthetic Data via Foundation Model APIs 2: Text**  
     [[paper (ICML 2024 Spotlight)]](https://proceedings.mlr.press/v235/xie24g.html) [[paper (arxiv)](https://arxiv.org/abs/2403.01749)] [[website](https://alphapav.github.io/augpe-dpapitext)]  
-    **Authors:** [[Chulin Xie](https://alphapav.github.io/)], [[Zinan Lin](https://zinanlin.me/)], [[Arturs Backurs](https://www.mit.edu/~backurs/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Da Yu](https://dayu11.github.io/)], [[Huseyin Inan](https://www.microsoft.com/en-us/research/people/huinan/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Haotian Jiang](https://jhtdavid96.wixsite.com/jianghaotian)], [[Huishuai Zhang](https://huishuai-git.github.io/)], [[Yin Tat Lee](https://yintat.com/)], [[Bo Li](https://aisecure.github.io/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
+    **Authors:** [[Chulin Xie](https://alphapav.github.io/)], [[Zinan Lin](https://zinanlin.me/)], [[Arturs Backurs](https://www.mit.edu/~backurs/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Da Yu](https://dayu11.github.io/)], [[Huseyin Inan](https://www.microsoft.com/en-us/research/people/huinan/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Haotian Jiang](https://jhtdavid96.wixsite.com/jianghaotian)], [[Huishuai Zhang](https://huishuai-git.github.io/)], [[Yin Tat Lee](https://yintat.com/)], [[Bo Li](https://aisecure.github.io/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 * **Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models**  
     [[paper (arxiv)](https://arxiv.org/abs/2502.05505)]  
-    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Tadas Baltrusaitis](https://www.microsoft.com/en-us/research/people/tabaltru/)], [[Sergey Yekhanin](http://www.yekhanin.org/)]
+    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Tadas Baltrusaitis](https://www.microsoft.com/en-us/research/people/tabaltru/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 
 Please refer to [this repo](https://github.com/fjxmlzn/private-evolution-papers) for the full list of Private Evolution papers and code repositories related to PE.
 
