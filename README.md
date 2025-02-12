@@ -23,6 +23,18 @@ Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more
 * `1/8/2025`: **Text generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 2: Text`](https://arxiv.org/abs/2403.01749) has been integrated into the library! If you want to reproduce the results in the [paper](https://arxiv.org/abs/2403.01749), please refer to [our original codebase](https://github.com/AI-secure/aug-pe).
 * `11/21/2024`: The refactored codebase for **image generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 1: Images`](https://arxiv.org/abs/2305.15560) has been released! It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch in this repository, which is no longer maintained.
 
+## Citations
+
+If you use this library in your research or work, please cite the following papers:
+
+https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe1.bib#L1-L6
+
+https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe2.bib#L1-L6
+
+https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe3.bib#L1-L6
+
+
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
