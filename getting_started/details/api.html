@@ -1235,15 +1235,18 @@
 <li><p>Images</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.StableDiffusion" title="pe.api.StableDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.StableDiffusion</span></code></a>: The APIs of <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a>.</p></li>
-<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.ImprovedDiffusion" title="pe.api.ImprovedDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.ImprovedDiffusion</span></code></a>: The APIs of the <a class="reference external" href="https://github.com/openai/improved-diffusion">improved diffusion model</a>.</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.StableDiffusion" title="pe.api.StableDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.StableDiffusion</span></code></a>: The APIs of <a class="reference external" href="https://huggingface.co/CompVis/stable-diffusion-v1-4">Stable Diffusion</a> (introduced in <a class="footnote-reference brackets" href="#pe1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.ImprovedDiffusion" title="pe.api.ImprovedDiffusion"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.ImprovedDiffusion</span></code></a>: The APIs of the <a class="reference external" href="https://github.com/openai/improved-diffusion">improved diffusion model</a> (introduced in <a class="footnote-reference brackets" href="#pe1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.DrawText" title="pe.api.DrawText"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.DrawText</span></code></a>: The APIs that render text on images (introduced in <a class="footnote-reference brackets" href="#pe3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.Avatar" title="pe.api.Avatar"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.Avatar</span></code></a>: The APIs that generate avatars using <a class="reference external" href="https://github.com/ibonn/python_avatars">the Python Avatars library</a> (introduced in <a class="footnote-reference brackets" href="#pe3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p></li>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.NearestImage" title="pe.api.NearestImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.NearestImage</span></code></a>: The APIs that utilize a static image dataset (introduced in <a class="footnote-reference brackets" href="#pe3" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>).</p></li>
 </ul>
 </div></blockquote>
 </li>
 <li><p>Text</p>
 <blockquote>
 <div><ul>
-<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.LLMAugPE" title="pe.api.LLMAugPE"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.LLMAugPE</span></code></a>: The APIs for text generation using LLMs. When constructing the instance of this API, an LLM instance is required. The LLM instances follow the interface of <a class="reference internal" href="../../api/pe.llm.html#pe.llm.LLM" title="pe.llm.LLM"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.llm.LLM</span></code></a>. Currently, the following LLMs are implemented:</p>
+<li><p><a class="reference internal" href="../../api/pe.api.html#pe.api.LLMAugPE" title="pe.api.LLMAugPE"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.LLMAugPE</span></code></a>: The APIs for text generation using LLMs (introduced in <a class="footnote-reference brackets" href="#pe2" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>). When constructing the instance of this API, an LLM instance is required. The LLM instances follow the interface of <a class="reference internal" href="../../api/pe.llm.html#pe.llm.LLM" title="pe.llm.LLM"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.llm.LLM</span></code></a>. Currently, the following LLMs are implemented:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="../../api/pe.llm.html#pe.llm.OpenAILLM" title="pe.llm.OpenAILLM"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.llm.OpenAILLM</span></code></a>: The LLMs from OpenAI APIs.</p></li>
@@ -1260,6 +1263,23 @@
 <section id="adding-your-own-apis">
 <h2>Adding Your Own APIs<a class="headerlink" href="#adding-your-own-apis" title="Link to this heading"></a></h2>
 <p>To add your own APIs, you need to create a class that inherits from <a class="reference internal" href="../../api/pe.api.html#pe.api.API" title="pe.api.API"><code class="xref py py-class docutils literal notranslate"><span class="pre">pe.api.API</span></code></a> and implements the <a class="reference internal" href="../../api/pe.api.html#pe.api.API.random_api" title="pe.api.API.random_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.API.random_api()</span></code></a> and <a class="reference internal" href="../../api/pe.api.html#pe.api.API.variation_api" title="pe.api.API.variation_api"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pe.api.API.variation_api()</span></code></a> methods.</p>
+<p class="rubric">Citations</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="pe1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p><a class="reference external" href="https://arxiv.org/abs/2305.15560">Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024)</a>.</p>
+</aside>
+<aside class="footnote brackets" id="pe2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://arxiv.org/abs/2403.01749">Differentially Private Synthetic Data via Foundation Model APIs 2: Text (ICML 2024 Spotlight)</a>.</p>
+</aside>
+<aside class="footnote brackets" id="pe3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>)</span>
+<p><a class="reference external" href="https://arxiv.org/abs/2502.05505">Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 
