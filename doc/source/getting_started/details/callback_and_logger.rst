@@ -14,11 +14,13 @@ Currently, the following callbacks are implemented:
 
     * :py:class:`pe.callback.ComputeFID`: Computes the FID between the synthetic samples and the private samples.
     * :py:class:`pe.callback.SaveCheckpoints`: Saves the checkpoint of current synthetic samples to files.
+    * :py:class:`pe.callback.ComputePrecisionRecall`: Computes the `precision and recall metrics`_ between the synthetic samples and the private samples.
 
 * Images
 
     * :py:class:`pe.callback.SampleImages`: Samples some images from each class.
     * :py:class:`pe.callback.SaveAllImages`: Saves all synthetic images to files.
+    * :py:class:`pe.callback.DPImageBenchClassifyImages`: Trains classifiers on the synthetic images and evaluates them on the private images, following the settings in `DPImageBench`_.
 
 * Text
 
@@ -34,3 +36,6 @@ Currently, the following loggers are implemented:
 * :py:class:`pe.logger.LogPrint`: Prints the float results to the console and/or files using the logging module.
 * :py:class:`pe.logger.ImageFile`: Saves the images to files.
 * :py:class:`pe.logger.MatplotlibPDF`: Saves the matplotlib plots to PDF files.
+
+.. _precision and recall metrics: https://arxiv.org/abs/1904.06991
+.. _DPImageBench: https://github.com/2019ChenGong/DPImageBench

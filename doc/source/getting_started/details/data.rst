@@ -19,6 +19,9 @@ For convenience, some well-known datasets are already packaged as :py:class:`pe.
     * :py:class:`pe.data.Cifar10`: The `CIFAR10 dataset`_.
     * :py:class:`pe.data.Camelyon17`: The `Camelyon17 dataset`_.
     * :py:class:`pe.data.Cat`: The `Cat dataset`_.
+    * :py:class:`pe.data.MNIST`: The `MNIST dataset`_.
+    * :py:class:`pe.data.CelebA`: The `CelebA dataset`_.
+    * :py:class:`pe.data.DigiFace1M`: The `DigiFace1M dataset`_.
     * In addition, you can easily load a custom image dataset from a (nested) directory with the image files using :py:meth:`pe.data.load_image_folder`.
 
 * Text datasets
@@ -50,6 +53,9 @@ To apply **Private Evolution** to your own private dataset, you need to create a
 .. _Cat dataset: https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou
 .. _CIFAR10 dataset: https://www.cs.toronto.edu/~kriz/cifar.html
 .. _Camelyon17 dataset: https://camelyon17.grand-challenge.org/
+.. _MNIST dataset: https://pytorch.org/vision/main/generated/torchvision.datasets.MNIST.html
+.. _CelebA dataset: https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html
+.. _DigiFace1M dataset: https://github.com/microsoft/DigiFace1M
 .. _Yelp dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 .. _OpenReview dataset: https://github.com/AI-secure/aug-pe/tree/main/data
 .. _PubMed dataset: https://github.com/AI-secure/aug-pe/tree/main/data

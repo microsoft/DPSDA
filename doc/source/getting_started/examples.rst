@@ -16,7 +16,7 @@ Images
 
     * **MNIST dataset**: `This example <MNIST example_>`__ shows how to generate differentially private synthetic images for the `MNIST dataset`_ using a text render.
     * **CelebA dataset (simulator-generated data)**: `This example <CelebA DigiFace1M example_>`__ shows how to generate differentially private synthetic images for the `CelebA dataset`_ using `the generated data from a computer graphics-based renderer for face images <DigiFace1M_>`__.
-    * **CelebA dataset (weak simulator)**: `This example <CelebA avatar example_>`__ shows how to generate differentially private synthetic images for the `CelebA dataset`_ using `a rule-based avatar generator <python_avatar_>`__.
+    * **CelebA dataset (weak simulator)**: `This example <CelebA avatar example_>`__ shows how to generate differentially private synthetic images for the `CelebA dataset`_ using `a rule-based avatar generator <python_avatars_>`__.
 
 Text
 ----
@@ -43,7 +43,7 @@ These examples follow the experimental settings in the paper `Differentially Pri
 .. _Stable Diffusion: https://huggingface.co/CompVis/stable-diffusion-v1-4
 
 .. _DigiFace1M: https://github.com/microsoft/DigiFace1M
-.. _python_avatar: https://github.com/ibonn/python_avatars
+.. _python_avatars: https://github.com/ibonn/python_avatars
 
 .. _Cat dataset: https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou
 .. _CIFAR10 dataset: https://www.cs.toronto.edu/~kriz/cifar.html
