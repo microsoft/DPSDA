@@ -3,6 +3,7 @@ from omegaconf import OmegaConf
 import pandas as pd
 import numpy as np
 from pe.constant.data import LABEL_ID_COLUMN_NAME
+from pe.constant.data import CLIENT_ID_COLUMN_NAME
 
 
 class Data:
@@ -183,3 +184,34 @@ class Data:
                 raise ValueError("Metadata must be the same")
             metadata = metadata_list[0]
         return Data(data_frame=pd.concat(data_frame_list), metadata=metadata)
+
+    def split_by_client(self):
+        """Split the data frame by client ID
+
+        :raises ValueError: If the client ID column is not in the data frame
+        :return: The list of data objects with the splited data
+        :rtype: list[:py:class:`pe.data.Data`]
+        """
+        if CLIENT_ID_COLUMN_NAME not in self.data_frame.columns:
+            raise ValueError(f"{CLIENT_ID_COLUMN_NAME} not in data frame")
+        grouped_data_frame = self.data_frame.groupby(CLIENT_ID_COLUMN_NAME)
+        return [Data(data_frame=data_frame, metadata=self.metadata) for _, data_frame in grouped_data_frame]
+
+    def split_by_index(self):
+        """Split the data frame by index
+
+        :return: The list of data objects with the splited data
+        :rtype: list[:py:class:`pe.data.Data`]
+        """
+        grouped_data_frame = self.data_frame.groupby(self.data_frame.index)
+        return [Data(data_frame=data_frame, metadata=self.metadata) for _, data_frame in grouped_data_frame]
+
+    def reset_index(self, **kwargs):
+        """Reset the index of the data frame
+
+        :param kwargs: The keyword arguments to pass to the pandas reset_index function
+        :type kwargs: dict
+        :return: A new :py:class:`pe.data.Data` object with the reset index data frame
+        :rtype: :py:class:`pe.data.Data`
+        """
+        return Data(data_frame=self.data_frame.reset_index(**kwargs), metadata=self.metadata)

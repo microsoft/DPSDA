@@ -1,5 +1,7 @@
 #: The column name of the label ID
 LABEL_ID_COLUMN_NAME = "PE.LABEL_ID"
+#: The column name of the client ID (if using client-level DP)
+CLIENT_ID_COLUMN_NAME = "PE.CLIENT_ID"
 
 #: The column name of the clean histogram
 CLEAN_HISTOGRAM_COLUMN_NAME = "PE.CLEAN_HISTOGRAM"

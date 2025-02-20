@@ -26,6 +26,7 @@ class NearestNeighbors(Histogram):
         api=None,
         num_nearest_neighbors=1,
         backend="auto",
+        vote_normalization_level="sample",
     ):
         """Constructor.
 
@@ -58,6 +59,10 @@ class NearestNeighbors(Histogram):
             private samples is large. It requires the installation of `faiss-gpu` or `faiss-cpu` package. See
             https://faiss.ai/
         :type backend: str, optional
+        :param vote_normalization_level: The level of normalization for the votes. It should be one of the following:
+            "sample" (normalize the votes from each private sample to have l2 norm = 1), "client" (normalize the votes
+            from all private samples of the same client to have l2 norm = 1). Defaults to "sample"
+        :type vote_normalization_level: str, optional
         :raises ValueError: If the `api` is not provided when `lookahead_degree` is greater than 0
         :raises ValueError: If the `backend` is unknown
         """
@@ -85,6 +90,8 @@ class NearestNeighbors(Histogram):
             self._search = search
         else:
             raise ValueError(f"Unknown backend: {backend}")
+
+        self._vote_normalization_level = vote_normalization_level
 
     def _log_lookahead(self, syn_data, lookahead_id):
         """Log the lookahead data.
@@ -163,6 +170,7 @@ class NearestNeighbors(Histogram):
         :type priv_data: :py:class:`pe.data.Data`
         :param syn_data: The synthetic data
         :type syn_data: :py:class:`pe.data.Data`
+        :raises ValueError: If the `vote_normalization_level` is unknown
         :return: The private data, possibly with the additional embedding column, and the synthetic data, with the
             computed histogram in the column :py:const:`pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME` and possibly with
             the additional embedding column
@@ -189,10 +197,22 @@ class NearestNeighbors(Histogram):
         )
         self._log_voting_details(priv_data=priv_data, syn_data=syn_data, ids=ids)
 
-        counter = Counter(list(ids.flatten()))
+        priv_data = priv_data.reset_index(drop=True)
+        if self._vote_normalization_level == "client":
+            priv_data_list = priv_data.split_by_client()
+        elif self._vote_normalization_level == "sample":
+            priv_data_list = priv_data.split_by_index()
+        else:
+            raise ValueError(f"Unknown vote normalization level: {self._vote_normalization_level}")
+
         count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
-        count[list(counter.keys())] = list(counter.values())
-        count /= np.sqrt(self._num_nearest_neighbors)
+        for sub_priv_data in priv_data_list:
+            sub_count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
+            sub_ids = ids[sub_priv_data.data_frame.index]
+            counter = Counter(list(sub_ids.flatten()))
+            sub_count[list(counter.keys())] = list(counter.values())
+            sub_count /= np.linalg.norm(sub_count)
+            count += sub_count
 
         syn_data.data_frame[CLEAN_HISTOGRAM_COLUMN_NAME] = count
 
