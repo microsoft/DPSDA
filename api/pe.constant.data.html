@@ -497,6 +497,7 @@
 <li class="toctree-l6 current"><a class="reference internal" href="pe.constant.html#submodules">Submodules</a><ul class="current">
 <li class="toctree-l7 current"><a class="current reference internal" href="#">pe.constant.data module</a><ul>
 <li class="toctree-l8"><a class="reference internal" href="#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLEAN_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="#pe.constant.data.CLIENT_ID_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLIENT_ID_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="#pe.constant.data.EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">EMBEDDING_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">FROM_LAST_FLAG_COLUMN_NAME</span></code></a></li>
@@ -547,8 +548,11 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.reset_index"><code class="docutils literal notranslate"><span class="pre">Data.reset_index()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.split_by_client"><code class="docutils literal notranslate"><span class="pre">Data.split_by_client()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.split_by_index"><code class="docutils literal notranslate"><span class="pre">Data.split_by_index()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
 </ul>
 </li>
@@ -700,8 +704,11 @@
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.reset_index"><code class="docutils literal notranslate"><span class="pre">Data.reset_index()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.split_by_client"><code class="docutils literal notranslate"><span class="pre">Data.split_by_client()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.split_by_index"><code class="docutils literal notranslate"><span class="pre">Data.split_by_index()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="pe.data.data.html#pe.data.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
 </ul>
 </li>
@@ -1228,6 +1235,12 @@
 <dt class="sig sig-object py" id="pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME">
 <span class="sig-prename descclassname"><span class="pre">pe.constant.data.</span></span><span class="sig-name descname"><span class="pre">CLEAN_HISTOGRAM_COLUMN_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PE.CLEAN_HISTOGRAM'</span></em><a class="headerlink" href="#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME" title="Link to this definition"></a></dt>
 <dd><p>The column name of the clean histogram</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="pe.constant.data.CLIENT_ID_COLUMN_NAME">
+<span class="sig-prename descclassname"><span class="pre">pe.constant.data.</span></span><span class="sig-name descname"><span class="pre">CLIENT_ID_COLUMN_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PE.CLIENT_ID'</span></em><a class="headerlink" href="#pe.constant.data.CLIENT_ID_COLUMN_NAME" title="Link to this definition"></a></dt>
+<dd><p>The column name of the client ID (if using client-level DP)</p>
 </dd></dl>
 
 <dl class="py data">

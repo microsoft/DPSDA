@@ -494,6 +494,7 @@
 <li class="toctree-l6"><a class="reference internal" href="api/pe.constant.html#submodules">Submodules</a><ul>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.constant.data.html">pe.constant.data module</a><ul>
 <li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.CLEAN_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLEAN_HISTOGRAM_COLUMN_NAME</span></code></a></li>
+<li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.CLIENT_ID_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">CLIENT_ID_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.DP_HISTOGRAM_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">DP_HISTOGRAM_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.EMBEDDING_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">EMBEDDING_COLUMN_NAME</span></code></a></li>
 <li class="toctree-l8"><a class="reference internal" href="api/pe.constant.data.html#pe.constant.data.FROM_LAST_FLAG_COLUMN_NAME"><code class="docutils literal notranslate"><span class="pre">FROM_LAST_FLAG_COLUMN_NAME</span></code></a></li>
@@ -544,8 +545,11 @@
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.reset_index"><code class="docutils literal notranslate"><span class="pre">Data.reset_index()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.split_by_client"><code class="docutils literal notranslate"><span class="pre">Data.split_by_client()</span></code></a></li>
+<li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.split_by_index"><code class="docutils literal notranslate"><span class="pre">Data.split_by_index()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="api/pe.data.html#pe.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
 </ul>
 </li>
@@ -697,8 +701,11 @@
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.merge"><code class="docutils literal notranslate"><span class="pre">Data.merge()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.random_split"><code class="docutils literal notranslate"><span class="pre">Data.random_split()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.random_truncate"><code class="docutils literal notranslate"><span class="pre">Data.random_truncate()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.reset_index"><code class="docutils literal notranslate"><span class="pre">Data.reset_index()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Data.save_checkpoint()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.set_label_id"><code class="docutils literal notranslate"><span class="pre">Data.set_label_id()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.split_by_client"><code class="docutils literal notranslate"><span class="pre">Data.split_by_client()</span></code></a></li>
+<li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.split_by_index"><code class="docutils literal notranslate"><span class="pre">Data.split_by_index()</span></code></a></li>
 <li class="toctree-l9"><a class="reference internal" href="api/pe.data.data.html#pe.data.data.Data.truncate"><code class="docutils literal notranslate"><span class="pre">Data.truncate()</span></code></a></li>
 </ul>
 </li>
@@ -1801,6 +1808,8 @@
         <li><a href="api/pe.metric_item.html#pe.metric_item.MetricItem.clean_up">(pe.metric_item.MetricItem method)</a>
 </li>
       </ul></li>
+      <li><a href="api/pe.constant.data.html#pe.constant.data.CLIENT_ID_COLUMN_NAME">CLIENT_ID_COLUMN_NAME (in module pe.constant.data)</a>
+</li>
       <li><a href="api/pe.embedding.html#pe.embedding.Embedding.column_name">column_name (pe.embedding.Embedding property)</a>
 
       <ul>
@@ -1811,6 +1820,8 @@
         <li><a href="api/pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer.column_name">(pe.embedding.text.sentence_transformer.SentenceTransformer property)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/pe.embedding.html#pe.embedding.Embedding.compute_embedding">compute_embedding() (pe.embedding.Embedding method)</a>
 
       <ul>
@@ -1829,8 +1840,6 @@
         <li><a href="api/pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer.compute_embedding">(pe.embedding.text.sentence_transformer.SentenceTransformer method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/pe.dp.gaussian.html#pe.dp.gaussian.compute_epsilon">compute_epsilon() (in module pe.dp.gaussian)</a>
 </li>
       <li><a href="api/pe.histogram.html#pe.histogram.Histogram.compute_histogram">compute_histogram() (pe.histogram.Histogram method)</a>
@@ -3287,6 +3296,12 @@
         <li><a href="api/pe.llm.request.html#pe.llm.request.Request.messages">messages (namedtuple field)</a>
 </li>
       </ul></li>
+      <li><a href="api/pe.data.html#pe.data.Data.reset_index">reset_index() (pe.data.Data method)</a>
+
+      <ul>
+        <li><a href="api/pe.data.data.html#pe.data.data.Data.reset_index">(pe.data.data.Data method)</a>
+</li>
+      </ul></li>
       <li><a href="api/pe.callback.image.dpimagebench_lib.resnet.html#pe.callback.image.dpimagebench_lib.resnet.resnet">resnet() (in module pe.callback.image.dpimagebench_lib.resnet)</a>
 </li>
       <li><a href="api/pe.callback.image.dpimagebench_lib.resnext.html#pe.callback.image.dpimagebench_lib.resnext.resnext">resnext() (in module pe.callback.image.dpimagebench_lib.resnext)</a>
@@ -3347,14 +3362,14 @@
         <li><a href="api/pe.histogram.nearest_neighbor_backend.sklearn.html#pe.histogram.nearest_neighbor_backend.sklearn.search">(in module pe.histogram.nearest_neighbor_backend.sklearn)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/pe.embedding.html#pe.embedding.SentenceTransformer">SentenceTransformer (class in pe.embedding)</a>
 
       <ul>
         <li><a href="api/pe.embedding.text.sentence_transformer.html#pe.embedding.text.sentence_transformer.SentenceTransformer">(class in pe.embedding.text.sentence_transformer)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/pe.dp.html#pe.dp.DP.set_epsilon_and_delta">set_epsilon_and_delta() (pe.dp.DP method)</a>
 
       <ul>
@@ -3373,6 +3388,18 @@
       </ul></li>
       <li><a href="api/pe.logging.html#pe.logging.setup_logging">setup_logging() (in module pe.logging)</a>
 </li>
+      <li><a href="api/pe.data.html#pe.data.Data.split_by_client">split_by_client() (pe.data.Data method)</a>
+
+      <ul>
+        <li><a href="api/pe.data.data.html#pe.data.data.Data.split_by_client">(pe.data.data.Data method)</a>
+</li>
+      </ul></li>
+      <li><a href="api/pe.data.html#pe.data.Data.split_by_index">split_by_index() (pe.data.Data method)</a>
+
+      <ul>
+        <li><a href="api/pe.data.data.html#pe.data.data.Data.split_by_index">(pe.data.data.Data method)</a>
+</li>
+      </ul></li>
       <li><a href="api/pe.api.html#pe.api.StableDiffusion">StableDiffusion (class in pe.api)</a>
 
       <ul>
