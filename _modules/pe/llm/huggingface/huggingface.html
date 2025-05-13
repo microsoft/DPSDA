@@ -1274,6 +1274,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_conv_template</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;one_shot&quot;</span><span class="p">:</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;The conversation template is the default one_shot. Likely the conversation template is not set &quot;</span>
+                <span class="s2">&quot;correctly. Please check if the installed fastchat library is the latest version on GitHub, or if the &quot;</span>
+                <span class="s2">&quot;conversation template is registered. See &quot;</span>
+                <span class="s2">&quot;https://microsoft.github.io/DPSDA/api/pe.llm.html#pe.llm.HuggingfaceLLM&quot;</span>
+            <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">stop_str</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_token_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">stop_token_ids</span> <span class="ow">or</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_token_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">)</span></div>
