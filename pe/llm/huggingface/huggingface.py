@@ -45,6 +45,13 @@ class HuggingfaceLLM(LLM):
         self._model.eval()
 
         self._conv_template = self._get_conv_template()
+        if self._conv_template.name == "one_shot":
+            execution_logger.warning(
+                "The conversation template is the default one_shot. Likely the conversation template is not set "
+                "correctly. Please check if the installed fastchat library is the latest version on GitHub, or if the "
+                "conversation template is registered. See "
+                "https://microsoft.github.io/DPSDA/api/pe.llm.html#pe.llm.HuggingfaceLLM"
+            )
         self._stop_str = self._conv_template.stop_str
         self._stop_token_ids = self._conv_template.stop_token_ids or []
         self._stop_token_ids.append(self._tokenizer.eos_token_id)

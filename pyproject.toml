@@ -47,7 +47,7 @@ text = [
   "sentence-transformers",
   "protobuf",
   "sentencepiece",
-  "fschat",
+  "fschat@git+https://github.com/lm-sys/FastChat.git",
   "transformers",
   "accelerate",
   "tqdm",
