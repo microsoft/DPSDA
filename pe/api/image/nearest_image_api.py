@@ -58,7 +58,9 @@ class NearestImage(API):
         self._nearest_neighbor_backend = nearest_neighbor_backend
         self._variation_degrees = _to_constant_list_if_needed(variation_degrees)
         self._max_variation_degree = (
-            self._variation_degrees[0] if isinstance(variation_degrees, ConstantList) else max(self._variation_degrees)
+            self._variation_degrees[0]
+            if isinstance(self._variation_degrees, ConstantList)
+            else max(self._variation_degrees)
         )
 
         if nearest_neighbor_backend.lower() == "faiss":

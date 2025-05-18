@@ -5,3 +5,4 @@ from .cat import Cat
 from .mnist import MNIST
 from .celeba import CelebA
 from .digiface1m import DigiFace1M
+from .imagenet import ImageNet

@@ -18,4 +18,5 @@ Submodules
    pe.data.image.cifar10
    pe.data.image.digiface1m
    pe.data.image.image
+   pe.data.image.imagenet
    pe.data.image.mnist

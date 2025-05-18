@@ -32,6 +32,7 @@ class DrawText(API):
         self,
         font_root_path,
         font_variation_degrees,
+        text_variation_degrees,
         font_size_variation_degrees,
         rotation_degree_variation_degrees,
         stroke_width_variation_degrees,
@@ -52,6 +53,10 @@ class DrawText(API):
             is provided, the same variation degree will be used for all iterations. The value means the probability of
             changing the font to a random font.
         :type font_variation_degrees: float or list[float]
+        :param text_variation_degrees: The variation degrees for text utilized at each PE iteration. If a single value
+            is provided, the same variation degree will be used for all iterations. The value means the probability of
+            changing the text to a random text.
+        :type text_variation_degrees: float or list[float]
         :param font_size_variation_degrees: The variation degrees for font size utilized at each PE iteration. If a
             single value is provided, the same variation degree will be used for all iterations. The value means
             the maximum possible variation in font size.
@@ -89,6 +94,7 @@ class DrawText(API):
         super().__init__()
         self._font_root_path = font_root_path
         self._font_variation_degrees = _to_constant_list_if_needed(font_variation_degrees)
+        self._text_variation_degrees = _to_constant_list_if_needed(text_variation_degrees)
         self._font_size_variation_degrees = _to_constant_list_if_needed(font_size_variation_degrees)
         self._rotation_degree_variation_degrees = _to_constant_list_if_needed(rotation_degree_variation_degrees)
         self._stroke_width_variation_degrees = _to_constant_list_if_needed(stroke_width_variation_degrees)
@@ -223,8 +229,10 @@ class DrawText(API):
         rotation_degree,
         font_size_variation_degree,
         font_variation_degree,
+        text_variation_degree,
         stroke_width_variation_degree,
         rotation_degree_variation_degree,
+        label_name,
     ):
         """Get a variation image and its parameters.
 
@@ -242,16 +250,23 @@ class DrawText(API):
         :type font_size_variation_degree: int
         :param font_variation_degree: The degree of variation in font
         :type font_variation_degree: float
+        :param text_variation_degree: The degree of variation in text
+        :type text_variation_degree: float
         :param stroke_width_variation_degree: The degree of variation in stroke width
         :type stroke_width_variation_degree: int
         :param rotation_degree_variation_degree: The degree of variation in rotation degree
         :type rotation_degree_variation_degree: int
+        :param label_name: The label name
+        :type label_name: str
         :return: The image of the avatar and its parameters
         :rtype: tuple[np.ndarray, dict]
         """
         do_font_variation = random.random() < font_variation_degree
         if do_font_variation:
             font_file = random.choice(self._font_files)
+        do_text_variation = random.random() < text_variation_degree
+        if do_text_variation:
+            text = random.choice(self._text_list[label_name])
 
         font_size += random.randint(-font_size_variation_degree, font_size_variation_degree)
         font_size = max(min(font_size, max(self._font_size_list)), min(self._font_size_list))
@@ -289,9 +304,11 @@ class DrawText(API):
         execution_logger.info(f"VARIATION API: creating variations for {len(syn_data.data_frame)} samples")
         original_params = list(syn_data.data_frame[TEXT_PARAMS_COLUMN_NAME].values)
         original_images = np.stack(syn_data.data_frame[IMAGE_DATA_COLUMN_NAME].values)
+        original_label_ids = syn_data.data_frame[LABEL_ID_COLUMN_NAME].values
         iteration = getattr(syn_data.metadata, "iteration", -1)
         font_variation_degree = self._font_variation_degrees[iteration + 1]
         font_size_variation_degree = self._font_size_variation_degrees[iteration + 1]
+        text_variation_degree = self._text_variation_degrees[iteration + 1]
         rotation_variation_degree = self._rotation_degree_variation_degrees[iteration + 1]
         stroke_width_variation_degree = self._stroke_width_variation_degrees[iteration + 1]
 
@@ -307,9 +324,11 @@ class DrawText(API):
             original_param = original_params[i]
             image, param = self._get_variation_image(
                 font_size_variation_degree=font_size_variation_degree,
+                text_variation_degree=text_variation_degree,
                 font_variation_degree=font_variation_degree,
                 rotation_degree_variation_degree=rotation_variation_degree,
                 stroke_width_variation_degree=stroke_width_variation_degree,
+                label_name=syn_data.metadata.label_info[int(original_label_ids[i])].name,
                 **original_param,
             )
             if image is not None:

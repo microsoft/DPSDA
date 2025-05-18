@@ -47,6 +47,7 @@ if __name__ == "__main__":
         font_size_variation_degrees=[6, 5, 4, 3, 2],
         rotation_degree_variation_degrees=[11, 9, 7, 5, 3],
         stroke_width_variation_degrees=[1, 1, 1, 0, 0],
+        text_variation_degrees=0.0,
     )
     fld_inception_embedding = FLDInception()
     histogram = NearestNeighbors(
