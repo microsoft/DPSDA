@@ -1,6 +1,6 @@
 # Private Evolution: Differentially Private Synthetic Data via Foundation Model APIs
 
-This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed a new DP synthetic data framework that only utilizes the blackbox inference APIs of foundation models (e.g., Stable Diffusion, GPT models).
+This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed **Private Evolution (PE)**, a new DP synthetic data framework that only utilizes the blackbox inference APIs of foundation models (e.g., Stable Diffusion, GPT models).
 
 * **Differentially Private Synthetic Data via Foundation Model APIs 1: Images**  
     [[paper (ICLR 2024)]](https://openreview.net/forum?id=YEhQs8POIo) [[paper (arxiv)](https://arxiv.org/abs/2305.15560)]  
@@ -12,7 +12,9 @@ This repo is a Python library to **generate differentially private (DP) syntheti
     [[paper (arxiv)](https://arxiv.org/abs/2502.05505)]  
     **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Tadas Baltrusaitis](https://www.microsoft.com/en-us/research/people/tabaltru/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 
-Please refer to [this repo](https://github.com/fjxmlzn/private-evolution-papers) for the full list of Private Evolution papers and code repositories related to PE.
+Please refer to [this repo](https://github.com/fjxmlzn/private-evolution-papers) for the full list of papers and code repositories related to PE.
+
+**PE has been adopted by some of the largest IT companies such as [Microsoft](https://www.microsoft.com/en-us/research/blog/the-crossroads-of-innovation-and-privacy-private-synthetic-data-for-generative-ai/) and [Apple](https://machinelearning.apple.com/research/differential-privacy-aggregate-trends).**
 
 ## Documentation
 Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more details, including the installation instructions, usage, and examples.
