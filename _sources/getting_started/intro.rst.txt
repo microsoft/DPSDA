@@ -19,6 +19,9 @@ Compared to other DP synthetic data alternatives, **Private Evolution** has the 
 * ✅ **Works across images, text, etc.** **Private Evolution** can generate synthetic data for various data types, including images and text. More data modalities are coming soon!
 * ✅ **Could even match/beat SoTA training-based methods in data quality.** **Private Evolution** can generate synthetic data that is statistically similar to the original data, and in some cases, it can even match or beat the state-of-the-art training-based methods in data quality even though it does not require any training.
 
+**PE has been adopted by some of the largest IT companies such as** `Microsoft <https://www.microsoft.com/en-us/research/blog/the-crossroads-of-innovation-and-privacy-private-synthetic-data-for-generative-ai/>`_ **and** `Apple <https://machinelearning.apple.com/research/differential-privacy-aggregate-trends>`_.
+
+
 What This Library Provides
 --------------------------
 
