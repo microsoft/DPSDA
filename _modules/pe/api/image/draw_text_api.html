@@ -558,6 +558,10 @@
 <li class="toctree-l7"><a class="reference internal" href="../../../../api/pe.data.html#pe.data.DigiFace1M._read_and_process_image"><code class="docutils literal notranslate"><span class="pre">DigiFace1M._read_and_process_image()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l6"><a class="reference internal" href="../../../../api/pe.data.html#pe.data.ImageNet"><code class="docutils literal notranslate"><span class="pre">ImageNet</span></code></a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../../api/pe.data.html#pe.data.ImageNet.__init__"><code class="docutils literal notranslate"><span class="pre">ImageNet.__init__()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l6"><a class="reference internal" href="../../../../api/pe.data.html#pe.data.MNIST"><code class="docutils literal notranslate"><span class="pre">MNIST</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="../../../../api/pe.data.html#pe.data.MNIST.__init__"><code class="docutils literal notranslate"><span class="pre">MNIST.__init__()</span></code></a></li>
 </ul>
@@ -632,6 +636,13 @@
 <li class="toctree-l10"><a class="reference internal" href="../../../../api/pe.data.image.image.html#pe.data.image.image.ImageDataset"><code class="docutils literal notranslate"><span class="pre">ImageDataset</span></code></a></li>
 <li class="toctree-l10"><a class="reference internal" href="../../../../api/pe.data.image.image.html#pe.data.image.image._list_image_files_recursively"><code class="docutils literal notranslate"><span class="pre">_list_image_files_recursively()</span></code></a></li>
 <li class="toctree-l10"><a class="reference internal" href="../../../../api/pe.data.image.image.html#pe.data.image.image.load_image_folder"><code class="docutils literal notranslate"><span class="pre">load_image_folder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l9"><a class="reference internal" href="../../../../api/pe.data.image.imagenet.html">pe.data.image.imagenet module</a><ul>
+<li class="toctree-l10"><a class="reference internal" href="../../../../api/pe.data.image.imagenet.html#pe.data.image.imagenet.ImageNet"><code class="docutils literal notranslate"><span class="pre">ImageNet</span></code></a><ul>
+<li class="toctree-l11"><a class="reference internal" href="../../../../api/pe.data.image.imagenet.html#pe.data.image.imagenet.ImageNet.__init__"><code class="docutils literal notranslate"><span class="pre">ImageNet.__init__()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l9"><a class="reference internal" href="../../../../api/pe.data.image.mnist.html">pe.data.image.mnist module</a><ul>
@@ -1261,6 +1272,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">font_root_path</span><span class="p">,</span>
         <span class="n">font_variation_degrees</span><span class="p">,</span>
+        <span class="n">text_variation_degrees</span><span class="p">,</span>
         <span class="n">font_size_variation_degrees</span><span class="p">,</span>
         <span class="n">rotation_degree_variation_degrees</span><span class="p">,</span>
         <span class="n">stroke_width_variation_degrees</span><span class="p">,</span>
@@ -1281,6 +1293,10 @@
 <span class="sd">            is provided, the same variation degree will be used for all iterations. The value means the probability of</span>
 <span class="sd">            changing the font to a random font.</span>
 <span class="sd">        :type font_variation_degrees: float or list[float]</span>
+<span class="sd">        :param text_variation_degrees: The variation degrees for text utilized at each PE iteration. If a single value</span>
+<span class="sd">            is provided, the same variation degree will be used for all iterations. The value means the probability of</span>
+<span class="sd">            changing the text to a random text.</span>
+<span class="sd">        :type text_variation_degrees: float or list[float]</span>
 <span class="sd">        :param font_size_variation_degrees: The variation degrees for font size utilized at each PE iteration. If a</span>
 <span class="sd">            single value is provided, the same variation degree will be used for all iterations. The value means</span>
 <span class="sd">            the maximum possible variation in font size.</span>
@@ -1318,6 +1334,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span> <span class="o">=</span> <span class="n">font_root_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">font_variation_degrees</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_text_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">text_variation_degrees</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_size_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">font_size_variation_degrees</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rotation_degree_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">rotation_degree_variation_degrees</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stroke_width_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">stroke_width_variation_degrees</span><span class="p">)</span>
@@ -1464,8 +1481,10 @@
         <span class="n">rotation_degree</span><span class="p">,</span>
         <span class="n">font_size_variation_degree</span><span class="p">,</span>
         <span class="n">font_variation_degree</span><span class="p">,</span>
+        <span class="n">text_variation_degree</span><span class="p">,</span>
         <span class="n">stroke_width_variation_degree</span><span class="p">,</span>
         <span class="n">rotation_degree_variation_degree</span><span class="p">,</span>
+        <span class="n">label_name</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a variation image and its parameters.</span>
 
@@ -1483,16 +1502,23 @@
 <span class="sd">        :type font_size_variation_degree: int</span>
 <span class="sd">        :param font_variation_degree: The degree of variation in font</span>
 <span class="sd">        :type font_variation_degree: float</span>
+<span class="sd">        :param text_variation_degree: The degree of variation in text</span>
+<span class="sd">        :type text_variation_degree: float</span>
 <span class="sd">        :param stroke_width_variation_degree: The degree of variation in stroke width</span>
 <span class="sd">        :type stroke_width_variation_degree: int</span>
 <span class="sd">        :param rotation_degree_variation_degree: The degree of variation in rotation degree</span>
 <span class="sd">        :type rotation_degree_variation_degree: int</span>
+<span class="sd">        :param label_name: The label name</span>
+<span class="sd">        :type label_name: str</span>
 <span class="sd">        :return: The image of the avatar and its parameters</span>
 <span class="sd">        :rtype: tuple[np.ndarray, dict]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">do_font_variation</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">font_variation_degree</span>
         <span class="k">if</span> <span class="n">do_font_variation</span><span class="p">:</span>
             <span class="n">font_file</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span>
+        <span class="n">do_text_variation</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">text_variation_degree</span>
+        <span class="k">if</span> <span class="n">do_text_variation</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_list</span><span class="p">[</span><span class="n">label_name</span><span class="p">])</span>
 
         <span class="n">font_size</span> <span class="o">+=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">font_size_variation_degree</span><span class="p">,</span> <span class="n">font_size_variation_degree</span><span class="p">)</span>
         <span class="n">font_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">font_size</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_size_list</span><span class="p">)),</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_size_list</span><span class="p">))</span>
@@ -1533,9 +1559,11 @@
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
         <span class="n">original_params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TEXT_PARAMS_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
         <span class="n">original_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">original_label_ids</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
         <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">font_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">font_size_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_size_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">text_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">rotation_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rotation_degree_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">stroke_width_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stroke_width_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
@@ -1551,9 +1579,11 @@
             <span class="n">original_param</span> <span class="o">=</span> <span class="n">original_params</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
             <span class="n">image</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_variation_image</span><span class="p">(</span>
                 <span class="n">font_size_variation_degree</span><span class="o">=</span><span class="n">font_size_variation_degree</span><span class="p">,</span>
+                <span class="n">text_variation_degree</span><span class="o">=</span><span class="n">text_variation_degree</span><span class="p">,</span>
                 <span class="n">font_variation_degree</span><span class="o">=</span><span class="n">font_variation_degree</span><span class="p">,</span>
                 <span class="n">rotation_degree_variation_degree</span><span class="o">=</span><span class="n">rotation_variation_degree</span><span class="p">,</span>
                 <span class="n">stroke_width_variation_degree</span><span class="o">=</span><span class="n">stroke_width_variation_degree</span><span class="p">,</span>
+                <span class="n">label_name</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_info</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">original_label_ids</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="o">**</span><span class="n">original_param</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

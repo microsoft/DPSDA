@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pe.api.image.nearest_image_api &mdash; Private Evolution 0.0.1 documentation</title>
+  <title>pe.data.image.imagenet &mdash; Private Evolution 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
@@ -1224,7 +1224,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">pe.api.image.nearest_image_api</li>
+      <li class="breadcrumb-item active">pe.data.image.imagenet</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1233,170 +1233,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pe.api.image.nearest_image_api</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+  <h1>Source code for pe.data.image.imagenet</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.datasets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">T</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">API</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.api.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstantList</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
 
 
-<span class="n">DATA_ID_COLUMN_NAME</span> <span class="o">=</span> <span class="s2">&quot;PE.NEAREST_IMAGE.DATA_ID&quot;</span>
+<div class="viewcode-block" id="ImageNet">
+<a class="viewcode-back" href="../../../../api/pe.data.image.imagenet.html#pe.data.ImageNet">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ImageNet</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The ImageNet dataset.&quot;&quot;&quot;</span>
 
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">ConstantList</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">value</span>
-
-
-<div class="viewcode-block" id="NearestImage">
-<a class="viewcode-back" href="../../../../api/pe.api.image.nearest_image_api.html#pe.api.NearestImage">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">NearestImage</span><span class="p">(</span><span class="n">API</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The API that generates synthetic images by randomly drawing an image from the given dataset as the RANDOM_API</span>
-<span class="sd">    and finding the nearest images in the given dataset as the VARIATION_API.&quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="NearestImage.__init__">
-<a class="viewcode-back" href="../../../../api/pe.api.image.nearest_image_api.html#pe.api.NearestImage.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">data</span><span class="p">,</span>
-        <span class="n">embedding</span><span class="p">,</span>
-        <span class="n">nearest_neighbor_mode</span><span class="p">,</span>
-        <span class="n">variation_degrees</span><span class="p">,</span>
-        <span class="n">nearest_neighbor_backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-    <span class="p">):</span>
+<div class="viewcode-block" id="ImageNet.__init__">
+<a class="viewcode-back" href="../../../../api/pe.data.image.imagenet.html#pe.data.ImageNet.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">conditional</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
 
-<span class="sd">        :param data: The data object that contains the images</span>
-<span class="sd">        :type data: :py:class:`pe.data.Data`</span>
-<span class="sd">        :param embedding: The embedding object that computes the embeddings of the images</span>
-<span class="sd">        :type embedding: :py:class:`pe.embedding.Embedding`</span>
-<span class="sd">        :param nearest_neighbor_mode: The distance metric to use for finding the nearest neighbors. It should be one</span>
-<span class="sd">            of the following: &quot;l2&quot; (l2 distance), &quot;cos_sim&quot; (cosine similarity), &quot;ip&quot; (inner product). Not all backends</span>
-<span class="sd">            support all modes</span>
-<span class="sd">        :type nearest_neighbor_mode: str</span>
-<span class="sd">        :param variation_degrees: The variation degrees utilized at each PE iteration. If a single value is provided,</span>
-<span class="sd">            the same variation degree will be used for all iterations. The value means the number of nearest neighbors</span>
-<span class="sd">            to consider for the VARIAITON_API</span>
-<span class="sd">        :type variation_degrees: int or list[int]</span>
-<span class="sd">        :param nearest_neighbor_backend: The backend to use for finding the nearest neighbors. It should be one of the</span>
-<span class="sd">            following: &quot;faiss&quot; (FAISS), &quot;sklearn&quot; (scikit-learn), &quot;auto&quot; (using FAISS if available, otherwise</span>
-<span class="sd">            scikit-learn). Defaults to &quot;auto&quot;. FAISS supports GPU and is much faster when the number of samples is</span>
-<span class="sd">            large. It requires the installation of `faiss-gpu` or `faiss-cpu` package. See https://faiss.ai/</span>
-<span class="sd">        :type nearest_neighbor_backend: str, optional</span>
-<span class="sd">        :raises ValueError: If the `nearest_neighbor_backend` is unknown</span>
+<span class="sd">        :param root_dir: The root directory of the dataset.</span>
+<span class="sd">        :param conditional: Whether to use conditional ImageNet. Defaults to False</span>
+<span class="sd">        :type conditional: bool, optional</span>
+<span class="sd">        :param split: The split of the dataset, defaults to &quot;train&quot;</span>
+<span class="sd">        :type split: str, optional</span>
+<span class="sd">        :param res: The resolution of the images, defaults to 32</span>
+<span class="sd">        :type res: int, optional</span>
+<span class="sd">        :param batch_size: The batch size to load the images, defaults to 1000</span>
+<span class="sd">        :type batch_size: int, optional</span>
+<span class="sd">        :param num_workers: The number of workers to load the images, defaults to 10</span>
+<span class="sd">        :type num_workers: int, optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span> <span class="o">=</span> <span class="n">embedding</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_mode</span> <span class="o">=</span> <span class="n">nearest_neighbor_mode</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_backend</span> <span class="o">=</span> <span class="n">nearest_neighbor_backend</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">variation_degrees</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_max_variation_degree</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">,</span> <span class="n">ConstantList</span><span class="p">)</span>
-            <span class="k">else</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">)</span>
+        <span class="n">transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">res</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">PILToTensor</span><span class="p">()])</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">ImageNet</span><span class="p">(</span>
+            <span class="n">root</span><span class="o">=</span><span class="n">root_dir</span><span class="p">,</span>
+            <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span>
+            <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">data_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+            <span class="n">dataset</span><span class="p">,</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">nearest_neighbor_backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;faiss&quot;</span><span class="p">:</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">pe.histogram.nearest_neighbor_backend.faiss</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">data_loader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Loading ImageNet&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;batch&quot;</span><span class="p">):</span>
+            <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
-        <span class="k">elif</span> <span class="n">nearest_neighbor_backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;sklearn&quot;</span><span class="p">:</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">pe.histogram.nearest_neighbor_backend.sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
-        <span class="k">elif</span> <span class="n">nearest_neighbor_backend</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
-            <span class="kn">from</span><span class="w"> </span><span class="nn">pe.histogram.nearest_neighbor_backend.auto</span><span class="w"> </span><span class="kn">import</span> <span class="n">search</span>
-
-            <span class="bp">self</span><span class="o">.</span><span class="n">_search</span> <span class="o">=</span> <span class="n">search</span>
+        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">images</span><span class="p">),</span>
+                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">targets</span> <span class="k">if</span> <span class="n">conditional</span> <span class="k">else</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">conditional</span><span class="p">:</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">classes</span><span class="p">)]}</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown backend: </span><span class="si">{</span><span class="n">nearest_neighbor_backend</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_build_nearest_neighbor_graph</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="NearestImage._build_nearest_neighbor_graph">
-<a class="viewcode-back" href="../../../../api/pe.api.image.nearest_image_api.html#pe.api.NearestImage._build_nearest_neighbor_graph">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_build_nearest_neighbor_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finding the nearest neighbor for each sample in the given dataset.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
-        <span class="n">embedding</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-        <span class="n">distances</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search</span><span class="p">(</span>
-            <span class="n">syn_embedding</span><span class="o">=</span><span class="n">embedding</span><span class="p">,</span>
-            <span class="n">priv_embedding</span><span class="o">=</span><span class="n">embedding</span><span class="p">,</span>
-            <span class="n">num_nearest_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_max_variation_degree</span><span class="p">,</span>
-            <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_mode</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_ids</span> <span class="o">=</span> <span class="n">ids</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">))[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">sorted_indices</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_distances</span> <span class="o">=</span> <span class="n">distances</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">distances</span><span class="p">))[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">sorted_indices</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="NearestImage.random_api">
-<a class="viewcode-back" href="../../../../api/pe.api.image.nearest_image_api.html#pe.api.NearestImage.random_api">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data by randomly drawing images from the given dataset.</span>
-
-<span class="sd">        :param label_info: The info of the label, not utilized in this API</span>
-<span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
-<span class="sd">        :param num_samples: The number of random samples to generate</span>
-<span class="sd">        :type num_samples: int</span>
-<span class="sd">        :return: The data object of the generated synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="n">data_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">),</span> <span class="n">num_samples</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">data_ids</span><span class="p">][</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="n">images</span><span class="p">,</span>
-                <span class="n">DATA_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">data_ids</span><span class="p">,</span>
-                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="NearestImage.variation_api">
-<a class="viewcode-back" href="../../../../api/pe.api.image.nearest_image_api.html#pe.api.NearestImage.variation_api">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating variations of the synthetic data by finding the nearest images in the given dataset.</span>
-
-<span class="sd">        :param syn_data: The data object of the synthetic data</span>
-<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        :return: The data object of the variation of the input synthetic data</span>
-<span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
-        <span class="n">original_data_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">DATA_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API parameters: variation_degree=</span><span class="si">{</span><span class="n">variation_degree</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-        <span class="n">nn_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">variation_degree</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_data_ids</span><span class="p">),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">new_data_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nearest_neighbor_ids</span><span class="p">[</span><span class="n">original_data_ids</span><span class="p">,</span> <span class="n">nn_ids</span><span class="p">]</span>
-        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">new_data_ids</span><span class="p">][</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-
-        <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-            <span class="p">{</span>
-                <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="n">images</span><span class="p">,</span>
-                <span class="n">DATA_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">new_data_ids</span><span class="p">,</span>
-                <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">}]}</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
