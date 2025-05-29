@@ -24,6 +24,7 @@ Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more
 * `2/11/2025`: **Image generation with simulator APIs** based on the paper [`Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models`](https://arxiv.org/abs/2502.05505) has been released in this library!
 * `1/8/2025`: **Text generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 2: Text`](https://arxiv.org/abs/2403.01749) has been integrated into the library! If you want to reproduce the results in the [paper](https://arxiv.org/abs/2403.01749), please refer to [our original codebase](https://github.com/AI-secure/aug-pe).
 * `11/21/2024`: The refactored codebase for **image generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 1: Images`](https://arxiv.org/abs/2305.15560) has been released! It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch in this repository, which is no longer maintained.
+* `5/26/2023`: The Cat Cookie and Cat Doudou datasets (512x512) created in the [paper](https://arxiv.org/abs/2305.15560) are released [here](https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou/).
 
 ## Citations
 
