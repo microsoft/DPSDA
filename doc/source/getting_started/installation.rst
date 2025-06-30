@@ -61,7 +61,7 @@ To install `faiss 1.8.0`, please use the following command:
 
     conda install -y -c pytorch -c nvidia faiss-gpu=1.8.0
 
-*Note faiss_ should be installed before following the PIP install instructions above (to avoid numpy versioning issues). Please check out the faiss_ website for the latest information on how to install the faiss_ package.
+**Note:** faiss_ should be installed *before* following the PIP install instructions above (to avoid numpy versioning issues). Please check out the faiss_ website for the latest information on how to install the faiss_ package.
 
 ..
     Docker
