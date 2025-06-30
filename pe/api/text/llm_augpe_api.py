@@ -179,7 +179,7 @@ class LLMAugPE(API):
         :return: The blanked input text
         :rtype: str
         """
-        input_ids = np.asarray(self._encoding.encode(sample))
+        input_ids = np.asarray(self._encoding.encode(sample, disallowed_special=()))
         masked_indices = np.random.uniform(size=len(input_ids)) < blank_probability
         input_ids[masked_indices] = self._mask_token
         return self._encoding.decode(input_ids)
