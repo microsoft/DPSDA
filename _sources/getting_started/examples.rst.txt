@@ -18,6 +18,8 @@ Images
     * **CelebA dataset (simulator-generated data)**: `This example <CelebA DigiFace1M example_>`__ shows how to generate differentially private synthetic images for the `CelebA dataset`_ using `the generated data from a computer graphics-based renderer for face images <DigiFace1M_>`__.
     * **CelebA dataset (weak simulator)**: `This example <CelebA avatar example_>`__ shows how to generate differentially private synthetic images for the `CelebA dataset`_ using `a rule-based avatar generator <python_avatars_>`__.
 
+.. _text:
+
 Text
 ----
 
@@ -37,6 +39,23 @@ These examples follow the experimental settings in the paper `Differentially Pri
 
     * **OpenAI APIs**: `See example <PubMed OpenAI example_>`__
     * **Huggingface models**: `See example <PubMed Huggingface example_>`__
+
+
+Checkpoint Operation
+--------------------
+
+By default, the above examples will save the generated synthetic data (e.g., images, text). Besides, they also save the checkpoints with more complete information of synthetic data, and we can use :doc:`data <details/data>` and :doc:`callback <details/callback_and_logger>` APIs to further process the checkpoints. For example, in the :ref:`text` examples, the CSV files of synthetic text contain both the text selected by the histogram and the generated variations of the selected text. However, in the downstream evaluation of `Differentially Private Synthetic Data via Foundation Model APIs 2: Text (ICML 2024 Spotlight) <pe2_paper_>`__, only the text selected by the histogram is used. We can use the following code to extract the selected text from the checkpoints into a new CSV file:
+
+.. code-block:: python
+
+    from pe.data import Data
+    from pe.callback import SaveTextToCSV
+    from pe.constant.data import FROM_LAST_FLAG_COLUMN_NAME
+
+    data = Data()
+    data.load_checkpoint("<checkpoint path>")
+    data = data.filter({FROM_LAST_FLAG_COLUMN_NAME: 1})
+    SaveTextToCSV(output_folder="from_last")(data)
 
 
 .. _ImageNet diffusion model: https://github.com/openai/improved-diffusion
