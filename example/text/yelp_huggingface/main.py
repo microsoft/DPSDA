@@ -8,6 +8,12 @@ desired model is not available in FastChat, please register the conversation tem
 following link for an example:
 https://github.com/microsoft/DPSDA/blob/main/pe/llm/huggingface/register_fastchat/gpt2.py
 
+The saved CSV files contain both the text selected by the histogram and the generated variations of the selected text,
+while the original paper (https://arxiv.org/abs/2403.01749) only use the text selected by the histogram for downstream
+evaluation. We can extract the desired text from the saved checkpoints; please see
+https://microsoft.github.io/DPSDA/getting_started/examples.html#checkpoint-operation
+for more details.
+
 For detailed information about parameters and APIs, please consult the documentation of the Private Evolution library:
 https://microsoft.github.io/DPSDA/.
 """
