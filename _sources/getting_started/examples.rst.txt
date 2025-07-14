@@ -50,11 +50,11 @@ By default, the above examples will save the generated synthetic data (e.g., ima
 
     from pe.data import Data
     from pe.callback import SaveTextToCSV
-    from pe.constant.data import FROM_LAST_FLAG_COLUMN_NAME
+    from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
 
     data = Data()
     data.load_checkpoint("<checkpoint path>")
-    data = data.filter({FROM_LAST_FLAG_COLUMN_NAME: 1})
+    data = data.filter({VARIATION_API_FOLD_ID_COLUMN_NAME: -1})
     SaveTextToCSV(output_folder="from_last")(data)
 
 
