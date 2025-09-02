@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 from .population import Population
 from pe.data import Data
@@ -7,6 +8,7 @@ from pe.constant.data import POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME
 from pe.constant.data import PARENT_SYN_DATA_INDEX_COLUMN_NAME
 from pe.constant.data import FROM_LAST_FLAG_COLUMN_NAME
 from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
+from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.logging import execution_logger
 
 
@@ -21,6 +23,7 @@ class PEPopulation(Population):
         next_variation_api_fold=1,
         keep_selected=False,
         selection_mode="sample",
+        histogram_log_folder=None,
     ):
         """Constructor.
 
@@ -39,6 +42,9 @@ class PEPopulation(Population):
             random sampling proportional to the histogram), "rank" (select the top samples according to the histogram).
             Defaults to "sample"
         :type selection_mode: str, optional
+        :param histogram_log_folder: The folder to save the logs of the histogram. If it is None, the logs are not
+            saved. Defaults to None
+        :type histogram_log_folder: str, optional
         :raises ValueError: If next_variation_api_fold is 0 and keep_selected is False
         """
         super().__init__()
@@ -53,6 +59,7 @@ class PEPopulation(Population):
                 "next_variation_api_fold should be greater than 0 or keep_selected should be True. Otherwise, next "
                 "synthetic data will be empty."
             )
+        self._histogram_log_folder = histogram_log_folder
 
     def initial(self, label_info, num_samples):
         """Generate the initial synthetic data.
@@ -98,6 +105,7 @@ class PEPopulation(Population):
         else:
             clipped_count = count
         syn_data.data_frame[POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME] = clipped_count
+        self._log_histogram(syn_data)
         return syn_data
 
     def _select_data(self, syn_data, num_samples):
@@ -126,6 +134,21 @@ class PEPopulation(Population):
             return Data(data_frame=new_data_frame, metadata=syn_data.metadata)
         else:
             raise ValueError(f"Selection mode {self._selection_mode} is not supported")
+
+    def _log_histogram(self, syn_data):
+        """Log the histogram.
+
+        :param syn_data: The synthetic data with the histogram
+        :type syn_data: :py:class:`pe.data.Data`
+        """
+        if self._histogram_log_folder is None:
+            return
+        labels = set(list(syn_data.data_frame[LABEL_ID_COLUMN_NAME].values))
+        assert len(labels) == 1
+        label = list(labels)[0]
+        iteration = syn_data.metadata["iteration"]
+        log_folder = os.path.join(self._histogram_log_folder, f"{iteration}", f"label-id{label}")
+        syn_data.save_checkpoint(log_folder)
 
     def next(self, syn_data, num_samples):
         """Generate the next synthetic data.
