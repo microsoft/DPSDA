@@ -10,7 +10,7 @@ This repo is a Python library to **generate differentially private (DP) syntheti
     **Authors:** [[Chulin Xie](https://alphapav.github.io/)], [[Zinan Lin](https://zinanlin.me/)], [[Arturs Backurs](https://www.mit.edu/~backurs/)], [[Sivakanth Gopi](https://www.microsoft.com/en-us/research/people/sigopi/)], [[Da Yu](https://dayu11.github.io/)], [[Huseyin Inan](https://www.microsoft.com/en-us/research/people/huinan/)], [[Harsha Nori](https://www.microsoft.com/en-us/research/people/hanori/)], [[Haotian Jiang](https://jhtdavid96.wixsite.com/jianghaotian)], [[Huishuai Zhang](https://huishuai-git.github.io/)], [[Yin Tat Lee](https://yintat.com/)], [[Bo Li](https://aisecure.github.io/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 * **Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models**  
     [[paper (arxiv)](https://arxiv.org/abs/2502.05505)]  
-    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Tadas Baltrusaitis](https://www.microsoft.com/en-us/research/people/tabaltru/)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
+    **Authors:** [[Zinan Lin](https://zinanlin.me/)], [[Tadas Baltrusaitis](https://www.microsoft.com/en-us/research/people/tabaltru/)], [[Wenyu Wang](#)], [[Sergey Yekhanin](https://www.microsoft.com/en-us/research/people/yekhanin/)]
 
 Please refer to [this repo](https://github.com/fjxmlzn/private-evolution-papers) for the full list of papers and code repositories related to PE.
 
@@ -30,11 +30,11 @@ Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more
 
 If you use this library in your research or work, please cite the following papers:
 
-https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe1.bib#L1-L6
+https://github.com/microsoft/DPSDA/blob/48941e2259c099d84fbc05e5a9628f697b7eeb02/doc/source/getting_started/pe1.bib#L1-L6
 
-https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe2.bib#L1-L6
+https://github.com/microsoft/DPSDA/blob/48941e2259c099d84fbc05e5a9628f697b7eeb02/doc/source/getting_started/pe2.bib#L1-L6
 
-https://github.com/microsoft/DPSDA/blob/91ccad6e65febd12c84448e3f79d498a20eda7b3/doc/source/getting_started/pe3.bib#L1-L6
+https://github.com/microsoft/DPSDA/blob/48941e2259c099d84fbc05e5a9628f697b7eeb02/doc/source/getting_started/pe3.bib#L1-L6
 
 
 
