@@ -59,6 +59,7 @@ class ComputeTVD(Callback):
 
     def _compute_tvd(self, syn_features_df, priv_features_df):
         """Compute the TVD between the synthetic and private features.
+
         :param syn_features_df: The synthetic features DataFrame
         :type syn_features_df: :py:class:`pandas.DataFrame`
         :param priv_features_df: The private features DataFrame
@@ -113,8 +114,8 @@ class ComputeTVD(Callback):
         return sum(tvds) / len(tvds)
 
     def __call__(self, syn_data):
-        """This function is called after each PE iteration that computes the FID between the private and synthetic
-        data.
+        """This function is called after each PE iteration that computes the FID between the private and
+        synthetic data.
 
         :param syn_data: The synthetic data
         :type syn_data: :py:class:`pe.data.Data`

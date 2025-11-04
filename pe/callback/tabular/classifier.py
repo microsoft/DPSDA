@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import xgboost as xgb
 from pe.callback.callback import Callback
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 from pe.constant.data import LABEL_ID_COLUMN_NAME
@@ -37,6 +36,13 @@ class TabClassifier(Callback):
     def _get_model(self):
         """Getting the classifier model."""
         if self._model_name == "xgboost":
+            try:
+                import xgboost as xgb
+            except ImportError:
+                raise ImportError(
+                    "XGBoost is not installed. Please install it using "
+                    '`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'
+                )
             if self._num_classes == 2:
                 return xgb.XGBClassifier(objective="binary:logistic")
             else:
@@ -45,7 +51,10 @@ class TabClassifier(Callback):
             try:
                 from tabicl import TabICLClassifier
             except ImportError:
-                raise ImportError("TabICLClassifier is not installed. Please install it using `pip install tabicl`.")
+                raise ImportError(
+                    "TabICLClassifier is not installed. Please install it using "
+                    '`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'
+                )
             return TabICLClassifier()
 
         else:

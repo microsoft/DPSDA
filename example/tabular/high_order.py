@@ -1,10 +1,10 @@
 from dotenv import load_dotenv
 
-from pe.data.tabular import TabularCSV
+from pe.data import TabularCSV
 from pe.logging import setup_logging
 from pe.runner import PE
 from pe.population import PEPopulation
-from pe.api.tabular import TabularAPI
+from pe.api import TabularAPI
 from pe.embedding import TabularEmbedding
 from pe.histogram import NearestNeighbors
 from pe.callback import SaveCheckpoints
