@@ -5,7 +5,7 @@ from pe.logging import setup_logging
 from pe.runner import PE
 from pe.population import PEPopulation
 from pe.api.tabular import TabularAPI
-from pe.embedding import TabularEmbedding, get_tabinfo
+from pe.embedding import TabularEmbedding
 from pe.histogram import NearestNeighbors
 from pe.callback import SaveCheckpoints
 from pe.callback import ComputeFID
@@ -37,7 +37,7 @@ if __name__ == "__main__":
         metadata_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
         f"heads/main/tabular/{dataset_name}_metadata.json",
     )
-    priv_info = get_tabinfo(priv_data)
+    priv_info = priv_data.get_tabinfo()
 
     test_data = TabularCSV(
         csv_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"

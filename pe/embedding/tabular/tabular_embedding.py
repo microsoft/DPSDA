@@ -9,40 +9,6 @@ from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 import math
 
 
-def get_tabinfo(priv_data):
-    """Get the information of the private data.
-
-    :param priv_data: The data object containing the training tabular data
-    :type priv_data: :py:class:`pe.data.Data`
-    :return: The information (categories and numerical bounds) of the private data
-    :rtype: dict
-    """
-
-    info = {}
-    features_columns = priv_data.metadata["feature_columns"]
-    features_df = pd.DataFrame(priv_data.data_frame[TABULAR_DATA_COLUMN_NAME].tolist(), columns=features_columns)
-    for column in features_columns:
-        if column in priv_data.metadata["cat_columns"]:
-            info[column] = {
-                "categories": list(features_df[column].unique()),
-                "type": "cat",
-            }
-        elif column in priv_data.metadata["int_columns"]:
-            info[column] = {
-                "min": math.floor(features_df[column].min()),
-                "max": math.ceil(features_df[column].max()),
-                "type": "int",
-            }
-        elif column in priv_data.metadata["float_columns"]:
-            info[column] = {
-                "min": features_df[column].min(),
-                "max": features_df[column].max(),
-                "type": "float",
-            }
-
-    return info
-
-
 class TabularEmbedding(Embedding):
     """Compute the tabular embedding."""
 

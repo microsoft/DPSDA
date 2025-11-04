@@ -5,6 +5,7 @@ import json, requests
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 import sys
+import math
 
 
 class TabularCSV(Data):
@@ -73,3 +74,36 @@ class TabularCSV(Data):
         }
 
         super().__init__(data_frame=data_frame, metadata=metadata)
+
+    def get_tabinfo(self):
+        """Get the information of the private data.
+
+        :param priv_data: The data object containing the training tabular data
+        :type priv_data: :py:class:`pe.data.Data`
+        :return: The information (categories and numerical bounds) of the private data
+        :rtype: dict
+        """
+
+        info = {}
+        features_columns = self.metadata["feature_columns"]
+        features_df = pd.DataFrame(self.data_frame[TABULAR_DATA_COLUMN_NAME].tolist(), columns=features_columns)
+        for column in features_columns:
+            if column in self.metadata["cat_columns"]:
+                info[column] = {
+                    "categories": list(features_df[column].unique()),
+                    "type": "cat",
+                }
+            elif column in self.metadata["int_columns"]:
+                info[column] = {
+                    "min": math.floor(features_df[column].min()),
+                    "max": math.ceil(features_df[column].max()),
+                    "type": "int",
+                }
+            elif column in self.metadata["float_columns"]:
+                info[column] = {
+                    "min": features_df[column].min(),
+                    "max": features_df[column].max(),
+                    "type": "float",
+                }
+
+        return info
