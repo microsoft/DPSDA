@@ -6,6 +6,15 @@ from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 import sys
 import math
+from enum import Enum
+
+
+class TabularColumnType(Enum):
+    """The type of the tabular column."""
+
+    CATEGORICAL = "cat"
+    INTEGER = "int"
+    FLOAT = "float"
 
 
 class TabularCSV(Data):
@@ -75,7 +84,7 @@ class TabularCSV(Data):
 
         super().__init__(data_frame=data_frame, metadata=metadata)
 
-    def get_tabinfo(self):
+    def get_tab_info(self):
         """Get the information of the private data.
 
         :param priv_data: The data object containing the training tabular data
@@ -91,19 +100,19 @@ class TabularCSV(Data):
             if column in self.metadata["cat_columns"]:
                 info[column] = {
                     "categories": list(features_df[column].unique()),
-                    "type": "cat",
+                    "type": TabularColumnType.CATEGORICAL,
                 }
             elif column in self.metadata["int_columns"]:
                 info[column] = {
                     "min": math.floor(features_df[column].min()),
                     "max": math.ceil(features_df[column].max()),
-                    "type": "int",
+                    "type": TabularColumnType.INTEGER,
                 }
             elif column in self.metadata["float_columns"]:
                 info[column] = {
                     "min": features_df[column].min(),
                     "max": features_df[column].max(),
-                    "type": "float",
+                    "type": TabularColumnType.FLOAT,
                 }
 
         return info

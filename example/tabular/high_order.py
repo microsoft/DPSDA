@@ -37,7 +37,7 @@ if __name__ == "__main__":
         metadata_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
         f"heads/main/tabular/{dataset_name}_metadata.json",
     )
-    priv_info = priv_data.get_tabinfo()
+    priv_info = priv_data.get_tab_info()
 
     test_data = TabularCSV(
         csv_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
@@ -61,7 +61,7 @@ if __name__ == "__main__":
         embedding=embedding,
         mode="L2",
         lookahead_degree=0,
-        backend="auto",
+        backend="torch",
     )
     population = PEPopulation(
         api=api, initial_variation_api_fold=3, next_variation_api_fold=3, keep_selected=True, selection_mode="rank"

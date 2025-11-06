@@ -11,6 +11,7 @@ from pe.data import Data
 from pe.llm import Request
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 from pe.constant.data import LABEL_ID_COLUMN_NAME
+from pe.data import TabularColumnType
 
 
 class TabularAPI(API):
@@ -93,13 +94,13 @@ class TabularAPI(API):
         # Vectorization per column
         column_data = {}
         for column in feature_columns:
-            if self._info[column]["type"] == "cat":
+            if self._info[column]["type"] == TabularColumnType.CATEGORICAL:
                 column_data[column] = np.random.choice(self._info[column]["categories"], size=num_samples)
-            elif self._info[column]["type"] == "int":
+            elif self._info[column]["type"] == TabularColumnType.INTEGER:
                 column_data[column] = np.random.randint(
                     int(self._info[column]["min"]), int(self._info[column]["max"]), size=num_samples
                 )
-            elif self._info[column]["type"] == "float":
+            elif self._info[column]["type"] == TabularColumnType.FLOAT:
                 column_data[column] = np.random.uniform(
                     self._info[column]["min"], self._info[column]["max"], size=num_samples
                 )
@@ -156,12 +157,12 @@ class TabularAPI(API):
 
         # Vectorization per column
         for column in feature_columns:
-            if self._info[column]["type"] == "cat":
+            if self._info[column]["type"] == TabularColumnType.CATEGORICAL:
                 mask = np.random.rand(len(features_df)) < mutation_rate
                 if mask.any():
                     new_values = np.random.choice(self._info[column]["categories"], size=mask.sum())
                     features_df.loc[mask, column] = new_values
-            elif self._info[column]["type"] in ["int", "float"]:
+            elif self._info[column]["type"] in [TabularColumnType.INTEGER, TabularColumnType.FLOAT]:
                 current_values = features_df[column].to_numpy()
                 feature_min = self._info[column]["min"]
                 feature_max = self._info[column]["max"]
@@ -169,11 +170,13 @@ class TabularAPI(API):
                 deltas = np.random.uniform(-mutation_rate, mutation_rate, size=len(features_df)) * feature_range
                 updated_values = current_values + deltas
 
-                if self._info[column]["type"] == "int":  # round to nearest integer
+                if self._info[column]["type"] == TabularColumnType.INTEGER:  # round to nearest integer
                     updated_values = np.round(updated_values)
                 # clamp to [min, max]
                 updated_values = np.clip(updated_values, feature_min, feature_max)
                 features_df[column] = updated_values
+            else:
+                raise ValueError(f"Invalid column type: {self._info[column]['type']}")
 
         data_frame = pd.DataFrame(
             {
