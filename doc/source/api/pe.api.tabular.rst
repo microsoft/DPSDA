@@ -1,7 +1,7 @@
-pe.runner package
-=================
+pe.api.tabular package
+======================
 
-.. automodule:: pe.runner
+.. automodule:: pe.api.tabular
    :members:
    :show-inheritance:
    :undoc-members:
@@ -12,4 +12,4 @@ Submodules
 .. toctree::
    :maxdepth: 7
 
-   pe.runner.pe
+   pe.api.tabular.tabular_api

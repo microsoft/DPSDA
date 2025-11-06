@@ -53,6 +53,11 @@ text = [
   "tqdm",
   "azure-identity",
 ]
+tabular = [
+  "tabicl",
+  "xgboost",
+  "numpy",
+]
 
 [project.urls]
 Homepage = "https://microsoft.github.io/DPSDA/"

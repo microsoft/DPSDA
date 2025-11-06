@@ -3,8 +3,8 @@ pe.histogram.nearest\_neighbor\_backend package
 
 .. automodule:: pe.histogram.nearest_neighbor_backend
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Submodules
 ----------

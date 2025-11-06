@@ -3,8 +3,8 @@ pe.data package
 
 .. automodule:: pe.data
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------
@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.data.image
+   pe.data.tabular
    pe.data.text
 
 Submodules

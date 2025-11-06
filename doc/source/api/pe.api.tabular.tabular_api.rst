@@ -1,7 +1,7 @@
-pe.api.text.llm\_augpe\_api module
+pe.api.tabular.tabular\_api module
 ==================================
 
-.. automodule:: pe.api.text.llm_augpe_api
+.. automodule:: pe.api.tabular.tabular_api
    :members:
    :show-inheritance:
    :undoc-members:

@@ -1,7 +1,7 @@
-pe.llm.huggingface.huggingface module
+pe.callback.tabular.classifier module
 =====================================
 
-.. automodule:: pe.llm.huggingface.huggingface
+.. automodule:: pe.callback.tabular.classifier
    :members:
    :show-inheritance:
    :undoc-members:

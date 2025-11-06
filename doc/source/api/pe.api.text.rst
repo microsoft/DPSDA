@@ -3,8 +3,8 @@ pe.api.text package
 
 .. automodule:: pe.api.text
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Submodules
 ----------

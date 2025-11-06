@@ -1,7 +1,7 @@
-pe.callback.image.dpimagebench\_lib.wrn module
+pe.embedding.tabular.tabular\_embedding module
 ==============================================
 
-.. automodule:: pe.callback.image.dpimagebench_lib.wrn
+.. automodule:: pe.embedding.tabular.tabular_embedding
    :members:
    :show-inheritance:
    :undoc-members:

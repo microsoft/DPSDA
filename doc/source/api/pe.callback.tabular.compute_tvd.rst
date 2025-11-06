@@ -1,7 +1,7 @@
-pe.callback.image.sample\_images module
+pe.callback.tabular.compute\_tvd module
 =======================================
 
-.. automodule:: pe.callback.image.sample_images
+.. automodule:: pe.callback.tabular.compute_tvd
    :members:
    :show-inheritance:
    :undoc-members:

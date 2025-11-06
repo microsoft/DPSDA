@@ -1,7 +1,7 @@
-pe.population.pe\_population module
+pe.data.tabular.tabular\_csv module
 ===================================
 
-.. automodule:: pe.population.pe_population
+.. automodule:: pe.data.tabular.tabular_csv
    :members:
    :show-inheritance:
    :undoc-members:
