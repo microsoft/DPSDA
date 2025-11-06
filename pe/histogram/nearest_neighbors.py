@@ -84,6 +84,10 @@ class NearestNeighbors(Histogram):
             from pe.histogram.nearest_neighbor_backend.sklearn import search
 
             self._search = search
+        elif backend.lower() == "torch":
+            from pe.histogram.nearest_neighbor_backend.torch import search
+
+            self._search = search
         elif backend.lower() == "auto":
             from pe.histogram.nearest_neighbor_backend.auto import search
 
@@ -198,12 +202,14 @@ class NearestNeighbors(Histogram):
         self._log_voting_details(priv_data=priv_data, syn_data=syn_data, ids=ids)
 
         priv_data = priv_data.reset_index(drop=True)
+        execution_logger.info(f"Histogram: starting to split")
         if self._vote_normalization_level == "client":
             priv_data_list = priv_data.split_by_client()
         elif self._vote_normalization_level == "sample":
             priv_data_list = priv_data.split_by_index()
         else:
             raise ValueError(f"Unknown vote normalization level: {self._vote_normalization_level}")
+        execution_logger.info(f"Histogram: split private data into {len(priv_data_list)} sub-private data")
 
         count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
         for sub_priv_data in priv_data_list:
