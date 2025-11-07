@@ -1354,6 +1354,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_rotation_degree_list</span> <span class="o">=</span> <span class="n">rotation_degree_list</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="p">,</span> <span class="s2">&quot;**&quot;</span><span class="p">,</span> <span class="s2">&quot;*.ttf&quot;</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No font files found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">. Please download some fonts, such as &quot;</span>
+                <span class="s2">&quot;downloading Google Fonts from https://github.com/google/fonts/archive/main.zip (or &quot;</span>
+                <span class="s2">&quot;https://github.com/google/fonts), extracting the content, and pointing font_root_path to the ofl &quot;</span>
+                <span class="s2">&quot;subfolder&quot;</span>
+            <span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> font files in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
