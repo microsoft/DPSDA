@@ -111,6 +111,13 @@ class DrawText(API):
         self._rotation_degree_list = rotation_degree_list
 
         self._font_files = glob.glob(os.path.join(self._font_root_path, "**", "*.ttf"), recursive=True)
+        if len(self._font_files) == 0:
+            raise ValueError(
+                f"No font files found in {self._font_root_path}. Please download some fonts, such as "
+                "downloading Google Fonts from https://github.com/google/fonts/archive/main.zip (or "
+                "https://github.com/google/fonts), extracting the content, and pointing font_root_path to the ofl "
+                "subfolder"
+            )
         execution_logger.info(f"Found {len(self._font_files)} font files in {self._font_root_path}")
 
     def _create_image(self, font_size, font_file, text, stroke_width, rotation_degree):
