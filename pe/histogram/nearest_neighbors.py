@@ -59,7 +59,8 @@ class NearestNeighbors(Histogram):
             private samples is large. It requires the installation of `faiss-gpu` or `faiss-cpu` package. See
             https://faiss.ai/
         :type backend: str, optional
-        :param vote_normalization_level: The level of normalization for the votes. It should be one of the following:
+        :param vote_normalization_level: The level of normalization for the votes. This corresponds to the granularity
+            of the neighboring definition in differential privacy (DP). It should be one of the following:
             "sample" (normalize the votes from each private sample to have l2 norm = 1), "client" (normalize the votes
             from all private samples of the same client to have l2 norm = 1). Defaults to "sample"
         :type vote_normalization_level: str, optional
@@ -197,22 +198,24 @@ class NearestNeighbors(Histogram):
         )
         self._log_voting_details(priv_data=priv_data, syn_data=syn_data, ids=ids)
 
-        priv_data = priv_data.reset_index(drop=True)
+        count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
+
         if self._vote_normalization_level == "client":
+            priv_data = priv_data.reset_index(drop=True)
             priv_data_list = priv_data.split_by_client()
+            for sub_priv_data in priv_data_list:
+                sub_count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
+                sub_ids = ids[sub_priv_data.data_frame.index]
+                counter = Counter(list(sub_ids.flatten()))
+                sub_count[list(counter.keys())] = list(counter.values())
+                sub_count /= np.linalg.norm(sub_count)
+                count += sub_count
         elif self._vote_normalization_level == "sample":
-            priv_data_list = priv_data.split_by_index()
+            counter = Counter(list(ids.flatten()))
+            count[list(counter.keys())] = list(counter.values())
+            count /= np.sqrt(self._num_nearest_neighbors)
         else:
             raise ValueError(f"Unknown vote normalization level: {self._vote_normalization_level}")
-
-        count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
-        for sub_priv_data in priv_data_list:
-            sub_count = np.zeros(shape=syn_embedding.shape[0], dtype=np.float32)
-            sub_ids = ids[sub_priv_data.data_frame.index]
-            counter = Counter(list(sub_ids.flatten()))
-            sub_count[list(counter.keys())] = list(counter.values())
-            sub_count /= np.linalg.norm(sub_count)
-            count += sub_count
 
         syn_data.data_frame[CLEAN_HISTOGRAM_COLUMN_NAME] = count
 
