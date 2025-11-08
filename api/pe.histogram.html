@@ -1300,7 +1300,8 @@ than 0. Defaults to None</p></li>
 Defaults to “auto”. FAISS supports GPU and is much faster when the number of synthetic samples and/or
 private samples is large. It requires the installation of <cite>faiss-gpu</cite> or <cite>faiss-cpu</cite> package. See
 <a class="reference external" href="https://faiss.ai/">https://faiss.ai/</a></p></li>
-<li><p><strong>vote_normalization_level</strong> (<em>str</em><em>, </em><em>optional</em>) – The level of normalization for the votes. It should be one of the following:
+<li><p><strong>vote_normalization_level</strong> (<em>str</em><em>, </em><em>optional</em>) – The level of normalization for the votes. This corresponds to the granularity
+of the neighboring definition in differential privacy (DP). It should be one of the following:
 “sample” (normalize the votes from each private sample to have l2 norm = 1), “client” (normalize the votes
 from all private samples of the same client to have l2 norm = 1). Defaults to “sample”</p></li>
 </ul>
