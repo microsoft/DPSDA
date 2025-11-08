@@ -3,8 +3,8 @@ pe.api.image package
 
 .. automodule:: pe.api.image
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------

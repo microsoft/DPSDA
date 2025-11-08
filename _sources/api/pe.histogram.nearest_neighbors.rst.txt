@@ -3,5 +3,5 @@ pe.histogram.nearest\_neighbors module
 
 .. automodule:: pe.histogram.nearest_neighbors
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:

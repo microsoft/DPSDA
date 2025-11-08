@@ -3,8 +3,8 @@ pe.llm package
 
 .. automodule:: pe.llm
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------

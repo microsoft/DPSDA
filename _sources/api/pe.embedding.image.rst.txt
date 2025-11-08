@@ -3,8 +3,8 @@ pe.embedding.image package
 
 .. automodule:: pe.embedding.image
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

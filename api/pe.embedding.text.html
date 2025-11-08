@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="pe.embedding.text.sentence_transformer module" href="pe.embedding.text.sentence_transformer.html" />
-    <link rel="prev" title="pe.embedding.tabular.tabular_embedding module" href="pe.embedding.tabular.tabular_embedding.html" /> 
+    <link rel="prev" title="pe.embedding.image.inception module" href="pe.embedding.image.inception.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,7 +58,6 @@
 <li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#the-main-package">The Main Package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#image-generation">Image Generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#text-generation">Text Generation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#tabular-generation">Tabular Generation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../getting_started/installation.html#editable-mode">Editable Mode</a></li>
 </ul>
 </li>
@@ -68,7 +67,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../getting_started/examples.html">Examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#images">Images</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#text">Text</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#tabular">Tabular</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../getting_started/examples.html#checkpoint-operation">Checkpoint Operation</a></li>
 </ul>
 </li>
@@ -181,14 +179,6 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.StableDiffusion.variation_api"><code class="docutils literal notranslate"><span class="pre">StableDiffusion.variation_api()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI"><code class="docutils literal notranslate"><span class="pre">TabularAPI</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI.__init__"><code class="docutils literal notranslate"><span class="pre">TabularAPI.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI._get_info"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_info()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI._get_mutation_rate"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_mutation_rate()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI.random_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.random_api()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.html#pe.api.TabularAPI.variation_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.variation_api()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l6"><a class="reference internal" href="pe.api.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l7"><a class="reference internal" href="pe.api.image.html">pe.api.image package</a><ul>
 <li class="toctree-l8"><a class="reference internal" href="pe.api.image.html#subpackages">Subpackages</a><ul>
@@ -276,31 +266,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="pe.api.tabular.html">pe.api.tabular package</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI"><code class="docutils literal notranslate"><span class="pre">TabularAPI</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI.__init__"><code class="docutils literal notranslate"><span class="pre">TabularAPI.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI._get_info"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_info()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI._get_mutation_rate"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_mutation_rate()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI.random_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.random_api()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.html#pe.api.tabular.TabularAPI.variation_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.variation_api()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.api.tabular.html#submodules">Submodules</a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.api.tabular.tabular_api.html">pe.api.tabular.tabular_api module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI"><code class="docutils literal notranslate"><span class="pre">TabularAPI</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI.__init__"><code class="docutils literal notranslate"><span class="pre">TabularAPI.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI._get_info"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_info()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI._get_mutation_rate"><code class="docutils literal notranslate"><span class="pre">TabularAPI._get_mutation_rate()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI.random_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.random_api()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.api.tabular.tabular_api.html#pe.api.tabular.tabular_api.TabularAPI.variation_api"><code class="docutils literal notranslate"><span class="pre">TabularAPI.variation_api()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toctree-l7"><a class="reference internal" href="pe.api.text.html">pe.api.text package</a><ul>
 <li class="toctree-l8"><a class="reference internal" href="pe.api.text.html#submodules">Submodules</a><ul>
 <li class="toctree-l9"><a class="reference internal" href="pe.api.text.llm_augpe_api.html">pe.api.text.llm_augpe_api module</a><ul>
@@ -352,13 +317,6 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputePrecisionRecall.__init__"><code class="docutils literal notranslate"><span class="pre">ComputePrecisionRecall.__init__()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeTVD"><code class="docutils literal notranslate"><span class="pre">ComputeTVD</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeTVD.__call__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__call__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeTVD.__init__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeTVD._compute_tvd"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._compute_tvd()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.ComputeTVD._get_features_df"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._get_features_df()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages.__call__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__call__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.DPImageBenchClassifyImages.__init__"><code class="docutils literal notranslate"><span class="pre">DPImageBenchClassifyImages.__init__()</span></code></a></li>
@@ -385,23 +343,10 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveCheckpoints._get_checkpoint_path"><code class="docutils literal notranslate"><span class="pre">SaveCheckpoints._get_checkpoint_path()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTabToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTabToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__call__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTabToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTabToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV._get_csv_path()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__call__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV.__init__()</span></code></a></li>
 <li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.SaveTextToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTextToCSV._get_csv_path()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="pe.callback.html#pe.callback.TabClassifier"><code class="docutils literal notranslate"><span class="pre">TabClassifier</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.TabClassifier.__call__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__call__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.TabClassifier.__init__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.TabClassifier._encoding"><code class="docutils literal notranslate"><span class="pre">TabClassifier._encoding()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.html#pe.callback.TabClassifier._get_model"><code class="docutils literal notranslate"><span class="pre">TabClassifier._get_model()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l6"><a class="reference internal" href="pe.callback.html#subpackages">Subpackages</a><ul>
@@ -512,61 +457,6 @@
 <li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages.__call__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__call__()</span></code></a></li>
 <li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages.__init__"><code class="docutils literal notranslate"><span class="pre">SaveAllImages.__init__()</span></code></a></li>
 <li class="toctree-l11"><a class="reference internal" href="pe.callback.image.save_all_images.html#pe.callback.image.save_all_images.SaveAllImages._save_image"><code class="docutils literal notranslate"><span class="pre">SaveAllImages._save_image()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l7"><a class="reference internal" href="pe.callback.tabular.html">pe.callback.tabular package</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.ComputeTVD"><code class="docutils literal notranslate"><span class="pre">ComputeTVD</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.ComputeTVD.__call__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__call__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.ComputeTVD.__init__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.ComputeTVD._compute_tvd"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._compute_tvd()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.ComputeTVD._get_features_df"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._get_features_df()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.SaveTabToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.SaveTabToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__call__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.SaveTabToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.SaveTabToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV._get_csv_path()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.TabClassifier"><code class="docutils literal notranslate"><span class="pre">TabClassifier</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.TabClassifier.__call__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__call__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.TabClassifier.__init__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.TabClassifier._encoding"><code class="docutils literal notranslate"><span class="pre">TabClassifier._encoding()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.html#pe.callback.tabular.TabClassifier._get_model"><code class="docutils literal notranslate"><span class="pre">TabClassifier._get_model()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.callback.tabular.html#submodules">Submodules</a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.classifier.html">pe.callback.tabular.classifier module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.callback.tabular.classifier.html#pe.callback.tabular.classifier.TabClassifier"><code class="docutils literal notranslate"><span class="pre">TabClassifier</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.classifier.html#pe.callback.tabular.classifier.TabClassifier.__call__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__call__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.classifier.html#pe.callback.tabular.classifier.TabClassifier.__init__"><code class="docutils literal notranslate"><span class="pre">TabClassifier.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.classifier.html#pe.callback.tabular.classifier.TabClassifier._encoding"><code class="docutils literal notranslate"><span class="pre">TabClassifier._encoding()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.classifier.html#pe.callback.tabular.classifier.TabClassifier._get_model"><code class="docutils literal notranslate"><span class="pre">TabClassifier._get_model()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html">pe.callback.tabular.compute_tvd module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html#pe.callback.tabular.compute_tvd.ComputeTVD"><code class="docutils literal notranslate"><span class="pre">ComputeTVD</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html#pe.callback.tabular.compute_tvd.ComputeTVD.__call__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__call__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html#pe.callback.tabular.compute_tvd.ComputeTVD.__init__"><code class="docutils literal notranslate"><span class="pre">ComputeTVD.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html#pe.callback.tabular.compute_tvd.ComputeTVD._compute_tvd"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._compute_tvd()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.compute_tvd.html#pe.callback.tabular.compute_tvd.ComputeTVD._get_features_df"><code class="docutils literal notranslate"><span class="pre">ComputeTVD._get_features_df()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l9"><a class="reference internal" href="pe.callback.tabular.save_tab_to_csv.html">pe.callback.tabular.save_tab_to_csv module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.callback.tabular.save_tab_to_csv.html#pe.callback.tabular.save_tab_to_csv.SaveTabToCSV"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.save_tab_to_csv.html#pe.callback.tabular.save_tab_to_csv.SaveTabToCSV.__call__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__call__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.save_tab_to_csv.html#pe.callback.tabular.save_tab_to_csv.SaveTabToCSV.__init__"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.callback.tabular.save_tab_to_csv.html#pe.callback.tabular.save_tab_to_csv.SaveTabToCSV._get_csv_path"><code class="docutils literal notranslate"><span class="pre">SaveTabToCSV._get_csv_path()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -692,17 +582,6 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.PubMed._download"><code class="docutils literal notranslate"><span class="pre">PubMed._download()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.TabularCSV"><code class="docutils literal notranslate"><span class="pre">TabularCSV</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TabularCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TabularCSV.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TabularCSV.get_tab_info"><code class="docutils literal notranslate"><span class="pre">TabularCSV.get_tab_info()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.TabularColumnType"><code class="docutils literal notranslate"><span class="pre">TabularColumnType</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TabularColumnType.CATEGORICAL"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.CATEGORICAL</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TabularColumnType.FLOAT"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.FLOAT</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TabularColumnType.INTEGER"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.INTEGER</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l6"><a class="reference internal" href="pe.data.html#pe.data.TextCSV"><code class="docutils literal notranslate"><span class="pre">TextCSV</span></code></a><ul>
 <li class="toctree-l7"><a class="reference internal" href="pe.data.html#pe.data.TextCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TextCSV.__init__()</span></code></a></li>
 </ul>
@@ -773,37 +652,6 @@
 <li class="toctree-l9"><a class="reference internal" href="pe.data.image.mnist.html">pe.data.image.mnist module</a><ul>
 <li class="toctree-l10"><a class="reference internal" href="pe.data.image.mnist.html#pe.data.image.mnist.MNIST"><code class="docutils literal notranslate"><span class="pre">MNIST</span></code></a><ul>
 <li class="toctree-l11"><a class="reference internal" href="pe.data.image.mnist.html#pe.data.image.mnist.MNIST.__init__"><code class="docutils literal notranslate"><span class="pre">MNIST.__init__()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l7"><a class="reference internal" href="pe.data.tabular.html">pe.data.tabular package</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularCSV"><code class="docutils literal notranslate"><span class="pre">TabularCSV</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TabularCSV.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularCSV.get_tab_info"><code class="docutils literal notranslate"><span class="pre">TabularCSV.get_tab_info()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularColumnType"><code class="docutils literal notranslate"><span class="pre">TabularColumnType</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularColumnType.CATEGORICAL"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.CATEGORICAL</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularColumnType.FLOAT"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.FLOAT</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.html#pe.data.tabular.TabularColumnType.INTEGER"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.INTEGER</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.data.tabular.html#submodules">Submodules</a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.data.tabular.tabular_csv.html">pe.data.tabular.tabular_csv module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularCSV"><code class="docutils literal notranslate"><span class="pre">TabularCSV</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularCSV.__init__"><code class="docutils literal notranslate"><span class="pre">TabularCSV.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularCSV.get_tab_info"><code class="docutils literal notranslate"><span class="pre">TabularCSV.get_tab_info()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l10"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularColumnType"><code class="docutils literal notranslate"><span class="pre">TabularColumnType</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularColumnType.CATEGORICAL"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.CATEGORICAL</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularColumnType.FLOAT"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.FLOAT</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.data.tabular.tabular_csv.html#pe.data.tabular.tabular_csv.TabularColumnType.INTEGER"><code class="docutils literal notranslate"><span class="pre">TabularColumnType.INTEGER</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -942,12 +790,6 @@
 <li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.SentenceTransformer.compute_embedding"><code class="docutils literal notranslate"><span class="pre">SentenceTransformer.compute_embedding()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="pe.embedding.html#pe.embedding.TabularEmbedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding</span></code></a><ul>
-<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.TabularEmbedding.__init__"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.__init__()</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.TabularEmbedding.column_name"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.column_name</span></code></a></li>
-<li class="toctree-l7"><a class="reference internal" href="pe.embedding.html#pe.embedding.TabularEmbedding.compute_embedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.compute_embedding()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l6 current"><a class="reference internal" href="pe.embedding.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l7"><a class="reference internal" href="pe.embedding.image.html">pe.embedding.image package</a><ul>
 <li class="toctree-l8"><a class="reference internal" href="pe.embedding.image.html#submodules">Submodules</a><ul>
@@ -967,27 +809,6 @@
 </ul>
 </li>
 <li class="toctree-l10"><a class="reference internal" href="pe.embedding.image.inception.html#pe.embedding.image.inception.to_uint8"><code class="docutils literal notranslate"><span class="pre">to_uint8()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l7"><a class="reference internal" href="pe.embedding.tabular.html">pe.embedding.tabular package</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="pe.embedding.tabular.html#pe.embedding.tabular.TabularEmbedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding</span></code></a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.embedding.tabular.html#pe.embedding.tabular.TabularEmbedding.__init__"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.__init__()</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.embedding.tabular.html#pe.embedding.tabular.TabularEmbedding.column_name"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.column_name</span></code></a></li>
-<li class="toctree-l9"><a class="reference internal" href="pe.embedding.tabular.html#pe.embedding.tabular.TabularEmbedding.compute_embedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.compute_embedding()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l8"><a class="reference internal" href="pe.embedding.tabular.html#submodules">Submodules</a><ul>
-<li class="toctree-l9"><a class="reference internal" href="pe.embedding.tabular.tabular_embedding.html">pe.embedding.tabular.tabular_embedding module</a><ul>
-<li class="toctree-l10"><a class="reference internal" href="pe.embedding.tabular.tabular_embedding.html#pe.embedding.tabular.tabular_embedding.TabularEmbedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding</span></code></a><ul>
-<li class="toctree-l11"><a class="reference internal" href="pe.embedding.tabular.tabular_embedding.html#pe.embedding.tabular.tabular_embedding.TabularEmbedding.__init__"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.__init__()</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.embedding.tabular.tabular_embedding.html#pe.embedding.tabular.tabular_embedding.TabularEmbedding.column_name"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.column_name</span></code></a></li>
-<li class="toctree-l11"><a class="reference internal" href="pe.embedding.tabular.tabular_embedding.html#pe.embedding.tabular.tabular_embedding.TabularEmbedding.compute_embedding"><code class="docutils literal notranslate"><span class="pre">TabularEmbedding.compute_embedding()</span></code></a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1446,7 +1267,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="pe.embedding.tabular.tabular_embedding.html" class="btn btn-neutral float-left" title="pe.embedding.tabular.tabular_embedding module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pe.embedding.image.inception.html" class="btn btn-neutral float-left" title="pe.embedding.image.inception module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="pe.embedding.text.sentence_transformer.html" class="btn btn-neutral float-right" title="pe.embedding.text.sentence_transformer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

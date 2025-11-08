@@ -3,8 +3,8 @@ pe.constant package
 
 .. automodule:: pe.constant
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

@@ -40,11 +40,6 @@ These examples follow the experimental settings in the paper `Differentially Pri
     * **OpenAI APIs**: `See example <PubMed OpenAI example_>`__
     * **Huggingface models**: `See example <PubMed Huggingface example_>`__
 
-Tabular
--------
-
-These examples follow the experimental settings in the paper `Differentially Private Synthetic Data via APIs 4: Tabular Data`__.
-
 
 Checkpoint Operation
 --------------------

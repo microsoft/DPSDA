@@ -3,8 +3,8 @@ pe.dp package
 
 .. automodule:: pe.dp
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

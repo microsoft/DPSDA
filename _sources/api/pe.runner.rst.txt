@@ -3,8 +3,8 @@ pe.runner package
 
 .. automodule:: pe.runner
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

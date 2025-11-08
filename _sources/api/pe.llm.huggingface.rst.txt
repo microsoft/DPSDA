@@ -3,8 +3,8 @@ pe.llm.huggingface package
 
 .. automodule:: pe.llm.huggingface
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------

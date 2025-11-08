@@ -3,8 +3,8 @@ pe.population package
 
 .. automodule:: pe.population
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

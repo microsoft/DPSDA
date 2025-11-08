@@ -3,8 +3,8 @@ pe.embedding.text package
 
 .. automodule:: pe.embedding.text
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
