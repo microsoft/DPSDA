@@ -3,8 +3,8 @@ pe.embedding package
 
 .. automodule:: pe.embedding
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------
@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.embedding.image
+   pe.embedding.tabular
    pe.embedding.text
 
 Submodules

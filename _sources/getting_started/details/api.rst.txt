@@ -29,6 +29,10 @@ Currently, the following APIs are implemented:
         * :py:class:`pe.llm.AzureOpenAILLM`: The LLMs from Azure OpenAI APIs.
         * :py:class:`pe.llm.HuggingfaceLLM`: The open-source LLMs from Huggingface.
 
+* Tabular
+    
+    * :py:class:`pe.api.TabularAPI`: The APIs for tabular data generation (introduced in [#pe4]_).
+
 Adding Your Own APIs
 --------------------
 
@@ -40,7 +44,7 @@ To add your own APIs, you need to create a class that inherits from :py:class:`p
 .. [#pe1] `Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024) <pe1_paper_>`__.
 .. [#pe2] `Differentially Private Synthetic Data via Foundation Model APIs 2: Text (ICML 2024 Spotlight) <pe2_paper_>`__.
 .. [#pe3] `Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models <pe3_paper_>`__.
-
+.. [#pe4] `Differentially Private Synthetic Data via APIs 4: Tabular Data <pe4_paper_>`__.
 
 .. _improved diffusion model: https://github.com/openai/improved-diffusion
 .. _Stable Diffusion: https://huggingface.co/CompVis/stable-diffusion-v1-4
@@ -50,3 +54,4 @@ To add your own APIs, you need to create a class that inherits from :py:class:`p
 .. _pe1_paper: https://arxiv.org/abs/2305.15560
 .. _pe2_paper: https://arxiv.org/abs/2403.01749
 .. _pe3_paper: https://arxiv.org/abs/2502.05505
+.. _pe4_paper: https://arxiv.org/pe4_placeholder

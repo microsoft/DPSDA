@@ -3,8 +3,8 @@ pe.callback package
 
 .. automodule:: pe.callback
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------
@@ -14,6 +14,7 @@ Subpackages
 
    pe.callback.common
    pe.callback.image
+   pe.callback.tabular
    pe.callback.text
 
 Submodules

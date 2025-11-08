@@ -37,6 +37,15 @@ Multiple dependencies can also be combined, such as:
 
     pip install "private-evolution[image,text] @ git+https://github.com/microsoft/DPSDA.git"
 
+Tabular Generation
+^^^^^^^^^^^^^^^^^^
+
+If you are using **Private Evolution** to generate **tabular**, use the following command instead to install the package with the necessary dependencies:
+
+.. code-block:: bash
+
+    pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"
+
 Editable Mode
 ^^^^^^^^^^^^^
 

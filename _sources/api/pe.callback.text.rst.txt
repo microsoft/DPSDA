@@ -3,8 +3,8 @@ pe.callback.text package
 
 .. automodule:: pe.callback.text
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Submodules
 ----------

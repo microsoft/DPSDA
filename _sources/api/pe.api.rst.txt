@@ -3,8 +3,8 @@ pe.api package
 
 .. automodule:: pe.api
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------
@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.api.image
+   pe.api.tabular
    pe.api.text
 
 Submodules

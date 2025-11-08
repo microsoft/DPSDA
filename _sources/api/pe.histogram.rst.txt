@@ -3,8 +3,8 @@ pe.histogram package
 
 .. automodule:: pe.histogram
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------

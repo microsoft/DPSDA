@@ -22,6 +22,9 @@ Currently, the following embeddings are implemented:
     
     * :py:class:`pe.embedding.SentenceTransformer`: The embeddings computed using the `Sentence Transformers`_ library.
 
+* Tabular
+    
+    * :py:class:`pe.embedding.TabularEmbedding`: The embeddings using normalization for the numerical columns and one-hot encoding for the categorical columns.
 
 .. _Sentence Transformers: https://sbert.net/
 .. _FLD: https://github.com/marcojira/fld

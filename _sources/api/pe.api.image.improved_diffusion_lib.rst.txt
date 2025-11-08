@@ -3,8 +3,8 @@ pe.api.image.improved\_diffusion\_lib package
 
 .. automodule:: pe.api.image.improved_diffusion_lib
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Submodules
 ----------

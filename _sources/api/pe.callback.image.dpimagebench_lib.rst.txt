@@ -3,8 +3,8 @@ pe.callback.image.dpimagebench\_lib package
 
 .. automodule:: pe.callback.image.dpimagebench_lib
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Submodules
 ----------

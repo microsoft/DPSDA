@@ -3,8 +3,8 @@ pe.callback.image package
 
 .. automodule:: pe.callback.image
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Subpackages
 -----------
