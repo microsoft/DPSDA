@@ -220,7 +220,6 @@ class NearestNeighbors(Histogram):
             count /= np.sqrt(self._num_nearest_neighbors)
         else:
             raise ValueError(f"Unknown vote normalization level: {self._vote_normalization_level}")
-        execution_logger.info(f"Histogram: split private data into {len(priv_data_list)} sub-private data")
 
         syn_data.data_frame[CLEAN_HISTOGRAM_COLUMN_NAME] = count
 
