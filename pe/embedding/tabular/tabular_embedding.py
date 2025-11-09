@@ -3,10 +3,7 @@ import numpy as np
 
 from pe.embedding import Embedding
 from pe.logging import execution_logger
-from pe.constant.data import EMBEDDING_COLUMN_NAME
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
-import math
 
 
 class TabularEmbedding(Embedding):
@@ -23,15 +20,9 @@ class TabularEmbedding(Embedding):
         :type num_weight: float, optional
         """
         super().__init__()
-        self._model_name = "tabular"
         self._info = info
         self._cat_weight = cat_weight
         self._num_weight = num_weight
-
-    @property
-    def column_name(self):
-        """The column name to be used in the data frame."""
-        return f"{EMBEDDING_COLUMN_NAME}.{type(self).__name__}.{self._model_name}"
 
     def compute_embedding(self, data):
         """Compute the tabular embedding. (the embedding is computed using the features only, not the labels)

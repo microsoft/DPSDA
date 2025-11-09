@@ -1,14 +1,9 @@
-import json
-import random
-import copy
 import pandas as pd
 import numpy as np
 
 from pe.api import API
-from pe.api.util import ConstantList
 from pe.logging import execution_logger
 from pe.data import Data
-from pe.llm import Request
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.data import TabularColumnType
@@ -50,31 +45,6 @@ class TabularAPI(API):
         self._gamma = gamma
         self._num_iterations = num_iterations
 
-    def _get_info(self, priv_data) -> dict:
-        """Get the information of the private data.
-
-        :param priv_data: The original private data
-        :type priv_data: :py:class:`pe.data.Data`
-        :return: The information of the private data
-        :rtype: dict
-        """
-        feature_columns = priv_data.metadata["cat_columns"] + priv_data.metadata["num_columns"]
-        features_df = pd.DataFrame(priv_data.data_frame[TABULAR_DATA_COLUMN_NAME].tolist(), columns=feature_columns)
-
-        info = {}
-        for column in feature_columns:
-            if column in priv_data.metadata["cat_columns"]:
-                info[column] = {
-                    "categories": list(features_df[column].unique()),
-                }
-            else:
-                info[column] = {
-                    "min": features_df[column].min(),
-                    "max": features_df[column].max(),
-                }
-
-        return info
-
     def random_api(self, label_info, num_samples) -> Data:
         """Generating random synthetic data.
 
@@ -87,7 +57,6 @@ class TabularAPI(API):
         """
         label_name = label_info.name
         execution_logger.info(f"RANDOM API: creating {num_samples} samples for label {label_name}")
-        variables = label_info.column_values
         metadata = {"label_info": [label_info]}
         feature_columns = list(self._info.keys())
 

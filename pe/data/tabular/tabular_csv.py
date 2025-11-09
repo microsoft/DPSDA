@@ -1,10 +1,10 @@
 from pe.data import Data
 import pandas as pd
 import numpy as np
-import json, requests
+import json
+import requests
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
-import sys
 import math
 from enum import Enum
 
@@ -87,8 +87,6 @@ class TabularCSV(Data):
     def get_tab_info(self):
         """Get the information of the private data.
 
-        :param priv_data: The data object containing the training tabular data
-        :type priv_data: :py:class:`pe.data.Data`
         :return: The information (categories and numerical bounds) of the private data
         :rtype: dict
         """

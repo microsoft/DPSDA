@@ -9,15 +9,17 @@ from itertools import combinations
 
 
 class ComputeTVD(Callback):
-    """The callback that computes the Frechet Inception Distance (FID) between the private and synthetic data."""
+    """The callback that computes the Total Variation Distance (TVD) between the private and synthetic data."""
 
     def __init__(self, priv_data, degree, num_bins=20, filter_criterion=None):
         """Constructor.
 
         :param priv_data: The private data
         :type priv_data: :py:class:`pe.data.Data`
-        :param embedding: The embedding to compute the FID
-        :type embedding: :py:class:`pe.embedding.Embedding`
+        :param degree: The degree of the TVD (e.g., 2 for 2-way TVD)
+        :type degree: int
+        :param num_bins: The number of bins to compute the TVD, defaults to 20
+        :type num_bins: int, optional
         :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no
             filtering. Defaults to None
         :type filter_criterion: dict, optional
@@ -64,12 +66,6 @@ class ComputeTVD(Callback):
         :type syn_features_df: :py:class:`pandas.DataFrame`
         :param priv_features_df: The private features DataFrame
         :type priv_features_df: :py:class:`pandas.DataFrame`
-        :param columns: The columns to compute the TVD
-        :type columns: list[str]
-        :param K: The number of columns to compute the TVD
-        :type K: int
-        :param num_bins: The number of bins to compute the TVD
-        :type num_bins: int
         :return: The TVD
         :rtype: float
         """
@@ -114,12 +110,12 @@ class ComputeTVD(Callback):
         return sum(tvds) / len(tvds)
 
     def __call__(self, syn_data):
-        """This function is called after each PE iteration that computes the FID between the private and
+        """This function is called after each PE iteration that computes the TVD between the private and
         synthetic data.
 
         :param syn_data: The synthetic data
         :type syn_data: :py:class:`pe.data.Data`
-        :return: The FID between the private and synthetic data
+        :return: The TVD between the private and synthetic data
         :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]
         """
         execution_logger.info(f"Computing {self._degree}way-TVD ({self._filter_criterion_str})")

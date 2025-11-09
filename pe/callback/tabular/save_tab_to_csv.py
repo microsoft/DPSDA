@@ -4,7 +4,6 @@ from pe.callback.callback import Callback
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 from pe.logging import execution_logger
-import sys
 
 
 class SaveTabToCSV(Callback):

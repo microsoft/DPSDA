@@ -1,11 +1,9 @@
-import numpy as np
 import pandas as pd
 from pe.callback.callback import Callback
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
 from pe.constant.data import LABEL_ID_COLUMN_NAME
 from pe.metric_item import FloatListMetricItem
 from pe.logging import execution_logger
-from pe.embedding.tabular.tabular_embedding import TabularEmbedding
 from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 
@@ -18,8 +16,11 @@ class TabClassifier(Callback):
 
         :param test_data: The test data
         :type test_data: :py:class:`pe.data.Data`
-        :param classifier_model: The classifier model to use, defaults to "xgboost"
-        :type classifier_model: str, optional
+        :param model_name: The classifier model to use, defaults to "xgboost"
+        :type model_name: str, optional
+        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no
+            filtering. Defaults to None
+        :type filter_criterion: dict, optional
         """
         self._test_data = test_data
         self._num_classes = len(self._test_data.metadata.label_info)
@@ -56,7 +57,6 @@ class TabClassifier(Callback):
                     '`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'
                 )
             return TabICLClassifier()
-
         else:
             raise ValueError(f"Unsupported classifier model: {self._model_name}")
 
