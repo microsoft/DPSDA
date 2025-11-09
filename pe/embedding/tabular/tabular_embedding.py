@@ -4,6 +4,7 @@ import numpy as np
 from pe.embedding import Embedding
 from pe.logging import execution_logger
 from pe.constant.data import TABULAR_DATA_COLUMN_NAME
+from pe.data.tabular.tabular_csv import TabularColumnType
 
 
 class TabularEmbedding(Embedding):
@@ -54,18 +55,17 @@ class TabularEmbedding(Embedding):
         num_samples = len(features_df)
 
         for col in num_columns:
-            if col in self._info and self._info[col]["type"] in ["int", "float"]:
+            if col in self._info and self._info[col]["type"] in [TabularColumnType.INTEGER, TabularColumnType.FLOAT]:
                 col_values = features_df[col].values
                 min_val = self._info[col]["min"]
                 max_val = self._info[col]["max"]
                 normalized = (col_values - min_val) * self._num_weight / (max_val - min_val)
                 embedding_vectors.append(normalized.reshape(-1, 1))
             else:
-                # if no info, create zero vector
-                embedding_vectors.append(np.zeros((num_samples, 1)))
+                raise ValueError(f"Tabular Embedding: No info for numerical column {col}, cannot proceed.")
 
         for col in cat_columns:
-            if col in self._info and self._info[col]["type"] == "cat":
+            if col in self._info and self._info[col]["type"] == TabularColumnType.CATEGORICAL:
                 categories = self._info[col]["categories"]
                 num_categories = len(categories)
                 col_values = features_df[col].values
@@ -79,8 +79,7 @@ class TabularEmbedding(Embedding):
                 one_hot[np.arange(num_samples), indices] = self._cat_weight
                 embedding_vectors.append(one_hot)
             else:
-                # If no info, create zero vector
-                embedding_vectors.append(np.zeros((num_samples, 0)))
+                raise ValueError(f"Tabular Embedding: No info for categorical column {col}, cannot proceed.")
 
         # Concatenate all vectors
         embeddings = np.concatenate(embedding_vectors, axis=1)
