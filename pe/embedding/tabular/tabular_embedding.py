@@ -84,9 +84,9 @@ class TabularEmbedding(Embedding):
         # Concatenate all vectors
         embeddings = np.concatenate(embedding_vectors, axis=1)
 
-        # Convert to list of lists and store
+        # Convert to list and store
         uncomputed_data.data_frame[self.column_name] = pd.Series(
-            [emb.tolist() for emb in embeddings], index=uncomputed_data.data_frame.index
+            list(embeddings), index=uncomputed_data.data_frame.index
         )
 
         execution_logger.info(
