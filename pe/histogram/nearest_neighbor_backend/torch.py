@@ -1,5 +1,4 @@
 import torch
-import numpy as np
 
 
 def search(syn_embedding, priv_embedding, num_nearest_neighbors, mode):
@@ -11,17 +10,15 @@ def search(syn_embedding, priv_embedding, num_nearest_neighbors, mode):
     :type priv_embedding: np.ndarray
     :param num_nearest_neighbors: The number of nearest neighbors to search
     :type num_nearest_neighbors: int
-    :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:
-            "l2" (l2 distance), "cos_sim" (cosine similarity)
+    :param mode: The distance metric to use for finding the nearest neighbors. Only "l2" (l2 distance) is currently
+        supported
     :type mode: str
     :raises ValueError: If the mode is unknown
     :return: The distances and indices of the nearest neighbors
     :rtype: tuple[np.ndarray, np.ndarray]
     """
-    if mode.lower() == "l2":
-        metric = "l2"
-    else:
-        raise ValueError(f"Torch backend only supports 'l2' distance metric")
+    if mode.lower() != "l2":
+        raise ValueError("Torch backend only supports 'l2' distance metric")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     priv_tensor = torch.tensor(priv_embedding, dtype=torch.float32, device=device)
