@@ -67,7 +67,7 @@ class TabularAPI(API):
                 column_data[column] = np.random.choice(self._info[column]["categories"], size=num_samples)
             elif self._info[column]["type"] == TabularColumnType.INTEGER:
                 column_data[column] = np.random.randint(
-                    int(self._info[column]["min"]), int(self._info[column]["max"]), size=num_samples
+                    int(self._info[column]["min"]), int(self._info[column]["max"]) + 1, size=num_samples
                 )
             elif self._info[column]["type"] == TabularColumnType.FLOAT:
                 column_data[column] = np.random.uniform(
