@@ -3,8 +3,8 @@ pe.histogram.nearest\_neighbor\_backend package
 
 .. automodule:: pe.histogram.nearest_neighbor_backend
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------
@@ -15,3 +15,4 @@ Submodules
    pe.histogram.nearest_neighbor_backend.auto
    pe.histogram.nearest_neighbor_backend.faiss
    pe.histogram.nearest_neighbor_backend.sklearn
+   pe.histogram.nearest_neighbor_backend.torch

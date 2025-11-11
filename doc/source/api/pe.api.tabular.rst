@@ -3,8 +3,8 @@ pe.api.tabular package
 
 .. automodule:: pe.api.tabular
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

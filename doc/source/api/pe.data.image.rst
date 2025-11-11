@@ -3,8 +3,8 @@ pe.data.image package
 
 .. automodule:: pe.data.image
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

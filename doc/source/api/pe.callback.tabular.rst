@@ -3,8 +3,8 @@ pe.callback.tabular package
 
 .. automodule:: pe.callback.tabular
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

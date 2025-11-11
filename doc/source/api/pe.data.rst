@@ -3,8 +3,8 @@ pe.data package
 
 .. automodule:: pe.data
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------

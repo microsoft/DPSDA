@@ -3,8 +3,8 @@ pe.logger package
 
 .. automodule:: pe.logger
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

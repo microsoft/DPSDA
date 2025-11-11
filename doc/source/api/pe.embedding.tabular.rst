@@ -3,8 +3,8 @@ pe.embedding.tabular package
 
 .. automodule:: pe.embedding.tabular
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Submodules
 ----------

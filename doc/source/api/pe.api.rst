@@ -3,8 +3,8 @@ pe.api package
 
 .. automodule:: pe.api
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Subpackages
 -----------
