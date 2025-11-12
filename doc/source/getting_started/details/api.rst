@@ -31,7 +31,7 @@ Currently, the following APIs are implemented:
 
 * Tabular
     
-    * :py:class:`pe.api.TabularAPI`: The APIs for tabular data generation (introduced in [#pe4]_).
+    * :py:class:`pe.api.TabularAPI`: The APIs for tabular data generation without any model (introduced in [#pe4]_). The random API generates synthetic samples by drawing random numbers, and the variation API generates variations by adding small random noise to the samples.
 
 Adding Your Own APIs
 --------------------
@@ -54,4 +54,4 @@ To add your own APIs, you need to create a class that inherits from :py:class:`p
 .. _pe1_paper: https://arxiv.org/abs/2305.15560
 .. _pe2_paper: https://arxiv.org/abs/2403.01749
 .. _pe3_paper: https://arxiv.org/abs/2502.05505
-.. _pe4_paper: https://arxiv.org/pe4_placeholder
+.. _pe4_paper: #

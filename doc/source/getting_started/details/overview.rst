@@ -31,7 +31,7 @@ Core Design Principles of This Library
 The design principles of this library are:
 
 * Easy to use.
-* Supporting different data modalities (e.g., images, text), different foundation model APIs (e.g., Stable Diffusion, GPT models), different **Private Evolution** algorithms (e.g., PE, Aug-PE), and different evaluation metrics (e.g., FID), all in one framework. 
+* Supporting different data modalities (e.g., images, text, tabular data), different foundation model APIs (e.g., Stable Diffusion, GPT models), different **Private Evolution** algorithms (e.g., PE, Aug-PE), and different evaluation metrics (e.g., FID), all in one framework. 
 * Easy to add new data modalities, foundation model APIs, **Private Evolution** algorithms, evaluation metrics, etc.
 
 Towards these goals, the library is designed to be highly modular and extensible, as discussed next.

@@ -33,8 +33,7 @@ For convenience, some well-known datasets are already packaged as :py:class:`pe.
 
 * Tabular datasets
     
-    * :py:class:`pe.data.TabularCSV`: The tabular dataset in CSV format.
-    * In addition, you can easily load a custom tabular dataset from a CSV file and its corresponding metadata (a .json file) using :py:class:`pe.data.TabularCSV`.
+    * You can easily load a tabular dataset from a CSV file and its corresponding metadata (a JSON file) using :py:class:`pe.data.TabularCSV`.
 
 Using Your Own Datasets
 -----------------------
