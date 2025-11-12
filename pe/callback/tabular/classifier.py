@@ -78,9 +78,9 @@ class TabClassifier(Callback):
             merged_feature = pd.concat([syn_df[column], test_df[column]])
             if column in syn_data.metadata["cat_columns"] + [LABEL_ID_COLUMN_NAME]:
                 encoder = LabelEncoder()
-                encoder.fit(merged_feature.values.ravel())
-                syn_df[column] = encoder.transform(syn_df[column].values.ravel())
-                test_df[column] = encoder.transform(test_df[column].values.ravel())
+                encoder.fit(merged_feature.values)
+                syn_df[column] = encoder.transform(syn_df[column].values)
+                test_df[column] = encoder.transform(test_df[column].values)
             else:
                 scaler = MinMaxScaler()
                 scaler.fit(merged_feature.values.reshape(-1, 1))
