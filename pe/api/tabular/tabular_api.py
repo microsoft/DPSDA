@@ -77,7 +77,7 @@ class TabularAPI(API):
                 raise ValueError(f"Invalid type: {self._info[column]['type']}")
 
         # Combine columns into rows
-        rows = np.column_stack([column_data[column] for column in feature_columns]).tolist()
+        rows = list(zip(*(column_data[column] for column in feature_columns)))
 
         data_frame = pd.DataFrame({TABULAR_DATA_COLUMN_NAME: rows, LABEL_ID_COLUMN_NAME: 0})
         execution_logger.info(f"RANDOM API: finished creating {num_samples} samples for label {label_name}")
