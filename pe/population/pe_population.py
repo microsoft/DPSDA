@@ -72,7 +72,7 @@ class PEPopulation(Population):
         :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(
-            f"Population: generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
+            f"PE population: generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
             f"synthetic samples for label {label_info.name}"
         )
         random_data = self._api.random_api(label_info=label_info, num_samples=num_samples)
@@ -84,7 +84,7 @@ class PEPopulation(Population):
             variation_data_list.append(variation_data)
         data = Data.concat([random_data] + variation_data_list)
         execution_logger.info(
-            f"Population: finished generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
+            f"PE population: finished generating {num_samples}*{self._initial_variation_api_fold + 1} initial "
             f"synthetic samples for label {label_info.name}"
         )
         return data
@@ -161,7 +161,7 @@ class PEPopulation(Population):
         :rtype: :py:class:`pe.data.Data`
         """
         execution_logger.info(
-            f"Population: generating {num_samples}*{self._next_variation_api_fold} " "next synthetic samples"
+            f"PE population: generating {num_samples}*{self._next_variation_api_fold} next synthetic samples"
         )
         syn_data = self._post_process_histogram(syn_data)
         selected_data = self._select_data(syn_data, num_samples)
@@ -178,6 +178,6 @@ class PEPopulation(Population):
             variation_data_list.append(variation_data)
         new_syn_data = Data.concat(variation_data_list + ([selected_data] if self._keep_selected else []))
         execution_logger.info(
-            f"Population: finished generating {num_samples}*{self._next_variation_api_fold} " "next synthetic samples"
+            f"PE population: finished generating {num_samples}*{self._next_variation_api_fold} next synthetic samples"
         )
         return new_syn_data

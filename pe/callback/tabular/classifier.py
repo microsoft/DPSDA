@@ -100,6 +100,11 @@ class TabClassifier(Callback):
         execution_logger.info("Evaluating tabular classifier")
         syn_data = syn_data.filter(self._filter_criterion)
         execution_logger.info(f"Number of samples after filtering: {len(syn_data.data_frame)}")
+        if len(syn_data.data_frame) == 0:
+            execution_logger.warning(
+                f"No samples satisfy the filter criterion {self._filter_criterion_str}. Skipping computation."
+            )
+            return []
         # Encoding the synthetic training and test data
         syn_df, test_df = self._encoding(syn_data)
 

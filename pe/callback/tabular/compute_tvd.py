@@ -121,6 +121,11 @@ class ComputeTVD(Callback):
         execution_logger.info(f"Computing {self._degree}way-TVD ({self._filter_criterion_str})")
         syn_data = syn_data.filter(self._filter_criterion)
         execution_logger.info(f"Number of samples after filtering: {len(syn_data.data_frame)}")
+        if len(syn_data.data_frame) == 0:
+            execution_logger.warning(
+                f"No samples satisfy the filter criterion {self._filter_criterion_str}. Skipping computation."
+            )
+            return []
         syn_features_df = self._get_features_df(syn_data)
         tvd = self._compute_tvd(syn_features_df, self._priv_features_df)
         metric_item = FloatMetricItem(name=self._metric_name, value=tvd)
