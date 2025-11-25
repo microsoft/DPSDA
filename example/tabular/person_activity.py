@@ -16,7 +16,6 @@ from pe.callback import ComputeTVD
 from pe.logger import CSVPrint
 from pe.logger import LogPrint
 from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
-
 import pandas as pd
 import os
 import numpy as np
@@ -24,8 +23,7 @@ import numpy as np
 pd.options.mode.copy_on_write = True
 
 if __name__ == "__main__":
-    dataset_name = "artificial-characters"  # "person-activity" or "artificial-characters"
-    exp_folder = f"results/tabular/{dataset_name}_composite_population"
+    exp_folder = "results/tabular/person-activity_composite_population"
     current_folder = os.path.dirname(os.path.abspath(__file__))
 
     load_dotenv()
@@ -33,18 +31,19 @@ if __name__ == "__main__":
     setup_logging(log_file=os.path.join(exp_folder, "log.txt"))
 
     priv_data = TabularCSV(
-        csv_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        f"heads/main/tabular/{dataset_name}_train.csv",
-        metadata_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        f"heads/main/tabular/{dataset_name}_metadata.json",
+        csv_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
+        "heads/main/tabular/person-activity_train.csv",
+        metadata_path="tmp/metadata.json",
+        metadata_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
+        "heads/main/tabular/person-activity_metadata.json",
     )
     priv_info = priv_data.get_tab_info()
 
     test_data = TabularCSV(
-        csv_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        f"heads/main/tabular/{dataset_name}_test.csv",
-        metadata_path=f"https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        f"heads/main/tabular/{dataset_name}_metadata.json",
+        csv_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
+        "heads/main/tabular/person-activity_test.csv",
+        metadata_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
+        "heads/main/tabular/person-activity_metadata.json",
     )
 
     num_iterations = 15
@@ -121,7 +120,7 @@ if __name__ == "__main__":
         loggers=[csv_print, log_print],
     )
     pe_runner.run(
-        num_samples_schedule=[1000] * num_iterations,
+        num_samples_schedule=[5000] * num_iterations,
         delta=delta,
         epsilon=1.0,
         checkpoint_path=os.path.join(exp_folder, "checkpoint"),
