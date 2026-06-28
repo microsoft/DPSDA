@@ -139,7 +139,8 @@ class TabularAPI(API):
                 deltas = np.random.uniform(-mutation_rate, mutation_rate, size=len(features_df)) * feature_range
                 updated_values = current_values + deltas
 
-                if self._info[column]["type"] == TabularColumnType.INTEGER:  # round to nearest integer
+                if self._info[column]["type"] == TabularColumnType.INTEGER:
+                    # round to nearest integer
                     updated_values = np.round(updated_values)
                 # clamp to [min, max]
                 updated_values = np.clip(updated_values, feature_min, feature_max)

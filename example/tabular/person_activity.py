@@ -9,10 +9,9 @@ from pe.api import TabularAPI
 from pe.embedding import TabularEmbedding
 from pe.histogram import NearestNeighbors
 from pe.callback import SaveCheckpoints
-from pe.callback import ComputeFID
 from pe.callback import TabClassifier
 from pe.callback import SaveTabToCSV
-from pe.callback import ComputeTVD
+from pe.callback import ComputeWSD
 from pe.logger import CSVPrint
 from pe.logger import LogPrint
 from pe.constant.data import VARIATION_API_FOLD_ID_COLUMN_NAME
@@ -32,21 +31,21 @@ if __name__ == "__main__":
 
     priv_data = TabularCSV(
         csv_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        "heads/main/tabular/person-activity_train.csv",
-        metadata_path="tmp/metadata.json",
+        "heads/main/tabular/real/person-activity/person-activity_train.csv",
         metadata_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        "heads/main/tabular/person-activity_metadata.json",
+        "heads/main/tabular/real/person-activity/person-activity_metadata.json",
     )
     priv_info = priv_data.get_tab_info()
 
     test_data = TabularCSV(
         csv_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        "heads/main/tabular/person-activity_test.csv",
+        "heads/main/tabular/real/person-activity/person-activity_test.csv",
         metadata_path="https://raw.githubusercontent.com/toan-vt/cloud-data-store/refs/"
-        "heads/main/tabular/person-activity_metadata.json",
+        "heads/main/tabular/real/person-activity/person-activity_metadata.json",
     )
 
     num_iterations = 15
+    num_samples = 5000
 
     api = TabularAPI(
         info=priv_info,
@@ -77,23 +76,31 @@ if __name__ == "__main__":
     population = CompositePopulation(populations=[population1] * 5 + [population2] * (num_iterations - 5))
 
     save_checkpoints = SaveCheckpoints(os.path.join(exp_folder, "checkpoint"))
-    compute_fid = ComputeFID(
-        priv_data=priv_data, embedding=embedding, filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1}
-    )
-    compute_fid_no_filter = ComputeFID(priv_data=priv_data, embedding=embedding, filter_criterion=None)
+    save_tab_to_csv = SaveTabToCSV(output_folder=os.path.join(exp_folder, "synthetic_tab"))
     tab_classifier = TabClassifier(
         test_data=test_data, model_name="tabicl", filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1}
     )
-    tab_classifier_no_filter = TabClassifier(test_data=test_data, model_name="tabicl", filter_criterion=None)
-    save_tab_to_csv = SaveTabToCSV(output_folder=os.path.join(exp_folder, "synthetic_tab"))
-    compute_tvd_1way = ComputeTVD(
-        priv_data=priv_data, degree=1, filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1}
+    compute_wsd_5way = ComputeWSD(
+        priv_data=priv_data,
+        degree=5,
+        num_samples=2000,
+        seed=42,
+        filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1},
     )
-    compute_tvd_1way_no_filter = ComputeTVD(priv_data=priv_data, degree=1, filter_criterion=None)
-    compute_tvd_2way = ComputeTVD(
-        priv_data=priv_data, degree=2, filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1}
+    compute_wsd_6way = ComputeWSD(
+        priv_data=priv_data,
+        degree=6,
+        num_samples=2000,
+        seed=42,
+        filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1},
     )
-    compute_tvd_2way_no_filter = ComputeTVD(priv_data=priv_data, degree=2, filter_criterion=None)
+    compute_wsd_7way = ComputeWSD(
+        priv_data=priv_data,
+        degree=7,
+        num_samples=2000,
+        seed=42,
+        filter_criterion={VARIATION_API_FOLD_ID_COLUMN_NAME: -1},
+    )
 
     csv_print = CSVPrint(output_folder=exp_folder)
     log_print = LogPrint()
@@ -108,14 +115,10 @@ if __name__ == "__main__":
         callbacks=[
             save_checkpoints,
             save_tab_to_csv,
-            compute_fid,
             tab_classifier,
-            compute_tvd_1way,
-            compute_tvd_2way,
-            compute_fid_no_filter,
-            tab_classifier_no_filter,
-            compute_tvd_1way_no_filter,
-            compute_tvd_2way_no_filter,
+            compute_wsd_5way,
+            compute_wsd_6way,
+            compute_wsd_7way,
         ],
         loggers=[csv_print, log_print],
     )

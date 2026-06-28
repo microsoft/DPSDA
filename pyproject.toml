@@ -57,6 +57,7 @@ tabular = [
   "tabicl",
   "xgboost",
   "numpy",
+  "POT"
 ]
 
 [project.urls]

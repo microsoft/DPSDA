@@ -9,6 +9,7 @@ from .text import SaveTextToCSV
 from .tabular import TabClassifier
 from .tabular import SaveTabToCSV
 from .tabular import ComputeTVD
+from .tabular import ComputeWSD
 
 __all__ = [
     "Callback",
@@ -22,4 +23,5 @@ __all__ = [
     "TabClassifier",
     "SaveTabToCSV",
     "ComputeTVD",
+    "ComputeWSD",
 ]
