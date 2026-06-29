@@ -128,6 +128,7 @@ class ComputeTVD(Callback):
             return []
         syn_features_df = self._get_features_df(syn_data)
         tvd = self._compute_tvd(syn_features_df, self._priv_features_df)
+        execution_logger.info(f"{self._metric_name}: {tvd:.8f}")
         metric_item = FloatMetricItem(name=self._metric_name, value=tvd)
         execution_logger.info(f"Finished computing {self._degree}way-TVD ({self._filter_criterion_str})")
         return [metric_item]

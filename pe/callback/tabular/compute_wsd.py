@@ -158,6 +158,7 @@ class ComputeWSD(Callback):
             return []
         syn_features_df = self._get_features_df(syn_data)
         wsd = self._compute_wsd(syn_features_df, self._priv_features_df)
+        execution_logger.info(f"{self._metric_name}: {wsd:.8f}")
         metric_item = FloatMetricItem(name=self._metric_name, value=wsd)
         execution_logger.info(f"Finished computing {self._degree}way-WSD ({self._filter_criterion_str})")
         return [metric_item]

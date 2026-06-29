@@ -57,6 +57,15 @@ class TabClassifier(Callback):
                     '`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'
                 )
             return TabICLClassifier()
+        elif self._model_name == "tabpfn":
+            try:
+                from tabpfn import TabPFNClassifier
+            except ImportError:
+                raise ImportError(
+                    "TabPFNClassifier is not installed. Please install it using "
+                    '`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'
+                )
+            return TabPFNClassifier()
         else:
             raise ValueError(f"Unsupported classifier model: {self._model_name}")
 

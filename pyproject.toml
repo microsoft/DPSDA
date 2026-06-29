@@ -55,6 +55,7 @@ text = [
 ]
 tabular = [
   "tabicl",
+  "tabpfn",
   "xgboost",
   "numpy",
   "POT"
