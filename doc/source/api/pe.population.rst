@@ -12,5 +12,6 @@ Submodules
 .. toctree::
    :maxdepth: 7
 
+   pe.population.composite_population
    pe.population.pe_population
    pe.population.population

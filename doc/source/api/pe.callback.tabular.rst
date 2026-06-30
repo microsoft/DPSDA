@@ -14,4 +14,5 @@ Submodules
 
    pe.callback.tabular.classifier
    pe.callback.tabular.compute_tvd
+   pe.callback.tabular.compute_wsd
    pe.callback.tabular.save_tab_to_csv
