@@ -31,6 +31,10 @@ For convenience, some well-known datasets are already packaged as :py:class:`pe.
     * :py:class:`pe.data.PubMed`: The `PubMed dataset`_.
     * In addition, you can easily load a custom text dataset from a CSV file using :py:class:`pe.data.TextCSV`.
 
+* Tabular datasets
+    
+    * You can easily load a tabular dataset from a CSV file and its corresponding metadata (a JSON file) using :py:class:`pe.data.TabularCSV`.
+
 Using Your Own Datasets
 -----------------------
 To apply **Private Evolution** to your own private dataset, you need to create a :py:class:`pe.data.Data` object that holds your dataset, with two parameters, ``data_frame`` and ``metadata``, passed to the constructor:

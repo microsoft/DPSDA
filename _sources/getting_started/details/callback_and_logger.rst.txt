@@ -26,6 +26,11 @@ Currently, the following callbacks are implemented:
 
     * :py:class:`pe.callback.SaveTextToCSV`: Save all text samples to a CSV file.
 
+* Tabular
+
+    * :py:class:`pe.callback.SaveTabToCSV`: Saves the synthetic tabular data to a CSV file.
+    * :py:class:`pe.callback.TabClassifier`: Evaluates the tabular classification accuracy, F1, and AUC.
+    * :py:class:`pe.callback.ComputeTVD`: Computes the total variation distance (TVD) between the synthetic samples and the private samples.
 
 Available Loggers
 -----------------

@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.data.image
+   pe.data.tabular
    pe.data.text
 
 Submodules

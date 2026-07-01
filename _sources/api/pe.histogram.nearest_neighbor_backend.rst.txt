@@ -15,3 +15,4 @@ Submodules
    pe.histogram.nearest_neighbor_backend.auto
    pe.histogram.nearest_neighbor_backend.faiss
    pe.histogram.nearest_neighbor_backend.sklearn
+   pe.histogram.nearest_neighbor_backend.torch

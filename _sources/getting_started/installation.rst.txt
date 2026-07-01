@@ -31,7 +31,19 @@ If you are using **Private Evolution** to generate **text**, use the following c
 
     pip install "private-evolution[text] @ git+https://github.com/microsoft/DPSDA.git"
 
-Multiple dependencies can also be combined, such as:
+Tabular Data Generation
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using **Private Evolution** to generate **tabular data**, use the following command instead to install the package with the necessary dependencies:
+
+.. code-block:: bash
+
+    pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"
+
+Multiple Dependencies
+^^^^^^^^^^^^^^^^^^^^^
+
+Multiple dependencies can also be combined. For example, to install the package with both image and text generation dependencies, please use the following command:
 
 .. code-block:: bash
 
@@ -48,7 +60,7 @@ To install **Private Evolution** in editable mode, please use the following comm
     cd DPSDA
     pip install -e .[option]
 
-where `option` can be `image`, `text`, or `image,text`.
+where `option` is the optional dependency discussed above (e.g., ``image``).
 
 
 Faiss
