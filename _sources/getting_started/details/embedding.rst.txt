@@ -17,6 +17,8 @@ Currently, the following embeddings are implemented:
 
     * :py:class:`pe.embedding.Inception`: The embeddings computed using the Inception model.
     * :py:class:`pe.embedding.FLDInception`: The embeddings computed using the Inception model following the procedure in the `FLD`_ library.
+    * :py:class:`pe.embedding.RawPixel`: The embeddings computed by flattening the raw image pixels.
+    * :py:class:`pe.embedding.CLIP`: The embeddings computed using the CLIP model.
 
 * Text
     
@@ -28,3 +30,4 @@ Currently, the following embeddings are implemented:
 
 .. _Sentence Transformers: https://sbert.net/
 .. _FLD: https://github.com/marcojira/fld
+.. _CleanFID: https://github.com/GaParmar/clean-fid
