@@ -39,7 +39,7 @@ https://github.com/microsoft/DPSDA/blob/48941e2259c099d84fbc05e5a9628f697b7eeb02
 
 https://github.com/microsoft/DPSDA/blob/48941e2259c099d84fbc05e5a9628f697b7eeb02/doc/source/getting_started/pe3.bib#L1-L6
 
-
+https://github.com/microsoft/DPSDA/blob/a138b4d28eb629deb330384035b30e03de4214c1/doc/source/getting_started/pe4.bib#L1-L6
 
 ## Contributing
 
