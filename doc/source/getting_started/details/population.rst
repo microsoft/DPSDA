@@ -11,4 +11,5 @@ API reference: :doc:`/api/pe.population`.
 Available Populations
 ---------------------
 
-:py:class:`pe.population.PEPopulation` is currently the only implementation of :py:class:`pe.population.Population`. It supports the key population algorthms from existing **Private Evolution** papers (https://github.com/fjxmlzn/private-evolution-papers).
+* :py:class:`pe.population.PEPopulation` is the default implementation of :py:class:`pe.population.Population`. It supports the key population algorithms from existing **Private Evolution** papers (https://github.com/fjxmlzn/private-evolution-papers).
+* :py:class:`pe.population.CompositePopulation`, proposed in `Tab-PE <https://arxiv.org/abs/2606.08259>`__, can be used when different **Private Evolution** iterations should use different population algorithms or settings. It takes a list of :py:class:`pe.population.Population` objects, uses the first population to generate the initial synthetic samples, and then uses the population at each iteration index to generate the next synthetic samples. This is useful for combining multiple population strategies within a single **Private Evolution** run.

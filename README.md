@@ -1,4 +1,4 @@
-# Private Evolution: Differentially Private Synthetic Data via Foundation Model APIs
+# Private Evolution: Differentially Private Synthetic Data with Model Training
 
 This repo is a Python library to **generate differentially private (DP) synthetic data without the need of any ML model training**. It is based on the following papers that proposed **Private Evolution (PE)**, a new DP synthetic data framework that uses only blackbox *inference* APIs of foundation models (e.g., Stable Diffusion, GPT models) or simple data generation tools such as simulators and random number generators.
 
@@ -24,9 +24,9 @@ Please refer to the [documentation](https://microsoft.github.io/DPSDA/) for more
 
 ## News
 
-* `7/1/2026`: **Tabular data generation** based on the paper [`Differentially Private Synthetic Data via APIs 4: Tabular Data (ICML 2026)`](https://arxiv.org/abs/2606.08259) has been released in this library! It runs entirely on CPUs and requires *no* GPU, model training, or model inference. Please refer to the [tabular examples](example/tabular/README.md) to get started.
-* `2/11/2025`: **Image generation with simulator APIs** based on the paper [`Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models`](https://arxiv.org/abs/2502.05505) has been released in this library!
-* `1/8/2025`: **Text generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 2: Text (ICML 2024 Spotlight)`](https://arxiv.org/abs/2403.01749) has been integrated into the library! If you want to reproduce the results in the [paper](https://arxiv.org/abs/2403.01749), please refer to [our original codebase](https://github.com/AI-secure/aug-pe).
+* `7/1/2026`: **Tabular data generation** based on the **Tab-PE** paper [`Differentially Private Synthetic Data via APIs 4: Tabular Data (ICML 2026)`](https://arxiv.org/abs/2606.08259) has been released in this library! It runs entirely on CPUs and requires *no* GPU, model training, or model inference. Please refer to the [tabular examples](example/tabular/README.md) to get started.
+* `2/11/2025`: **Image generation with simulator APIs** based on the **Sim-PE** paper [`Differentially Private Synthetic Data via APIs 3: Using Simulators Instead of Foundation Models`](https://arxiv.org/abs/2502.05505) has been released in this library!
+* `1/8/2025`: **Text generation with foundation model APIs** based on the **Aug-PE** paper [`Differentially Private Synthetic Data via Foundation Model APIs 2: Text (ICML 2024 Spotlight)`](https://arxiv.org/abs/2403.01749) has been integrated into the library! If you want to reproduce the results in the [paper](https://arxiv.org/abs/2403.01749), please refer to [our original codebase](https://github.com/AI-secure/aug-pe).
 * `11/21/2024`: The refactored codebase for **image generation with foundation model APIs** based on the paper [`Differentially Private Synthetic Data via Foundation Model APIs 1: Images (ICLR 2024)`](https://arxiv.org/abs/2305.15560) has been released! It is completely refactored to be more modular and easier to use and extend. The code originally published with the [paper](https://arxiv.org/abs/2305.15560) has been moved to the [deprecated](https://github.com/microsoft/DPSDA/tree/deprecated) branch in this repository, which is no longer maintained.
 * `5/26/2023`: The Cat Cookie and Cat Doudou datasets (512x512) created in the [paper](https://arxiv.org/abs/2305.15560) are released [here](https://www.kaggle.com/datasets/fjxmlzn/cat-cookie-doudou/).
 
