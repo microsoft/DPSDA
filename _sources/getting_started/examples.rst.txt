@@ -45,6 +45,8 @@ Tabular Data
 
 These examples follow the experimental settings in the paper `Differentially Private Synthetic Data via APIs 4: Tabular Data (ICML 2026) <pe4_paper_>`__.
 
+Please refer to the `tabular examples <Tabular examples_>`__ for the example scripts.
+
 
 Checkpoint Operation
 --------------------
@@ -94,6 +96,8 @@ By default, the above examples will save the generated synthetic data (e.g., ima
 .. _Openreview Huggingface example: https://github.com/microsoft/DPSDA/blob/main/example/text/openreview_huggingface/main.py
 .. _PubMed OpenAI example: https://github.com/microsoft/DPSDA/blob/main/example/text/pubmed_openai/main.py
 .. _PubMed Huggingface example: https://github.com/microsoft/DPSDA/blob/main/example/text/pubmed_huggingface/main.py
+
+.. _Tabular examples: https://github.com/microsoft/DPSDA/tree/main/example/tabular
 
 
 .. _pe1_paper: https://arxiv.org/abs/2305.15560
