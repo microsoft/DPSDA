@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pe.data.image.image &mdash; Private Evolution 0.0.1 documentation</title>
+  <title>pe.callback.tabular.compute_wsd &mdash; Private Evolution 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
 
@@ -1394,7 +1394,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">pe.data.image.image</li>
+      <li class="breadcrumb-item active">pe.callback.tabular.compute_wsd</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -1403,140 +1403,185 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for pe.data.image.image</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> <span class="k">as</span> <span class="n">PILImage</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">blobfile</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">bf</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torchvision.transforms</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">T</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+  <h1>Source code for pe.callback.tabular.compute_wsd</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ot</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">wasserstein_distance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.callback.callback</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.metric_item</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatMetricItem</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">execution_logger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">TABULAR_DATA_COLUMN_NAME</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">LABEL_ID_COLUMN_NAME</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">IMAGE_DATA_COLUMN_NAME</span>
 
 
-<div class="viewcode-block" id="_list_image_files_recursively">
-<a class="viewcode-back" href="../../../../api/pe.data.image.image.html#pe.data._list_image_files_recursively">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">_list_image_files_recursively</span><span class="p">(</span><span class="n">data_dir</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;List all image files in a directory recursively. Adapted from</span>
-<span class="sd">    https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/image_datasets.py</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">bf</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)):</span>
-        <span class="n">full_path</span> <span class="o">=</span> <span class="n">bf</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
-        <span class="n">ext</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">in</span> <span class="n">entry</span> <span class="ow">and</span> <span class="n">ext</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="s2">&quot;gif&quot;</span><span class="p">]:</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">bf</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">full_path</span><span class="p">):</span>
-            <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_list_image_files_recursively</span><span class="p">(</span><span class="n">full_path</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">results</span></div>
+<div class="viewcode-block" id="ComputeWSD">
+<a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_wsd.html#pe.callback.ComputeWSD">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ComputeWSD</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that computes the Wasserstein Distance (WSD) between the private and synthetic data.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ComputeWSD.__init__">
+<a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_wsd.html#pe.callback.ComputeWSD.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">filter_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        :param priv_data: The private data</span>
+<span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
+<span class="sd">        :param degree: The degree of the WSD (e.g., 2 for 2-way WSD)</span>
+<span class="sd">        :type degree: int</span>
+<span class="sd">        :param num_samples: The number of samples to use for the WSD for both private and synthetic data for computation efficiency. If None, all samples are used..</span>
+<span class="sd">        :type num_samples: int, optional</span>
+<span class="sd">        :param seed: The seed to use for for sampling the data.</span>
+<span class="sd">        :type seed: int, optional</span>
+<span class="sd">        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no</span>
+<span class="sd">            filtering. Defaults to None</span>
+<span class="sd">        :type filter_criterion: dict, optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="n">priv_data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span> <span class="o">=</span> <span class="n">filter_criterion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_degree</span> <span class="o">=</span> <span class="n">degree</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="o">=</span> <span class="n">num_samples</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-wsd_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="si">}</span><span class="s2">samples_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="si">}</span><span class="s2">seed_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">if</span> <span class="n">filter_criterion</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-wsd_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="si">}</span><span class="s2">samples_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="si">}</span><span class="s2">seed&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;cat_columns&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_int_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;int_columns&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_float_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;float_columns&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;label_columns&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_feature_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_float_columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_priv_features_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_features_df</span><span class="p">(</span><span class="n">priv_data</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="ComputeWSD._get_features_df">
+<a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_wsd.html#pe.callback.ComputeWSD._get_features_df">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_features_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the features DataFrame from the data.</span>
 
-<div class="viewcode-block" id="ImageDataset">
-<a class="viewcode-back" href="../../../../api/pe.data.image.image.html#pe.data.ImageDataset">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">ImageDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folder</span> <span class="o">=</span> <span class="n">folder</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_images</span> <span class="o">=</span> <span class="n">_list_image_files_recursively</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_class_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">bf</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_images</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">class_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_class_names</span><span class="p">)))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">class_name_to_id</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">class_names</span><span class="p">)}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">local_classes</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">class_name_to_id</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_class_names</span><span class="p">]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">local_images</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_images</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="k">with</span> <span class="n">bf</span><span class="o">.</span><span class="n">BlobFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">pil_image</span> <span class="o">=</span> <span class="n">PILImage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-            <span class="n">pil_image</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-
-        <span class="n">arr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pil_image</span><span class="p">)</span>
-
-        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_classes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">arr</span><span class="p">,</span> <span class="n">label</span></div>
+<span class="sd">        :param data: The data</span>
+<span class="sd">        :type data: :py:class:`pe.data.Data`</span>
+<span class="sd">        :return: The features DataFrame</span>
+<span class="sd">        :rtype: :py:class:`pandas.DataFrame`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">):</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
+        <span class="n">label_ids</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">features_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TABULAR_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_feature_columns</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_columns</span><span class="p">)):</span>
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_columns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">features_df</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_info</span><span class="p">[</span><span class="n">label_id</span><span class="p">]</span><span class="o">.</span><span class="n">column_values</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="k">for</span> <span class="n">label_id</span> <span class="ow">in</span> <span class="n">label_ids</span>
+            <span class="p">]</span>
+        <span class="k">return</span> <span class="n">features_df</span></div>
 
 
+<div class="viewcode-block" id="ComputeWSD._compute_wsd">
+<a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_wsd.html#pe.callback.ComputeWSD._compute_wsd">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_wsd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_features_df</span><span class="p">,</span> <span class="n">priv_features_df</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the multiple-way WSD between the synthetic and private features.</span>
 
-<div class="viewcode-block" id="load_image_folder">
-<a class="viewcode-back" href="../../../../api/pe.data.image.image.html#pe.data.load_image_folder">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">load_image_folder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">class_cond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a image dataset from a folder that contains image files. The folder can be nested arbitrarily. The image</span>
-<span class="sd">    file names must be in the format of &quot;{class_name without &#39;_&#39;}_{suffix in any string}.ext&quot;. The &quot;ext&quot; can be &quot;jpg&quot;,</span>
-<span class="sd">    &quot;jpeg&quot;, &quot;png&quot;, or &quot;gif&quot;. The class names will be extracted from the file names before the first &quot;_&quot;. If class_cond</span>
-<span class="sd">    is False, the class names will be ignored and all images will be treated as the same class with class name &quot;None&quot;.</span>
+<span class="sd">        :param syn_features_df: The synthetic features DataFrame</span>
+<span class="sd">        :type syn_features_df: :py:class:`pandas.DataFrame`</span>
+<span class="sd">        :param priv_features_df: The private features DataFrame</span>
+<span class="sd">        :type priv_features_df: :py:class:`pandas.DataFrame`</span>
+<span class="sd">        :return: The multiple-way WSD</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">df1</span> <span class="o">=</span> <span class="n">syn_features_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># Sample the synthetic data if num_samples is provided</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">):</span>
+            <span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
+        <span class="n">df2</span> <span class="o">=</span> <span class="n">priv_features_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="sd">    :param path: The path to the root folder that contains the image files</span>
-<span class="sd">    :type path: str</span>
-<span class="sd">    :param image_size: The size of the images. Images will be resized to this size</span>
-<span class="sd">    :type image_size: int</span>
-<span class="sd">    :param class_cond: Whether to treat the loaded dataset as class conditional, defaults to True</span>
-<span class="sd">    :type class_cond: bool, optional</span>
-<span class="sd">    :param num_images: The number of images to load. If -1, load all images. Defaults to -1</span>
-<span class="sd">    :type num_images: int, optional</span>
-<span class="sd">    :param num_workers: The number of workers to use for loading the images, defaults to 10</span>
-<span class="sd">    :type num_workers: int, optional</span>
-<span class="sd">    :param batch_size: The batch size to use for loading the images, defaults to 1000</span>
-<span class="sd">    :type batch_size: int, optional</span>
-<span class="sd">    :return: The loaded data</span>
-<span class="sd">    :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">image_size</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="n">image_size</span><span class="p">),</span> <span class="n">T</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()])</span>
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">ImageDataset</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">)</span>
-    <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
-        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-        <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
-        <span class="n">pin_memory</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">(),</span>
-        <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">all_samples</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">batch</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
-        <span class="n">all_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="n">all_cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_feature_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span>
 
-        <span class="k">if</span> <span class="n">class_cond</span><span class="p">:</span>
-            <span class="n">all_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cond</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="c1"># Encode categorical and label columns numerically</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span><span class="p">:</span>
+            <span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+            <span class="n">all_values</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]])</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+            <span class="n">le</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">all_values</span><span class="p">)</span>
+            <span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+            <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
 
-        <span class="n">cnt</span> <span class="o">+=</span> <span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Normalize all columns to [0, 1] using private data range</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">all_cols</span><span class="p">:</span>
+            <span class="n">col_min</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+            <span class="n">col_max</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="n">col_range</span> <span class="o">=</span> <span class="n">col_max</span> <span class="o">-</span> <span class="n">col_min</span>
+            <span class="k">if</span> <span class="n">col_range</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">col_range</span> <span class="o">=</span> <span class="mf">1.0</span>
+            <span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">-</span> <span class="n">col_min</span><span class="p">)</span> <span class="o">/</span> <span class="n">col_range</span>
+            <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">-</span> <span class="n">col_min</span><span class="p">)</span> <span class="o">/</span> <span class="n">col_range</span>
 
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2"> samples.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">batch_size</span><span class="p">:</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Containing incomplete batch. Please check num_images is desired.&quot;</span><span class="p">)</span>
+        <span class="n">combos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">all_cols</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">num_images</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">cnt</span> <span class="o">&gt;=</span> <span class="n">num_images</span><span class="p">:</span>
-            <span class="k">break</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">combos</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
 
-    <span class="n">all_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">num_images</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">num_images</span> <span class="o">=</span> <span class="n">all_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">all_samples</span> <span class="o">=</span> <span class="n">all_samples</span><span class="p">[:</span><span class="n">num_images</span><span class="p">]</span>
-    <span class="n">all_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">all_samples</span> <span class="o">*</span> <span class="mi">255</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="mi">255</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-    <span class="n">all_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">all_samples</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">class_cond</span><span class="p">:</span>
-        <span class="n">all_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_labels</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">all_labels</span> <span class="o">=</span> <span class="n">all_labels</span><span class="p">[:</span><span class="n">num_images</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">all_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">all_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-    <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_samples</span><span class="p">),</span>
-            <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_labels</span><span class="p">),</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">class_names</span><span class="p">]</span> <span class="k">if</span> <span class="n">class_cond</span> <span class="k">else</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">}]}</span>
-    <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
+        <span class="n">wasserstein_distances</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">combos</span><span class="p">:</span>
+            <span class="n">group_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+
+            <span class="n">values1</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">group_list</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">values2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">group_list</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="c1"># Remove rows with NaN values</span>
+            <span class="n">mask1</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">mask2</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values2</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">values1</span> <span class="o">=</span> <span class="n">values1</span><span class="p">[</span><span class="n">mask1</span><span class="p">]</span>
+            <span class="n">values2</span> <span class="o">=</span> <span class="n">values2</span><span class="p">[</span><span class="n">mask2</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">values2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_degree</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">wd</span> <span class="o">=</span> <span class="n">wasserstein_distance</span><span class="p">(</span><span class="n">values1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">values2</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">M</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">dist</span><span class="p">(</span><span class="n">values1</span><span class="p">,</span> <span class="n">values2</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values1</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values1</span><span class="p">)</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values2</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">values2</span><span class="p">)</span>
+                <span class="n">wd</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">emd2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+
+            <span class="n">wasserstein_distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wd</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">wasserstein_distances</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">0.0</span>
+
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">wasserstein_distances</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">wasserstein_distances</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ComputeWSD.__call__">
+<a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_wsd.html#pe.callback.ComputeWSD.__call__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that computes the multiple-way WSD between the private and</span>
+<span class="sd">        synthetic data.</span>
+
+<span class="sd">        :param syn_data: The synthetic data</span>
+<span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
+<span class="sd">        :return: The multiple-way WSD between the private and synthetic data</span>
+<span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-WSD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="n">syn_data</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">syn_features_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_features_df</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
+        <span class="n">wsd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_wsd</span><span class="p">(</span><span class="n">syn_features_df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_features_df</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">wsd</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">metric_item</span> <span class="o">=</span> <span class="n">FloatMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">wsd</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-WSD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">metric_item</span><span class="p">]</span></div>
+</div>
 
 </pre></div>
 
