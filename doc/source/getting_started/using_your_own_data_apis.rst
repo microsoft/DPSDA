@@ -11,6 +11,7 @@ Data
 * **Preloaded datasets**: Some well-known datasets are already packaged as :py:class:`pe.data.Data` classes. Please refer to :doc:`this document <details/data>` for more details.
 * **New image datasets**: You can easily load a custom image dataset from a (nested) directory with the image files using :py:meth:`pe.data.load_image_folder`.
 * **New text datasets**: You can easily load a custom text dataset from a CSV file using :py:class:`pe.data.TextCSV`.
+* **New tabular datasets**: You can easily load a custom tabular dataset from a CSV file using :py:class:`pe.data.TabularCSV`.
 * **Beyond the above**: You can create a :py:class:`pe.data.Data` object that holds your dataset, with two parameters, ``data_frame`` and ``metadata``, passed to the constructor. The ``data_frame`` is a pandas DataFrame that holds the samples, and the ``metadata`` is a dictionary that holds the metadata of the samples. Please refer to :doc:`this document <details/data>` for more details.
 
 APIs

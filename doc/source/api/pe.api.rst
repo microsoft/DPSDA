@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.api.image
+   pe.api.tabular
    pe.api.text
 
 Submodules

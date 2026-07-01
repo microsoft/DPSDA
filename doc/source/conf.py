@@ -72,4 +72,5 @@ nitpick_ignore = [
     ("py:class", "python_avatars.Avatar"),
     ("py:class", "torch.utils.data.DataLoader"),
     ("py:class", "torch.nn.Module"),
+    ("py:class", "enum.Enum"),
 ]

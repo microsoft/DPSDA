@@ -40,6 +40,11 @@ These examples follow the experimental settings in the paper `Differentially Pri
     * **OpenAI APIs**: `See example <PubMed OpenAI example_>`__
     * **Huggingface models**: `See example <PubMed Huggingface example_>`__
 
+Tabular Data
+------------
+
+These examples follow the experimental settings in the paper `Differentially Private Synthetic Data via APIs 4: Tabular Data (ICML 2026) <pe4_paper_>`__.
+
 
 Checkpoint Operation
 --------------------
@@ -94,3 +99,4 @@ By default, the above examples will save the generated synthetic data (e.g., ima
 .. _pe1_paper: https://arxiv.org/abs/2305.15560
 .. _pe2_paper: https://arxiv.org/abs/2403.01749
 .. _pe3_paper: https://arxiv.org/abs/2502.05505
+.. _pe4_paper: https://arxiv.org/abs/2606.08259

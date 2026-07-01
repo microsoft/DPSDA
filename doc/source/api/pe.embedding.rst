@@ -13,6 +13,7 @@ Subpackages
    :maxdepth: 7
 
    pe.embedding.image
+   pe.embedding.tabular
    pe.embedding.text
 
 Submodules

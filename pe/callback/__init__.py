@@ -6,6 +6,10 @@ from .image import SampleImages
 from .image import SaveAllImages
 from .image import DPImageBenchClassifyImages
 from .text import SaveTextToCSV
+from .tabular import TabClassifier
+from .tabular import SaveTabToCSV
+from .tabular import ComputeTVD
+from .tabular import ComputeWSD
 
 __all__ = [
     "Callback",
@@ -16,4 +20,8 @@ __all__ = [
     "SaveAllImages",
     "DPImageBenchClassifyImages",
     "SaveTextToCSV",
+    "TabClassifier",
+    "SaveTabToCSV",
+    "ComputeTVD",
+    "ComputeWSD",
 ]

@@ -14,6 +14,7 @@ Subpackages
 
    pe.callback.common
    pe.callback.image
+   pe.callback.tabular
    pe.callback.text
 
 Submodules

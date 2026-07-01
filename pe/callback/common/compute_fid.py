@@ -49,6 +49,11 @@ class ComputeFID(Callback):
         execution_logger.info(f"Computing FID ({self._embedding.column_name}, {self._filter_criterion_str})")
         syn_data = syn_data.filter(self._filter_criterion)
         execution_logger.info(f"Number of samples after filtering: {len(syn_data.data_frame)}")
+        if len(syn_data.data_frame) == 0:
+            execution_logger.warning(
+                f"No samples satisfy the filter criterion {self._filter_criterion_str}. Skipping computation."
+            )
+            return []
         syn_data = self._embedding.compute_embedding(syn_data)
         syn_embedding = np.stack(syn_data.data_frame[self._embedding.column_name].values, axis=0).astype(np.float32)
         syn_mu = np.mean(syn_embedding, axis=0)

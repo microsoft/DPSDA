@@ -1,6 +1,7 @@
 from .data import Data
 from .image import load_image_folder, Cifar10, Camelyon17, Cat, MNIST, CelebA, DigiFace1M, ImageNet
 from .text import TextCSV, Yelp, PubMed, OpenReview
+from .tabular import TabularCSV, TabularColumnType
 
 __all__ = [
     "Data",
@@ -16,4 +17,6 @@ __all__ = [
     "Yelp",
     "PubMed",
     "OpenReview",
+    "TabularCSV",
+    "TabularColumnType",
 ]
