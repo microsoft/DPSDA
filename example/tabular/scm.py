@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-
 from pe.data import TabularCSV
 from pe.logging import setup_logging
 from pe.runner import PE
@@ -30,10 +28,6 @@ if __name__ == "__main__":
 
     prior_function = args.prior_function
     exp_folder = f"results/tabular/scm_{prior_function}"
-    current_folder = os.path.dirname(os.path.abspath(__file__))
-
-    load_dotenv()
-
     setup_logging(log_file=os.path.join(exp_folder, "log.txt"))
 
     priv_data = TabularCSV(

@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-
 from pe.data import TabularCSV
 from pe.logging import setup_logging
 from pe.runner import PE
@@ -29,10 +27,6 @@ if __name__ == "__main__":
 
     num_features = args.num_features
     exp_folder = f"results/tabular/xor_stress_test_{num_features}_features"
-    current_folder = os.path.dirname(os.path.abspath(__file__))
-
-    load_dotenv()
-
     setup_logging(log_file=os.path.join(exp_folder, "log.txt"))
 
     priv_data = TabularCSV(

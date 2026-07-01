@@ -1,5 +1,3 @@
-from dotenv import load_dotenv
-
 from pe.data import TabularCSV
 from pe.logging import setup_logging
 from pe.runner import PE
@@ -24,10 +22,6 @@ pd.options.mode.copy_on_write = True
 
 if __name__ == "__main__":
     exp_folder = "results/tabular/artificial-characters_composite_population"
-    current_folder = os.path.dirname(os.path.abspath(__file__))
-
-    load_dotenv()
-
     setup_logging(log_file=os.path.join(exp_folder, "log.txt"))
 
     priv_data = TabularCSV(
