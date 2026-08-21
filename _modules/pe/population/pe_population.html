@@ -1430,7 +1430,7 @@
 <div class="viewcode-block" id="PEPopulation">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">PEPopulation</span><span class="p">(</span><span class="n">Population</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The default population algorithm for Private Evolution.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The default population algorithm for Private Evolution."""</span>
 
 <div class="viewcode-block" id="PEPopulation.__init__">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation.__init__">[docs]</a>
@@ -1441,10 +1441,10 @@
         <span class="n">initial_variation_api_fold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">next_variation_api_fold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">keep_selected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">selection_mode</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span>
+        <span class="n">selection_mode</span><span class="o">=</span><span class="s2">"sample"</span><span class="p">,</span>
         <span class="n">histogram_log_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param api: The API object that contains the random and variation APIs</span>
 <span class="sd">        :type api: :py:class:`pe.api.API`</span>
@@ -1457,15 +1457,15 @@
 <span class="sd">        :type next_variation_api_fold: int, optional</span>
 <span class="sd">        :param keep_selected: Whether to keep the selected data in the next synthetic data, defaults to False</span>
 <span class="sd">        :type keep_selected: bool, optional</span>
-<span class="sd">        :param selection_mode: The selection mode for selecting the data. It should be one of the following: &quot;sample&quot; (</span>
-<span class="sd">            random sampling proportional to the histogram), &quot;rank&quot; (select the top samples according to the histogram).</span>
-<span class="sd">            Defaults to &quot;sample&quot;</span>
+<span class="sd">        :param selection_mode: The selection mode for selecting the data. It should be one of the following: "sample" (</span>
+<span class="sd">            random sampling proportional to the histogram), "rank" (select the top samples according to the histogram).</span>
+<span class="sd">            Defaults to "sample"</span>
 <span class="sd">        :type selection_mode: str, optional</span>
 <span class="sd">        :param histogram_log_folder: The folder to save the logs of the histogram. If it is None, the logs are not</span>
 <span class="sd">            saved. Defaults to None</span>
 <span class="sd">        :type histogram_log_folder: str, optional</span>
 <span class="sd">        :raises ValueError: If next_variation_api_fold is 0 and keep_selected is False</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_api</span> <span class="o">=</span> <span class="n">api</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_histogram_threshold</span> <span class="o">=</span> <span class="n">histogram_threshold</span>
@@ -1475,8 +1475,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">=</span> <span class="n">selection_mode</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keep_selected</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;next_variation_api_fold should be greater than 0 or keep_selected should be True. Otherwise, next &quot;</span>
-                <span class="s2">&quot;synthetic data will be empty.&quot;</span>
+                <span class="s2">"next_variation_api_fold should be greater than 0 or keep_selected should be True. Otherwise, next "</span>
+                <span class="s2">"synthetic data will be empty."</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_histogram_log_folder</span> <span class="o">=</span> <span class="n">histogram_log_folder</span></div>
 
@@ -1484,7 +1484,7 @@
 <div class="viewcode-block" id="PEPopulation.initial">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation.initial">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the initial synthetic data.</span>
 
 <span class="sd">        :param label_info: The label info</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
@@ -1492,10 +1492,10 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The initial synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;PE population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"PE population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial "</span>
+            <span class="sa">f</span><span class="s2">"synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
         <span class="n">random_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="o">.</span><span class="n">random_api</span><span class="p">(</span><span class="n">label_info</span><span class="o">=</span><span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="n">random_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">VARIATION_API_FOLD_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -1506,8 +1506,8 @@
             <span class="n">variation_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variation_data</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">random_data</span><span class="p">]</span> <span class="o">+</span> <span class="n">variation_data_list</span><span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;PE population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"PE population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_variation_api_fold</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> initial "</span>
+            <span class="sa">f</span><span class="s2">"synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>
 
@@ -1515,14 +1515,14 @@
 <div class="viewcode-block" id="PEPopulation._post_process_histogram">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation._post_process_histogram">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_post_process_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Post process the histogram of synthetic data (e.g., clipping).</span>
+<span class="w">        </span><span class="sd">"""Post process the histogram of synthetic data (e.g., clipping).</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The synthetic data with post-processed histogram in the column</span>
 <span class="sd">            :py:const:`pe.constant.data.POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME`</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">count</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram_threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">clipped_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">a_min</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_histogram_threshold</span><span class="p">,</span> <span class="n">a_max</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1537,7 +1537,7 @@
 <div class="viewcode-block" id="PEPopulation._select_data">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation._select_data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_select_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Select data from the synthetic data according to `selection_mode`.</span>
+<span class="w">        </span><span class="sd">"""Select data from the synthetic data according to `selection_mode`.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
@@ -1546,46 +1546,46 @@
 <span class="sd">        :raises ValueError: If the selection mode is not supported</span>
 <span class="sd">        :return: The selected data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">==</span> <span class="s2">&quot;sample&quot;</span><span class="p">:</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">==</span> <span class="s2">"sample"</span><span class="p">:</span>
             <span class="n">count</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
             <span class="n">prob</span> <span class="o">=</span> <span class="n">count</span> <span class="o">/</span> <span class="n">count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
             <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">prob</span><span class="p">)</span>
             <span class="n">new_data_frame</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
             <span class="n">new_data_frame</span><span class="p">[</span><span class="n">PARENT_SYN_DATA_INDEX_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">new_data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">==</span> <span class="s2">&quot;rank&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span> <span class="o">==</span> <span class="s2">"rank"</span><span class="p">:</span>
             <span class="n">count</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">POST_PROCESSED_DP_HISTOGRAM_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
             <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">count</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">num_samples</span><span class="p">]</span>
             <span class="n">new_data_frame</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
             <span class="n">new_data_frame</span><span class="p">[</span><span class="n">PARENT_SYN_DATA_INDEX_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
             <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">new_data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selection mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span><span class="si">}</span><span class="s2"> is not supported&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Selection mode </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_selection_mode</span><span class="si">}</span><span class="s2"> is not supported"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PEPopulation._log_histogram">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation._log_histogram">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_log_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the histogram.</span>
+<span class="w">        </span><span class="sd">"""Log the histogram.</span>
 
 <span class="sd">        :param syn_data: The synthetic data with the histogram</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram_log_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
         <span class="n">label</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">iteration</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;iteration&quot;</span><span class="p">]</span>
-        <span class="n">log_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_histogram_log_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;label-id</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"iteration"</span><span class="p">]</span>
+        <span class="n">log_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_histogram_log_folder</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"label-id</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">syn_data</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">log_folder</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="PEPopulation.next">
 <a class="viewcode-back" href="../../../api/pe.population.pe_population.html#pe.population.PEPopulation.next">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the next synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the next synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
@@ -1593,9 +1593,9 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The next synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;PE population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span><span class="si">}</span><span class="s2"> next synthetic samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"PE population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span><span class="si">}</span><span class="s2"> next synthetic samples"</span>
         <span class="p">)</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_process_histogram</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
         <span class="n">selected_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_data</span><span class="p">(</span><span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
@@ -1612,7 +1612,7 @@
             <span class="n">variation_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variation_data</span><span class="p">)</span>
         <span class="n">new_syn_data</span> <span class="o">=</span> <span class="n">Data</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">variation_data_list</span> <span class="o">+</span> <span class="p">([</span><span class="n">selected_data</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_keep_selected</span> <span class="k">else</span> <span class="p">[]))</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;PE population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span><span class="si">}</span><span class="s2"> next synthetic samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"PE population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_next_variation_api_fold</span><span class="si">}</span><span class="s2"> next synthetic samples"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">new_syn_data</span></div>
 </div>

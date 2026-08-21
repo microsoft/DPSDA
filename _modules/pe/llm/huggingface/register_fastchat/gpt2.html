@@ -1424,27 +1424,27 @@
 <div class="viewcode-block" id="register">
 <a class="viewcode-back" href="../../../../../api/pe.llm.huggingface.register_fastchat.gpt2.html#pe.llm.huggingface.register_fastchat.gpt2.register">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Register the GPT-2 model adapter for fastchat.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Register the GPT-2 model adapter for fastchat."""</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">GPT2Adapter</span><span class="p">(</span><span class="n">BaseModelAdapter</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The GPT-2 model adapter for fastchat.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""The GPT-2 model adapter for fastchat."""</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
-            <span class="k">return</span> <span class="s2">&quot;gpt2&quot;</span> <span class="ow">in</span> <span class="n">model_path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">return</span> <span class="s2">"gpt2"</span> <span class="ow">in</span> <span class="n">model_path</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">from_pretrained_kwargs</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 
         <span class="k">def</span><span class="w"> </span><span class="nf">get_default_conv_template</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">get_conv_template</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">get_conv_template</span><span class="p">(</span><span class="s2">"gpt2"</span><span class="p">)</span>
 
     <span class="n">register_conv_template</span><span class="p">(</span>
         <span class="n">Conversation</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gpt2&quot;</span><span class="p">,</span>
-            <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-            <span class="n">roles</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"gpt2"</span><span class="p">,</span>
+            <span class="n">system_message</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
+            <span class="n">roles</span><span class="o">=</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="s2">""</span><span class="p">),</span>
             <span class="n">sep_style</span><span class="o">=</span><span class="n">SeparatorStyle</span><span class="o">.</span><span class="n">NO_COLON_SINGLE</span><span class="p">,</span>
-            <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="n">register_model_adapter</span><span class="p">(</span><span class="n">GPT2Adapter</span><span class="p">)</span></div>

@@ -1420,13 +1420,13 @@
 <div class="viewcode-block" id="LLM">
 <a class="viewcode-back" href="../../../api/pe.llm.llm.html#pe.llm.LLM">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LLM</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class for large language models (LLMs).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class for large language models (LLMs)."""</span>
 
 <div class="viewcode-block" id="LLM.get_responses">
 <a class="viewcode-back" href="../../../api/pe.llm.llm.html#pe.llm.LLM.get_responses">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the responses from the LLM.</span>
+<span class="w">        </span><span class="sd">"""Get the responses from the LLM.</span>
 
 <span class="sd">        :param requests: The requests</span>
 <span class="sd">        :type requests: list[:py:class:`pe.llm.request.Request`]</span>
@@ -1434,29 +1434,29 @@
 <span class="sd">        :type \\*\\*generation_args: str</span>
 <span class="sd">        :return: The responses</span>
 <span class="sd">        :rtype: list[str]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">generation_arg_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the mapping from the generation arguments to arguments for this specific LLM.</span>
+<span class="w">        </span><span class="sd">"""Get the mapping from the generation arguments to arguments for this specific LLM.</span>
 
 <span class="sd">        :return: The mapping from the generation arguments to the large language model arguments</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="LLM.get_generation_args">
 <a class="viewcode-back" href="../../../api/pe.llm.llm.html#pe.llm.LLM.get_generation_args">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_generation_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the generation arguments from a list of dictionaries.</span>
+<span class="w">        </span><span class="sd">"""Get the generation arguments from a list of dictionaries.</span>
 
 <span class="sd">        :param \\*args: A list of generation arguments. The later ones will overwrite the earlier ones.</span>
 <span class="sd">        :type \\*args: dict</span>
 <span class="sd">        :return: The generation arguments</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">generation_args</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">{</span><span class="o">**</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">y</span><span class="p">},</span> <span class="n">args</span><span class="p">)</span>
         <span class="n">generation_args</span> <span class="o">=</span> <span class="p">{</span>
             <span class="n">k</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_arg_map</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">generation_arg_map</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> <span class="n">v</span>

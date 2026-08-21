@@ -1436,7 +1436,7 @@
 <div class="viewcode-block" id="ImprovedDiffusion">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ImprovedDiffusion</span><span class="p">(</span><span class="n">API</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The image API that utilizes improved diffusion models from https://arxiv.org/abs/2102.09672.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The image API that utilizes improved diffusion models from https://arxiv.org/abs/2102.09672."""</span>
 
 <div class="viewcode-block" id="ImprovedDiffusion.__init__">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion.__init__">[docs]</a>
@@ -1450,25 +1450,25 @@
         <span class="n">learn_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">class_cond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">use_checkpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">attention_resolutions</span><span class="o">=</span><span class="s2">&quot;16,8&quot;</span><span class="p">,</span>
+        <span class="n">attention_resolutions</span><span class="o">=</span><span class="s2">"16,8"</span><span class="p">,</span>
         <span class="n">num_heads</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
         <span class="n">num_heads_upsample</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">use_scale_shift_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
         <span class="n">diffusion_steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
         <span class="n">sigma_small</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">noise_schedule</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+        <span class="n">noise_schedule</span><span class="o">=</span><span class="s2">"cosine"</span><span class="p">,</span>
         <span class="n">use_kl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">predict_xstart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">rescale_timesteps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">rescale_learned_sigmas</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">timestep_respacing</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+        <span class="n">timestep_respacing</span><span class="o">=</span><span class="s2">"100"</span><span class="p">,</span>
         <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
         <span class="n">use_ddim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">clip_denoised</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
         <span class="n">use_data_parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 <span class="sd">        See https://github.com/openai/improved-diffusion for the explanation of the parameters not listed here.</span>
 
 <span class="sd">        :param variation_degrees: The variation degrees utilized at each PE iteration. If a single int is provided, the</span>
@@ -1479,13 +1479,13 @@
 <span class="sd">        :param diffusion_steps: The total number of diffusion steps, defaults to 4000</span>
 <span class="sd">        :type diffusion_steps: int, optional</span>
 <span class="sd">        :param timestep_respacing: The step configurations for image generation utilized at each PE iteration. If a</span>
-<span class="sd">            single str is provided, the same step configuration will be used for all iterations. Defaults to &quot;100&quot;</span>
+<span class="sd">            single str is provided, the same step configuration will be used for all iterations. Defaults to "100"</span>
 <span class="sd">        :type timestep_respacing: str or list[str], optional</span>
 <span class="sd">        :param batch_size: The batch size for image generation, defaults to 2000</span>
 <span class="sd">        :type batch_size: int, optional</span>
 <span class="sd">        :param use_data_parallel: Whether to use data parallel during image generation, defaults to True</span>
 <span class="sd">        :type use_data_parallel: bool, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span>
             <span class="n">image_size</span><span class="o">=</span><span class="n">model_image_size</span><span class="p">,</span>
@@ -1500,8 +1500,8 @@
             <span class="n">use_scale_shift_norm</span><span class="o">=</span><span class="n">use_scale_shift_norm</span><span class="p">,</span>
             <span class="n">dropout</span><span class="o">=</span><span class="n">dropout</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_device</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="n">all_timestep_respacing</span> <span class="o">=</span> <span class="p">(</span>
@@ -1546,7 +1546,7 @@
 <div class="viewcode-block" id="ImprovedDiffusion.random_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion.random_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generating random synthetic data.</span>
 
 <span class="sd">        :param label_info: The info of the label, not utilized in this API</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
@@ -1554,9 +1554,9 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The data object of the generated synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span>
             <span class="n">sampler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestep_respacing_to_sampler</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_timestep_respacing</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
             <span class="n">start_t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -1578,31 +1578,31 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"label_info"</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ImprovedDiffusion.variation_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion.variation_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating variations of the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generating variations of the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The data object of the synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object of the variation of the input synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_MODEL_LABEL_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">"iteration"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">timestep_respacing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timestep_respacing</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;VARIATION API parameters: variation_degree=</span><span class="si">{</span><span class="n">variation_degree</span><span class="si">}</span><span class="s2">, timestep_respacing=</span><span class="si">{</span><span class="n">timestep_respacing</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;iteration=</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"VARIATION API parameters: variation_degree=</span><span class="si">{</span><span class="n">variation_degree</span><span class="si">}</span><span class="s2">, timestep_respacing=</span><span class="si">{</span><span class="n">timestep_respacing</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"iteration=</span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
 
         <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">127.5</span> <span class="o">-</span> <span class="mf">1.0</span>
@@ -1630,7 +1630,7 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 </div>
 
@@ -1672,7 +1672,7 @@
                 <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">classes</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">batch_cnt</span> <span class="o">*</span> <span class="n">batch_size</span> <span class="p">:</span> <span class="p">(</span><span class="n">batch_cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">batch_size</span><span class="p">]</span>
-            <span class="n">model_kwargs</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span>
+            <span class="n">model_kwargs</span><span class="p">[</span><span class="s2">"y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">classes</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="n">sampler</span><span class="p">(</span>
             <span class="n">clip_denoised</span><span class="o">=</span><span class="n">clip_denoised</span><span class="p">,</span>
             <span class="n">model_kwargs</span><span class="o">=</span><span class="n">model_kwargs</span><span class="p">,</span>
@@ -1692,7 +1692,7 @@
             <span class="n">all_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">classes</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 
         <span class="n">cnt</span> <span class="o">+=</span> <span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Created </span><span class="si">{</span><span class="n">cnt</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
 
     <span class="n">all_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">all_images</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">all_images</span> <span class="o">=</span> <span class="n">all_images</span><span class="p">[:</span><span class="n">num_samples</span><span class="p">]</span>
@@ -1709,10 +1709,10 @@
 <div class="viewcode-block" id="Sampler">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.Sampler">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Sampler</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A wrapper around the model and diffusion modules that handles the entire</span>
+<span class="w">    </span><span class="sd">"""A wrapper around the model and diffusion modules that handles the entire</span>
 <span class="sd">    sampling process, so as to reduce the communiation rounds between GPUs when</span>
 <span class="sd">    using DataParallel.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">diffusion</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1755,7 +1755,7 @@
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion270M">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ImprovedDiffusion270M</span><span class="p">(</span><span class="n">ImprovedDiffusion</span><span class="p">):</span>
     <span class="c1">#: The URL of the checkpoint path</span>
-    <span class="n">CHECKPOINT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://openaipublic.blob.core.windows.net/diffusion/march-2021/imagenet64_cond_270M_250K.pt&quot;</span>
+    <span class="n">CHECKPOINT_URL</span> <span class="o">=</span> <span class="s2">"https://openaipublic.blob.core.windows.net/diffusion/march-2021/imagenet64_cond_270M_250K.pt"</span>
 
 <div class="viewcode-block" id="ImprovedDiffusion270M.__init__">
 <a class="viewcode-back" href="../../../../api/pe.api.image.improved_diffusion_api.html#pe.api.ImprovedDiffusion270M.__init__">[docs]</a>
@@ -1764,10 +1764,10 @@
         <span class="n">variation_degrees</span><span class="p">,</span>
         <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
-        <span class="n">timestep_respacing</span><span class="o">=</span><span class="s2">&quot;100&quot;</span><span class="p">,</span>
+        <span class="n">timestep_respacing</span><span class="o">=</span><span class="s2">"100"</span><span class="p">,</span>
         <span class="n">use_data_parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The &quot;Class-conditional ImageNet-64 model (270M parameters, trained for 250K iterations)&quot; model from the</span>
+<span class="w">        </span><span class="sd">"""The "Class-conditional ImageNet-64 model (270M parameters, trained for 250K iterations)" model from the</span>
 <span class="sd">        Improved Diffusion paper.</span>
 
 <span class="sd">        :param variation_degrees: The variation degrees utilized at each PE iteration</span>
@@ -1777,11 +1777,11 @@
 <span class="sd">        :type model_path: str</span>
 <span class="sd">        :param batch_size: The batch size for image generation, defaults to 2000</span>
 <span class="sd">        :type batch_size: int, optional</span>
-<span class="sd">        :param timestep_respacing: The step configuration for image generation, defaults to &quot;100&quot;</span>
+<span class="sd">        :param timestep_respacing: The step configuration for image generation, defaults to "100"</span>
 <span class="sd">        :type timestep_respacing: str, optional</span>
 <span class="sd">        :param use_data_parallel: Whether to use data parallel during image generation, defaults to True</span>
 <span class="sd">        :type use_data_parallel: bool, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">model_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
             <span class="n">model_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_checkpoint</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -1793,14 +1793,14 @@
             <span class="n">learn_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">class_cond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">use_checkpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">attention_resolutions</span><span class="o">=</span><span class="s2">&quot;16,8&quot;</span><span class="p">,</span>
+            <span class="n">attention_resolutions</span><span class="o">=</span><span class="s2">"16,8"</span><span class="p">,</span>
             <span class="n">num_heads</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
             <span class="n">num_heads_upsample</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">use_scale_shift_norm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">dropout</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
             <span class="n">diffusion_steps</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
             <span class="n">sigma_small</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">noise_schedule</span><span class="o">=</span><span class="s2">&quot;cosine&quot;</span><span class="p">,</span>
+            <span class="n">noise_schedule</span><span class="o">=</span><span class="s2">"cosine"</span><span class="p">,</span>
             <span class="n">use_kl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">predict_xstart</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">rescale_timesteps</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1814,11 +1814,11 @@
 
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_download_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading ImprovedDiffusion checkpoint from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">CHECKPOINT_URL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Downloading ImprovedDiffusion checkpoint from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">CHECKPOINT_URL</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">model_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">model_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mktemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.pt&quot;</span><span class="p">)</span>
+            <span class="n">model_path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mktemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">".pt"</span><span class="p">)</span>
         <span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">CHECKPOINT_URL</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="n">model_path</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished downloading ImprovedDiffusion checkpoint to </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finished downloading ImprovedDiffusion checkpoint to </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model_path</span></div>
 
 </pre></div>

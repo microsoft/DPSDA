@@ -1424,63 +1424,63 @@
 <div class="viewcode-block" id="Data">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Data</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The class that holds the private data or synthetic data from PE.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The class that holds the private data or synthetic data from PE."""</span>
 
 <div class="viewcode-block" id="Data.__init__">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_frame</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{}):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param data_frame: A pandas dataframe that holds the data, defaults to None</span>
 <span class="sd">        :type data_frame: :py:class:`pandas.DataFrame`, optional</span>
 <span class="sd">        :param metadata: the metadata of the data, defaults to {}</span>
 <span class="sd">        :type metadata: dict, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_frame_file_name</span> <span class="o">=</span> <span class="s2">&quot;data_frame.pkl&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span> <span class="o">=</span> <span class="s2">&quot;metadata.yaml&quot;</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_frame_file_name</span> <span class="o">=</span> <span class="s2">"data_frame.pkl"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span> <span class="o">=</span> <span class="s2">"metadata.yaml"</span></div>
 
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Metadata:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="si">}</span><span class="se">\n</span><span class="s2">Data frame:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Metadata:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="si">}</span><span class="se">\n</span><span class="s2">Data frame:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="si">}</span><span class="s2">"</span>
 
 <div class="viewcode-block" id="Data.save_checkpoint">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.save_checkpoint">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save the data to a checkpoint.</span>
+<span class="w">        </span><span class="sd">"""Save the data to a checkpoint.</span>
 
 <span class="sd">        :param path: The folder to save the checkpoint</span>
 <span class="sd">        :type path: str</span>
 <span class="sd">        :raises ValueError: If the path is None</span>
 <span class="sd">        :raises ValueError: If the data frame is empty</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Path is None&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Path is None"</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data frame is empty&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Data frame is empty"</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_frame_file_name</span><span class="p">))</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span><span class="p">),</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Data.load_checkpoint">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.load_checkpoint">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load data from a checkpoint</span>
+<span class="w">        </span><span class="sd">"""Load data from a checkpoint</span>
 
 <span class="sd">        :param path: The folder that contains the checkpoint</span>
 <span class="sd">        :type path: str</span>
 <span class="sd">        :return: Whether the checkpoint is loaded successfully</span>
 <span class="sd">        :rtype: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data_frame_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_frame_file_name</span><span class="p">)</span>
         <span class="n">metadata_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_metadata_file_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_frame_path</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">):</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">data_frame_path</span><span class="p">)</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
@@ -1488,13 +1488,13 @@
 <div class="viewcode-block" id="Data.filter_label_id">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.filter_label_id">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">filter_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter the data frame according to a label id</span>
+<span class="w">        </span><span class="sd">"""Filter the data frame according to a label id</span>
 
 <span class="sd">        :param label_id: The label id that is used to filter the data frame</span>
 <span class="sd">        :type label_id: int</span>
 <span class="sd">        :return: :py:class:`pe.data.Data` object with the filtered data frame</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span>
             <span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">==</span> <span class="n">label_id</span><span class="p">],</span>
             <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
@@ -1504,37 +1504,37 @@
 <div class="viewcode-block" id="Data.set_label_id">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.set_label_id">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_label_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_id</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the label id for the data frame</span>
+<span class="w">        </span><span class="sd">"""Set the label id for the data frame</span>
 
 <span class="sd">        :param label_id: The label id to set</span>
 <span class="sd">        :type label_id: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">label_id</span></div>
 
 
 <div class="viewcode-block" id="Data.truncate">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.truncate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Truncate the data frame to a certain number of samples</span>
+<span class="w">        </span><span class="sd">"""Truncate the data frame to a certain number of samples</span>
 
 <span class="sd">        :param num_samples: The number of samples to truncate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: A new :py:class:`pe.data.Data` object with the truncated data frame</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[:</span><span class="n">num_samples</span><span class="p">],</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Data.random_truncate">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.random_truncate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_truncate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Randomly truncate the data frame to a certain number of samples</span>
+<span class="w">        </span><span class="sd">"""Randomly truncate the data frame to a certain number of samples</span>
 
 <span class="sd">        :param num_samples: The number of samples to randomly truncate</span>
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: A new :py:class:`pe.data.Data` object with the randomly truncated data frame</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 
@@ -1542,7 +1542,7 @@
 <div class="viewcode-block" id="Data.random_split">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.random_split">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples_list</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Randomly split the data frame into multiple data frames</span>
+<span class="w">        </span><span class="sd">"""Randomly split the data frame into multiple data frames</span>
 
 <span class="sd">        :param num_samples_list: The list of numbers of samples for each data frame</span>
 <span class="sd">        :type num_samples_list: list[int]</span>
@@ -1551,9 +1551,9 @@
 <span class="sd">        :raises ValueError: If the sum of num_samples_list is not equal to the number of samples</span>
 <span class="sd">        :return: The list of :py:class:`pe.data.Data` objects with the splited data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.data.Data`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num_samples_list</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The sum of num_samples_list must be equal to the number of samples&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"The sum of num_samples_list must be equal to the number of samples"</span><span class="p">)</span>
         <span class="n">data_frame_list</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
             <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1575,16 +1575,16 @@
 <div class="viewcode-block" id="Data.merge">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.merge">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge the data object with another data object</span>
+<span class="w">        </span><span class="sd">"""Merge the data object with another data object</span>
 
 <span class="sd">        :param data: The data object to merge</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :raises ValueError: If the metadata of `data` is not the same as the metadata of the current object</span>
 <span class="sd">        :return: The merged data object</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">!=</span> <span class="n">data</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Metadata must be the same&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Metadata must be the same"</span><span class="p">)</span>
         <span class="n">cols_to_use</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cols_to_use</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
@@ -1595,13 +1595,13 @@
 <div class="viewcode-block" id="Data.filter">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.filter">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_criteria</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter the data object according to a filter criteria</span>
+<span class="w">        </span><span class="sd">"""Filter the data object according to a filter criteria</span>
 
 <span class="sd">        :param filter_criteria: The filter criteria. None means no filter</span>
 <span class="sd">        :type filter_criteria: dict</span>
 <span class="sd">        :return: The filtered data object</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">filter_criteria</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
         <span class="n">data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span>
@@ -1614,7 +1614,7 @@
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.concat">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">data_list</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Concatenate the data frames of a list of data objects</span>
+<span class="w">        </span><span class="sd">"""Concatenate the data frames of a list of data objects</span>
 
 <span class="sd">        :param data_list: The list of data objects to concatenate</span>
 <span class="sd">        :type data_list: list[:py:class:`pe.data.Data`]</span>
@@ -1624,13 +1624,13 @@
 <span class="sd">        :raises ValueError: If the metadata of the data objects are not the same</span>
 <span class="sd">        :return: The concatenated data object</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">data_frame_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">metadata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">metadata_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">metadata</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">]</span>
             <span class="c1"># Check that all metadata are the same.</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">metadata_list</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Metadata must be the same&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Metadata must be the same"</span><span class="p">)</span>
             <span class="n">metadata</span> <span class="o">=</span> <span class="n">metadata_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data_frame_list</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
@@ -1638,14 +1638,14 @@
 <div class="viewcode-block" id="Data.split_by_client">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.split_by_client">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">split_by_client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Split the data frame by client ID</span>
+<span class="w">        </span><span class="sd">"""Split the data frame by client ID</span>
 
 <span class="sd">        :raises ValueError: If the client ID column is not in the data frame</span>
 <span class="sd">        :return: The list of data objects with the splited data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.data.Data`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">CLIENT_ID_COLUMN_NAME</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CLIENT_ID_COLUMN_NAME</span><span class="si">}</span><span class="s2"> not in data frame&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">CLIENT_ID_COLUMN_NAME</span><span class="si">}</span><span class="s2"> not in data frame"</span><span class="p">)</span>
         <span class="n">grouped_data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">CLIENT_ID_COLUMN_NAME</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">data_frame</span> <span class="ow">in</span> <span class="n">grouped_data_frame</span><span class="p">]</span></div>
 
@@ -1653,11 +1653,11 @@
 <div class="viewcode-block" id="Data.split_by_index">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.split_by_index">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">split_by_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Split the data frame by index</span>
+<span class="w">        </span><span class="sd">"""Split the data frame by index</span>
 
 <span class="sd">        :return: The list of data objects with the splited data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.data.Data`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">grouped_data_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">data_frame</span> <span class="ow">in</span> <span class="n">grouped_data_frame</span><span class="p">]</span></div>
 
@@ -1665,13 +1665,13 @@
 <div class="viewcode-block" id="Data.reset_index">
 <a class="viewcode-back" href="../../../api/pe.data.data.html#pe.data.Data.reset_index">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">reset_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the index of the data frame</span>
+<span class="w">        </span><span class="sd">"""Reset the index of the data frame</span>
 
 <span class="sd">        :param kwargs: The keyword arguments to pass to the pandas reset_index function</span>
 <span class="sd">        :type kwargs: dict</span>
 <span class="sd">        :return: A new :py:class:`pe.data.Data` object with the reset index data frame</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">metadata</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 </div>
 

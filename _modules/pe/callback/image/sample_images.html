@@ -1424,29 +1424,29 @@
 <div class="viewcode-block" id="SampleImages">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.sample_images.html#pe.callback.SampleImages">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SampleImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that samples images from the synthetic data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The callback that samples images from the synthetic data."""</span>
 
 <div class="viewcode-block" id="SampleImages.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.sample_images.html#pe.callback.SampleImages.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images_per_class</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param num_images_per_class: number of images to sample per class, defaults to 10</span>
 <span class="sd">        :type num_images_per_class: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_images_per_class</span> <span class="o">=</span> <span class="n">num_images_per_class</span></div>
 
 
 <div class="viewcode-block" id="SampleImages.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.sample_images.html#pe.callback.SampleImages.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that samples images from the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""This function is called after each PE iteration that samples images from the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The :py:class:`pe.data.Data` object of the synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: A metric item with the list of sampled images</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.ImageListMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">all_image_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_info</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">class_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
@@ -1459,7 +1459,7 @@
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_images_per_class</span><span class="p">:</span>
                 <span class="n">all_image_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">image_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_images_per_class</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_list</span><span class="p">)))</span>
         <span class="n">metric_item</span> <span class="o">=</span> <span class="n">ImageListMetricItem</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;image_sample&quot;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">"image_sample"</span><span class="p">,</span>
             <span class="n">value</span><span class="o">=</span><span class="n">all_image_list</span><span class="p">,</span>
             <span class="n">num_images_per_row</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="n">num_classes</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_images_per_class</span><span class="p">,</span>
         <span class="p">)</span>

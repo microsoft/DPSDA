@@ -1485,9 +1485,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.constant.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">VARIATION_API_FOLD_ID_COLUMN_NAME</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-<span class="n">data</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="s2">&quot;&lt;checkpoint path&gt;&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">load_checkpoint</span><span class="p">(</span><span class="s2">"&lt;checkpoint path&gt;"</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">filter</span><span class="p">({</span><span class="n">VARIATION_API_FOLD_ID_COLUMN_NAME</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">})</span>
-<span class="n">SaveTextToCSV</span><span class="p">(</span><span class="n">output_folder</span><span class="o">=</span><span class="s2">&quot;from_last&quot;</span><span class="p">)(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">SaveTextToCSV</span><span class="p">(</span><span class="n">output_folder</span><span class="o">=</span><span class="s2">"from_last"</span><span class="p">)(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>

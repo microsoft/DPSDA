@@ -1426,83 +1426,83 @@
 <div class="viewcode-block" id="TabClassifier">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.classifier.html#pe.callback.TabClassifier">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">TabClassifier</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate tabular classification accuracy using a tabular classifier.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Evaluate tabular classification accuracy using a tabular classifier."""</span>
 
 <div class="viewcode-block" id="TabClassifier.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.classifier.html#pe.callback.TabClassifier.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span> <span class="n">filter_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="s2">"xgboost"</span><span class="p">,</span> <span class="n">filter_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param test_data: The test data</span>
 <span class="sd">        :type test_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        :param model_name: The classifier model to use, defaults to &quot;xgboost&quot;</span>
+<span class="sd">        :param model_name: The classifier model to use, defaults to "xgboost"</span>
 <span class="sd">        :type model_name: str, optional</span>
 <span class="sd">        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no</span>
 <span class="sd">            filtering. Defaults to None</span>
 <span class="sd">        :type filter_criterion: dict, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span> <span class="o">=</span> <span class="n">test_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">label_info</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">=</span> <span class="n">model_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_model</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span> <span class="o">=</span> <span class="n">filter_criterion</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;tabular_classifier_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_filter_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"tabular_classifier_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_filter_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">if</span> <span class="n">filter_criterion</span>
-            <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;tabular_classifier_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">"tabular_classifier_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TabClassifier._get_model">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.classifier.html#pe.callback.TabClassifier._get_model">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Getting the classifier model.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;xgboost&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Getting the classifier model."""</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"xgboost"</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="kn">import</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xgb</span>
             <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-                    <span class="s2">&quot;XGBoost is not installed. Please install it using &quot;</span>
-                    <span class="s1">&#39;`pip install &quot;private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git&quot;`.&#39;</span>
+                    <span class="s2">"XGBoost is not installed. Please install it using "</span>
+                    <span class="s1">'`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'</span>
                 <span class="p">)</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="s2">&quot;binary:logistic&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="s2">"binary:logistic"</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="s2">&quot;multi:softmax&quot;</span><span class="p">,</span> <span class="n">num_class</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;tabicl&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="s2">"multi:softmax"</span><span class="p">,</span> <span class="n">num_class</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"tabicl"</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="kn">from</span><span class="w"> </span><span class="nn">tabicl</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabICLClassifier</span>
             <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-                    <span class="s2">&quot;TabICLClassifier is not installed. Please install it using &quot;</span>
-                    <span class="s1">&#39;`pip install &quot;private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git&quot;`.&#39;</span>
+                    <span class="s2">"TabICLClassifier is not installed. Please install it using "</span>
+                    <span class="s1">'`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'</span>
                 <span class="p">)</span>
             <span class="k">return</span> <span class="n">TabICLClassifier</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;tabpfn&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"tabpfn"</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="kn">from</span><span class="w"> </span><span class="nn">tabpfn</span><span class="w"> </span><span class="kn">import</span> <span class="n">TabPFNClassifier</span>
             <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-                    <span class="s2">&quot;TabPFNClassifier is not installed. Please install it using &quot;</span>
-                    <span class="s1">&#39;`pip install &quot;private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git&quot;`.&#39;</span>
+                    <span class="s2">"TabPFNClassifier is not installed. Please install it using "</span>
+                    <span class="s1">'`pip install "private-evolution[tabular] @ git+https://github.com/microsoft/DPSDA.git"`.'</span>
                 <span class="p">)</span>
             <span class="k">return</span> <span class="n">TabPFNClassifier</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported classifier model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unsupported classifier model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TabClassifier._encoding">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.classifier.html#pe.callback.TabClassifier._encoding">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Encoding categorical and numerical columns.</span>
+<span class="w">        </span><span class="sd">"""Encoding categorical and numerical columns.</span>
 
 <span class="sd">        :param syn_data: The synthetic training data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The encoded synthetic training and test data</span>
 <span class="sd">        :rtype: tuple[:py:class:`pe.data.Data`, :py:class:`pe.data.Data`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">feature_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;feature_columns&quot;</span><span class="p">]</span>
+<span class="sd">        """</span>
+        <span class="n">feature_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"feature_columns"</span><span class="p">]</span>
         <span class="n">syn_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TABULAR_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">)</span>
         <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TABULAR_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_columns</span><span class="p">)</span>
         <span class="n">syn_df</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -1510,7 +1510,7 @@
 
         <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">feature_columns</span> <span class="o">+</span> <span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]:</span>
             <span class="n">merged_feature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">syn_df</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">test_df</span><span class="p">[</span><span class="n">column</span><span class="p">]])</span>
-            <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;cat_columns&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"cat_columns"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]:</span>
                 <span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
                 <span class="n">encoder</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">merged_feature</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
                 <span class="n">syn_df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">syn_df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1527,19 +1527,19 @@
 <div class="viewcode-block" id="TabClassifier.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.classifier.html#pe.callback.TabClassifier.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate the tabular classifier on the test set.</span>
+<span class="w">        </span><span class="sd">"""Evaluate the tabular classifier on the test set.</span>
 
 <span class="sd">        :param syn_data: The synthetic training data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: Classification accuracy metrics</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatListMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Evaluating tabular classifier&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Evaluating tabular classifier"</span><span class="p">)</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation.&quot;</span>
+                <span class="sa">f</span><span class="s2">"No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation."</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="p">[]</span>
         <span class="c1"># Encoding the synthetic training and test data</span>
@@ -1550,24 +1550,24 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
         <span class="n">y_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
         <span class="n">test_acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabular classifier test accuracy: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tabular classifier test accuracy: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">y_pred_proba</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
             <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabular classifier test AUC: </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tabular classifier test AUC: </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">auc</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># hard code, not available for multi-class classification</span>
-        <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tabular classifier test (macro) F1 score: </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s2">"macro"</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Tabular classifier test (macro) F1 score: </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">metric_items</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_acc&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">test_acc</span><span class="p">)]),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_f1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">f1</span><span class="p">)]),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_acc"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">test_acc</span><span class="p">)]),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_f1"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">f1</span><span class="p">)]),</span>
         <span class="p">]</span>
 
         <span class="k">if</span> <span class="n">auc</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">metric_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_auc&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">auc</span><span class="p">)]))</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished evaluating tabular classifier (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+            <span class="n">metric_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">_test_auc"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">auc</span><span class="p">)]))</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finished evaluating tabular classifier (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">metric_items</span></div>
 </div>

@@ -1413,7 +1413,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.callback.image.dpimagebench_lib.ema</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Adapted from DPImageBench: https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/ema.py&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""Adapted from DPImageBench: https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/ema.py"""</span>
 
 <span class="c1"># Modified from https://raw.githubusercontent.com/fadel/pytorch_ema/master/torch_ema/ema.py</span>
 
@@ -1427,23 +1427,23 @@
 <div class="viewcode-block" id="ExponentialMovingAverage">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ExponentialMovingAverage</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Maintains (exponential) moving average of a set of parameters.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="ExponentialMovingAverage.__init__">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">decay</span><span class="p">,</span> <span class="n">use_num_updates</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Args:</span>
 <span class="sd">          parameters: Iterable of `torch.nn.Parameter`; usually the result of</span>
 <span class="sd">            `model.parameters()`.</span>
 <span class="sd">          decay: The exponential decay.</span>
 <span class="sd">          use_num_updates: Whether to use number of updates when computing</span>
 <span class="sd">            averages.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">decay</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">decay</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Decay must be between 0 and 1&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Decay must be between 0 and 1"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decay</span> <span class="o">=</span> <span class="n">decay</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_updates</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">use_num_updates</span> <span class="k">else</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shadow_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">]</span>
@@ -1453,7 +1453,7 @@
 <div class="viewcode-block" id="ExponentialMovingAverage.update">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.update">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Update currently maintained parameters.</span>
 
 <span class="sd">        Call this every time the parameters are updated, such as the result of</span>
@@ -1462,7 +1462,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">          parameters: Iterable of `torch.nn.Parameter`; usually the same set of</span>
 <span class="sd">            parameters used to initialize this object.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">decay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decay</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_updates</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">num_updates</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -1477,13 +1477,13 @@
 <div class="viewcode-block" id="ExponentialMovingAverage.copy_to">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.copy_to">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">copy_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Copy current parameters into given collection of parameters.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">          parameters: Iterable of `torch.nn.Parameter`; the parameters to be</span>
 <span class="sd">            updated with the stored moving averages.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parameters</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">s_param</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shadow_params</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">:</span>
@@ -1493,20 +1493,20 @@
 <div class="viewcode-block" id="ExponentialMovingAverage.store">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.store">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Save the current parameters for restoring later.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">          parameters: Iterable of `torch.nn.Parameter`; the parameters to be</span>
 <span class="sd">            temporarily stored.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">collected_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="ExponentialMovingAverage.restore">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.restore">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">restore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Restore the parameters stored with the `store` method.</span>
 <span class="sd">        Useful to validate the model with EMA parameters without affecting the</span>
 <span class="sd">        original optimization process. Store the parameters before the</span>
@@ -1516,7 +1516,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">          parameters: Iterable of `torch.nn.Parameter`; the parameters to be</span>
 <span class="sd">            updated with the stored parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> <span class="n">c_param</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">collected_params</span><span class="p">,</span> <span class="n">parameters</span><span class="p">):</span>
             <span class="n">param</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy_</span><span class="p">(</span><span class="n">c_param</span><span class="o">.</span><span class="n">data</span><span class="p">)</span></div>
 
@@ -1530,9 +1530,9 @@
 <div class="viewcode-block" id="ExponentialMovingAverage.load_state_dict">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.ema.html#pe.callback.image.dpimagebench_lib.ema.ExponentialMovingAverage.load_state_dict">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_state_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state_dict</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decay</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;decay&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_updates</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;num_updates&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">shadow_params</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">&quot;shadow_params&quot;</span><span class="p">]</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decay</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"decay"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_updates</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"num_updates"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shadow_params</span> <span class="o">=</span> <span class="n">state_dict</span><span class="p">[</span><span class="s2">"shadow_params"</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

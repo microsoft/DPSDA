@@ -1431,7 +1431,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.api.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstantList</span>
 
 
-<span class="n">AVATAR_PARAMS_COLUMN_NAME</span> <span class="o">=</span> <span class="s2">&quot;PE.AVATAR.PARAMS&quot;</span>
+<span class="n">AVATAR_PARAMS_COLUMN_NAME</span> <span class="o">=</span> <span class="s2">"PE.AVATAR.PARAMS"</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
@@ -1443,12 +1443,12 @@
 <div class="viewcode-block" id="Avatar">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Avatar</span><span class="p">(</span><span class="n">API</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The API that uses the python_avatars library to generate synthetic avatar images.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The API that uses the python_avatars library to generate synthetic avatar images."""</span>
 
 <div class="viewcode-block" id="Avatar.__init__">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">variation_degrees</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">264</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">280</span> <span class="o">-</span> <span class="mi">56</span><span class="p">),</span> <span class="n">num_processes</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param res: The resolution of the generated images</span>
 <span class="sd">        :type res: int</span>
@@ -1463,7 +1463,7 @@
 <span class="sd">        :type num_processes: int, optional</span>
 <span class="sd">        :param chunksize: The chunksize for parallel generation, defaults to 100</span>
 <span class="sd">        :type chunksize: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_res</span> <span class="o">=</span> <span class="n">res</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_crop</span> <span class="o">=</span> <span class="n">crop</span>
@@ -1475,17 +1475,17 @@
 <div class="viewcode-block" id="Avatar._svg_to_numpy">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar._svg_to_numpy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_svg_to_numpy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">svg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts an SVG string to an image in numpy array format.</span>
+<span class="w">        </span><span class="sd">"""Converts an SVG string to an image in numpy array format.</span>
 
 <span class="sd">        :param svg: The SVG string</span>
 <span class="sd">        :type svg: str</span>
 <span class="sd">        :return: The image in numpy array format</span>
 <span class="sd">        :rtype: np.ndarray</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">mem</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
         <span class="n">cairosvg</span><span class="o">.</span><span class="n">svg2png</span><span class="p">(</span><span class="n">bytestring</span><span class="o">=</span><span class="n">svg</span><span class="p">,</span> <span class="n">write_to</span><span class="o">=</span><span class="n">mem</span><span class="p">)</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">mem</span><span class="p">)</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">crop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_crop</span><span class="p">)</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_res</span><span class="p">))</span>
@@ -1495,43 +1495,43 @@
 <div class="viewcode-block" id="Avatar._get_params_from_avatar">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar._get_params_from_avatar">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_params_from_avatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatar</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the parameters of an avatar.</span>
+<span class="w">        </span><span class="sd">"""Get the parameters of an avatar.</span>
 
 <span class="sd">        :param avatar: The avatar</span>
 <span class="sd">        :type avatar: python_avatars.Avatar</span>
 <span class="sd">        :return: The parameters of the avatar</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">style</span><span class="p">,</span>
-            <span class="s2">&quot;background_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">background_color</span><span class="p">,</span>
-            <span class="s2">&quot;top&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
-            <span class="s2">&quot;hat_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">hat_color</span><span class="p">,</span>
-            <span class="s2">&quot;eyebrows&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">eyebrows</span><span class="p">,</span>
-            <span class="s2">&quot;eyes&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">eyes</span><span class="p">,</span>
-            <span class="s2">&quot;nose&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">nose</span><span class="p">,</span>
-            <span class="s2">&quot;mouth&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">mouth</span><span class="p">,</span>
-            <span class="s2">&quot;facial_hair&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">facial_hair</span><span class="p">,</span>
-            <span class="s2">&quot;skin_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">skin_color</span><span class="p">,</span>
-            <span class="s2">&quot;hair_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">hair_color</span><span class="p">,</span>
-            <span class="s2">&quot;facial_hair_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">facial_hair_color</span><span class="p">,</span>
-            <span class="s2">&quot;accessory&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">accessory</span><span class="p">,</span>
-            <span class="s2">&quot;clothing&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">clothing</span><span class="p">,</span>
-            <span class="s2">&quot;clothing_color&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">clothing_color</span><span class="p">,</span>
-            <span class="s2">&quot;shirt_graphic&quot;</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">shirt_graphic</span><span class="p">,</span>
+            <span class="s2">"style"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">style</span><span class="p">,</span>
+            <span class="s2">"background_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">background_color</span><span class="p">,</span>
+            <span class="s2">"top"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">top</span><span class="p">,</span>
+            <span class="s2">"hat_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">hat_color</span><span class="p">,</span>
+            <span class="s2">"eyebrows"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">eyebrows</span><span class="p">,</span>
+            <span class="s2">"eyes"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">eyes</span><span class="p">,</span>
+            <span class="s2">"nose"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">nose</span><span class="p">,</span>
+            <span class="s2">"mouth"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">mouth</span><span class="p">,</span>
+            <span class="s2">"facial_hair"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">facial_hair</span><span class="p">,</span>
+            <span class="s2">"skin_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">skin_color</span><span class="p">,</span>
+            <span class="s2">"hair_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">hair_color</span><span class="p">,</span>
+            <span class="s2">"facial_hair_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">facial_hair_color</span><span class="p">,</span>
+            <span class="s2">"accessory"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">accessory</span><span class="p">,</span>
+            <span class="s2">"clothing"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">clothing</span><span class="p">,</span>
+            <span class="s2">"clothing_color"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">clothing_color</span><span class="p">,</span>
+            <span class="s2">"shirt_graphic"</span><span class="p">:</span> <span class="n">avatar</span><span class="o">.</span><span class="n">shirt_graphic</span><span class="p">,</span>
         <span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="Avatar._get_random_image">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar._get_random_image">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_random_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a random image and its parameters.</span>
+<span class="w">        </span><span class="sd">"""Get a random image and its parameters.</span>
 
 <span class="sd">        :param _: The index of the sample</span>
 <span class="sd">        :type _: int</span>
 <span class="sd">        :return: The image and its parameters</span>
 <span class="sd">        :rtype: tuple[np.ndarray, dict]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">avatar</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Avatar</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
         <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_svg_to_numpy</span><span class="p">(</span><span class="n">avatar</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
         <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_params_from_avatar</span><span class="p">(</span><span class="n">avatar</span><span class="p">)</span>
@@ -1541,7 +1541,7 @@
 <div class="viewcode-block" id="Avatar.random_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar.random_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generating random synthetic data.</span>
 
 <span class="sd">        :param label_info: The info of the label</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
@@ -1549,9 +1549,9 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The data object of the generated synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">results</span> <span class="o">=</span> <span class="n">process_map</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_get_random_image</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">),</span> <span class="n">max_workers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_processes</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_chunksize</span>
@@ -1566,8 +1566,8 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"label_info"</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
@@ -1578,7 +1578,7 @@
         <span class="n">params</span><span class="p">,</span>
         <span class="n">variation_degree</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a variation image and its parameters.</span>
+<span class="w">        </span><span class="sd">"""Get a variation image and its parameters.</span>
 
 <span class="sd">        :param params: The parameters of the avatar</span>
 <span class="sd">        :type params: dict</span>
@@ -1586,7 +1586,7 @@
 <span class="sd">        :type variation_degree: float</span>
 <span class="sd">        :return: The image of the avatar and its parameters</span>
 <span class="sd">        :rtype: tuple[np.ndarray, dict]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">avatar</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">Avatar</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">variation_degree</span><span class="p">:</span>
@@ -1599,19 +1599,19 @@
 <div class="viewcode-block" id="Avatar.variation_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.avatar_api.html#pe.api.Avatar.variation_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creating variations of the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Creating variations of the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The data object of the synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object of the variation of the input synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="n">original_params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">AVATAR_PARAMS_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">"iteration"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API parameters: variation_degree=</span><span class="si">{</span><span class="n">variation_degree</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API parameters: variation_degree=</span><span class="si">{</span><span class="n">variation_degree</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">results</span> <span class="o">=</span> <span class="n">process_map</span><span class="p">(</span>
             <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_variation_image</span><span class="p">,</span> <span class="n">variation_degree</span><span class="o">=</span><span class="n">variation_degree</span><span class="p">),</span>
@@ -1629,7 +1629,7 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 </div>
 

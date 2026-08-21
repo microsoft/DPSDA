@@ -1431,7 +1431,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.api.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstantList</span>
 
 
-<span class="n">TEXT_PARAMS_COLUMN_NAME</span> <span class="o">=</span> <span class="s2">&quot;PE.DRAW_TEXT.PARAMS&quot;</span>
+<span class="n">TEXT_PARAMS_COLUMN_NAME</span> <span class="o">=</span> <span class="s2">"PE.DRAW_TEXT.PARAMS"</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
@@ -1443,7 +1443,7 @@
 <div class="viewcode-block" id="DrawText">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DrawText</span><span class="p">(</span><span class="n">API</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The API that uses the PIL library to generate synthetic images with text on them.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The API that uses the PIL library to generate synthetic images with text on them."""</span>
 
 <div class="viewcode-block" id="DrawText.__init__">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText.__init__">[docs]</a>
@@ -1455,7 +1455,7 @@
         <span class="n">font_size_variation_degrees</span><span class="p">,</span>
         <span class="n">rotation_degree_variation_degrees</span><span class="p">,</span>
         <span class="n">stroke_width_variation_degrees</span><span class="p">,</span>
-        <span class="n">text_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;6&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;9&quot;</span><span class="p">],</span>
+        <span class="n">text_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"0"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"5"</span><span class="p">,</span> <span class="s2">"6"</span><span class="p">,</span> <span class="s2">"7"</span><span class="p">,</span> <span class="s2">"8"</span><span class="p">,</span> <span class="s2">"9"</span><span class="p">],</span>
         <span class="n">width</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span>
         <span class="n">height</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span>
         <span class="n">background_color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
@@ -1464,7 +1464,7 @@
         <span class="n">stroke_width_list</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
         <span class="n">rotation_degree_list</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param font_root_path: The root path that contains the font files in .ttf format</span>
 <span class="sd">        :type font_root_path: str</span>
@@ -1490,7 +1490,7 @@
 <span class="sd">        :type stroke_width_variation_degrees: int or list[int]</span>
 <span class="sd">        :param text_list: The texts to be used in the synthetic images. It can be a dictionary that maps label_names to</span>
 <span class="sd">            a list of strings, meaning the texts to be used for each label_name. If a list is provided, the same texts</span>
-<span class="sd">            will be used for all label_names. Defaults to [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;]</span>
+<span class="sd">            will be used for all label_names. Defaults to ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]</span>
 <span class="sd">        :type text_list: list or dict, optional</span>
 <span class="sd">        :param width: The width of the synthetic images, defaults to 28</span>
 <span class="sd">        :type width: int, optional</span>
@@ -1509,7 +1509,7 @@
 <span class="sd">        :param rotation_degree_list: The feasible set of rotation degrees to be used in the synthetic images, defaults</span>
 <span class="sd">            to range(-30, 31, 1)</span>
 <span class="sd">        :type rotation_degree_list: list, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span> <span class="o">=</span> <span class="n">font_root_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_variation_degrees</span> <span class="o">=</span> <span class="n">_to_constant_list_if_needed</span><span class="p">(</span><span class="n">font_variation_degrees</span><span class="p">)</span>
@@ -1529,21 +1529,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_stroke_width_list</span> <span class="o">=</span> <span class="n">stroke_width_list</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_rotation_degree_list</span> <span class="o">=</span> <span class="n">rotation_degree_list</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="p">,</span> <span class="s2">&quot;**&quot;</span><span class="p">,</span> <span class="s2">&quot;*.ttf&quot;</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="p">,</span> <span class="s2">"**"</span><span class="p">,</span> <span class="s2">"*.ttf"</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;No font files found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">. Please download some fonts, such as &quot;</span>
-                <span class="s2">&quot;downloading Google Fonts from https://github.com/google/fonts/archive/main.zip (or &quot;</span>
-                <span class="s2">&quot;https://github.com/google/fonts), extracting the content, and pointing font_root_path to the ofl &quot;</span>
-                <span class="s2">&quot;subfolder&quot;</span>
+                <span class="sa">f</span><span class="s2">"No font files found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">. Please download some fonts, such as "</span>
+                <span class="s2">"downloading Google Fonts from https://github.com/google/fonts/archive/main.zip (or "</span>
+                <span class="s2">"https://github.com/google/fonts), extracting the content, and pointing font_root_path to the ofl "</span>
+                <span class="s2">"subfolder"</span>
             <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> font files in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span><span class="si">}</span><span class="s2"> font files in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_root_path</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DrawText._create_image">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText._create_image">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_create_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">font_size</span><span class="p">,</span> <span class="n">font_file</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">stroke_width</span><span class="p">,</span> <span class="n">rotation_degree</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an image with text on it.</span>
+<span class="w">        </span><span class="sd">"""Create an image with text on it.</span>
 
 <span class="sd">        :param font_size: The font size</span>
 <span class="sd">        :type font_size: int</span>
@@ -1557,10 +1557,10 @@
 <span class="sd">        :type rotation_degree: int</span>
 <span class="sd">        :return: The image with text on it</span>
 <span class="sd">        :rtype: np.ndarray</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">before_rotation_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span><span class="p">)</span>
-            <span class="n">after_rotation_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span><span class="p">)</span>
+            <span class="n">before_rotation_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span><span class="p">)</span>
+            <span class="n">after_rotation_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_background_color</span><span class="p">)</span>
 
             <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">before_rotation_image</span><span class="p">)</span>
             <span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="n">font_file</span><span class="p">,</span> <span class="n">font_size</span><span class="p">)</span>
@@ -1576,10 +1576,10 @@
             <span class="n">after_rotation_image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">before_rotation_image</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">rotation_degree</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">after_rotation_image</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error when creating image: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error when creating image: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;font_size=</span><span class="si">{</span><span class="n">font_size</span><span class="si">}</span><span class="s2">, font_file=</span><span class="si">{</span><span class="n">font_file</span><span class="si">}</span><span class="s2">, text=</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">, stroke_width=</span><span class="si">{</span><span class="n">stroke_width</span><span class="si">}</span><span class="s2">, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;rotation_degree=</span><span class="si">{</span><span class="n">rotation_degree</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"font_size=</span><span class="si">{</span><span class="n">font_size</span><span class="si">}</span><span class="s2">, font_file=</span><span class="si">{</span><span class="n">font_file</span><span class="si">}</span><span class="s2">, text=</span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s2">, stroke_width=</span><span class="si">{</span><span class="n">stroke_width</span><span class="si">}</span><span class="s2">, "</span>
+                <span class="sa">f</span><span class="s2">"rotation_degree=</span><span class="si">{</span><span class="n">rotation_degree</span><span class="si">}</span><span class="s2">"</span>
             <span class="p">)</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
             <span class="k">return</span> <span class="kc">None</span></div>
@@ -1588,13 +1588,13 @@
 <div class="viewcode-block" id="DrawText._get_random_image">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText._get_random_image">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_random_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_name</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a random image and its parameters.</span>
+<span class="w">        </span><span class="sd">"""Get a random image and its parameters.</span>
 
 <span class="sd">        :param label_name: The label name</span>
 <span class="sd">        :type label_name: str</span>
 <span class="sd">        :return: The image and its parameters</span>
 <span class="sd">        :rtype: tuple[np.ndarray, dict]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">font_size</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_size_list</span><span class="p">)</span>
         <span class="n">font_file</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span>
         <span class="n">text</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_text_list</span><span class="p">[</span><span class="n">label_name</span><span class="p">])</span>
@@ -1609,11 +1609,11 @@
             <span class="n">rotation_degree</span><span class="o">=</span><span class="n">rotation_degree</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;font_size&quot;</span><span class="p">:</span> <span class="n">font_size</span><span class="p">,</span>
-            <span class="s2">&quot;font_file&quot;</span><span class="p">:</span> <span class="n">font_file</span><span class="p">,</span>
-            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-            <span class="s2">&quot;stroke_width&quot;</span><span class="p">:</span> <span class="n">stroke_width</span><span class="p">,</span>
-            <span class="s2">&quot;rotation_degree&quot;</span><span class="p">:</span> <span class="n">rotation_degree</span><span class="p">,</span>
+            <span class="s2">"font_size"</span><span class="p">:</span> <span class="n">font_size</span><span class="p">,</span>
+            <span class="s2">"font_file"</span><span class="p">:</span> <span class="n">font_file</span><span class="p">,</span>
+            <span class="s2">"text"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s2">"stroke_width"</span><span class="p">:</span> <span class="n">stroke_width</span><span class="p">,</span>
+            <span class="s2">"rotation_degree"</span><span class="p">:</span> <span class="n">rotation_degree</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">params</span></div>
 
@@ -1621,7 +1621,7 @@
 <div class="viewcode-block" id="DrawText.random_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText.random_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generating random synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generating random synthetic data.</span>
 
 <span class="sd">        :param label_info: The info of the label</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
@@ -1629,9 +1629,9 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The data object of the generated synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">label_name</span> <span class="o">=</span> <span class="n">label_info</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1651,8 +1651,8 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"label_info"</span><span class="p">:</span> <span class="p">[</span><span class="n">label_info</span><span class="p">]}</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"RANDOM API: finished creating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> samples for label </span><span class="si">{</span><span class="n">label_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
@@ -1672,7 +1672,7 @@
         <span class="n">rotation_degree_variation_degree</span><span class="p">,</span>
         <span class="n">label_name</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a variation image and its parameters.</span>
+<span class="w">        </span><span class="sd">"""Get a variation image and its parameters.</span>
 
 <span class="sd">        :param font_size: The font size</span>
 <span class="sd">        :type font_size: int</span>
@@ -1698,7 +1698,7 @@
 <span class="sd">        :type label_name: str</span>
 <span class="sd">        :return: The image of the avatar and its parameters</span>
 <span class="sd">        :rtype: tuple[np.ndarray, dict]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">do_font_variation</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">font_variation_degree</span>
         <span class="k">if</span> <span class="n">do_font_variation</span><span class="p">:</span>
             <span class="n">font_file</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_files</span><span class="p">)</span>
@@ -1723,11 +1723,11 @@
             <span class="n">rotation_degree</span><span class="o">=</span><span class="n">rotation_degree</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;font_size&quot;</span><span class="p">:</span> <span class="n">font_size</span><span class="p">,</span>
-            <span class="s2">&quot;font_file&quot;</span><span class="p">:</span> <span class="n">font_file</span><span class="p">,</span>
-            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
-            <span class="s2">&quot;stroke_width&quot;</span><span class="p">:</span> <span class="n">stroke_width</span><span class="p">,</span>
-            <span class="s2">&quot;rotation_degree&quot;</span><span class="p">:</span> <span class="n">rotation_degree</span><span class="p">,</span>
+            <span class="s2">"font_size"</span><span class="p">:</span> <span class="n">font_size</span><span class="p">,</span>
+            <span class="s2">"font_file"</span><span class="p">:</span> <span class="n">font_file</span><span class="p">,</span>
+            <span class="s2">"text"</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s2">"stroke_width"</span><span class="p">:</span> <span class="n">stroke_width</span><span class="p">,</span>
+            <span class="s2">"rotation_degree"</span><span class="p">:</span> <span class="n">rotation_degree</span><span class="p">,</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">params</span></div>
 
@@ -1735,18 +1735,18 @@
 <div class="viewcode-block" id="DrawText.variation_api">
 <a class="viewcode-back" href="../../../../api/pe.api.image.draw_text_api.html#pe.api.DrawText.variation_api">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creating variations of the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Creating variations of the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The data object of the synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object of the variation of the input synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="n">original_params</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TEXT_PARAMS_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
         <span class="n">original_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
         <span class="n">original_label_ids</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">&quot;iteration&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">iteration</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span> <span class="s2">"iteration"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">font_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">font_size_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_size_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
         <span class="n">text_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_text_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
@@ -1754,9 +1754,9 @@
         <span class="n">stroke_width_variation_degree</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stroke_width_variation_degrees</span><span class="p">[</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;VARIATION API parameters: font_size_variation_degree=</span><span class="si">{</span><span class="n">font_size_variation_degree</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;font_variation_degree=</span><span class="si">{</span><span class="n">font_variation_degree</span><span class="si">}</span><span class="s2">, rotation_variation_degree=</span><span class="si">{</span><span class="n">rotation_variation_degree</span><span class="si">}</span><span class="s2">, &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;stroke_width_variation_degree=</span><span class="si">{</span><span class="n">stroke_width_variation_degree</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"VARIATION API parameters: font_size_variation_degree=</span><span class="si">{</span><span class="n">font_size_variation_degree</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"font_variation_degree=</span><span class="si">{</span><span class="n">font_variation_degree</span><span class="si">}</span><span class="s2">, rotation_variation_degree=</span><span class="si">{</span><span class="n">rotation_variation_degree</span><span class="si">}</span><span class="s2">, "</span>
+            <span class="sa">f</span><span class="s2">"stroke_width_variation_degree=</span><span class="si">{</span><span class="n">stroke_width_variation_degree</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
 
         <span class="n">variations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1785,7 +1785,7 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VARIATION API: finished creating variations for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span></div>
 </div>
 

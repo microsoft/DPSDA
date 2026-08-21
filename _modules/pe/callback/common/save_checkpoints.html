@@ -1421,22 +1421,22 @@
 <div class="viewcode-block" id="SaveCheckpoints">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.save_checkpoints.html#pe.callback.SaveCheckpoints">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SaveCheckpoints</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that saves checkpoints of the synthetic data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The callback that saves checkpoints of the synthetic data."""</span>
 
 <div class="viewcode-block" id="SaveCheckpoints.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.save_checkpoints.html#pe.callback.SaveCheckpoints.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">output_folder</span><span class="p">,</span>
-        <span class="n">iteration_format</span><span class="o">=</span><span class="s2">&quot;09d&quot;</span><span class="p">,</span>
+        <span class="n">iteration_format</span><span class="o">=</span><span class="s2">"09d"</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param output_folder: The output folder that will be used to save the checkpoints</span>
 <span class="sd">        :type output_folder: str</span>
-<span class="sd">        :param iteration_format: The format of the iteration number, defaults to &quot;09d&quot;</span>
+<span class="sd">        :param iteration_format: The format of the iteration number, defaults to "09d"</span>
 <span class="sd">        :type iteration_format: str, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_iteration_format</span> <span class="o">=</span> <span class="n">iteration_format</span></div>
 
@@ -1444,24 +1444,24 @@
 <div class="viewcode-block" id="SaveCheckpoints.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.save_checkpoints.html#pe.callback.SaveCheckpoints.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that saves checkpoints of the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""This function is called after each PE iteration that saves checkpoints of the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">syn_data</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_checkpoint_path</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="SaveCheckpoints._get_checkpoint_path">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.save_checkpoints.html#pe.callback.SaveCheckpoints._get_checkpoint_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_checkpoint_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the checkpoint path.</span>
+<span class="w">        </span><span class="sd">"""Get the checkpoint path.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :return: The checkpoint path</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">iteration_string</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iteration_format</span><span class="p">)</span>
         <span class="n">checkpoint_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>

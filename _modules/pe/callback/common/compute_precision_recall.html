@@ -1425,13 +1425,13 @@
 <div class="viewcode-block" id="ComputePrecisionRecall">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.compute_precision_recall.html#pe.callback.ComputePrecisionRecall">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ComputePrecisionRecall</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that computes precision and recall metrics (https://arxiv.org/abs/1904.06991) between the private</span>
-<span class="sd">    and synthetic data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The callback that computes precision and recall metrics (https://arxiv.org/abs/1904.06991) between the private</span>
+<span class="sd">    and synthetic data."""</span>
 
 <div class="viewcode-block" id="ComputePrecisionRecall.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.compute_precision_recall.html#pe.callback.ComputePrecisionRecall.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">embedding</span><span class="p">,</span> <span class="n">num_precision_neighbors</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num_recall_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">filter_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
 <span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
@@ -1446,22 +1446,22 @@
 <span class="sd">        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no</span>
 <span class="sd">            filtering. Defaults to None</span>
 <span class="sd">        :type filter_criterion: dict, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="n">priv_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span> <span class="o">=</span> <span class="n">embedding</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_precision_neighbors</span> <span class="o">=</span> <span class="n">num_precision_neighbors</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_recall_neighbors</span> <span class="o">=</span> <span class="n">num_recall_neighbors</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span> <span class="o">=</span> <span class="n">filter_criterion</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_precision_metric_name</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;precision_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"precision_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">if</span> <span class="n">filter_criterion</span>
-            <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;precision_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">"precision_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_recall_metric_name</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;recall_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"recall_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">if</span> <span class="n">filter_criterion</span>
-            <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;recall_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">"recall_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span><span class="p">)</span>
@@ -1470,29 +1470,29 @@
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_embedding</span> <span class="o">=</span> <span class="n">priv_embedding</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_precision</span> <span class="o">=</span> <span class="n">PrecisionRecall</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_precision_neighbors</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_recall</span> <span class="o">=</span> <span class="n">PrecisionRecall</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_recall_neighbors</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_precision</span> <span class="o">=</span> <span class="n">PrecisionRecall</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"Precision"</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_precision_neighbors</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_recall</span> <span class="o">=</span> <span class="n">PrecisionRecall</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"Recall"</span><span class="p">,</span> <span class="n">num_neighbors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_recall_neighbors</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ComputePrecisionRecall.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.common.compute_precision_recall.html#pe.callback.ComputePrecisionRecall.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that computes the FID between the private and synthetic</span>
+<span class="w">        </span><span class="sd">"""This function is called after each PE iteration that computes the FID between the private and synthetic</span>
 <span class="sd">        data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The FID between the private and synthetic data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Computing precision and recall (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="sa">f</span><span class="s2">"Computing precision and recall (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)"</span>
         <span class="p">)</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation.&quot;</span>
+                <span class="sa">f</span><span class="s2">"No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation."</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="p">[]</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">compute_embedding</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
@@ -1504,7 +1504,7 @@
         <span class="n">precision_metric_item</span> <span class="o">=</span> <span class="n">FloatMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_precision_metric_name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
         <span class="n">recall_metric_item</span> <span class="o">=</span> <span class="n">FloatMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_recall_metric_name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">recall</span><span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Finished computing precision and recall (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="sa">f</span><span class="s2">"Finished computing precision and recall (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_embedding</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">precision_metric_item</span><span class="p">,</span> <span class="n">recall_metric_item</span><span class="p">]</span></div>
 </div>

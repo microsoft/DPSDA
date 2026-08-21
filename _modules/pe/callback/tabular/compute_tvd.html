@@ -1426,12 +1426,12 @@
 <div class="viewcode-block" id="ComputeTVD">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_tvd.html#pe.callback.ComputeTVD">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ComputeTVD</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that computes the Total Variation Distance (TVD) between the private and synthetic data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The callback that computes the Total Variation Distance (TVD) between the private and synthetic data."""</span>
 
 <div class="viewcode-block" id="ComputeTVD.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_tvd.html#pe.callback.ComputeTVD.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">filter_criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
 <span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
@@ -1442,21 +1442,21 @@
 <span class="sd">        :param filter_criterion: Only computes the metric based on samples satisfying the criterion. None means no</span>
 <span class="sd">            filtering. Defaults to None</span>
 <span class="sd">        :type filter_criterion: dict, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_data</span> <span class="o">=</span> <span class="n">priv_data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span> <span class="o">=</span> <span class="n">filter_criterion</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">filter_criterion</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">" "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_degree</span> <span class="o">=</span> <span class="n">degree</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_bins</span> <span class="o">=</span> <span class="n">num_bins</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-tvd_</span><span class="si">{</span><span class="n">num_bins</span><span class="si">}</span><span class="s2">bins_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-tvd_</span><span class="si">{</span><span class="n">num_bins</span><span class="si">}</span><span class="s2">bins_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">"</span>
             <span class="k">if</span> <span class="n">filter_criterion</span>
-            <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-tvd_</span><span class="si">{</span><span class="n">num_bins</span><span class="si">}</span><span class="s2">bins&quot;</span>
+            <span class="k">else</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s2">way-tvd_</span><span class="si">{</span><span class="n">num_bins</span><span class="si">}</span><span class="s2">bins"</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;cat_columns&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_int_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;int_columns&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_float_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;float_columns&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;label_columns&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"cat_columns"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_int_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"int_columns"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_float_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"float_columns"</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span> <span class="o">=</span> <span class="n">priv_data</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"label_columns"</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_feature_columns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_float_columns</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_priv_features_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_features_df</span><span class="p">(</span><span class="n">priv_data</span><span class="p">)</span></div>
 
@@ -1464,13 +1464,13 @@
 <div class="viewcode-block" id="ComputeTVD._get_features_df">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_tvd.html#pe.callback.ComputeTVD._get_features_df">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_features_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the features DataFrame from the data.</span>
+<span class="w">        </span><span class="sd">"""Get the features DataFrame from the data.</span>
 
 <span class="sd">        :param data: The data</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The features DataFrame</span>
 <span class="sd">        :rtype: :py:class:`pandas.DataFrame`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">label_ids</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">features_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TABULAR_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_feature_columns</span><span class="p">)</span>
         <span class="c1"># merge label columns into features DataFrame</span>
@@ -1485,7 +1485,7 @@
 <div class="viewcode-block" id="ComputeTVD._compute_tvd">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_tvd.html#pe.callback.ComputeTVD._compute_tvd">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_compute_tvd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_features_df</span><span class="p">,</span> <span class="n">priv_features_df</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the TVD between the synthetic and private features.</span>
+<span class="w">        </span><span class="sd">"""Compute the TVD between the synthetic and private features.</span>
 
 <span class="sd">        :param syn_features_df: The synthetic features DataFrame</span>
 <span class="sd">        :type syn_features_df: :py:class:`pandas.DataFrame`</span>
@@ -1493,7 +1493,7 @@
 <span class="sd">        :type priv_features_df: :py:class:`pandas.DataFrame`</span>
 <span class="sd">        :return: The TVD</span>
 <span class="sd">        :rtype: float</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">df1</span> <span class="o">=</span> <span class="n">syn_features_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">df2</span> <span class="o">=</span> <span class="n">priv_features_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -1506,8 +1506,8 @@
                 <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">col_min</span><span class="p">,</span> <span class="n">col_max</span> <span class="o">+</span> <span class="mf">1e-10</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">col_min</span><span class="p">,</span> <span class="n">col_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_bins</span><span class="p">)</span>
-            <span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-            <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+            <span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
+            <span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">edges</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cat_columns</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_label_columns</span><span class="p">:</span>
             <span class="c1"># Use private data categories</span>
@@ -1538,27 +1538,27 @@
 <div class="viewcode-block" id="ComputeTVD.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.tabular.compute_tvd.html#pe.callback.ComputeTVD.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that computes the TVD between the private and</span>
+<span class="w">        </span><span class="sd">"""This function is called after each PE iteration that computes the TVD between the private and</span>
 <span class="sd">        synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The TVD between the private and synthetic data</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-TVD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-TVD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
         <span class="n">syn_data</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Number of samples after filtering: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">syn_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation.&quot;</span>
+                <span class="sa">f</span><span class="s2">"No samples satisfy the filter criterion </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">. Skipping computation."</span>
             <span class="p">)</span>
             <span class="k">return</span> <span class="p">[]</span>
         <span class="n">syn_features_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_features_df</span><span class="p">(</span><span class="n">syn_data</span><span class="p">)</span>
         <span class="n">tvd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_tvd</span><span class="p">(</span><span class="n">syn_features_df</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_priv_features_df</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tvd</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">tvd</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">metric_item</span> <span class="o">=</span> <span class="n">FloatMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_metric_name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">tvd</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-TVD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_degree</span><span class="si">}</span><span class="s2">way-TVD (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filter_criterion_str</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">metric_item</span><span class="p">]</span></div>
 </div>
 

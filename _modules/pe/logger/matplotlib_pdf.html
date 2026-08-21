@@ -1422,25 +1422,25 @@
 <div class="viewcode-block" id="MatplotlibPDF">
 <a class="viewcode-back" href="../../../api/pe.logger.matplotlib_pdf.html#pe.logger.MatplotlibPDF">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">MatplotlibPDF</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The logger that saves Matplotlib figures to PDF files.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The logger that saves Matplotlib figures to PDF files."""</span>
 
 <div class="viewcode-block" id="MatplotlibPDF.__init__">
 <a class="viewcode-back" href="../../../api/pe.logger.matplotlib_pdf.html#pe.logger.MatplotlibPDF.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">output_folder</span><span class="p">,</span>
-        <span class="n">path_separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
-        <span class="n">iteration_format</span><span class="o">=</span><span class="s2">&quot;09d&quot;</span><span class="p">,</span>
+        <span class="n">path_separator</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span>
+        <span class="n">iteration_format</span><span class="o">=</span><span class="s2">"09d"</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param output_folder: The output folder that will be used to save the PDF files</span>
 <span class="sd">        :type output_folder: str</span>
-<span class="sd">        :param path_separator: The string that will be used to replace &#39;\&#39; and &#39;/&#39; in log names, defaults to &quot;-&quot;</span>
+<span class="sd">        :param path_separator: The string that will be used to replace '\' and '/' in log names, defaults to "-"</span>
 <span class="sd">        :type path_separator: str, optional</span>
-<span class="sd">        :param iteration_format: The format of the iteration number, defaults to &quot;09d&quot;</span>
+<span class="sd">        :param iteration_format: The format of the iteration number, defaults to "09d"</span>
 <span class="sd">        :type iteration_format: str, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span> <span class="o">=</span> <span class="n">path_separator</span>
@@ -1450,13 +1450,13 @@
 <div class="viewcode-block" id="MatplotlibPDF.log">
 <a class="viewcode-back" href="../../../api/pe.logger.matplotlib_pdf.html#pe.logger.MatplotlibPDF.log">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the Matplotlib figures to PDF files.</span>
+<span class="w">        </span><span class="sd">"""Log the Matplotlib figures to PDF files.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :param metric_items: The Matplotlib figures to log</span>
 <span class="sd">        :type metric_items: list[:py:class:`pe.metric_item.MatplotlibMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">metric_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="n">MatplotlibMetricItem</span><span class="p">,)):</span>
                 <span class="k">continue</span>
@@ -1467,7 +1467,7 @@
 <div class="viewcode-block" id="MatplotlibPDF._get_pdf_path">
 <a class="viewcode-back" href="../../../api/pe.logger.matplotlib_pdf.html#pe.logger.MatplotlibPDF._get_pdf_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_pdf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the PDF save path.</span>
+<span class="w">        </span><span class="sd">"""Get the PDF save path.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
@@ -1475,14 +1475,14 @@
 <span class="sd">        :type item: :py:class:`pe.metric_item.MatplotlibMetricItem`</span>
 <span class="sd">        :return: The PDF save path</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">image_name</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">image_name</span> <span class="o">=</span> <span class="n">image_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
-        <span class="n">image_name</span> <span class="o">=</span> <span class="n">image_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
+        <span class="n">image_name</span> <span class="o">=</span> <span class="n">image_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
+        <span class="n">image_name</span> <span class="o">=</span> <span class="n">image_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
         <span class="n">image_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">image_name</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">image_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">iteration_string</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">iteration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_iteration_format</span><span class="p">)</span>
-        <span class="n">image_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iteration_string</span><span class="si">}</span><span class="s2">.pdf&quot;</span>
+        <span class="n">image_file_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">iteration_string</span><span class="si">}</span><span class="s2">.pdf"</span>
         <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
             <span class="n">image_folder</span><span class="p">,</span>
             <span class="n">image_file_name</span><span class="p">,</span>

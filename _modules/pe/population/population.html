@@ -1419,19 +1419,19 @@
 <div class="viewcode-block" id="Population">
 <a class="viewcode-back" href="../../../api/pe.population.population.html#pe.population.Population">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Population</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class that generates synthetic data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class that generates synthetic data."""</span>
 
 <div class="viewcode-block" id="Population.initial">
 <a class="viewcode-back" href="../../../api/pe.population.population.html#pe.population.Population.initial">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the initial synthetic data.</span>
 
 <span class="sd">        :param label_info: The label info</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 
@@ -1439,13 +1439,13 @@
 <a class="viewcode-back" href="../../../api/pe.population.population.html#pe.population.Population.next">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the next synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the next synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param num_samples: The number of samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 </div>
 

@@ -1428,30 +1428,30 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pe.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">download</span>
 
 <span class="n">CAT_LABEL_NAMES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;cookie&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;doudou&quot;</span><span class="p">,</span>
+    <span class="s2">"cookie"</span><span class="p">,</span>
+    <span class="s2">"doudou"</span><span class="p">,</span>
 <span class="p">]</span>
 
 
 <div class="viewcode-block" id="Cat">
 <a class="viewcode-back" href="../../../../api/pe.data.image.cat.html#pe.data.Cat">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Cat</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Cat dataset.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The Cat dataset."""</span>
 
     <span class="c1">#: The URL of the dataset</span>
-    <span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://www.kaggle.com/api/v1/datasets/download/fjxmlzn/cat-cookie-doudou&quot;</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s2">"https://www.kaggle.com/api/v1/datasets/download/fjxmlzn/cat-cookie-doudou"</span>
 
 <div class="viewcode-block" id="Cat.__init__">
 <a class="viewcode-back" href="../../../../api/pe.data.image.cat.html#pe.data.Cat.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">"data"</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
-<span class="sd">        :param root_dir: The root directory to save the dataset, defaults to &quot;data&quot;</span>
+<span class="sd">        :param root_dir: The root directory to save the dataset, defaults to "data"</span>
 <span class="sd">        :type root_dir: str, optional</span>
 <span class="sd">        :param res: The resolution of the images, defaults to 512</span>
 <span class="sd">        :type res: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;cat-cookie-doudou.zip&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">"cat-cookie-doudou.zip"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_download</span><span class="p">()</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_data</span><span class="p">()</span>
         <span class="n">transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
@@ -1459,7 +1459,7 @@
         <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">sub_images</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sub_images</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Processing </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> images&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">sub_images</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Processing </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2"> images"</span><span class="p">):</span>
                 <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
                 <span class="n">image</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
                 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -1471,14 +1471,14 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="n">labels</span><span class="p">,</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">CAT_LABEL_NAMES</span><span class="p">]}</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"label_info"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="n">n</span><span class="p">}</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">CAT_LABEL_NAMES</span><span class="p">]}</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Cat._download">
 <a class="viewcode-back" href="../../../../api/pe.data.image.cat.html#pe.data.Cat._download">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download the dataset if it does not exist.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Download the dataset if it does not exist."""</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span><span class="p">):</span>
             <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">URL</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span><span class="p">)</span></div>
@@ -1487,13 +1487,13 @@
 <div class="viewcode-block" id="Cat._read_data">
 <a class="viewcode-back" href="../../../../api/pe.data.image.cat.html#pe.data.Cat._read_data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_read_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read the data from the zip file.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Read the data from the zip file."""</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_zip_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Reading zip file&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">(),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">"Reading zip file"</span><span class="p">):</span>
                 <span class="k">with</span> <span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                     <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-                    <span class="n">label</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
                     <span class="n">data</span><span class="p">[</span><span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">data</span></div>
 </div>

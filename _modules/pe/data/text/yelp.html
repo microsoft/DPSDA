@@ -1422,47 +1422,47 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">gdown</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
 
-<span class="n">DownloadInfo</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;DownloadInfo&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">])</span>
+<span class="n">DownloadInfo</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">"DownloadInfo"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"url"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">])</span>
 
 
 <div class="viewcode-block" id="Yelp">
 <a class="viewcode-back" href="../../../../api/pe.data.text.yelp.html#pe.data.Yelp">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Yelp</span><span class="p">(</span><span class="n">TextCSV</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Yelp dataset in the ICML 2024 Spotlight paper, &quot;Differentially Private Synthetic Data via Foundation</span>
-<span class="sd">    Model APIs 2: Text&quot; (https://arxiv.org/abs/2403.01749).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The Yelp dataset in the ICML 2024 Spotlight paper, "Differentially Private Synthetic Data via Foundation</span>
+<span class="sd">    Model APIs 2: Text" (https://arxiv.org/abs/2403.01749)."""</span>
 
     <span class="c1">#: The download information for the Yelp dataset.</span>
     <span class="n">DOWNLOAD_INFO_DICT</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://drive.google.com/uc?id=1epLuBxCk5MGnm1GiIfLcTcr-tKgjCrc2&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;gdown&quot;</span><span class="p">),</span>
-        <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span>
+        <span class="s2">"train"</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://drive.google.com/uc?id=1epLuBxCk5MGnm1GiIfLcTcr-tKgjCrc2"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"gdown"</span><span class="p">),</span>
+        <span class="s2">"val"</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span>
             <span class="n">url</span><span class="o">=</span><span class="p">(</span>
-                <span class="s2">&quot;https://raw.githubusercontent.com/AI-secure/aug-pe/bca21c90921bd1151aa7627e676c906165e205a0/data/&quot;</span>
-                <span class="s2">&quot;yelp/dev.csv&quot;</span>
+                <span class="s2">"https://raw.githubusercontent.com/AI-secure/aug-pe/bca21c90921bd1151aa7627e676c906165e205a0/data/"</span>
+                <span class="s2">"yelp/dev.csv"</span>
             <span class="p">),</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">"direct"</span><span class="p">,</span>
         <span class="p">),</span>
-        <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span>
+        <span class="s2">"test"</span><span class="p">:</span> <span class="n">DownloadInfo</span><span class="p">(</span>
             <span class="n">url</span><span class="o">=</span><span class="p">(</span>
-                <span class="s2">&quot;https://raw.githubusercontent.com/AI-secure/aug-pe/bca21c90921bd1151aa7627e676c906165e205a0/data/&quot;</span>
-                <span class="s2">&quot;yelp/test.csv&quot;</span>
+                <span class="s2">"https://raw.githubusercontent.com/AI-secure/aug-pe/bca21c90921bd1151aa7627e676c906165e205a0/data/"</span>
+                <span class="s2">"yelp/test.csv"</span>
             <span class="p">),</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">"direct"</span><span class="p">,</span>
         <span class="p">),</span>
     <span class="p">}</span>
 
 <div class="viewcode-block" id="Yelp.__init__">
 <a class="viewcode-back" href="../../../../api/pe.data.text.yelp.html#pe.data.Yelp.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="o">=</span><span class="s2">"data"</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param root_dir: The root directory of the dataset. If the dataset is not there, it will be downloaded</span>
-<span class="sd">            automatically. Defaults to &quot;data&quot;</span>
+<span class="sd">            automatically. Defaults to "data"</span>
 <span class="sd">        :type root_dir: str, optional</span>
-<span class="sd">        :param split: The split of the dataset. It should be either &quot;train&quot;, &quot;val&quot;, or &quot;test&quot;, defaults to &quot;train&quot;</span>
+<span class="sd">        :param split: The split of the dataset. It should be either "train", "val", or "test", defaults to "train"</span>
 <span class="sd">        :type split: str, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_processed_data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">split</span><span class="si">}</span><span class="s2">_processed.csv&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">split</span><span class="si">}</span><span class="s2">.csv&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processed_data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">split</span><span class="si">}</span><span class="s2">_processed.csv"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">split</span><span class="si">}</span><span class="s2">.csv"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_download</span><span class="p">(</span>
             <span class="n">download_info</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNLOAD_INFO_DICT</span><span class="p">[</span><span class="n">split</span><span class="p">],</span>
             <span class="n">data_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_data_path</span><span class="p">,</span>
@@ -1470,8 +1470,8 @@
         <span class="p">)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">csv_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_processed_data_path</span><span class="p">,</span>
-            <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;business_category&quot;</span><span class="p">,</span> <span class="s2">&quot;review_stars&quot;</span><span class="p">],</span>
-            <span class="n">text_column</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">,</span>
+            <span class="n">label_columns</span><span class="o">=</span><span class="p">[</span><span class="s2">"business_category"</span><span class="p">,</span> <span class="s2">"review_stars"</span><span class="p">],</span>
+            <span class="n">text_column</span><span class="o">=</span><span class="s2">"text"</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
         <span class="p">)</span></div>
 
@@ -1479,7 +1479,7 @@
 <div class="viewcode-block" id="Yelp._download">
 <a class="viewcode-back" href="../../../../api/pe.data.text.yelp.html#pe.data.Yelp._download">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">download_info</span><span class="p">,</span> <span class="n">data_path</span><span class="p">,</span> <span class="n">processed_data_path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download the dataset.</span>
+<span class="w">        </span><span class="sd">"""Download the dataset.</span>
 
 <span class="sd">        :param download_info: The download information</span>
 <span class="sd">        :type download_info: pe.data.text.yelp.DownloadInfo</span>
@@ -1488,21 +1488,21 @@
 <span class="sd">        :param processed_data_path: The path to the processed data</span>
 <span class="sd">        :type processed_data_path: str</span>
 <span class="sd">        :raises ValueError: If the download type is unknown</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">processed_data_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">data_path</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">processed_data_path</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">download_info</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;gdown&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">download_info</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"gdown"</span><span class="p">:</span>
                     <span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">download_info</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">data_path</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">download_info</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;direct&quot;</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="n">download_info</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"direct"</span><span class="p">:</span>
                     <span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">download_info</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="n">data_path</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown download type: </span><span class="si">{</span><span class="n">download_info</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown download type: </span><span class="si">{</span><span class="n">download_info</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
             <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
-            <span class="n">data_frame</span><span class="p">[</span><span class="s2">&quot;label1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="s2">&quot;label1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Business Category: &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">data_frame</span><span class="p">[</span><span class="s2">&quot;label2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="s2">&quot;label2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Review Stars: &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label1&quot;</span><span class="p">:</span> <span class="s2">&quot;business_category&quot;</span><span class="p">,</span> <span class="s2">&quot;label2&quot;</span><span class="p">:</span> <span class="s2">&quot;review_stars&quot;</span><span class="p">})</span>
+            <span class="n">data_frame</span><span class="p">[</span><span class="s2">"label1"</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="s2">"label1"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Business Category: "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="n">data_frame</span><span class="p">[</span><span class="s2">"label2"</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="s2">"label2"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Review Stars: "</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+            <span class="n">data_frame</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"label1"</span><span class="p">:</span> <span class="s2">"business_category"</span><span class="p">,</span> <span class="s2">"label2"</span><span class="p">:</span> <span class="s2">"review_stars"</span><span class="p">})</span>
             <span class="n">data_frame</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">processed_data_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_ALL</span><span class="p">)</span></div>
 </div>
 

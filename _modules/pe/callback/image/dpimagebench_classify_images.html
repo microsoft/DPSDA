@@ -1434,9 +1434,9 @@
 <div class="viewcode-block" id="DPImageBenchClassifyImages">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DPImageBenchClassifyImages</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The callback that evaluates the classification accuracy of the synthetic data following DPImageBench</span>
+<span class="w">    </span><span class="sd">"""The callback that evaluates the classification accuracy of the synthetic data following DPImageBench</span>
 <span class="sd">    (https://github.com/2019ChenGong/DPImageBench).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="DPImageBenchClassifyImages.__init__">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages.__init__">[docs]</a>
@@ -1454,7 +1454,7 @@
         <span class="n">ema_rate</span><span class="o">=</span><span class="mf">0.9999</span><span class="p">,</span>
         <span class="o">**</span><span class="n">model_params</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param model_name: The name of the model to use (wrn, resnet, resnext)</span>
 <span class="sd">        :type model_name: str</span>
@@ -1476,7 +1476,7 @@
 <span class="sd">        :type lr_scheduler_gamma: float, optional</span>
 <span class="sd">        :param ema_rate: The rate for the exponential moving average, defaults to 0.9999</span>
 <span class="sd">        :type ema_rate: float, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">=</span> <span class="n">model_name</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span> <span class="o">=</span> <span class="n">test_data</span>
@@ -1491,7 +1491,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_lr_scheduler_gamma</span> <span class="o">=</span> <span class="n">lr_scheduler_gamma</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_ema_rate</span> <span class="o">=</span> <span class="n">ema_rate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_params</span> <span class="o">=</span> <span class="n">model_params</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_num_channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_image_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
@@ -1500,13 +1500,13 @@
 <div class="viewcode-block" id="DPImageBenchClassifyImages._get_images_and_label_from_data">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages._get_images_and_label_from_data">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_images_and_label_from_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Getting images and labels from the data.</span>
+<span class="w">        </span><span class="sd">"""Getting images and labels from the data.</span>
 
 <span class="sd">        :param data: The data object</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The images and labels</span>
 <span class="sd">        :rtype: tuple[np.ndarray, np.ndarray]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1519,13 +1519,13 @@
 <div class="viewcode-block" id="DPImageBenchClassifyImages._get_model">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages._get_model">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Getting the model.</span>
+<span class="w">        </span><span class="sd">"""Getting the model.</span>
 
 <span class="sd">        :raises ValueError: If the model name is unknown</span>
 <span class="sd">        :return: The model</span>
 <span class="sd">        :rtype: torch.nn.Module</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;wrn&quot;</span><span class="p">:</span>
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"wrn"</span><span class="p">:</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">WideResNet</span><span class="p">(</span>
                 <span class="n">in_c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_channels</span><span class="p">,</span>
                 <span class="n">img_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_image_size</span><span class="p">,</span>
@@ -1535,16 +1535,16 @@
                 <span class="n">dropRate</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
                 <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_params</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;resnet&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"resnet"</span><span class="p">:</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">ResNet</span><span class="p">(</span>
                 <span class="n">in_c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_channels</span><span class="p">,</span>
                 <span class="n">img_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_image_size</span><span class="p">,</span>
                 <span class="n">num_classes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_classes</span><span class="p">,</span>
                 <span class="n">depth</span><span class="o">=</span><span class="mi">164</span><span class="p">,</span>
-                <span class="n">block_name</span><span class="o">=</span><span class="s2">&quot;BasicBlock&quot;</span><span class="p">,</span>
+                <span class="n">block_name</span><span class="o">=</span><span class="s2">"BasicBlock"</span><span class="p">,</span>
                 <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_params</span><span class="p">,</span>
             <span class="p">)</span>
-        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">&quot;resnext&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">==</span> <span class="s2">"resnext"</span><span class="p">:</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">ResNeXt</span><span class="p">(</span>
                 <span class="n">in_c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_channels</span><span class="p">,</span>
                 <span class="n">img_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_image_size</span><span class="p">,</span>
@@ -1556,20 +1556,20 @@
                 <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_params</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown model name: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown model name: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div>
 
 
 <div class="viewcode-block" id="DPImageBenchClassifyImages._get_data_loader">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages._get_data_loader">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_data_loader</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Getting the data loader.</span>
+<span class="w">        </span><span class="sd">"""Getting the data loader.</span>
 
 <span class="sd">        :param data: The data object</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data loader</span>
 <span class="sd">        :rtype: torch.utils.data.DataLoader</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_images_and_label_from_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">images</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -1585,7 +1585,7 @@
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages.evaluate">[docs]</a>
     <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">ema</span><span class="p">,</span> <span class="n">data_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluating the model.</span>
+<span class="w">        </span><span class="sd">"""Evaluating the model.</span>
 
 <span class="sd">        :param model: The model</span>
 <span class="sd">        :type model: torch.nn.Module</span>
@@ -1597,7 +1597,7 @@
 <span class="sd">        :type criterion: torch.nn.Module</span>
 <span class="sd">        :return: The accuracy and loss</span>
 <span class="sd">        :rtype: tuple[float, float]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
         <span class="n">ema</span><span class="o">.</span><span class="n">store</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
         <span class="n">ema</span><span class="o">.</span><span class="n">copy_to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
@@ -1623,14 +1623,14 @@
 <div class="viewcode-block" id="DPImageBenchClassifyImages.__call__">
 <a class="viewcode-back" href="../../../../api/pe.callback.image.dpimagebench_classify_images.html#pe.callback.DPImageBenchClassifyImages.__call__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called after each PE iteration that computes the downstream classification metrics.</span>
+<span class="w">        </span><span class="sd">"""This function is called after each PE iteration that computes the downstream classification metrics.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The classification accuracy metrics</span>
 <span class="sd">        :rtype: list[:py:class:`pe.metric_item.FloatListMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluating DPImageBench classification accuracy using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Evaluating DPImageBench classification accuracy using </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
         <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_model</span><span class="p">()</span>
         <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_lr</span><span class="p">)</span>
@@ -1701,19 +1701,19 @@
             <span class="n">test_loss_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_loss</span><span class="p">)</span>
 
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_epochs</span><span class="si">}</span><span class="s2">, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Train Acc: </span><span class="si">{</span><span class="n">train_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Train Loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Val Acc: </span><span class="si">{</span><span class="n">val_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Val Loss: </span><span class="si">{</span><span class="n">val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;Test Acc: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Test Loss: </span><span class="si">{</span><span class="n">test_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_epochs</span><span class="si">}</span><span class="s2">, "</span>
+                <span class="sa">f</span><span class="s2">"Train Acc: </span><span class="si">{</span><span class="n">train_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Train Loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, "</span>
+                <span class="sa">f</span><span class="s2">"Val Acc: </span><span class="si">{</span><span class="n">val_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Val Loss: </span><span class="si">{</span><span class="n">val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, "</span>
+                <span class="sa">f</span><span class="s2">"Test Acc: </span><span class="si">{</span><span class="n">test_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%, Test Loss: </span><span class="si">{</span><span class="n">test_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span>
             <span class="p">)</span>
 
         <span class="n">metric_items</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_train_acc&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">train_acc_list</span><span class="p">),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_train_loss&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">train_loss_list</span><span class="p">),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_val_acc&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val_acc_list</span><span class="p">),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_val_loss&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val_loss_list</span><span class="p">),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_test_acc&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">test_acc_list</span><span class="p">),</span>
-            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_test_loss&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">test_loss_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_train_acc"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">train_acc_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_train_loss"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">train_loss_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_val_acc"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val_acc_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_val_loss"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val_loss_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_test_acc"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">test_acc_list</span><span class="p">),</span>
+            <span class="n">FloatListMetricItem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">_test_loss"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">test_loss_list</span><span class="p">),</span>
         <span class="p">]</span>
 
         <span class="k">return</span> <span class="n">metric_items</span></div>

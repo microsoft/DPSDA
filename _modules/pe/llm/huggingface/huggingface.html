@@ -1424,12 +1424,12 @@
 <div class="viewcode-block" id="HuggingfaceLLM">
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">HuggingfaceLLM</span><span class="p">(</span><span class="n">LLM</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A wrapper for Huggingface LLMs.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""A wrapper for Huggingface LLMs."""</span>
 
 <div class="viewcode-block" id="HuggingfaceLLM.__init__">
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name_or_path</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param model_name_or_path: The model name or path of the Huggingface model. Note that we use the FastChat</span>
 <span class="sd">            library (https://github.com/lm-sys/FastChat) to manage the conversation template. If the conversation</span>
@@ -1444,32 +1444,32 @@
 <span class="sd">        :type dry_run: bool, optional</span>
 <span class="sd">        :param \\*\\*generation_args: The generation arguments that will be passed to the OpenAI API</span>
 <span class="sd">        :type \\*\\*generation_args: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span> <span class="o">=</span> <span class="n">dry_run</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_generation_args</span> <span class="o">=</span> <span class="n">generation_args</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_name_or_path</span> <span class="o">=</span> <span class="n">model_name_or_path</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name_or_path</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name_or_path</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">padding_side</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="o">.</span><span class="n">padding_side</span> <span class="o">=</span> <span class="s2">"left"</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">AutoModelForCausalLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span>
-            <span class="n">model_name_or_path</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span>
+            <span class="n">model_name_or_path</span><span class="p">,</span> <span class="n">device_map</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span> <span class="n">torch_dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span>
         <span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pad_token_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">pad_token_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">eos_token_id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_conv_template</span><span class="p">()</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;one_shot&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">"one_shot"</span><span class="p">:</span>
             <span class="n">execution_logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-                <span class="s2">&quot;The conversation template is the default one_shot. Likely the conversation template is not set &quot;</span>
-                <span class="s2">&quot;correctly. Please check if the installed fastchat library is the latest version on GitHub, or if the &quot;</span>
-                <span class="s2">&quot;conversation template is registered. See &quot;</span>
-                <span class="s2">&quot;https://microsoft.github.io/DPSDA/api/pe.llm.html#pe.llm.HuggingfaceLLM&quot;</span>
+                <span class="s2">"The conversation template is the default one_shot. Likely the conversation template is not set "</span>
+                <span class="s2">"correctly. Please check if the installed fastchat library is the latest version on GitHub, or if the "</span>
+                <span class="s2">"conversation template is registered. See "</span>
+                <span class="s2">"https://microsoft.github.io/DPSDA/api/pe.llm.html#pe.llm.HuggingfaceLLM"</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">stop_str</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stop_token_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">stop_token_ids</span> <span class="ow">or</span> <span class="p">[]</span>
@@ -1478,48 +1478,48 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">generation_arg_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the mapping from the generation arguments to arguments for this specific LLM.</span>
+<span class="w">        </span><span class="sd">"""Get the mapping from the generation arguments to arguments for this specific LLM.</span>
 
 <span class="sd">        :return: The mapping that maps ``max_completion_tokens`` to ``max_new_tokens``</span>
 <span class="sd">        :rtype: dict</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;max_completion_tokens&quot;</span><span class="p">:</span> <span class="s2">&quot;max_new_tokens&quot;</span><span class="p">}</span>
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"max_completion_tokens"</span><span class="p">:</span> <span class="s2">"max_new_tokens"</span><span class="p">}</span>
 
 <div class="viewcode-block" id="HuggingfaceLLM._get_conv_template">
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM._get_conv_template">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_conv_template</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the conversation template.</span>
+<span class="w">        </span><span class="sd">"""Get the conversation template.</span>
 
 <span class="sd">        :return: The empty conversation template for this model from FastChat</span>
 <span class="sd">        :rtype: :py:class:`fastchat.conversation.Conversation`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">template</span> <span class="o">=</span> <span class="n">get_conversation_template</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name_or_path</span><span class="p">)</span>
         <span class="n">template</span><span class="o">.</span><span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">template</span><span class="o">.</span><span class="n">system_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">template</span><span class="o">.</span><span class="n">system_message</span> <span class="o">=</span> <span class="s2">""</span>
         <span class="k">return</span> <span class="n">template</span></div>
 
 
 <div class="viewcode-block" id="HuggingfaceLLM._get_prompt">
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM._get_prompt">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_prompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">messages</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the prompt from the messages.</span>
+<span class="w">        </span><span class="sd">"""Get the prompt from the messages.</span>
 
 <span class="sd">        :param messages: The messages</span>
 <span class="sd">        :type messages: list[dict]</span>
 <span class="sd">        :raises ValueError: If the role is invalid</span>
 <span class="sd">        :return: The prompt</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">template</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conv_template</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;system&quot;</span><span class="p">:</span>
-                <span class="n">template</span><span class="o">.</span><span class="n">set_system_message</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;user&quot;</span><span class="p">:</span>
-                <span class="n">template</span><span class="o">.</span><span class="n">append_message</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">roles</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;role&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;assistant&quot;</span><span class="p">:</span>
-                <span class="n">template</span><span class="o">.</span><span class="n">append_message</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">roles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">message</span><span class="p">[</span><span class="s2">"role"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"system"</span><span class="p">:</span>
+                <span class="n">template</span><span class="o">.</span><span class="n">set_system_message</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s2">"content"</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">"role"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"user"</span><span class="p">:</span>
+                <span class="n">template</span><span class="o">.</span><span class="n">append_message</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">roles</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">[</span><span class="s2">"content"</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">message</span><span class="p">[</span><span class="s2">"role"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"assistant"</span><span class="p">:</span>
+                <span class="n">template</span><span class="o">.</span><span class="n">append_message</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">roles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">[</span><span class="s2">"content"</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid role: </span><span class="si">{</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;role&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid role: </span><span class="si">{</span><span class="n">message</span><span class="p">[</span><span class="s1">'role'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">template</span><span class="o">.</span><span class="n">append_message</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="n">template</span><span class="o">.</span><span class="n">roles</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">template</span><span class="o">.</span><span class="n">get_prompt</span><span class="p">()</span></div>
 
@@ -1527,7 +1527,7 @@
 <div class="viewcode-block" id="HuggingfaceLLM.get_responses">
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM.get_responses">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_args</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the responses from the LLM.</span>
+<span class="w">        </span><span class="sd">"""Get the responses from the LLM.</span>
 
 <span class="sd">        :param requests: The requests</span>
 <span class="sd">        :type requests: list[:py:class:`pe.llm.Request`]</span>
@@ -1537,8 +1537,8 @@
 <span class="sd">        :type \\*\\*generation_args: str</span>
 <span class="sd">        :return: The responses</span>
 <span class="sd">        :rtype: list[str]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;HuggingfaceLLM: producing prompts&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"HuggingfaceLLM: producing prompts"</span><span class="p">)</span>
         <span class="n">prompt_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">generation_args_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">requests</span><span class="p">:</span>
@@ -1546,7 +1546,7 @@
             <span class="n">generation_args_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">get_generation_args</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_generation_args</span><span class="p">,</span> <span class="n">generation_args</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">generation_args</span><span class="p">)</span>
             <span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;HuggingfaceLLM: getting responses&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"HuggingfaceLLM: getting responses"</span><span class="p">)</span>
         <span class="n">responses</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">requests</span><span class="p">)</span>
         <span class="c1"># Group requests according to generation_args</span>
         <span class="n">generation_args_fronzen_set_list</span> <span class="o">=</span> <span class="p">[</span>
@@ -1570,7 +1570,7 @@
 <a class="viewcode-back" href="../../../../api/pe.llm.huggingface.huggingface.html#pe.llm.HuggingfaceLLM._get_responses">[docs]</a>
     <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_responses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt_list</span><span class="p">,</span> <span class="n">generation_args</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the responses from the LLM.</span>
+<span class="w">        </span><span class="sd">"""Get the responses from the LLM.</span>
 
 <span class="sd">        :param prompt_list: The prompts</span>
 <span class="sd">        :type prompt_list: list[str]</span>
@@ -1578,12 +1578,12 @@
 <span class="sd">        :type generation_args: dict</span>
 <span class="sd">        :return: The responses</span>
 <span class="sd">        :rtype: list[str]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dry_run</span><span class="p">:</span>
-            <span class="n">responses</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Dry run enabled. The request is </span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">prompt_list</span><span class="p">]</span>
+            <span class="n">responses</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"Dry run enabled. The request is </span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">prompt_list</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">input_ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tokenizer</span><span class="p">(</span>
-                <span class="n">prompt_list</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_side</span><span class="o">=</span><span class="s2">&quot;left&quot;</span>
+                <span class="n">prompt_list</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">"pt"</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding_side</span><span class="o">=</span><span class="s2">"left"</span>
             <span class="p">)</span><span class="o">.</span><span class="n">input_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
             <span class="n">responses</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_ids</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">):</span>

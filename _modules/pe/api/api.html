@@ -1419,19 +1419,19 @@
 <div class="viewcode-block" id="API">
 <a class="viewcode-back" href="../../../api/pe.api.api.html#pe.api.API">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">API</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class that defines the APIs for the synthetic data generation.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class that defines the APIs for the synthetic data generation."""</span>
 
 <div class="viewcode-block" id="API.random_api">
 <a class="viewcode-back" href="../../../api/pe.api.api.html#pe.api.API.random_api">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">random_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The abstract method that generates random synthetic data.</span>
+<span class="w">        </span><span class="sd">"""The abstract method that generates random synthetic data.</span>
 
 <span class="sd">        :param label_info: The info of the label</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
 <span class="sd">        :param num_samples: The number of random samples to generate</span>
 <span class="sd">        :type num_samples: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 
@@ -1439,11 +1439,11 @@
 <a class="viewcode-back" href="../../../api/pe.api.api.html#pe.api.API.variation_api">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">variation_api</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The abstract method that generates variations of the synthetic data.</span>
+<span class="w">        </span><span class="sd">"""The abstract method that generates variations of the synthetic data.</span>
 
 <span class="sd">        :param syn_data: The data object of the synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 </div>
 

@@ -1421,43 +1421,43 @@
 <div class="viewcode-block" id="LogPrint">
 <a class="viewcode-back" href="../../../api/pe.logger.log_print.html#pe.logger.LogPrint">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LogPrint</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The logger that prints the metrics to the console/file using :py:const:`pe.logging.execution_logger`.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The logger that prints the metrics to the console/file using :py:const:`pe.logging.execution_logger`."""</span>
 
 <div class="viewcode-block" id="LogPrint.__init__">
 <a class="viewcode-back" href="../../../api/pe.logger.log_print.html#pe.logger.LogPrint.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_iteration_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param log_iteration_freq: The frequency to log the metrics, defaults to 1</span>
 <span class="sd">        :type log_iteration_freq: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_log_iteration_freq</span> <span class="o">=</span> <span class="n">log_iteration_freq</span></div>
 
 
 <div class="viewcode-block" id="LogPrint.log">
 <a class="viewcode-back" href="../../../api/pe.logger.log_print.html#pe.logger.LogPrint.log">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the metrics to the console/file.</span>
+<span class="w">        </span><span class="sd">"""Log the metrics to the console/file.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :param metric_items: The metrics to log</span>
 <span class="sd">        :type metric_items: list[:py:class:`pe.metric_item.FloatMetricItem` or</span>
 <span class="sd">            :py:class:`pe.metric_item.FloatListMetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="n">iteration</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_iteration_freq</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">metric_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">metric_items</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="n">FloatMetricItem</span><span class="p">,</span> <span class="n">FloatListMetricItem</span><span class="p">))]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">metric_items</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iteration: </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Iteration: </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">metric_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">FloatMetricItem</span><span class="p">):</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">value</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">])</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">value</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">])</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="si">{</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

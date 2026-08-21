@@ -1440,52 +1440,52 @@
 <div class="viewcode-block" id="Inception">
 <a class="viewcode-back" href="../../../../api/pe.embedding.image.inception.html#pe.embedding.Inception">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Inception</span><span class="p">(</span><span class="n">Embedding</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Inception embedding of images.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Compute the Inception embedding of images."""</span>
 
 <div class="viewcode-block" id="Inception.__init__">
 <a class="viewcode-back" href="../../../../api/pe.embedding.image.inception.html#pe.embedding.Inception.__init__">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">res</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param res: The resolution of the images. The images will be resized to (res, res) before computing the</span>
 <span class="sd">            embedding</span>
 <span class="sd">        :type res: int</span>
-<span class="sd">        :param device: The device to use for computing the embedding, defaults to &quot;cuda&quot;</span>
+<span class="sd">        :param device: The device to use for computing the embedding, defaults to "cuda"</span>
 <span class="sd">        :type device: str, optional</span>
 <span class="sd">        :param batch_size: The batch size to use for computing the embedding, defaults to 2000</span>
 <span class="sd">        :type batch_size: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_device</span> <span class="o">=</span> <span class="n">device</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_inception</span> <span class="o">=</span> <span class="n">InceptionV3W</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">resize_inside</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_resize_pre</span> <span class="o">=</span> <span class="n">make_resizer</span><span class="p">(</span>
-            <span class="n">library</span><span class="o">=</span><span class="s2">&quot;PIL&quot;</span><span class="p">,</span>
+            <span class="n">library</span><span class="o">=</span><span class="s2">"PIL"</span><span class="p">,</span>
             <span class="n">quantize_after</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;bicubic&quot;</span><span class="p">,</span>
+            <span class="nb">filter</span><span class="o">=</span><span class="s2">"bicubic"</span><span class="p">,</span>
             <span class="n">output_size</span><span class="o">=</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">res</span><span class="p">),</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_resizer</span> <span class="o">=</span> <span class="n">build_resizer</span><span class="p">(</span><span class="s2">&quot;clean&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resizer</span> <span class="o">=</span> <span class="n">build_resizer</span><span class="p">(</span><span class="s2">"clean"</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span> <span class="o">=</span> <span class="n">batch_size</span></div>
 
 
 <div class="viewcode-block" id="Inception.compute_embedding">
 <a class="viewcode-back" href="../../../../api/pe.embedding.image.inception.html#pe.embedding.Inception.compute_embedding">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the Inception embedding of images.</span>
+<span class="w">        </span><span class="sd">"""Compute the Inception embedding of images.</span>
 
 <span class="sd">        :param data: The data object containing the images</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object with the computed embedding</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">uncomputed_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_uncomputed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed&quot;</span><span class="p">)</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="s2">&quot; samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="s2">" samples"</span>
         <span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1507,8 +1507,8 @@
             <span class="nb">list</span><span class="p">(</span><span class="n">embeddings</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span>
         <span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_computed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uncomputed_data</span><span class="p">)</span></div>
 </div>

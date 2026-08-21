@@ -1427,28 +1427,28 @@
 <div class="viewcode-block" id="CSVPrint">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CSVPrint</span><span class="p">(</span><span class="n">Logger</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The logger that prints the metrics to CSV files.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The logger that prints the metrics to CSV files."""</span>
 
 <div class="viewcode-block" id="CSVPrint.__init__">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">output_folder</span><span class="p">,</span>
-        <span class="n">path_separator</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
-        <span class="n">float_format</span><span class="o">=</span><span class="s2">&quot;.8f&quot;</span><span class="p">,</span>
+        <span class="n">path_separator</span><span class="o">=</span><span class="s2">"-"</span><span class="p">,</span>
+        <span class="n">float_format</span><span class="o">=</span><span class="s2">".8f"</span><span class="p">,</span>
         <span class="n">flush_iteration_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param output_folder: The output folder that will be used to save the CSV files</span>
 <span class="sd">        :type output_folder: str</span>
-<span class="sd">        :param path_separator: The string that will be used to replace &#39;\&#39; and &#39;/&#39; in log names, defaults to &quot;-&quot;</span>
+<span class="sd">        :param path_separator: The string that will be used to replace '\' and '/' in log names, defaults to "-"</span>
 <span class="sd">        :type path_separator: str, optional</span>
-<span class="sd">        :param float_format: The format of the floating point numbers, defaults to &quot;.8f&quot;</span>
+<span class="sd">        :param float_format: The format of the floating point numbers, defaults to ".8f"</span>
 <span class="sd">        :type float_format: str, optional</span>
 <span class="sd">        :param flush_iteration_freq: The frequency to flush the logs, defaults to 1</span>
 <span class="sd">        :type flush_iteration_freq: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span> <span class="o">=</span> <span class="n">path_separator</span>
@@ -1460,14 +1460,14 @@
 <div class="viewcode-block" id="CSVPrint._clear_logs">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint._clear_logs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_clear_logs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear the logs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Clear the logs."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CSVPrint._get_log_path">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint._get_log_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_get_log_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the log path.</span>
+<span class="w">        </span><span class="sd">"""Get the log path.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
@@ -1475,20 +1475,20 @@
 <span class="sd">        :type item: :py:class:`pe.metric_item.MetricItem`</span>
 <span class="sd">        :return: The log path</span>
 <span class="sd">        :rtype: str</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">log_path</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">name</span>
-        <span class="n">log_path</span> <span class="o">=</span> <span class="n">log_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
-        <span class="n">log_path</span> <span class="o">=</span> <span class="n">log_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
-        <span class="n">log_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">log_path</span> <span class="o">+</span> <span class="s2">&quot;.csv&quot;</span><span class="p">)</span>
+        <span class="n">log_path</span> <span class="o">=</span> <span class="n">log_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
+        <span class="n">log_path</span> <span class="o">=</span> <span class="n">log_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\\</span><span class="s2">"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_path_separator</span><span class="p">)</span>
+        <span class="n">log_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_folder</span><span class="p">,</span> <span class="n">log_path</span> <span class="o">+</span> <span class="s2">".csv"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">log_path</span></div>
 
 
 <div class="viewcode-block" id="CSVPrint._flush">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint._flush">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Flush the logs.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Flush the logs."""</span>
         <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
                 <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_logs</span><span class="p">[</span><span class="n">path</span><span class="p">])</span></div>
 
@@ -1496,7 +1496,7 @@
 <div class="viewcode-block" id="CSVPrint._log_float">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint._log_float">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_log_float</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">log_path</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log a float metric item.</span>
+<span class="w">        </span><span class="sd">"""Log a float metric item.</span>
 
 <span class="sd">        :param log_path: The path of the log file</span>
 <span class="sd">        :type log_path: str</span>
@@ -1504,7 +1504,7 @@
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :param item: The float metric item</span>
 <span class="sd">        :type item: :py:class:`pe.metric_item.FloatMetricItem` or :py:class:`pe.metric_item.FloatListMetricItem`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">str_iteration</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">iteration</span><span class="p">)</span>
         <span class="n">str_value</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
@@ -1512,7 +1512,7 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">str_value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="n">str_value</span> <span class="o">=</span> <span class="n">str_value</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">str_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">str_value</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_float_format</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">str_value</span><span class="p">])</span>
+            <span class="n">str_value</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">format</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_float_format</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">str_value</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">str_value</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">str_value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_float_format</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_logs</span><span class="p">[</span><span class="n">log_path</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">str_iteration</span><span class="p">,</span> <span class="n">str_value</span><span class="p">])</span></div>
@@ -1521,13 +1521,13 @@
 <div class="viewcode-block" id="CSVPrint.log">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint.log">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the metrics.</span>
+<span class="w">        </span><span class="sd">"""Log the metrics.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :param metric_items: The metrics to log</span>
 <span class="sd">        :type metric_items: list[:py:class:`pe.metric_item.MetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">metric_items</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="p">(</span><span class="n">FloatMetricItem</span><span class="p">,</span> <span class="n">FloatListMetricItem</span><span class="p">)):</span>
                 <span class="k">continue</span>
@@ -1541,7 +1541,7 @@
 <div class="viewcode-block" id="CSVPrint.clean_up">
 <a class="viewcode-back" href="../../../api/pe.logger.csv_print.html#pe.logger.CSVPrint.clean_up">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clean_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up the logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Clean up the logger."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_flush</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clear_logs</span><span class="p">()</span></div>
 </div>

@@ -1413,14 +1413,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.api.image.improved_diffusion_lib.unet</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">This code contains minor edits from the original code at</span>
 <span class="sd">https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/unet.py</span>
 <span class="sd">and</span>
 <span class="sd">https://github.com/openai/improved-diffusion/blob/main/improved_diffusion/script_util.py</span>
 <span class="sd">to avoid calling self.input_blocks.parameters() in the original code, which is</span>
 <span class="sd">not supported by DataParallel.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">improved_diffusion.unet</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNetModel</span>
@@ -1457,10 +1457,10 @@
     <span class="k">elif</span> <span class="n">image_size</span> <span class="o">==</span> <span class="mi">32</span><span class="p">:</span>
         <span class="n">channel_mult</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unsupported image size: </span><span class="si">{</span><span class="n">image_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"unsupported image size: </span><span class="si">{</span><span class="n">image_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">attention_ds</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">attention_resolutions</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">attention_resolutions</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">","</span><span class="p">):</span>
         <span class="n">attention_ds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">image_size</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">FP32UNetModel</span><span class="p">(</span>

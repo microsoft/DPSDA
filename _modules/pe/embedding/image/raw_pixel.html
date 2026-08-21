@@ -1430,25 +1430,25 @@
 <div class="viewcode-block" id="RawPixel">
 <a class="viewcode-back" href="../../../../api/pe.embedding.html#pe.embedding.RawPixel">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">RawPixel</span><span class="p">(</span><span class="n">Embedding</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use the raw pixels of images as the embedding.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Use the raw pixels of images as the embedding."""</span>
 
 <div class="viewcode-block" id="RawPixel.compute_embedding">
 <a class="viewcode-back" href="../../../../api/pe.embedding.html#pe.embedding.RawPixel.compute_embedding">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract the raw pixels of images.</span>
+<span class="w">        </span><span class="sd">"""Extract the raw pixels of images.</span>
 
 <span class="sd">        :param data: The data object containing the images</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object with the computed embedding</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">uncomputed_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_uncomputed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed&quot;</span><span class="p">)</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="s2">&quot; samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="s2">" samples"</span>
         <span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">IMAGE_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">embeddings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -1456,8 +1456,8 @@
             <span class="nb">list</span><span class="p">(</span><span class="n">embeddings</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span>
         <span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_computed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uncomputed_data</span><span class="p">)</span></div>
 </div>

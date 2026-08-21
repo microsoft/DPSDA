@@ -1428,14 +1428,14 @@
 <div class="viewcode-block" id="DigiFace1M">
 <a class="viewcode-back" href="../../../../api/pe.data.image.digiface1m.html#pe.data.DigiFace1M">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DigiFace1M</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The DigiFace1M dataset (https://github.com/microsoft/DigiFace1M/).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The DigiFace1M dataset (https://github.com/microsoft/DigiFace1M/)."""</span>
 
 <div class="viewcode-block" id="DigiFace1M.__init__">
 <a class="viewcode-back" href="../../../../api/pe.data.image.digiface1m.html#pe.data.DigiFace1M.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_processes</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
-<span class="sd">        :param root_dir: The root directory of the dataset, defaults to &quot;data&quot;</span>
+<span class="sd">        :param root_dir: The root directory of the dataset, defaults to "data"</span>
 <span class="sd">        :type root_dir: str, optional</span>
 <span class="sd">        :param res: The resolution of the images, defaults to 32</span>
 <span class="sd">        :type res: int, optional</span>
@@ -1444,14 +1444,14 @@
 <span class="sd">        :param chunksize: The chunk size to use for parallel processing, defaults to 1000</span>
 <span class="sd">        :type chunksize: int, optional</span>
 <span class="sd">        :raises ValueError: If the number of images in ``root_dir`` is not 1,219,995</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_res</span> <span class="o">=</span> <span class="n">res</span>
-        <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*.png&quot;</span><span class="p">))</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">"*"</span><span class="p">,</span> <span class="s2">"*.png"</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1219995</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Expected 1,219,995 images, but found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please download the dataset from &quot;</span>
-                <span class="s2">&quot;https://github.com/microsoft/DigiFace1M, unzip the images into a folder, and pass the path to the &quot;</span>
-                <span class="s2">&quot;folder as ``root_dir``.&quot;</span>
+                <span class="sa">f</span><span class="s2">"Expected 1,219,995 images, but found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s2">. Please download the dataset from "</span>
+                <span class="s2">"https://github.com/microsoft/DigiFace1M, unzip the images into a folder, and pass the path to the "</span>
+                <span class="s2">"folder as ``root_dir``."</span>
             <span class="p">)</span>
         <span class="n">images</span> <span class="o">=</span> <span class="n">process_map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_read_and_process_image</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">max_workers</span><span class="o">=</span><span class="n">num_processes</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">)</span>
         <span class="n">data_frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -1460,22 +1460,22 @@
                 <span class="n">LABEL_ID_COLUMN_NAME</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span>
             <span class="p">}</span>
         <span class="p">)</span>
-        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;label_info&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">}]}</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"label_info"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"None"</span><span class="p">}]}</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data_frame</span><span class="o">=</span><span class="n">data_frame</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DigiFace1M._read_and_process_image">
 <a class="viewcode-back" href="../../../../api/pe.data.image.digiface1m.html#pe.data.DigiFace1M._read_and_process_image">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">_read_and_process_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read and process an image.</span>
+<span class="w">        </span><span class="sd">"""Read and process an image.</span>
 
 <span class="sd">        :param path: The path to the image</span>
 <span class="sd">        :type path: str</span>
 <span class="sd">        :return: The processed image</span>
 <span class="sd">        :rtype: np.ndarray</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">"RGB"</span><span class="p">)</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_res</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span></div>
 </div>

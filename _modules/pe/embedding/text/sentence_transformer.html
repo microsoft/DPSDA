@@ -1425,18 +1425,18 @@
 <div class="viewcode-block" id="SentenceTransformer">
 <a class="viewcode-back" href="../../../../api/pe.embedding.text.sentence_transformer.html#pe.embedding.SentenceTransformer">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SentenceTransformer</span><span class="p">(</span><span class="n">Embedding</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the Sentence Transformers embedding of text.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Compute the Sentence Transformers embedding of text."""</span>
 
 <div class="viewcode-block" id="SentenceTransformer.__init__">
 <a class="viewcode-back" href="../../../../api/pe.embedding.text.sentence_transformer.html#pe.embedding.SentenceTransformer.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param model: The Sentence Transformers model to use</span>
 <span class="sd">        :type model: str</span>
 <span class="sd">        :param batch_size: The batch size to use for computing the embedding, defaults to 2000</span>
 <span class="sd">        :type batch_size: int, optional</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="o">=</span> <span class="n">model</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">ST</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -1445,26 +1445,26 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">column_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The column name to be used in the data frame.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">EMBEDDING_COLUMN_NAME</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="sd">"""The column name to be used in the data frame."""</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">EMBEDDING_COLUMN_NAME</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">"</span>
 
 <div class="viewcode-block" id="SentenceTransformer.compute_embedding">
 <a class="viewcode-back" href="../../../../api/pe.embedding.text.sentence_transformer.html#pe.embedding.SentenceTransformer.compute_embedding">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the Sentence Transformers embedding of text.</span>
+<span class="w">        </span><span class="sd">"""Compute the Sentence Transformers embedding of text.</span>
 
 <span class="sd">        :param data: The data object containing the text</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :return: The data object with the computed embedding</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">uncomputed_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_uncomputed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed&quot;</span><span class="p">)</span>
+            <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Embedding: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> already computed"</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="s2">&quot; samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+            <span class="s2">" samples"</span>
         <span class="p">)</span>
         <span class="n">samples</span> <span class="o">=</span> <span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">[</span><span class="n">TEXT_DATA_COLUMN_NAME</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">embeddings</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_batch_size</span><span class="p">)</span>
@@ -1472,8 +1472,8 @@
             <span class="nb">list</span><span class="p">(</span><span class="n">embeddings</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="o">.</span><span class="n">index</span>
         <span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples&quot;</span>
+            <span class="sa">f</span><span class="s2">"Embedding: finished computing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">column_name</span><span class="si">}</span><span class="s2"> for "</span>
+            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uncomputed_data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_frame</span><span class="p">)</span><span class="si">}</span><span class="s2"> samples"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_computed_rows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">uncomputed_data</span><span class="p">)</span></div>
 </div>

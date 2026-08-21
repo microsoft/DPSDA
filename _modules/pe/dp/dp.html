@@ -1419,13 +1419,13 @@
 <div class="viewcode-block" id="DP">
 <a class="viewcode-back" href="../../../api/pe.dp.dp.html#pe.dp.DP">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DP</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class for Differential Privacy (DP) histogram mechanism.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class for Differential Privacy (DP) histogram mechanism."""</span>
 
 <div class="viewcode-block" id="DP.set_epsilon_and_delta">
 <a class="viewcode-back" href="../../../api/pe.dp.dp.html#pe.dp.DP.set_epsilon_and_delta">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_epsilon_and_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_iterations</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">noise_multiplier</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the epsilon and delta for the DP mechanism. Either epsilon or noise_multiplier should be None.</span>
+<span class="w">        </span><span class="sd">"""Set the epsilon and delta for the DP mechanism. Either epsilon or noise_multiplier should be None.</span>
 
 <span class="sd">        :param num_iterations: The number of PE iterations</span>
 <span class="sd">        :type num_iterations: int</span>
@@ -1435,7 +1435,7 @@
 <span class="sd">        :type delta: float</span>
 <span class="sd">        :param noise_multiplier: The noise multiplier of the DP mechanism</span>
 <span class="sd">        :type noise_multiplier: float or None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 
@@ -1443,11 +1443,11 @@
 <a class="viewcode-back" href="../../../api/pe.dp.dp.html#pe.dp.DP.add_noise">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add noise to the histogram of synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Add noise to the histogram of synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data to add noise</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 </div>
 

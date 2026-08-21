@@ -1419,7 +1419,7 @@
 <div class="viewcode-block" id="search">
 <a class="viewcode-back" href="../../../../api/pe.histogram.nearest_neighbor_backend.sklearn.html#pe.histogram.nearest_neighbor_backend.sklearn.search">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">,</span> <span class="n">priv_embedding</span><span class="p">,</span> <span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the nearest neighbors of the private embedding in the synthetic embedding using sklearn.</span>
+<span class="w">    </span><span class="sd">"""Compute the nearest neighbors of the private embedding in the synthetic embedding using sklearn.</span>
 
 <span class="sd">    :param syn_embedding: The synthetic embedding</span>
 <span class="sd">    :type syn_embedding: np.ndarray</span>
@@ -1428,20 +1428,20 @@
 <span class="sd">    :param num_nearest_neighbors: The number of nearest neighbors to search</span>
 <span class="sd">    :type num_nearest_neighbors: int</span>
 <span class="sd">    :param mode: The distance metric to use for finding the nearest neighbors. It should be one of the following:</span>
-<span class="sd">            &quot;l2&quot; (l2 distance), &quot;cos_sim&quot; (cosine similarity)</span>
+<span class="sd">            "l2" (l2 distance), "cos_sim" (cosine similarity)</span>
 <span class="sd">    :type mode: str</span>
 <span class="sd">    :raises ValueError: If the mode is unknown</span>
 <span class="sd">    :return: The distances and indices of the nearest neighbors</span>
 <span class="sd">    :rtype: tuple[np.ndarray, np.ndarray]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;l2&quot;</span><span class="p">:</span>
-        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;l2&quot;</span>
-    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;cos_sim&quot;</span><span class="p">:</span>
-        <span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;cosine&quot;</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"l2"</span><span class="p">:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">"l2"</span>
+    <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"cos_sim"</span><span class="p">:</span>
+        <span class="n">metric</span> <span class="o">=</span> <span class="s2">"cosine"</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown mode: </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown mode: </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-    <span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;brute&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nn</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">num_nearest_neighbors</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"brute"</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">nn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">syn_embedding</span><span class="p">)</span>
     <span class="n">distances</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">priv_embedding</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">distances</span><span class="p">,</span> <span class="n">ids</span></div>

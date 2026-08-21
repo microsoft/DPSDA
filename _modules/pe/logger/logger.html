@@ -1419,26 +1419,26 @@
 <div class="viewcode-block" id="Logger">
 <a class="viewcode-back" href="../../../api/pe.logger.logger.html#pe.logger.Logger">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Logger</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class for logging the metrics&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class for logging the metrics"""</span>
 
 <div class="viewcode-block" id="Logger.log">
 <a class="viewcode-back" href="../../../api/pe.logger.logger.html#pe.logger.Logger.log">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration</span><span class="p">,</span> <span class="n">metric_items</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log the metrics.</span>
+<span class="w">        </span><span class="sd">"""Log the metrics.</span>
 
 <span class="sd">        :param iteration: The PE iteration number</span>
 <span class="sd">        :type iteration: int</span>
 <span class="sd">        :param metric_items: The metrics to log</span>
 <span class="sd">        :type metric_items: list[:py:class:`pe.metric_item.MetricItem`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 
 <div class="viewcode-block" id="Logger.clean_up">
 <a class="viewcode-back" href="../../../api/pe.logger.logger.html#pe.logger.Logger.clean_up">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">clean_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clean up the logger.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Clean up the logger."""</span>
         <span class="o">...</span></div>
 </div>
 

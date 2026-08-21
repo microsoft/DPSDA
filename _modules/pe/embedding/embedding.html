@@ -1422,22 +1422,22 @@
 <div class="viewcode-block" id="Embedding">
 <a class="viewcode-back" href="../../../api/pe.embedding.embedding.html#pe.embedding.Embedding">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Embedding</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class that computes the embedding of samples.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""The abstract class that computes the embedding of samples."""</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">column_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The column name to be used in the data frame.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">EMBEDDING_COLUMN_NAME</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="sd">"""The column name to be used in the data frame."""</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">EMBEDDING_COLUMN_NAME</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">"</span>
 
 <div class="viewcode-block" id="Embedding.compute_embedding">
 <a class="viewcode-back" href="../../../api/pe.embedding.embedding.html#pe.embedding.Embedding.compute_embedding">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the embedding of samples.</span>
+<span class="w">        </span><span class="sd">"""Compute the embedding of samples.</span>
 
 <span class="sd">        :param data: The data to compute the embedding</span>
 <span class="sd">        :type data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 
 

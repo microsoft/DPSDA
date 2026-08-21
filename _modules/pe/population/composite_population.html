@@ -1420,16 +1420,16 @@
 <div class="viewcode-block" id="CompositePopulation">
 <a class="viewcode-back" href="../../../api/pe.population.composite_population.html#pe.population.CompositePopulation">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CompositePopulation</span><span class="p">(</span><span class="n">Population</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Using different population algorithms at different PE iterations.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Using different population algorithms at different PE iterations."""</span>
 
 <div class="viewcode-block" id="CompositePopulation.__init__">
 <a class="viewcode-back" href="../../../api/pe.population.composite_population.html#pe.population.CompositePopulation.__init__">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">populations</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor.</span>
+<span class="w">        </span><span class="sd">"""Constructor.</span>
 
 <span class="sd">        :param populations: The list of populations to use at each PE iteration</span>
 <span class="sd">        :type populations: list[:py:class:`pe.population.Population`]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_populations</span> <span class="o">=</span> <span class="n">populations</span></div>
 
@@ -1437,7 +1437,7 @@
 <div class="viewcode-block" id="CompositePopulation.initial">
 <a class="viewcode-back" href="../../../api/pe.population.composite_population.html#pe.population.CompositePopulation.initial">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">initial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the initial synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the initial synthetic data.</span>
 
 <span class="sd">        :param label_info: The label info</span>
 <span class="sd">        :type label_info: omegaconf.dictconfig.DictConfig</span>
@@ -1445,14 +1445,14 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The initial synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Composite population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> initial synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"Composite population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> initial synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_populations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">initial</span><span class="p">(</span><span class="n">label_info</span><span class="o">=</span><span class="n">label_info</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Composite population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> initial &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"Composite population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> initial "</span>
+            <span class="sa">f</span><span class="s2">"synthetic samples for label </span><span class="si">{</span><span class="n">label_info</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>
 
@@ -1460,7 +1460,7 @@
 <div class="viewcode-block" id="CompositePopulation.next">
 <a class="viewcode-back" href="../../../api/pe.population.composite_population.html#pe.population.CompositePopulation.next">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate the next synthetic data.</span>
+<span class="w">        </span><span class="sd">"""Generate the next synthetic data.</span>
 
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
@@ -1468,13 +1468,13 @@
 <span class="sd">        :type num_samples: int</span>
 <span class="sd">        :return: The next synthetic data</span>
 <span class="sd">        :rtype: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Composite population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> next synthetic samples&quot;</span><span class="p">)</span>
+<span class="sd">        """</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Composite population: generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> next synthetic samples"</span><span class="p">)</span>
         <span class="n">iteration</span> <span class="o">=</span> <span class="n">syn_data</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">iteration</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">iteration</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_populations</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No population defined for iteration </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"No population defined for iteration </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_populations</span><span class="p">[</span><span class="n">iteration</span><span class="p">]</span><span class="o">.</span><span class="n">next</span><span class="p">(</span><span class="n">syn_data</span><span class="o">=</span><span class="n">syn_data</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
-        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Composite population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> next synthetic samples&quot;</span><span class="p">)</span>
+        <span class="n">execution_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Composite population: finished generating </span><span class="si">{</span><span class="n">num_samples</span><span class="si">}</span><span class="s2"> next synthetic samples"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span></div>
 </div>
 

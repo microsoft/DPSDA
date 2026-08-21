@@ -1419,21 +1419,21 @@
 <div class="viewcode-block" id="Histogram">
 <a class="viewcode-back" href="../../../api/pe.histogram.histogram.html#pe.histogram.Histogram">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Histogram</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The abstract class for computing the histogram over synthetic samples. The histogram values indicate how good</span>
+<span class="w">    </span><span class="sd">"""The abstract class for computing the histogram over synthetic samples. The histogram values indicate how good</span>
 <span class="sd">    each synthetic sample is in terms their closeness to the private data.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Histogram.compute_histogram">
 <a class="viewcode-back" href="../../../api/pe.histogram.histogram.html#pe.histogram.Histogram.compute_histogram">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priv_data</span><span class="p">,</span> <span class="n">syn_data</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the histogram over the synthetic data using the private data.</span>
+<span class="w">        </span><span class="sd">"""Compute the histogram over the synthetic data using the private data.</span>
 
 <span class="sd">        :param priv_data: The private data</span>
 <span class="sd">        :type priv_data: :py:class:`pe.data.Data`</span>
 <span class="sd">        :param syn_data: The synthetic data</span>
 <span class="sd">        :type syn_data: :py:class:`pe.data.Data`</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="o">...</span></div>
 </div>
 

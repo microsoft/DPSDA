@@ -1413,14 +1413,14 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pe.callback.image.dpimagebench_lib.resnext</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Adapted from DPImageBench: https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/classifier/resnext.py</span>
+<span></span><span class="sd">"""Adapted from DPImageBench: https://github.com/fjxmlzn/DPImageBench/blob/main/evaluation/classifier/resnext.py</span>
 
 <span class="sd">Creates a ResNeXt Model as defined in:</span>
 <span class="sd">Xie, S., Girshick, R., Dollar, P., Tu, Z., &amp; He, K. (2016).</span>
 <span class="sd">Aggregated residual transformations for deep neural networks.</span>
 <span class="sd">arXiv preprint arXiv:1611.05431.</span>
 <span class="sd">import from https://github.com/prlz77/ResNeXt.pytorch/blob/master/models/model.py</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">division</span>
 
@@ -1428,23 +1428,23 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">init</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;resnext&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"resnext"</span><span class="p">]</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ResNeXtBottleneck</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    RexNeXt bottleneck type C (https://github.com/facebookresearch/ResNeXt/blob/master/models/resnext.lua)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">cardinality</span><span class="p">,</span> <span class="n">widen_factor</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor</span>
+<span class="w">        </span><span class="sd">"""Constructor</span>
 <span class="sd">        Args:</span>
 <span class="sd">            in_channels: input channel dimensionality</span>
 <span class="sd">            out_channels: output channel dimensionality</span>
 <span class="sd">            stride: conv stride. Replaces pooling layer.</span>
 <span class="sd">            cardinality: num of convolution groups.</span>
 <span class="sd">            widen_factor: factor to reduce the input dimensionality before convolution.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ResNeXtBottleneck</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="n">D</span> <span class="o">=</span> <span class="n">cardinality</span> <span class="o">*</span> <span class="n">out_channels</span> <span class="o">//</span> <span class="n">widen_factor</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">conv_reduce</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1457,10 +1457,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">in_channels</span> <span class="o">!=</span> <span class="n">out_channels</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span>
-                <span class="s2">&quot;shortcut_conv&quot;</span><span class="p">,</span>
+                <span class="s2">"shortcut_conv"</span><span class="p">,</span>
                 <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
             <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">&quot;shortcut_bn&quot;</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shortcut</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="s2">"shortcut_bn"</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">))</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">bottleneck</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_reduce</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1474,19 +1474,19 @@
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">ResNeXt</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    ResNext optimized for the Cifar dataset, as specified in</span>
 <span class="sd">    https://arxiv.org/pdf/1611.05431.pdf</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">img_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">cardinality</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">29</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">widen_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dropRate</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Constructor</span>
+<span class="w">        </span><span class="sd">"""Constructor</span>
 <span class="sd">        Args:</span>
 <span class="sd">            cardinality: number of convolution groups.</span>
 <span class="sd">            depth: number of layers.</span>
 <span class="sd">            num_classes: number of classes</span>
 <span class="sd">            widen_factor: factor to adjust the channel dimensionality</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ResNeXt</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cardinality</span> <span class="o">=</span> <span class="n">cardinality</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">depth</span> <span class="o">=</span> <span class="n">depth</span>
@@ -1499,33 +1499,33 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">conv_1_3x3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_c</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bn_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">&quot;stage_1&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stage_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">&quot;stage_2&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stage_3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">&quot;stage_3&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">"stage_1"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">"stage_2"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stage_3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="s2">"stage_3"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">widen_factor</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
         <span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="s2">&quot;conv&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
-                    <span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()[</span><span class="n">key</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_out&quot;</span><span class="p">)</span>
-                <span class="k">if</span> <span class="s2">&quot;bn&quot;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"weight"</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">"conv"</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+                    <span class="n">init</span><span class="o">.</span><span class="n">kaiming_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()[</span><span class="n">key</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"fan_out"</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s2">"bn"</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;bias&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"."</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"bias"</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">state_dict</span><span class="p">()[</span><span class="n">key</span><span class="p">][</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">pool_stride</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stack n bottleneck modules where n is inferred from the depth of the network.</span>
+<span class="w">        </span><span class="sd">"""Stack n bottleneck modules where n is inferred from the depth of the network.</span>
 <span class="sd">        Args:</span>
 <span class="sd">            name: string name of the current block.</span>
 <span class="sd">            in_channels: number of input channels</span>
 <span class="sd">            out_channels: number of output channels</span>
 <span class="sd">            pool_stride: factor to reduce the spatial dimensionality in the first bottleneck of the block.</span>
 <span class="sd">        Returns: a Module consisting of n sequential bottlenecks.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="n">block</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">bottleneck</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">block_depth</span><span class="p">):</span>
-            <span class="n">name_</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_bottleneck_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bottleneck</span><span class="p">)</span>
+            <span class="n">name_</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%s</span><span class="s2">_bottleneck_</span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bottleneck</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">bottleneck</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">block</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span>
                     <span class="n">name_</span><span class="p">,</span>
@@ -1551,7 +1551,7 @@
 <div class="viewcode-block" id="resnext">
 <a class="viewcode-back" href="../../../../../api/pe.callback.image.dpimagebench_lib.resnext.html#pe.callback.image.dpimagebench_lib.resnext.resnext">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">resnext</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructs a ResNeXt.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Constructs a ResNeXt."""</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">ResNeXt</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">model</span></div>
 
