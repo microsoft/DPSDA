@@ -180,7 +180,7 @@ class Data:
         if metadata is None:
             metadata_list = [data.metadata for data in data_list]
             # Check that all metadata are the same.
-            if len(set(metadata_list)) != 1:
+            if any(item != metadata_list[0] for item in metadata_list[1:]):
                 raise ValueError("Metadata must be the same")
             metadata = metadata_list[0]
         return Data(data_frame=pd.concat(data_frame_list), metadata=metadata)
