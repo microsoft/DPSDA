@@ -17,6 +17,7 @@ optionalimport(
     ),
 )
 optionalimport(
+    "azure",
     "gdown",
     "openai",
     "tenacity",
